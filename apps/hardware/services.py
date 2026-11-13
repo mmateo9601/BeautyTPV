@@ -33,7 +33,26 @@ def enqueue_invoice(invoice, actor, open_drawer=False, copy=False):
         existing = PrintJob.objects.filter(invoice=invoice, kind="RECEIPT").first()
         if existing:
             return existing
-    printer = Printer.objects.filter(enabled=True).order_by("pk").first()
+    terminal_id = None
+    if invoice.sale_id:
+        terminal_id = getattr(invoice.sale.ticket, "terminal_id", None)
+    printer = None
+    if terminal_id:
+        printer = (
+            Printer.objects.filter(enabled=True, terminal_id=terminal_id).order_by("pk").first()
+        )
+    if printer is None:
+        printer = Printer.objects.filter(enabled=True, terminal__isnull=True).order_by("pk").first()
+    configuration_error = ""
+    if printer:
+        try:
+            printer.full_clean()
+        except ValidationError:
+            # An invalid device must not roll back an otherwise valid financial sale.
+            printer = None
+            configuration_error = (
+                "Configuracion de impresora invalida; asigne un dispositivo valido."
+            )
     payload = render_receipt(
         invoice,
         copy=copy,
@@ -46,6 +65,9 @@ def enqueue_invoice(invoice, actor, open_drawer=False, copy=False):
         printer=printer,
         kind="COPY" if copy else "RECEIPT",
         payload=payload,
+        encoding=printer.encoding if printer else "cp858",
+        codepage=printer.codepage if printer else 19,
+        last_error=configuration_error,
         open_drawer=open_drawer,
         requested_by=actor,
     )
@@ -62,12 +84,15 @@ def enqueue_test(printer, actor, drawer=False):
     require_role(actor, "SUPERADMIN")
     if not printer.enabled:
         raise ValidationError("Dispositivo deshabilitado")
+    printer.full_clean()
     job = PrintJob.objects.create(
         printer=printer,
         kind="DRAWER" if drawer else "TEST",
         requested_by=actor,
         open_drawer=drawer,
         payload=render_test(printer.encoding, printer.codepage, drawer),
+        encoding=printer.encoding,
+        codepage=printer.codepage,
     )
     record(actor, "hardware.test_drawer" if drawer else "hardware.test", obj=job)
     return job
@@ -75,6 +100,9 @@ def enqueue_test(printer, actor, drawer=False):
 
 @transaction.atomic
 def retry_job(job, actor, printer=None):
+    from apps.core.guards import require_operational
+
+    require_operational()
     require_role(actor, "SUPERADMIN")
     current = PrintJob.objects.get(pk=job.pk)
     if current.status not in ["FAILED", "PENDING"]:
@@ -86,6 +114,11 @@ def retry_job(job, actor, printer=None):
     if printer is not None:
         if not printer.enabled:
             raise ValidationError("Dispositivo deshabilitado")
+        printer.full_clean()
+        if printer.encoding != current.encoding or printer.codepage != current.codepage:
+            raise ValidationError(
+                "Codificacion distinta del trabajo original: emita copia en el nuevo dispositivo."
+            )
         current.printer = printer
     current.save(update_fields=["status", "last_error", "printer"])
     record(actor, "hardware.retry", obj=current)
@@ -93,6 +126,9 @@ def retry_job(job, actor, printer=None):
 
 
 def recover_expired():
+    from apps.core.guards import require_operational
+
+    require_operational()
     # Crash may have happened after the physical write. Never resend automatically.
     return PrintJob.objects.filter(status="SENDING", lease_until__lt=timezone.now()).update(
         status="UNKNOWN", last_error="Worker interrumpido: entrega incierta", lease_until=None
@@ -106,7 +142,7 @@ def process_job(job_id):
     now = timezone.now()
     with transaction.atomic():
         changed = PrintJob.objects.filter(
-            pk=job_id, status="PENDING", printer__enabled=True
+            pk=job_id, status="PENDING", printer__enabled=True, printer__terminal__isnull=True
         ).update(
             status="SENDING", attempts=F("attempts") + 1, lease_until=now + timedelta(seconds=60)
         )
@@ -123,12 +159,19 @@ def process_job(job_id):
     except Exception:
         status, error = "UNKNOWN", "Error de driver; revisar entrega antes de reimprimir"
     with transaction.atomic():
-        PrintJob.objects.filter(pk=job.pk, status="SENDING").update(
+        changed = PrintJob.objects.filter(
+            pk=job.pk, status="SENDING", lease_until=job.lease_until
+        ).update(
             status=status,
             last_error=error,
             lease_until=None,
             sent_at=timezone.now() if status == "DONE" else None,
         )
+        if not changed:
+            status, error = (
+                "UNKNOWN",
+                "Estado cambiado durante entrega: requiere conciliacion manual.",
+            )
         HardwareEvent.objects.create(job=job, printer=job.printer, action=status, message=error)
         record(None, "hardware.processed", obj=job, metadata={"status": status})
     return status == "DONE"

@@ -1,9 +1,11 @@
 from django.core.exceptions import ValidationError
+from django.db.models import Q
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, redirect, render
 from django.views.decorators.http import require_POST
 
 from apps.accounts.permissions import role_required
+from apps.core.http import form_pk
 
 from . import services
 from .models import CashMovement, CashRegister, CashSession
@@ -11,13 +13,18 @@ from .models import CashMovement, CashRegister, CashSession
 
 @role_required("EMPLOYEE")
 def index(request):
+    sessions = CashSession.objects.select_related("register").order_by("-opened_at")
+    if request.user.role == "EMPLOYEE":
+        sessions = sessions.filter(Q(closed_at__isnull=True) | Q(opened_by=request.user))
     return render(
         request,
         "cash/index.html",
         {
             "registers": CashRegister.objects.all(),
-            "sessions": CashSession.objects.select_related("register").order_by("-opened_at")[:100],
-            "movements": CashMovement.objects.order_by("-created_at")[:100],
+            "sessions": sessions[:100],
+            "movements": CashMovement.objects.filter(session__in=sessions).order_by("-created_at")[
+                :100
+            ],
         },
     )
 
@@ -27,7 +34,7 @@ def index(request):
 def open(request):
     try:
         services.open_session(
-            get_object_or_404(CashRegister, pk=request.POST.get("register_id")),
+            get_object_or_404(CashRegister, pk=form_pk(request.POST.get("register_id"))),
             request.user,
             request.POST.get("opening_balance", "0"),
         )

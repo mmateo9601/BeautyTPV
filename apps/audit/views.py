@@ -4,10 +4,12 @@ from django.shortcuts import render
 from apps.accounts.permissions import role_required
 
 from .models import AuditEvent
+from .services import record
 
 
 @role_required("ADMIN", elevated=True)
 def index(request):
+    record(request.user, "audit.view")
     events = AuditEvent.objects.select_related("actor").all()
     action = request.GET.get("action", "")[:100]
     if action:

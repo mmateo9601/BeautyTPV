@@ -1,9 +1,12 @@
+from decimal import Decimal
+
 from django.core.exceptions import ValidationError
-from django.db import transaction
 from django.utils import timezone
 
 from apps.accounts.permissions import require_role
 from apps.audit.services import record
+from apps.core.guards import require_operational
+from apps.core.transactions import atomic_retry
 from apps.pos.services import decimal_value
 
 from .models import CashMovement, CashSession
@@ -11,14 +14,15 @@ from .models import CashMovement, CashSession
 
 def _amount(value):
     value = decimal_value(value)
-    if value < 0 or value.as_tuple().exponent < -2:
+    if value < 0 or value >= Decimal("10000000000") or value.as_tuple().exponent < -2:
         raise ValidationError("Importe no válido.")
     return value
 
 
-@transaction.atomic
+@atomic_retry
 def open_session(register, actor, opening_balance):
     require_role(actor, "EMPLOYEE")
+    require_operational()
     if CashSession.objects.filter(register=register, closed_at__isnull=True).exists():
         raise ValidationError("La caja ya tiene una sesión abierta.")
     session = CashSession.objects.create(
@@ -28,15 +32,25 @@ def open_session(register, actor, opening_balance):
     return session
 
 
-@transaction.atomic
+@atomic_retry
 def add_movement(session, actor, kind, amount, reason):
     require_role(actor, "MANAGER")
+    require_operational()
     session = CashSession.objects.get(pk=session.pk)
     amount = _amount(amount)
-    if session.closed_at or kind not in ["IN", "OUT"] or amount <= 0 or not str(reason).strip():
+    reason = str(reason).strip()
+    if (
+        session.closed_at
+        or kind not in ["IN", "OUT"]
+        or amount <= 0
+        or not reason
+        or len(reason) > 250
+    ):
         raise ValidationError("Movimiento no válido o caja cerrada.")
     if kind == "OUT" and amount > session.expected_balance:
         raise ValidationError("Saldo insuficiente.")
+    if kind == "IN" and session.expected_balance + amount >= Decimal("10000000000"):
+        raise ValidationError("Saldo fuera del limite de caja.")
     movement = CashMovement.objects.create(
         session=session, actor=actor, kind=kind, amount=amount, reason=reason
     )
@@ -44,9 +58,10 @@ def add_movement(session, actor, kind, amount, reason):
     return movement
 
 
-@transaction.atomic
+@atomic_retry
 def close_session(session, actor, counted):
     require_role(actor, "MANAGER")
+    require_operational()
     session = CashSession.objects.get(pk=session.pk)
     if session.closed_at:
         raise ValidationError("La caja ya está cerrada.")

@@ -21,10 +21,11 @@ class FiscalRecord(ImmutableModel):
 
 class FiscalOutbox(models.Model):
     record = models.OneToOneField(FiscalRecord, on_delete=models.PROTECT, related_name="outbox")
-    status = models.CharField(max_length=12, default="PENDING", db_index=True)
+    status = models.CharField(max_length=24, default="PENDING", db_index=True)
     attempts = models.PositiveIntegerField(default=0)
     next_attempt_at = models.DateTimeField(default=timezone.now)
     lease_until = models.DateTimeField(null=True, blank=True)
+    lease_token = models.CharField(max_length=32, blank=True)
     last_error = models.CharField(max_length=500, blank=True)
 
 
@@ -33,3 +34,12 @@ class FiscalTransmission(ImmutableModel):
     requested_at = models.DateTimeField(default=timezone.now)
     response = models.TextField(blank=True)
     status = models.CharField(max_length=20)
+
+
+class FiscalEndpointState(models.Model):
+    """One shared flow-control lease per AEAT endpoint in this installation."""
+
+    environment = models.CharField(max_length=10, unique=True)
+    next_allowed_at = models.DateTimeField(default=timezone.now)
+    lease_until = models.DateTimeField(null=True, blank=True)
+    lease_token = models.CharField(max_length=32, blank=True)

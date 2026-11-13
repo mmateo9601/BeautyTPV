@@ -141,6 +141,7 @@ def test_expired_lease_unknown(actor, printer):
 
 def test_employee_cannot_test_drawer(actor, printer):
     actor.role = "EMPLOYEE"
+    actor.save(update_fields=["role"])
     with pytest.raises(PermissionDenied):
         enqueue_test(printer, actor, drawer=True)
 

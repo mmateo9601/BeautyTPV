@@ -20,6 +20,9 @@ def main():
     manifest, digest = create_backup(
         settings.DATABASES["default"]["NAME"], args.output, backup_key()
     )
+    from apps.audit.services import record
+
+    record(None, "backup.cli_created", metadata={"sha256": digest})
     print("Copia cifrada verificada:", Path(args.output).name, "SHA256", digest)
 
 

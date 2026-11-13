@@ -1,4 +1,3 @@
-import os
 import shutil
 import socket
 import time
@@ -15,8 +14,9 @@ from apps.accounts.permissions import require_role
 from apps.accounts.services import authenticate_local
 from apps.audit.services import record
 
-from .models import SupportSession
+from .models import BackupRun, ServiceHeartbeat, SupportSession
 from .operations import hold_path
+from .versioning import application_version
 
 
 def authorize_support(
@@ -45,7 +45,14 @@ def authorize_support(
 def active_authorization(actor, scope="TECHNICAL"):
     return (
         SupportSession.objects.filter(
-            actor=actor, scope=scope, revoked_at__isnull=True, expires_at__gt=timezone.now()
+            actor=actor,
+            actor__is_active=True,
+            actor__role="SUPERADMIN",
+            scope=scope,
+            revoked_at__isnull=True,
+            expires_at__gt=timezone.now(),
+            approved_by__is_active=True,
+            approved_by__role__in=["ADMIN", "SUPERADMIN"],
         )
         .order_by("-id")
         .first()
@@ -73,7 +80,9 @@ def diagnostics():
         MigrationExecutor(connection).loader.graph.leaf_nodes()
     )
     disk = shutil.disk_usage(settings.BASE_DIR)
-    certificate = os.environ.get("BEAUTYTPV_AEAT_CERTIFICATE", "")
+    from .fiscal import fiscal_configuration
+
+    certificate = fiscal_configuration()["certificate"]
     expiry = "No configurado"
     if certificate:
         try:
@@ -84,7 +93,22 @@ def diagnostics():
         except (OSError, ValueError):
             expiry = "Certificado no legible/PEM inválido"
     return {
-        "version": "0.1.0",
+        "version": application_version(root=settings.BASE_DIR),
+        "workers": {
+            item.name: {
+                "state": item.state
+                if (timezone.now() - item.last_seen).total_seconds() < 30
+                else "STALE",
+                "last_seen": item.last_seen.isoformat(),
+                "pid": item.pid,
+                "error_code": item.last_error_code,
+            }
+            for item in ServiceHeartbeat.objects.all()
+        },
+        "last_backup": BackupRun.objects.filter(status="COMPLETE")
+        .order_by("-created_at")
+        .values_list("created_at", flat=True)
+        .first(),
         "sqlite_version": sqlite_version,
         "integrity": integrity,
         "db_latency_ms": latency,

@@ -18,3 +18,5 @@ staticfiles/
 
 
 dist/
+
+.audit-reference*/

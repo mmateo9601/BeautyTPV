@@ -29,7 +29,7 @@ def qr_command(value):
 
 
 def render_receipt(invoice, copy=False, open_drawer=False, encoding="cp858", codepage=19):
-    from apps.verifactu.protocol import qr_url
+    from apps.verifactu.protocol import fiscal_date, qr_url
 
     lines = ["BeautyTPV", "COPIA" if copy else "ORIGINAL"]
     if invoice.fiscal_mode != "PRODUCTION":
@@ -39,9 +39,17 @@ def render_receipt(invoice, copy=False, open_drawer=False, encoding="cp858", cod
         "NIF: " + invoice.issuer.get("tax_id", ""),
         invoice.issuer.get("address", ""),
         invoice.full_number,
-        invoice.issued_at.isoformat(),
+        fiscal_date(invoice),
         "-" * 42,
     ]
+    if invoice.customer:
+        lines += [
+            "Cliente: " + invoice.customer.get("name", ""),
+            "NIF: " + invoice.customer.get("tax_id", ""),
+            invoice.customer.get("address", ""),
+        ]
+    if invoice.rectifies_id:
+        lines += ["Rectifica: " + invoice.rectifies.full_number, "Motivo: " + invoice.reason]
     for line in invoice.lines.all():
         lines += [
             safe_text(line.description)[:42],

@@ -1,8 +1,9 @@
-from django.contrib.auth import login, logout
+from django.contrib.auth import login, logout, update_session_auth_hash
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, render
 from django.views.decorators.http import require_http_methods, require_POST
 
+from apps.audit.context import terminal_context
 from apps.audit.services import record
 
 from .forms import ElevateForm, LoginForm
@@ -14,18 +15,23 @@ from .services import authenticate_local, elevation_expiry
 def login_view(request):
     form = LoginForm(request.POST or None)
     if request.method == "POST" and form.is_valid():
-        user = authenticate_local(
-            form.cleaned_data["username"],
-            form.cleaned_data["credential"],
-            request.META.get("REMOTE_ADDR", "unknown"),
-            password=form.cleaned_data["password_mode"],
-            request=request,
-        )
+        terminal = form.cleaned_data["terminal"]
+        with terminal_context(terminal.pk if terminal else None):
+            user = authenticate_local(
+                form.cleaned_data["username"],
+                form.cleaned_data["credential"],
+                request.META.get("REMOTE_ADDR", "unknown"),
+                password=form.cleaned_data["password_mode"],
+                request=request,
+            )
         if user:
             login(request, user, backend="django.contrib.auth.backends.ModelBackend")
             # Django preserves the session when the same user logs in again.
             # A new PIN authentication must never inherit password elevation.
             request.session.pop("elevated_until", None)
+            request.session.pop("terminal_id", None)
+            if terminal:
+                request.session["terminal_id"] = terminal.pk
             if form.cleaned_data["password_mode"]:
                 request.session["elevated_until"] = elevation_expiry()
             return redirect("/tpv/")
@@ -58,7 +64,9 @@ def elevate_view(request):
             request=request,
         )
         if user:
-            request.session.cycle_key()
+            # Password verification can upgrade the stored password hash.
+            # Preserve only the newly verified security state in this session.
+            update_session_auth_hash(request, user)
             request.session["elevated_until"] = elevation_expiry()
             record(user, "auth.elevated")
             return redirect("/soporte/" if user.role == "SUPERADMIN" else "/tpv/")

@@ -1,6 +1,7 @@
-from django.http import HttpResponse
 from django.shortcuts import redirect
 from django.urls import include, path
+
+from .views import health
 
 urlpatterns = [
     path("", lambda request: redirect("/tpv/")),
@@ -17,5 +18,5 @@ urlpatterns = [
     path("informes/", include("apps.reports.urls")),
     path("soporte/", include("apps.support.urls")),
     path("usuarios/", include("apps.support.user_urls")),
-    path("health/", lambda request: HttpResponse("ok")),
+    path("health/", health, name="health"),
 ]

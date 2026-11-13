@@ -24,6 +24,8 @@ MIDDLEWARE = [
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
+    "apps.accounts.middleware.TerminalContextMiddleware",
+    "config.middleware.CompanyTimezoneMiddleware",
     "apps.support.middleware.MaintenanceMiddleware",
     "apps.accounts.middleware.SupportPIIMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",

@@ -1,5 +1,6 @@
 import time
 
+from django.core.exceptions import ValidationError
 from django.core.management.base import BaseCommand
 
 from apps.hardware.models import PrintJob
@@ -23,11 +24,20 @@ class Command(BaseCommand):
 
     def run_locked(self, *args, **options):
         while True:
-            recover_expired()
+            try:
+                recover_expired()
+            except ValidationError:
+                if options["once"]:
+                    self.stdout.write(
+                        "Impresion retenida: concilie la restauracion antes de reanudar."
+                    )
+                    return
+                time.sleep(max(options["interval"], 0.1))
+                continue
             ids = list(
-                PrintJob.objects.filter(status="PENDING", printer__enabled=True).values_list(
-                    "pk", flat=True
-                )[:50]
+                PrintJob.objects.filter(
+                    status="PENDING", printer__enabled=True, printer__terminal__isnull=True
+                ).values_list("pk", flat=True)[:50]
             )
             for pk in ids:
                 process_job(pk)

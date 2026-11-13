@@ -45,6 +45,7 @@ class OpenTicket(models.Model):
     station = models.ForeignKey(
         "layout.Station", on_delete=models.PROTECT, null=True, blank=True, related_name="tickets"
     )
+    terminal = models.ForeignKey("core.Terminal", null=True, blank=True, on_delete=models.PROTECT)
     customer = models.ForeignKey(
         "customers.Customer",
         on_delete=models.PROTECT,
@@ -55,6 +56,14 @@ class OpenTicket(models.Model):
     status = models.CharField(max_length=20, choices=Status.choices, default=Status.OPEN)
     created_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.PROTECT)
     created_at = models.DateTimeField(auto_now_add=True)
+    cancelled_at = models.DateTimeField(null=True, blank=True)
+    cancelled_by = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        null=True,
+        blank=True,
+        on_delete=models.PROTECT,
+        related_name="cancelled_tickets",
+    )
     version = models.PositiveIntegerField(default=0)
 
     class Meta:

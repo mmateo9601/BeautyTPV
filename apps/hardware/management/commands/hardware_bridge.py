@@ -36,14 +36,24 @@ class Command(BaseCommand):
                 if not constant_time_compare(auth, "Bearer " + token):
                     self.send_error(403)
                     return
-                match = re.fullmatch(r"/jobs/([1-9][0-9]*)", self.path)
+                match = re.fullmatch(r"/jobs/([1-9][0-9]{0,17})", self.path)
                 # No raw bytes, shell, arbitrary device addresses or commands accepted.
-                if not match or int(self.headers.get("Content-Length", "0")) != 0:
+                try:
+                    length = int(self.headers.get("Content-Length", "0"))
+                except ValueError:
+                    length = -1
+                if not match or length != 0:
                     self.send_error(400)
                     return
                 close_old_connections()
                 try:
-                    result = process_job(int(match.group(1)))
+                    from django.core.exceptions import ValidationError
+
+                    try:
+                        result = process_job(int(match.group(1)))
+                    except ValidationError:
+                        self.send_error(503, "Impresion retenida")
+                        return
                     body = b'{"sent":true}' if result else b'{"sent":false}'
                     self.send_response(200)
                     self.send_header("Content-Type", "application/json")

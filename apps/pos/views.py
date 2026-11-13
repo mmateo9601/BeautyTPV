@@ -7,7 +7,9 @@ from django.views.decorators.http import require_POST
 
 from apps.accounts.permissions import role_required
 from apps.cash.models import CashSession
-from apps.catalog.models import CatalogItem
+from apps.catalog.models import CatalogItem, Category
+from apps.core.http import form_pk
+from apps.core.models import CompanySettings, Terminal
 from apps.customers.models import Customer
 from apps.layout.models import Section, Station
 
@@ -41,14 +43,67 @@ def floor(request):
     for section in sections:
         for station in section.stations.all():
             station.active_ticket = active.get(station.pk)
-    return render(request, "pos/floor.html", {"sections": sections, "tickets_by_station": active})
+    return render(
+        request,
+        "pos/floor.html",
+        {
+            "sections": sections,
+            "tickets_by_station": active,
+            "quick_sale_enabled": CompanySettings.load().quick_sale_enabled,
+            "quick_tickets": OpenTicket.objects.filter(
+                station__isnull=True,
+                status__in=["OPEN", "PAYMENT_PENDING"],
+                created_by=request.user,
+            ),
+        },
+    )
+
+
+def _terminal(request):
+    return Terminal.objects.filter(pk=request.session.get("terminal_id"), active=True).first()
+
+
+@require_POST
+@role_required("EMPLOYEE")
+def quick_sale(request):
+    try:
+        account = services.quick_ticket(request.user, _terminal(request))
+    except ValidationError as exc:
+        return _error(request, exc)
+    return redirect("pos:ticket", pk=account.pk)
+
+
+@require_POST
+@role_required("EMPLOYEE")
+def prepare_payment(request, pk):
+    try:
+        services.prepare_payment(
+            get_object_or_404(OpenTicket, pk=pk), request.user, _version(request)
+        )
+    except ValidationError as exc:
+        return _error(request, exc)
+    return redirect("pos:ticket", pk=pk)
+
+
+@require_POST
+@role_required("EMPLOYEE")
+def resume_ticket(request, pk):
+    try:
+        services.resume_ticket(
+            get_object_or_404(OpenTicket, pk=pk), request.user, _version(request)
+        )
+    except ValidationError as exc:
+        return _error(request, exc)
+    return redirect("pos:ticket", pk=pk)
 
 
 @require_POST
 @role_required("EMPLOYEE")
 def open_station(request, pk):
     try:
-        ticket = services.open_ticket(get_object_or_404(Station, pk=pk), request.user)
+        ticket = services.open_ticket(
+            get_object_or_404(Station, pk=pk), request.user, _terminal(request)
+        )
     except ValidationError as exc:
         return _error(request, exc)
     return redirect("pos:ticket", pk=ticket.pk)
@@ -62,6 +117,11 @@ def ticket(request, pk):
     items = CatalogItem.objects.filter(active=True)
     if request.GET.get("q"):
         items = items.filter(name__icontains=request.GET["q"])
+    if request.GET.get("category"):
+        try:
+            items = items.filter(category_id=form_pk(request.GET["category"]))
+        except ValidationError as exc:
+            return _error(request, exc)
     return render(
         request,
         "pos/ticket.html",
@@ -69,6 +129,7 @@ def ticket(request, pk):
             "ticket": account,
             "lines": account.lines.all(),
             "items": items,
+            "categories": Category.objects.all(),
             "customers": Customer.objects.all(),
             "total": account.total,
             "idempotency_key": key,
@@ -87,11 +148,12 @@ def add_line(request, pk):
     try:
         services.add_line(
             account,
-            get_object_or_404(CatalogItem, pk=request.POST.get("item_id")),
+            get_object_or_404(CatalogItem, pk=form_pk(request.POST.get("item_id"))),
             request.user,
             request.POST.get("quantity", "1"),
             request.POST.get("discount_percent", "0"),
             _version(request),
+            note=request.POST.get("note", ""),
         )
     except ValidationError as exc:
         return _error(request, exc)
@@ -109,6 +171,7 @@ def update_line(request, pk):
             request.POST.get("quantity"),
             request.POST.get("discount_percent"),
             _version(request),
+            note=request.POST.get("note"),
         )
     except ValidationError as exc:
         return _error(request, exc)
@@ -142,12 +205,12 @@ def cancel_ticket(request, pk):
 @role_required("EMPLOYEE")
 def customer(request, pk):
     account = get_object_or_404(OpenTicket, pk=pk)
-    selected = (
-        get_object_or_404(Customer, pk=request.POST["customer_id"])
-        if request.POST.get("customer_id")
-        else None
-    )
     try:
+        selected = (
+            get_object_or_404(Customer, pk=form_pk(request.POST["customer_id"]))
+            if request.POST.get("customer_id")
+            else None
+        )
         services.set_customer(account, selected, request.user, _version(request))
     except ValidationError as exc:
         return _error(request, exc)
@@ -172,7 +235,7 @@ def checkout(request, pk):
                     p["reference"] = request.POST.get("card_reference", "")
                 payments.append(p)
         session = (
-            get_object_or_404(CashSession, pk=request.POST["cash_session_id"])
+            get_object_or_404(CashSession, pk=form_pk(request.POST["cash_session_id"]))
             if request.POST.get("cash_session_id")
             else None
         )
@@ -183,6 +246,7 @@ def checkout(request, pk):
             request.POST.get("idempotency_key"),
             session,
             _version(request),
+            terminal=_terminal(request),
         )
     except ValidationError as exc:
         return _error(request, exc)

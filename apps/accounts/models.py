@@ -1,3 +1,4 @@
+import json
 from datetime import timedelta
 
 from django.contrib.auth.hashers import check_password, make_password
@@ -5,6 +6,7 @@ from django.contrib.auth.models import AbstractUser, UserManager
 from django.core.exceptions import ValidationError
 from django.db import models
 from django.utils import timezone
+from django.utils.crypto import salted_hmac
 
 
 class InternalUserManager(UserManager):
@@ -22,7 +24,21 @@ class User(AbstractUser):
 
     role = models.CharField(max_length=16, choices=Role.choices, default=Role.EMPLOYEE)
     pin_hash = models.CharField(max_length=128, blank=True, editable=False)
+    auth_version = models.PositiveIntegerField(default=0, editable=False)
     objects = InternalUserManager()
+
+    def _get_session_auth_hash(self, secret=None):
+        # Django also calls this method for SECRET_KEY_FALLBACKS. Credential and
+        # role changes must invalidate a PIN session as well as password sessions.
+        state = json.dumps(
+            [self.password, self.pin_hash, self.role, self.is_active, self.auth_version]
+        )
+        return salted_hmac(
+            "beautytpv.accounts.User.session_security_state",
+            state,
+            secret=secret,
+            algorithm="sha256",
+        ).hexdigest()
 
     def set_pin(self, pin):
         if (

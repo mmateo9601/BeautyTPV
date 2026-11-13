@@ -10,3 +10,7 @@ def require_operational():
         raise ValidationError(
             "Instalación retenida: concilie facturas, acuses y cola de impresión tras restaurar."
         )
+    from apps.support.models import TechnicalSettings
+
+    if TechnicalSettings.objects.filter(pk=1, maintenance=True).exists():
+        raise ValidationError("Instalacion en mantenimiento: operativa suspendida por Superadmin.")

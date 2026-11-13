@@ -15,8 +15,8 @@ from apps.core.models import CompanySettings
 from .models import Invoice, InvoiceLine, InvoiceSequence, Refund
 
 
-def production_guard(company):
-    if company.fiscal_mode == "PRODUCTION":
+def production_guard(company, *, mode=None):
+    if (mode or company.fiscal_mode) == "PRODUCTION":
         if not getattr(settings, "FISCAL_PRODUCTION_APPROVED", False):
             raise ValidationError(
                 "Facturación productiva bloqueada: completar validación AEAT y revisión experta."
@@ -64,7 +64,11 @@ def issue_invoice(sale, actor):
         raise ValidationError(
             "Importe superior a 400 EUR: se requiere cliente con NIF y domicilio para factura completa."
         )
-    series = "F" if complete else "S"
+    series = (
+        getattr(company, "full_series", "F")
+        if complete
+        else getattr(company, "simplified_series", "S")
+    )
     issuer = {
         key: getattr(company, key)
         for key in [
@@ -77,6 +81,10 @@ def issue_invoice(sale, actor):
             "installation_number",
         ]
     }
+    from apps.support.versioning import application_version
+
+    issuer["software_name"] = company.software_name
+    issuer["software_version"] = application_version(root=settings.BASE_DIR)
     invoice = Invoice.objects.create(
         sale=sale,
         series=series,
@@ -122,8 +130,10 @@ def rectify_invoice(invoice, actor, reason, method="CARD", cash_session=None, re
 
     require_operational()
     require_role(actor, "MANAGER")
-    if not reason.strip():
+    if not isinstance(reason, str) or not reason.strip() or len(reason) > 500:
         raise ValidationError("Indique motivo de rectificación.")
+    if not isinstance(reference, str) or len(reference) > 100:
+        raise ValidationError("Referencia de devolucion no valida.")
     if invoice.rectifies_id or invoice.rectifications.exists():
         raise ValidationError("Esta factura ya está rectificada o es rectificativa.")
     if method not in ("CASH", "CARD"):
@@ -139,14 +149,15 @@ def rectify_invoice(invoice, actor, reason, method="CARD", cash_session=None, re
     if method == "CARD" and not reference.strip():
         raise ValidationError("Confirme referencia de devolución del datáfono.")
     company = CompanySettings.load()
-    production_guard(company)
+    production_guard(company, mode=invoice.fiscal_mode)
     # First writer is the sequence CAS; no SQLite row-lock assumption.
     now = timezone.now().astimezone(ZoneInfo(company.timezone))
-    number = _number("R", now.year)
+    series = getattr(company, "rectification_series", "R")
+    number = _number(series, now.year)
     if Invoice.objects.filter(rectifies=invoice).exists():
         raise ValidationError("Factura ya rectificada.")
     rectification = Invoice.objects.create(
-        series="R",
+        series=series,
         year=now.year,
         number=number,
         invoice_type="R5" if invoice.invoice_type == "F2" else "R1",

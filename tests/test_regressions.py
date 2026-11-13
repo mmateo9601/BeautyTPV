@@ -144,6 +144,11 @@ def test_category_management_is_usable_and_protects_assigned_items(db, client):
     assert client.post("/catalogo/categorias/", {"name": "Cabina"}).status_code == 403
     admin = User.objects.create_user(username="category-admin", role="ADMIN")
     client.force_login(admin)
+    from django.utils import timezone
+
+    session = client.session
+    session["elevated_until"] = timezone.now().timestamp() + 600
+    session.save()
     assert client.get("/catalogo/categorias/").status_code == 200
     assert client.post("/catalogo/categorias/", {"name": "Cabina"}).status_code == 302
     category = Category.objects.get(name="Cabina")

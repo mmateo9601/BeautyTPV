@@ -14,4 +14,8 @@ class CompanySettingsForm(forms.ModelForm):
             "producer_name",
             "producer_tax_id",
             "installation_number",
+            "quick_sale_enabled",
+            "simplified_series",
+            "full_series",
+            "rectification_series",
         ]

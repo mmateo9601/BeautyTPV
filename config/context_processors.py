@@ -1,5 +1,7 @@
-from django.conf import settings
+from apps.core.models import CompanySettings
+from apps.support.versioning import application_version
 
 
 def installation(request):
-    return {"fiscal_environment": settings.FISCAL_ENVIRONMENT, "app_version": "0.1.0"}
+    mode = CompanySettings.objects.filter(pk=1).values_list("fiscal_mode", flat=True).first()
+    return {"fiscal_environment": mode or "TEST", "app_version": application_version()}

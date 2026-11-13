@@ -182,6 +182,7 @@ def test_support_requires_superadmin_and_elevation():
     assert client.get("/soporte/").status_code == 403
     user.role = "SUPERADMIN"
     user.save()
+    client.force_login(user)
     assert client.get("/soporte/").status_code == 403
     session = client.session
     session["elevated_until"] = timezone.now().timestamp() + 600

@@ -65,9 +65,10 @@ def rectify(request, pk):
     try:
         from apps.cash.models import CashSession
 
-        session = CashSession.objects.filter(
-            pk=request.POST.get("cash_session") or None, closed_at__isnull=True
-        ).first()
+        selected = request.POST.get("cash_session", "").strip()
+        if selected and (not selected.isascii() or not selected.isdigit() or len(selected) > 18):
+            raise ValidationError("Turno de caja no valido.")
+        session = CashSession.objects.filter(pk=selected or None, closed_at__isnull=True).first()
         result = rectify_invoice(
             invoice,
             request.user,

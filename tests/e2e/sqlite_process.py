@@ -8,6 +8,8 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "config.settings")
+if os.environ.get("BEAUTYTPV_TEST_PROCESS") != "1" or not os.environ.get("BEAUTYTPV_DB"):
+    raise RuntimeError("QA requires an explicit isolated database and BEAUTYTPV_TEST_PROCESS=1")
 
 import django  # noqa: E402
 
@@ -25,7 +27,7 @@ from apps.core.models import CompanySettings  # noqa: E402
 from apps.hardware.models import Printer, PrintJob  # noqa: E402
 from apps.layout.models import Section, Station  # noqa: E402
 from apps.pos.models import OpenTicket, Sale  # noqa: E402
-from apps.pos.services import add_line, checkout, open_ticket  # noqa: E402
+from apps.pos.services import add_line, checkout, open_ticket, prepare_payment  # noqa: E402
 from apps.verifactu.models import FiscalRecord  # noqa: E402
 from apps.verifactu.services import send_one, verify_chain  # noqa: E402
 
@@ -76,6 +78,16 @@ def execute(command):
                 time.sleep(0.02)
         actor = User.objects.get(username="browser")
         ticket = OpenTicket.objects.get(pk=command["ticket"])
+        if command.get("crash_before_commit"):
+            from apps.hardware import services as hardware
+
+            original = hardware.enqueue_invoice
+
+            def crash(*args, **kwargs):
+                original(*args, **kwargs)
+                os._exit(91)  # Real process death with an uncommitted financial transaction.
+
+            hardware.enqueue_invoice = crash
         sale = checkout(
             ticket,
             actor,
@@ -83,9 +95,14 @@ def execute(command):
             command["key"],
         )
         return {"sale": sale.pk, "invoice": sale.invoice.full_number}
+    if action == "prepare":
+        ticket = prepare_payment(
+            OpenTicket.objects.get(pk=command["ticket"]), User.objects.get(username="browser")
+        )
+        return {"status": ticket.status, "ticket": ticket.pk}
     if action == "inspect":
         tickets = {
-            ticket.station.code: {
+            (ticket.station.code if ticket.station else f"QUICK-{ticket.pk}"): {
                 "id": ticket.pk,
                 "status": ticket.status,
                 "total": str(ticket.total),

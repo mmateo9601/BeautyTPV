@@ -24,6 +24,19 @@ def main():
     restore_backup(
         args.archive, database, backup_key(), confirmation=args.confirm, offline=args.offline
     )
+    import hashlib
+    from pathlib import Path
+
+    from apps.audit.services import record
+
+    record(
+        None,
+        "restore.cli_completed",
+        metadata={
+            "sha256": hashlib.sha256(Path(args.archive).read_bytes()).hexdigest(),
+            "status": "HOLD",
+        },
+    )
     print(
         "Restauración íntegra. Remisión y operativa RETENIDAS: conciliar AEAT y ejecutar reconcile_restore."
     )

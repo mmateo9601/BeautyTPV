@@ -1,9 +1,10 @@
 import hashlib
+import zipfile
 from pathlib import Path
 
 from django.contrib import messages
 from django.core.exceptions import ValidationError
-from django.db import connection
+from django.db import connection, transaction
 from django.http import FileResponse, HttpResponse, JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
 from django.utils import timezone
@@ -118,6 +119,7 @@ def backup(request):
         record(request.user, "backup.created", obj=run)
         messages.success(request, "Copia cifrada creada y verificada.")
     except (ValueError, OSError) as error:
+        record(request.user, "backup.failed", outcome="FAILED")
         messages.error(
             request,
             "Copia no creada: revise clave externa, ruta y permisos. " + type(error).__name__,
@@ -180,6 +182,34 @@ def correct_fiscal(request, pk):
     return redirect("support:index")
 
 
+@require_POST
+@role_required("SUPERADMIN", elevated=True)
+def annul_fiscal(request, pk):
+    from apps.verifactu.services import annul_record
+
+    require_authorization(request.user)
+    if request.POST.get("confirmation") != "ANULAR REGISTRO":
+        return HttpResponse(
+            "Confirme ANULAR REGISTRO. Una devolucion requiere rectificativa.", status=400
+        )
+    item = get_object_or_404(FiscalOutbox.objects.select_related("record"), pk=pk)
+    if item.record.record_type != "ALTA":
+        return HttpResponse("Seleccione el registro de alta original.", status=400)
+    try:
+        annul_record(
+            item.record,
+            request.user,
+            request.POST.get("reason", ""),
+            without_previous=request.POST.get("without_previous") == "1",
+        )
+        messages.success(
+            request, "Anulacion registral en cola. No modifica ni devuelve la venta original."
+        )
+    except ValidationError as error:
+        messages.error(request, "; ".join(error.messages))
+    return redirect("support:index")
+
+
 @role_required("SUPERADMIN", elevated=True)
 def technical_settings(request):
     require_authorization(request.user)
@@ -193,11 +223,38 @@ def technical_settings(request):
 
 @role_required("SUPERADMIN", elevated=True)
 def updates(request):
+    from .forms import PackageCheckForm
+    from .updates import validate_package
+    from .versioning import application_version
+
+    candidate_form = PackageCheckForm(request.POST or None)
+    candidate = None
+    if request.method == "POST":
+        require_authorization(request.user, "UPDATE")
+        if candidate_form.is_valid():
+            try:
+                candidate = validate_package(
+                    candidate_form.cleaned_data["package_path"],
+                    candidate_form.cleaned_data["sha256"],
+                )
+                candidate = {"version": candidate["version"], "files": len(candidate["files"])}
+                record(
+                    request.user,
+                    "update.package_checked",
+                    metadata={"sha256": candidate_form.cleaned_data["sha256"]},
+                )
+            except (ValueError, OSError, KeyError, zipfile.BadZipFile) as error:
+                candidate_form.add_error(
+                    None, "Paquete no válido o no accesible: " + type(error).__name__
+                )
     return render(
         request,
         "support/updates.html",
         {
             "updates": UpdateRun.objects.order_by("-pk")[:50],
+            "current_version": application_version(),
+            "candidate_form": candidate_form,
+            "candidate": candidate,
             "instruction": "Detenga servicio y workers. Use scripts/update.ps1 con paquete local y SHA-256 obtenido de canal verificado. Copia previa y migraciones obligatorias. No ejecutar shell desde web.",
         },
     )
@@ -285,3 +342,141 @@ def logs(request):
     )
     record(request.user, "support.logs")
     return JsonResponse({"events": events})
+
+
+@require_POST
+@role_required("ADMIN", elevated=True)
+def unlock_user(request, pk):
+    from apps.accounts.models import LoginThrottle
+    from apps.accounts.services import _throttle_keys, authorize_user_change
+
+    target = get_object_or_404(User, pk=pk)
+    authorize_user_change(request.user, target)
+    keys = [_throttle_keys(target.username, "")[0]]
+    origin = request.POST.get("origin", "").strip()
+    if origin:
+        require_authorization(request.user)
+        keys.append(_throttle_keys(target.username, origin)[1])
+    with transaction.atomic():
+        count = LoginThrottle.objects.filter(key__in=keys).update(failures=0, locked_until=None)
+        record(request.user, "user.pin_unlocked", obj=target, metadata={"count": count})
+    messages.success(request, "Bloqueo de acceso retirado; el PIN se conserva.")
+    return redirect("team:edit", pk=pk)
+
+
+@role_required("SUPERADMIN", elevated=True)
+def terminals(request):
+    from apps.core.models import Terminal
+
+    from .forms import TerminalForm
+
+    require_authorization(request.user)
+    form = TerminalForm(request.POST or None)
+    if request.method == "POST" and form.is_valid():
+        terminal = form.save(commit=False)
+        with transaction.atomic():
+            terminal.save()
+            record(request.user, "terminal.created", obj=terminal)
+        return redirect("support:terminals")
+    return render(
+        request,
+        "support/terminals.html",
+        {"terminals": Terminal.objects.order_by("code"), "form": form},
+    )
+
+
+@role_required("SUPERADMIN", elevated=True)
+def terminal_edit(request, pk):
+    from apps.core.models import Terminal
+
+    from .forms import TerminalForm
+
+    require_authorization(request.user)
+    terminal = get_object_or_404(Terminal, pk=pk)
+    form = TerminalForm(request.POST or None, instance=terminal)
+    if request.method == "POST" and form.is_valid():
+        terminal = form.save(commit=False)
+        with transaction.atomic():
+            terminal.save()
+            record(request.user, "terminal.updated", obj=terminal)
+        return redirect("support:terminals")
+    return render(
+        request, "support/settings.html", {"form": form, "title": "Terminal y autorización bridge"}
+    )
+
+
+@role_required("SUPERADMIN", elevated=True)
+def fiscal_settings(request):
+    from .forms import FiscalConfigurationForm
+
+    require_authorization(request.user)
+    form = FiscalConfigurationForm(request.POST or None, instance=TechnicalSettings.load())
+    if request.method == "POST" and form.is_valid():
+        from django.db import transaction
+
+        from apps.core.models import CompanySettings
+
+        with transaction.atomic():
+            configuration = form.save()
+            company = CompanySettings.load()
+            company.fiscal_mode = configuration.fiscal_environment
+            company.save(update_fields=["fiscal_mode"])
+        record(request.user, "fiscal.configuration", metadata={"status": "REFERENCES_CONFIGURED"})
+        messages.success(
+            request,
+            "Referencias guardadas; producción permanece bloqueada hasta validación oficial.",
+        )
+        return redirect("support:index")
+    return render(
+        request,
+        "support/settings.html",
+        {"form": form, "title": "Certificado externo y entorno fiscal"},
+    )
+
+
+@role_required("SUPERADMIN", elevated=True)
+def restore_advisor(request):
+    """Prepare and audit a verified offline recovery, never swap a live DB over HTTP."""
+    from django.db.models import Max
+
+    from apps.billing.models import Invoice
+
+    from .forms import RestorePlanForm
+    from .operations import inspect_backup
+
+    require_authorization(request.user, "BACKUP")
+    form = RestorePlanForm(request.POST or None)
+    plan = None
+    if request.method == "POST" and form.is_valid():
+        run = form.cleaned_data["backup"]
+        archive = backup_directory() / Path(run.filename).name
+        try:
+            if hashlib.sha256(archive.read_bytes()).hexdigest() != run.sha256:
+                raise ValueError("Hash incorrecto")
+            manifest, _ = inspect_backup(archive, backup_key())
+            current = Invoice.objects.aggregate(value=Max("pk"))["value"] or 0
+            restored = manifest.get("fiscal_watermarks", {}).get("billing_invoice") or 0
+            with transaction.atomic():
+                policy = TechnicalSettings.load()
+                policy.maintenance = True
+                policy.save(update_fields=["maintenance"])
+                record(
+                    request.user,
+                    "restore.prepared",
+                    obj=run,
+                    metadata={"sha256": run.sha256, "status": "MAINTENANCE"},
+                )
+            plan = {
+                "filename": run.filename,
+                "current_invoice_id": current,
+                "backup_invoice_id": restored,
+                "records_at_risk": max(0, current - restored),
+                "database_sha256": manifest["database_sha256"],
+            }
+        except Exception:
+            # Do not expose encryption material, certificate paths or database contents.
+            record(request.user, "restore.preparation_failed", obj=run, outcome="FAILED")
+            form.add_error(
+                None, "No se pudo verificar la copia. Revise clave externa, integridad y permisos."
+            )
+    return render(request, "support/restore.html", {"form": form, "plan": plan})

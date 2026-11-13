@@ -26,7 +26,12 @@ EVIDENCE = ROOT / "docs/evidence"
 def inspect_database(database):
     result = subprocess.run(
         [sys.executable, str(DRIVER), json.dumps({"action": "inspect"})],
-        env={**os.environ, "BEAUTYTPV_DB": str(database), "BEAUTYTPV_DEBUG": "1"},
+        env={
+            **os.environ,
+            "BEAUTYTPV_DB": str(database),
+            "BEAUTYTPV_DEBUG": "1",
+            "BEAUTYTPV_TEST_PROCESS": "1",
+        },
         cwd=ROOT,
         capture_output=True,
         text=True,
@@ -40,7 +45,12 @@ def inspect_database(database):
 @pytest.fixture
 def centre_server(tmp_path):
     database = tmp_path / "browser.sqlite3"
-    env = {**os.environ, "BEAUTYTPV_DB": str(database), "BEAUTYTPV_DEBUG": "1"}
+    env = {
+        **os.environ,
+        "BEAUTYTPV_DB": str(database),
+        "BEAUTYTPV_DEBUG": "1",
+        "BEAUTYTPV_TEST_PROCESS": "1",
+    }
     result = subprocess.run(
         [sys.executable, str(DRIVER), json.dumps({"action": "seed", "open_cash": False})],
         env=env,

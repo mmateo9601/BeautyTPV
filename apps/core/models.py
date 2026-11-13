@@ -1,3 +1,6 @@
+from django.contrib.auth.hashers import check_password, make_password
+from django.core.exceptions import ValidationError
+from django.core.validators import RegexValidator
 from django.db import models
 
 
@@ -15,6 +18,45 @@ class CompanySettings(models.Model):
     producer_name = models.CharField(max_length=200, blank=True)
     producer_tax_id = models.CharField(max_length=20, blank=True)
     installation_number = models.CharField(max_length=30, default="1")
+    quick_sale_enabled = models.BooleanField(default=False)
+    simplified_series = models.CharField(
+        max_length=12,
+        default="S",
+        validators=[
+            RegexValidator(r"^[A-Z0-9_-]+$", "Use letras mayusculas, numeros, guion o subrayado.")
+        ],
+    )
+    full_series = models.CharField(
+        max_length=12,
+        default="F",
+        validators=[
+            RegexValidator(r"^[A-Z0-9_-]+$", "Use letras mayusculas, numeros, guion o subrayado.")
+        ],
+    )
+    rectification_series = models.CharField(
+        max_length=12,
+        default="R",
+        validators=[
+            RegexValidator(r"^[A-Z0-9_-]+$", "Use letras mayusculas, numeros, guion o subrayado.")
+        ],
+    )
+
+    class Meta:
+        constraints = [
+            models.CheckConstraint(condition=models.Q(pk=1), name="single_company_installation")
+        ]
+
+    def clean(self):
+        from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
+
+        try:
+            ZoneInfo(self.timezone)
+        except (ZoneInfoNotFoundError, ValueError):
+            raise ValidationError({"timezone": "Zona horaria no valida."}) from None
+        if len({self.simplified_series, self.full_series, self.rectification_series}) != 3:
+            raise ValidationError(
+                "Las series simplificada, completa y rectificativa deben ser distintas."
+            )
 
     def save(self, *args, **kwargs):
         self.pk = 1
@@ -23,6 +65,31 @@ class CompanySettings(models.Model):
     @classmethod
     def load(cls):
         return cls.objects.get_or_create(pk=1)[0]
+
+    def __str__(self):
+        return self.name
+
+
+class Terminal(models.Model):
+    code = models.SlugField(max_length=40, unique=True)
+    name = models.CharField(max_length=100)
+    active = models.BooleanField(default=True)
+    last_seen_at = models.DateTimeField(null=True, blank=True)
+    bridge_token_hash = models.CharField(max_length=128, blank=True, editable=False)
+
+    def set_bridge_token(self, raw):
+        if not isinstance(raw, str) or not 32 <= len(raw) <= 256:
+            raise ValidationError("El token del bridge debe tener entre 32 y 256 caracteres.")
+        self.bridge_token_hash = make_password(raw)
+
+    def check_bridge_token(self, raw):
+        return (
+            self.active
+            and isinstance(raw, str)
+            and 32 <= len(raw) <= 256
+            and bool(self.bridge_token_hash)
+            and check_password(raw, self.bridge_token_hash)
+        )
 
     def __str__(self):
         return self.name

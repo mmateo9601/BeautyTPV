@@ -12,6 +12,8 @@ from pathlib import Path
 
 from cryptography.fernet import Fernet
 
+from .versioning import application_version
+
 
 def backup_key():
     value = os.environ.get("BEAUTYTPV_BACKUP_KEY", "")
@@ -156,7 +158,7 @@ def create_backup(database, destination, key):
         manifest = {
             "format": 1,
             "software": "BeautyTPV",
-            "version": "0.1.0",
+            "version": application_version(),
             "created_at": datetime.now(timezone.utc).isoformat(),
             "database_sha256": hashlib.sha256(payload).hexdigest(),
             "migrations": migrations,

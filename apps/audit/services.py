@@ -1,3 +1,4 @@
+from .context import current_terminal_id
 from .models import AuditEvent
 
 ALLOWED_METADATA = {
@@ -36,6 +37,9 @@ def record(actor=None, action="", target="", metadata=None, obj=None, outcome="S
             continue
         if key in ALLOWED_METADATA and isinstance(value, (str, int, float, bool, type(None))):
             clean[key] = value[:500] if isinstance(value, str) else value
+    terminal_id = current_terminal_id.get()
+    if terminal_id is not None:
+        clean["terminal_id"] = terminal_id
     return AuditEvent.objects.create(
         actor=actor,
         action=action[:100],

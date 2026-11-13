@@ -12,9 +12,14 @@ class MaintenanceMiddleware:
         if request.method not in ("GET", "HEAD", "OPTIONS") and request.path.startswith(
             ("/tpv/", "/caja/", "/facturas/")
         ):
-            if hold_path(settings.DATABASES["default"]["NAME"]).exists():
+            from .models import TechnicalSettings
+
+            if (
+                hold_path(settings.DATABASES["default"]["NAME"]).exists()
+                or TechnicalSettings.load().maintenance
+            ):
                 return HttpResponse(
-                    "Restauración pendiente de conciliación fiscal. Operativa bloqueada; contacte con Superadmin.",
+                    "Mantenimiento o conciliación fiscal pendiente. Operativa bloqueada; contacte con Superadmin.",
                     status=503,
                 )
         return self.get_response(request)

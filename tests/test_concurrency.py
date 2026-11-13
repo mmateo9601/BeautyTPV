@@ -19,7 +19,12 @@ DRIVER = ROOT / "tests/e2e/sqlite_process.py"
 
 
 def process_env(database):
-    return {**os.environ, "BEAUTYTPV_DB": str(database), "BEAUTYTPV_DEBUG": "1"}
+    return {
+        **os.environ,
+        "BEAUTYTPV_DB": str(database),
+        "BEAUTYTPV_DEBUG": "1",
+        "BEAUTYTPV_TEST_PROCESS": "1",
+    }
 
 
 def command(database, data):
@@ -168,3 +173,42 @@ def test_e12_restore_real_issued_database_holds_send_and_preserves_idempotency(d
     assert hold_path(restored).exists()
     _, final = command(restored, {"action": "inspect"})
     assert final["sales"] == final["records"] == final["print_jobs"] == 1
+
+
+def test_real_process_death_rolls_back_invoice_sequence_and_spool(database):
+    code, opened = command(database, {"action": "open", "station": "A1", "add": True})
+    assert code == 0
+    assert (
+        command(database, {"action": "prepare", "ticket": opened["ticket"]})[1]["status"]
+        == "PAYMENT_PENDING"
+    )
+    process = subprocess.run(
+        [
+            sys.executable,
+            str(DRIVER),
+            json.dumps(
+                {
+                    "action": "checkout",
+                    "ticket": opened["ticket"],
+                    "key": "recover-after-kill",
+                    "crash_before_commit": True,
+                }
+            ),
+        ],
+        cwd=ROOT,
+        env=process_env(database),
+        capture_output=True,
+        timeout=45,
+    )
+    assert process.returncode == 91
+    code, after = command(database, {"action": "inspect"})
+    assert code == 0 and after["sales"] == after["records"] == after["print_jobs"] == 0
+    assert after["tickets"]["A1"]["status"] == "PAYMENT_PENDING"
+    assert after["tickets"]["A1"]["lines"] == 1
+    code, recovered = command(
+        database, {"action": "checkout", "ticket": opened["ticket"], "key": "recover-after-kill"}
+    )
+    assert code == 0
+    code, after = command(database, {"action": "inspect"})
+    assert code == 0 and after["sales"] == after["records"] == after["print_jobs"] == 1
+    assert after["invoices"][0][1] == 1 and after["chain_valid"]
