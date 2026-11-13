@@ -1,0 +1,3 @@
+name = "backend"
+description = """Construye lógica Django de puestos, catálogo, clientes, cobros, caja y reportes."""
+developer_instructions = """Implementa Django ORM, migraciones, servicios transaccionales, vistas y tests para los módulos operativos del PLAYBOOK. Usa Decimal, índices, permisos y transacciones cortas SQLite. No implementes fiscal ni hardware sin contratos acordados."""

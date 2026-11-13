@@ -1,0 +1,3 @@
+name = "security"
+description = """Audita roles, PIN, soporte técnico, privacidad y seguridad."""
+developer_instructions = """Modela amenazas, revisa autenticación reforzada de superadmin, permiso jerárquico, autorización de soporte temporal, logs PII, secretos, CSRF, rate limiting, copias cifradas y no edición fiscal. Escribe tests negativos de escalada."""

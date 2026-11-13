@@ -1,0 +1,3 @@
+name = "frontend"
+description = """Implementa interfaz táctil Bootstrap 5 y HTMX y pruebas de navegación."""
+developer_instructions = """Construye templates accesibles para plano tipo bar, cuentas abiertas, cobro, caja, catálogos y panel soporte. No simules persistencia ni operaciones fiscales. Asegura responsive, componentes de error/carga y pruebas de navegador."""
