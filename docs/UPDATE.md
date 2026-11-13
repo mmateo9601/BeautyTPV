@@ -36,3 +36,8 @@ BD y backups. Genera manifest por archivo y SHA256 externo. El coordinador ejecu
 un paquete completo en una copia temporal del código y una instancia sintética:
 actualización/migraciones/check/collectstatic correctos, seguidos de backup/restore
 CLI correctos. Esto no verifica una actualización de un negocio en producción.
+
+
+## Límites comprobados en la auditoría
+
+El preflight valida rutas, SHA256 y dependencias fijadas antes de escribir. Un entorno incompatible aborta; no se promete rollback automático del venv. El rollback de código cubre también errores parciales de IO y `release.json`, preservando la BD y el hold. La versión se obtiene del paquete instalado o `release.json`. El historial y las evidencias están en `AUDITORIA_COMPLETA.md`; la comprobación remota de un catálogo de versiones no se ofrece en V1.

@@ -1,0 +1,34 @@
+{
+  "kind": "SYNTHETIC_DATA_REAL_PROCESSES_AND_CLI",
+  "reference": "4ce821e",
+  "upgrade": "PASS",
+  "before": {
+    "sales": 1,
+    "invoices": 1,
+    "fingerprints": [
+      [
+        "9D827CF022DC1997A2F75D43F88EF55B7AD3D311B34317C4DD253A75FDC9A701"
+      ]
+    ],
+    "integrity": "ok"
+  },
+  "after": {
+    "sales": 1,
+    "invoices": 1,
+    "fingerprints": [
+      [
+        "9D827CF022DC1997A2F75D43F88EF55B7AD3D311B34317C4DD253A75FDC9A701"
+      ]
+    ],
+    "integrity": "ok"
+  },
+  "cancellation_backfilled": true,
+  "open_account_persisted": true,
+  "chain": true,
+  "backup_cli": "PASS",
+  "restore_cli": "PASS",
+  "restore_hold": true,
+  "clean_instance_install": "PASS",
+  "no_default_users": true,
+  "dependencies": "Preinstalled environment; no clean-machine or physical-device claim"
+}

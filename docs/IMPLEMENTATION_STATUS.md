@@ -77,3 +77,18 @@ JUnit final contiene 112 casos, 0 errores, 0 fallos y 0 omitidos. Esquemas ofici
 contrastados byte a byte con manifest (12 tests fiscales en total); los archivos
 se preservan sin conversion de finales de linea en Git. Ruff limpio192 archivos;
 check0, migraciones sin drift. Ningun gate externo se presenta como superado.
+
+
+## Auditoría integral posterior a 4ce821e — 14-11-2026
+
+Esta sección sustituye las cifras históricas de cierre de 112 pruebas como estado actual. Informe rector: [AUDITORIA_COMPLETA.md](../AUDITORIA_COMPLETA.md); inventario y hallazgos en `audit/`.
+
+**697 PASS, 0 fallos, 0 errores, 0 omitidas, 202,53 s**, incluidos diez Chromium y pruebas de procesos independientes. Evidencia: [audit-final-tests.xml](evidence/audit-final-tests.xml). Dos avisos: override DATABASES en prueba aislada; deprecación de fixture del plugin pytest para pytest10. Django check sin incidencias; migrate sin pendientes; makemigrations sin drift; Ruff check limpio y format241; pip check limpio. Referencia aislada4ce821e:112PASS.
+
+Correcciones en accounts/audit, core/layout/pos/cash/reports, billing/verifactu, hardware, support/scripts, config y templates/static. Nuevas migraciones y regresiones cubren revocación de sesiones/PII/elevación, estados/notas/venta rápida/terminales, informes y cancelaciones, integridad SQL, control fiscal de espera/leases/correcciones, bridge remoto y entrega incierta, preflight/rollback, supervisión de workers y restauración asistida.
+
+Upgrade real desde la referencia conserva factura/huella/cuenta abierta; backup cifrado y restore CLI pasan con retención presente. Instalación en instancia nueva pasa sin usuarios predeterminados, usando entorno Python ya preparado. Benchmark1/3/6procesos:100ventas,0errores,p95 0,1792/0,7839/1,8796s. OSV consulta36versiones:0avisos conocidos en esa respuesta, sin garantía de ausencia de vulnerabilidades. Evidencias JSON en `evidence/audit-*.json`.
+
+**Gates externos BLOQUEADOS:** certificado/autorización y acuses oficiales AEAT; revisión normativa y declaración responsable suscrita; impresora/cajón/QR físicos; equipo destino/TLS/LAN/autoarranque y conciliación con acuses reales; aceptación con personas del negocio. CI remota no ejecutada. No aprobar producción ni retirar el guard fiscal. Alcance fiscal local: IVA general S1/01, F1/F2 y rectificativa total R1/R5; sin devoluciones parciales ni regímenes especiales.
+
+Commit de integración de la auditoría: `7045b03` (código, migraciones y pruebas). La documentación y evidencias se registran en el commit de cierre posterior.

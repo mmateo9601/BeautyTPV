@@ -1,5 +1,20 @@
 # Informe de release — BeautyTPV 0.1.0
 
+## Auditoría integral posterior a 4ce821e — 14-11-2026
+
+Esta sección sustituye las cifras históricas de cierre de 112 pruebas como estado actual. Informe rector: [AUDITORIA_COMPLETA.md](../AUDITORIA_COMPLETA.md); inventario y hallazgos en `audit/`.
+
+**697 PASS, 0 fallos, 0 errores, 0 omitidas, 202,53 s**, incluidos diez Chromium y pruebas de procesos independientes. Evidencia: [audit-final-tests.xml](evidence/audit-final-tests.xml). Dos avisos: override DATABASES en prueba aislada; deprecación de fixture del plugin pytest para pytest10. Django check sin incidencias; migrate sin pendientes; makemigrations sin drift; Ruff check limpio y format241; pip check limpio. Referencia aislada4ce821e:112PASS.
+
+Correcciones en accounts/audit, core/layout/pos/cash/reports, billing/verifactu, hardware, support/scripts, config y templates/static. Nuevas migraciones y regresiones cubren revocación de sesiones/PII/elevación, estados/notas/venta rápida/terminales, informes y cancelaciones, integridad SQL, control fiscal de espera/leases/correcciones, bridge remoto y entrega incierta, preflight/rollback, supervisión de workers y restauración asistida.
+
+Upgrade real desde la referencia conserva factura/huella/cuenta abierta; backup cifrado y restore CLI pasan con retención presente. Instalación en instancia nueva pasa sin usuarios predeterminados, usando entorno Python ya preparado. Benchmark1/3/6procesos:100ventas,0errores,p95 0,1792/0,7839/1,8796s. OSV consulta36versiones:0avisos conocidos en esa respuesta, sin garantía de ausencia de vulnerabilidades. Evidencias JSON en `evidence/audit-*.json`.
+
+**Gates externos BLOQUEADOS:** certificado/autorización y acuses oficiales AEAT; revisión normativa y declaración responsable suscrita; impresora/cajón/QR físicos; equipo destino/TLS/LAN/autoarranque y conciliación con acuses reales; aceptación con personas del negocio. CI remota no ejecutada. No aprobar producción ni retirar el guard fiscal. Alcance fiscal local: IVA general S1/01, F1/F2 y rectificativa total R1/R5; sin devoluciones parciales ni regímenes especiales.
+
+## Evidencias históricas de la implementación inicial
+
+
 Fecha: 13-11-2026. Instalación local independiente por empresa. Django 5.2.19 + Bootstrap 5.3.8 + HTMX 2.0.8 + SQLite; Python 3.14.7 en Windows.
 
 **Resultado: implementación local ejecutable y verificada; release fiscal productiva BLOQUEADA.** No se declara conformidad AEAT ni hardware físico verificado. El modo productivo está cerrado en código; los comprobantes TEST llevan aviso de falta de validez fiscal productiva.

@@ -39,3 +39,10 @@ Soporte permite elegir la impresora de un trabajo pendiente, descargar copias
 cifradas, revocar autorizaciones, consultar logs saneados y solicitar subsanación
 de un rechazo sin cambiar el registro original. El diagnóstico de red TCP443 se
 activa mediante la casilla correspondiente; no envía una factura de prueba.
+
+
+## Operativa ampliada y verificada
+
+Al acceder, elegir terminal si está configurada. Las cuentas permiten notas por línea y filtro por categorías; guardar mantiene el carrito. Preparar el cobro conserva el estado «en cobro» y bloquea edición; volver a editar reabre explícitamente la cuenta. La venta rápida solo aparece si la empresa la habilita. El Administrador configura secciones, puestos y series con sesión elevada.
+
+Los informes permiten filtrar período, caja, método, empleado y artículo. Los filtros seleccionan operaciones completas: sus desgloses muestran todos los componentes de esas operaciones, sin repartir artificialmente impuestos. La devolución disponible es total mediante rectificativa; no hay devolución parcial ni cobro bancario integrado. El pago por tarjeta registra la confirmación del datáfono externo.

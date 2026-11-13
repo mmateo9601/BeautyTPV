@@ -50,3 +50,8 @@ Integridad de fuentes: `test_official_sources_match_pinned_checksums` verifica
 cada archivo oficial contra schemas/aeat/manifest.json. .gitattributes impide
 conversion de finales de linea de los esquemas en checkouts Windows. Suite final
 integrada: 112 pruebas correctas; la prueba de hashes no equivale a aceptacion AEAT.
+
+
+## Auditoría integral del 14-11-2026
+
+La matriz actual y resultados definitivos están en `../AUDITORIA_COMPLETA.md` y `audit/FISCAL_FINDINGS.md`. Se reforzaron coherencia XML/factura/cadena, espera por endpoint, fencing, subsanaciones de alta/anulación y guard basado en modo inmutable. El alcance implementado es IVA general S1/01, F1/F2 y rectificación total R1/R5; no se ofrecen regímenes especiales ni devoluciones parciales. `DECLARACION_RESPONSABLE_TEMPLATE.md` es borrador sin firma. Sin certificado autorizado, acuses AEAT y revisión experta, el gate productivo sigue BLOQUEADO.

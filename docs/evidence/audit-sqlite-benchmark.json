@@ -1,0 +1,50 @@
+{
+  "kind": "SYNTHETIC_LOCAL_NOT_CAPACITY_CERTIFICATION",
+  "results": [
+    {
+      "terminals": 1,
+      "operations_per_terminal": 10,
+      "successful": 10,
+      "errors": [],
+      "elapsed_seconds": 0.5255,
+      "median_seconds": 0.0369,
+      "p95_seconds": 0.1792,
+      "integrity": {
+        "sales": 10,
+        "invoices": 10,
+        "chain": true
+      },
+      "internal_review_trigger": false
+    },
+    {
+      "terminals": 3,
+      "operations_per_terminal": 10,
+      "successful": 30,
+      "errors": [],
+      "elapsed_seconds": 1.6777,
+      "median_seconds": 0.0377,
+      "p95_seconds": 0.7839,
+      "integrity": {
+        "sales": 30,
+        "invoices": 30,
+        "chain": true
+      },
+      "internal_review_trigger": false
+    },
+    {
+      "terminals": 6,
+      "operations_per_terminal": 10,
+      "successful": 60,
+      "errors": [],
+      "elapsed_seconds": 3.32,
+      "median_seconds": 0.0375,
+      "p95_seconds": 1.8796,
+      "integrity": {
+        "sales": 60,
+        "invoices": 60,
+        "chain": true
+      },
+      "internal_review_trigger": false
+    }
+  ]
+}

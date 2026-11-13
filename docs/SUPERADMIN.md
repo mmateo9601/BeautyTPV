@@ -14,3 +14,12 @@ Acceda con contraseña administrativa o confirme identidad en `/elevar/`. La ele
 El servidor/bridge/workers oficiales comparten lock de ciclo de vida. Restore/update exige lock exclusivo. En mantenimiento cierre terminales y procesos externos, preserve acuses y no retire retención sin conciliación documentada.
 
 No se acredita hardware físico ni conformidad AEAT mediante este panel: consulte RELEASE_REPORT y VERIFACTU_COMPLIANCE.
+
+
+## Funciones ampliadas por la auditoría
+
+Terminales: `/soporte/terminales/` administra actividad/token y la asignación de impresoras. Fiscal: `/soporte/fiscal/` configura referencias externas del certificado y clave; valida caducidad y correspondencia sin guardar sus bytes. La anulación registral exige motivo y confirmación; no devuelve el importe de una venta. Para devolución se usa la rectificativa.
+
+Restauración: `/soporte/restauracion/` verifica una copia registrada, muestra diferencias fiscales y prepara mantenimiento con confirmación `PREPARAR RESTAURACION`. No reemplaza una BD viva por HTTP. Seguir el procedimiento CLI offline, conservar acuses y conciliar antes de retirar el hold. Desbloquear PIN se realiza desde Equipo con autorización jerárquica; el bloqueo por origen exige soporte técnico.
+
+Cambiar rol, actividad, PIN o contraseña revoca sesiones existentes. Reactivar un usuario no recupera sus concesiones anteriores. El panel distingue supervisión real de ejecución sin supervisor; workers caídos no se presentan como sanos.

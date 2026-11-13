@@ -1,0 +1,4566 @@
+{
+  "routes": [
+    {
+      "route": "/",
+      "name": "<unnamed>",
+      "view": "config.urls.<lambda>",
+      "source": "config/urls.py",
+      "line": 6,
+      "minimum_role": "PUBLIC",
+      "elevated": false,
+      "methods": [
+        "UNRESTRICTED"
+      ],
+      "templates": [],
+      "authorization_calls": []
+    },
+    {
+      "route": "/acceso/",
+      "name": "accounts:login",
+      "view": "apps.accounts.views.login_view",
+      "source": "apps/accounts/views.py",
+      "line": 13,
+      "minimum_role": "PUBLIC",
+      "elevated": false,
+      "methods": [
+        "UNRESTRICTED"
+      ],
+      "templates": [
+        "accounts/login.html"
+      ],
+      "authorization_calls": [
+        "require_http_methods"
+      ]
+    },
+    {
+      "route": "/salir/",
+      "name": "accounts:logout",
+      "view": "apps.accounts.views.logout_view",
+      "source": "apps/accounts/views.py",
+      "line": 41,
+      "minimum_role": "PUBLIC",
+      "elevated": false,
+      "methods": [
+        "POST"
+      ],
+      "templates": [],
+      "authorization_calls": []
+    },
+    {
+      "route": "/elevar/",
+      "name": "accounts:elevate",
+      "view": "apps.accounts.views.elevate_view",
+      "source": "apps/accounts/views.py",
+      "line": 48,
+      "minimum_role": "AUTHENTICATED",
+      "elevated": false,
+      "methods": [
+        "UNRESTRICTED"
+      ],
+      "templates": [
+        "accounts/elevate.html"
+      ],
+      "authorization_calls": [
+        "require_http_methods"
+      ]
+    },
+    {
+      "route": "/auditoria/",
+      "name": "audit:index",
+      "view": "apps.audit.views.index",
+      "source": "apps/audit/views.py",
+      "line": 9,
+      "minimum_role": "ADMIN",
+      "elevated": true,
+      "methods": [
+        "UNRESTRICTED"
+      ],
+      "templates": [
+        "audit/index.html"
+      ],
+      "authorization_calls": []
+    },
+    {
+      "route": "/tpv/",
+      "name": "pos:floor",
+      "view": "apps.pos.views.floor",
+      "source": "apps/pos/views.py",
+      "line": 35,
+      "minimum_role": "EMPLOYEE",
+      "elevated": false,
+      "methods": [
+        "UNRESTRICTED"
+      ],
+      "templates": [
+        "pos/floor.html"
+      ],
+      "authorization_calls": []
+    },
+    {
+      "route": "/tpv/puestos/<int:pk>/",
+      "name": "pos:open_station",
+      "view": "apps.pos.views.open_station",
+      "source": "apps/pos/views.py",
+      "line": 47,
+      "minimum_role": "EMPLOYEE",
+      "elevated": false,
+      "methods": [
+        "POST"
+      ],
+      "templates": [],
+      "authorization_calls": []
+    },
+    {
+      "route": "/tpv/cuentas/<int:pk>/",
+      "name": "pos:ticket",
+      "view": "apps.pos.views.ticket",
+      "source": "apps/pos/views.py",
+      "line": 57,
+      "minimum_role": "EMPLOYEE",
+      "elevated": false,
+      "methods": [
+        "UNRESTRICTED"
+      ],
+      "templates": [
+        "pos/ticket.html"
+      ],
+      "authorization_calls": []
+    },
+    {
+      "route": "/tpv/cuentas/<int:pk>/lineas/",
+      "name": "pos:add_line",
+      "view": "apps.pos.views.add_line",
+      "source": "apps/pos/views.py",
+      "line": 83,
+      "minimum_role": "EMPLOYEE",
+      "elevated": false,
+      "methods": [
+        "POST"
+      ],
+      "templates": [],
+      "authorization_calls": []
+    },
+    {
+      "route": "/tpv/lineas/<int:pk>/",
+      "name": "pos:update_line",
+      "view": "apps.pos.views.update_line",
+      "source": "apps/pos/views.py",
+      "line": 101,
+      "minimum_role": "EMPLOYEE",
+      "elevated": false,
+      "methods": [
+        "POST"
+      ],
+      "templates": [],
+      "authorization_calls": []
+    },
+    {
+      "route": "/tpv/lineas/<int:pk>/eliminar/",
+      "name": "pos:remove_line",
+      "view": "apps.pos.views.remove_line",
+      "source": "apps/pos/views.py",
+      "line": 118,
+      "minimum_role": "MANAGER",
+      "elevated": false,
+      "methods": [
+        "POST"
+      ],
+      "templates": [],
+      "authorization_calls": []
+    },
+    {
+      "route": "/tpv/cuentas/<int:pk>/anular/",
+      "name": "pos:cancel_ticket",
+      "view": "apps.pos.views.cancel_ticket",
+      "source": "apps/pos/views.py",
+      "line": 129,
+      "minimum_role": "MANAGER",
+      "elevated": false,
+      "methods": [
+        "POST"
+      ],
+      "templates": [],
+      "authorization_calls": []
+    },
+    {
+      "route": "/tpv/cuentas/<int:pk>/cliente/",
+      "name": "pos:customer",
+      "view": "apps.pos.views.customer",
+      "source": "apps/pos/views.py",
+      "line": 141,
+      "minimum_role": "EMPLOYEE",
+      "elevated": false,
+      "methods": [
+        "POST"
+      ],
+      "templates": [],
+      "authorization_calls": []
+    },
+    {
+      "route": "/tpv/cuentas/<int:pk>/cobrar/",
+      "name": "pos:checkout",
+      "view": "apps.pos.views.checkout",
+      "source": "apps/pos/views.py",
+      "line": 157,
+      "minimum_role": "EMPLOYEE",
+      "elevated": false,
+      "methods": [
+        "POST"
+      ],
+      "templates": [],
+      "authorization_calls": []
+    },
+    {
+      "route": "/plano/configuracion/",
+      "name": "layout:index",
+      "view": "apps.layout.views.index",
+      "source": "apps/layout/views.py",
+      "line": 14,
+      "minimum_role": "ADMIN",
+      "elevated": false,
+      "methods": [
+        "UNRESTRICTED"
+      ],
+      "templates": [
+        "layout/index.html"
+      ],
+      "authorization_calls": []
+    },
+    {
+      "route": "/plano/configuracion/secciones/",
+      "name": "layout:section_create",
+      "view": "apps.layout.views.section_create",
+      "source": "apps/layout/views.py",
+      "line": 28,
+      "minimum_role": "ADMIN",
+      "elevated": false,
+      "methods": [
+        "POST"
+      ],
+      "templates": [],
+      "authorization_calls": []
+    },
+    {
+      "route": "/plano/configuracion/puestos/nuevo/",
+      "name": "layout:station_create",
+      "view": "apps.layout.views.station_edit",
+      "source": "apps/layout/views.py",
+      "line": 39,
+      "minimum_role": "ADMIN",
+      "elevated": false,
+      "methods": [
+        "UNRESTRICTED"
+      ],
+      "templates": [
+        "layout/form.html"
+      ],
+      "authorization_calls": []
+    },
+    {
+      "route": "/plano/configuracion/puestos/<int:pk>/editar/",
+      "name": "layout:station_edit",
+      "view": "apps.layout.views.station_edit",
+      "source": "apps/layout/views.py",
+      "line": 39,
+      "minimum_role": "ADMIN",
+      "elevated": false,
+      "methods": [
+        "UNRESTRICTED"
+      ],
+      "templates": [
+        "layout/form.html"
+      ],
+      "authorization_calls": []
+    },
+    {
+      "route": "/plano/configuracion/puestos/<int:pk>/eliminar/",
+      "name": "layout:station_delete",
+      "view": "apps.layout.views.station_delete",
+      "source": "apps/layout/views.py",
+      "line": 56,
+      "minimum_role": "ADMIN",
+      "elevated": false,
+      "methods": [
+        "POST"
+      ],
+      "templates": [],
+      "authorization_calls": []
+    },
+    {
+      "route": "/catalogo/",
+      "name": "catalog:index",
+      "view": "apps.catalog.views.index",
+      "source": "apps/catalog/views.py",
+      "line": 14,
+      "minimum_role": "ADMIN",
+      "elevated": false,
+      "methods": [
+        "UNRESTRICTED"
+      ],
+      "templates": [
+        "catalog/index.html"
+      ],
+      "authorization_calls": []
+    },
+    {
+      "route": "/catalogo/nuevo/",
+      "name": "catalog:create",
+      "view": "apps.catalog.views.edit",
+      "source": "apps/catalog/views.py",
+      "line": 26,
+      "minimum_role": "ADMIN",
+      "elevated": false,
+      "methods": [
+        "UNRESTRICTED"
+      ],
+      "templates": [
+        "catalog/form.html"
+      ],
+      "authorization_calls": []
+    },
+    {
+      "route": "/catalogo/<int:pk>/editar/",
+      "name": "catalog:edit",
+      "view": "apps.catalog.views.edit",
+      "source": "apps/catalog/views.py",
+      "line": 26,
+      "minimum_role": "ADMIN",
+      "elevated": false,
+      "methods": [
+        "UNRESTRICTED"
+      ],
+      "templates": [
+        "catalog/form.html"
+      ],
+      "authorization_calls": []
+    },
+    {
+      "route": "/catalogo/categorias/",
+      "name": "catalog:category",
+      "view": "apps.catalog.views.category",
+      "source": "apps/catalog/views.py",
+      "line": 37,
+      "minimum_role": "ADMIN",
+      "elevated": false,
+      "methods": [
+        "UNRESTRICTED"
+      ],
+      "templates": [
+        "catalog/categories.html"
+      ],
+      "authorization_calls": []
+    },
+    {
+      "route": "/catalogo/categorias/<int:pk>/",
+      "name": "catalog:category_edit",
+      "view": "apps.catalog.views.category",
+      "source": "apps/catalog/views.py",
+      "line": 37,
+      "minimum_role": "ADMIN",
+      "elevated": false,
+      "methods": [
+        "UNRESTRICTED"
+      ],
+      "templates": [
+        "catalog/categories.html"
+      ],
+      "authorization_calls": []
+    },
+    {
+      "route": "/catalogo/categorias/<int:pk>/eliminar/",
+      "name": "catalog:category_delete",
+      "view": "apps.catalog.views.delete_category",
+      "source": "apps/catalog/views.py",
+      "line": 57,
+      "minimum_role": "ADMIN",
+      "elevated": false,
+      "methods": [
+        "POST"
+      ],
+      "templates": [],
+      "authorization_calls": []
+    },
+    {
+      "route": "/clientes/",
+      "name": "customers:index",
+      "view": "apps.customers.views.index",
+      "source": "apps/customers/views.py",
+      "line": 18,
+      "minimum_role": "EMPLOYEE",
+      "elevated": false,
+      "methods": [
+        "UNRESTRICTED"
+      ],
+      "templates": [
+        "customers/index.html"
+      ],
+      "authorization_calls": [
+        "require_elevated",
+        "require_role"
+      ]
+    },
+    {
+      "route": "/clientes/nuevo/",
+      "name": "customers:create",
+      "view": "apps.customers.views.edit",
+      "source": "apps/customers/views.py",
+      "line": 55,
+      "minimum_role": "EMPLOYEE",
+      "elevated": false,
+      "methods": [
+        "UNRESTRICTED"
+      ],
+      "templates": [
+        "customers/form.html"
+      ],
+      "authorization_calls": []
+    },
+    {
+      "route": "/clientes/<int:pk>/",
+      "name": "customers:detail",
+      "view": "apps.customers.views.detail",
+      "source": "apps/customers/views.py",
+      "line": 67,
+      "minimum_role": "EMPLOYEE",
+      "elevated": false,
+      "methods": [
+        "UNRESTRICTED"
+      ],
+      "templates": [
+        "customers/detail.html"
+      ],
+      "authorization_calls": []
+    },
+    {
+      "route": "/clientes/<int:pk>/editar/",
+      "name": "customers:edit",
+      "view": "apps.customers.views.edit",
+      "source": "apps/customers/views.py",
+      "line": 55,
+      "minimum_role": "EMPLOYEE",
+      "elevated": false,
+      "methods": [
+        "UNRESTRICTED"
+      ],
+      "templates": [
+        "customers/form.html"
+      ],
+      "authorization_calls": []
+    },
+    {
+      "route": "/clientes/<int:pk>/eliminar/",
+      "name": "customers:delete",
+      "view": "apps.customers.views.delete",
+      "source": "apps/customers/views.py",
+      "line": 83,
+      "minimum_role": "ADMIN",
+      "elevated": true,
+      "methods": [
+        "POST"
+      ],
+      "templates": [],
+      "authorization_calls": []
+    },
+    {
+      "route": "/caja/",
+      "name": "cash:index",
+      "view": "apps.cash.views.index",
+      "source": "apps/cash/views.py",
+      "line": 12,
+      "minimum_role": "EMPLOYEE",
+      "elevated": false,
+      "methods": [
+        "UNRESTRICTED"
+      ],
+      "templates": [
+        "cash/index.html"
+      ],
+      "authorization_calls": []
+    },
+    {
+      "route": "/caja/abrir/",
+      "name": "cash:open",
+      "view": "apps.cash.views.open",
+      "source": "apps/cash/views.py",
+      "line": 25,
+      "minimum_role": "EMPLOYEE",
+      "elevated": false,
+      "methods": [
+        "POST"
+      ],
+      "templates": [],
+      "authorization_calls": []
+    },
+    {
+      "route": "/caja/<int:pk>/movimiento/",
+      "name": "cash:movement",
+      "view": "apps.cash.views.movement",
+      "source": "apps/cash/views.py",
+      "line": 39,
+      "minimum_role": "MANAGER",
+      "elevated": false,
+      "methods": [
+        "POST"
+      ],
+      "templates": [],
+      "authorization_calls": []
+    },
+    {
+      "route": "/caja/<int:pk>/cerrar/",
+      "name": "cash:close",
+      "view": "apps.cash.views.close",
+      "source": "apps/cash/views.py",
+      "line": 55,
+      "minimum_role": "MANAGER",
+      "elevated": false,
+      "methods": [
+        "POST"
+      ],
+      "templates": [],
+      "authorization_calls": []
+    },
+    {
+      "route": "/facturas/",
+      "name": "billing:index",
+      "view": "apps.billing.views.invoice_list",
+      "source": "apps/billing/views.py",
+      "line": 16,
+      "minimum_role": "AUTHENTICATED",
+      "elevated": false,
+      "methods": [
+        "UNRESTRICTED"
+      ],
+      "templates": [
+        "billing/list.html"
+      ],
+      "authorization_calls": [
+        "require_role"
+      ]
+    },
+    {
+      "route": "/facturas/",
+      "name": "billing:list",
+      "view": "apps.billing.views.invoice_list",
+      "source": "apps/billing/views.py",
+      "line": 16,
+      "minimum_role": "AUTHENTICATED",
+      "elevated": false,
+      "methods": [
+        "UNRESTRICTED"
+      ],
+      "templates": [
+        "billing/list.html"
+      ],
+      "authorization_calls": [
+        "require_role"
+      ]
+    },
+    {
+      "route": "/facturas/<int:pk>/",
+      "name": "billing:detail",
+      "view": "apps.billing.views.invoice_detail",
+      "source": "apps/billing/views.py",
+      "line": 35,
+      "minimum_role": "AUTHENTICATED",
+      "elevated": false,
+      "methods": [
+        "UNRESTRICTED"
+      ],
+      "templates": [
+        "billing/detail.html"
+      ],
+      "authorization_calls": []
+    },
+    {
+      "route": "/facturas/<int:pk>/pdf/",
+      "name": "billing:pdf",
+      "view": "apps.billing.views.invoice_pdf",
+      "source": "apps/billing/views.py",
+      "line": 53,
+      "minimum_role": "AUTHENTICATED",
+      "elevated": false,
+      "methods": [
+        "UNRESTRICTED"
+      ],
+      "templates": [],
+      "authorization_calls": []
+    },
+    {
+      "route": "/facturas/<int:pk>/rectificar/",
+      "name": "billing:rectify",
+      "view": "apps.billing.views.rectify",
+      "source": "apps/billing/views.py",
+      "line": 61,
+      "minimum_role": "AUTHENTICATED",
+      "elevated": false,
+      "methods": [
+        "POST"
+      ],
+      "templates": [],
+      "authorization_calls": []
+    },
+    {
+      "route": "/facturas/<int:pk>/reimprimir/",
+      "name": "billing:reprint",
+      "view": "apps.billing.views.reprint",
+      "source": "apps/billing/views.py",
+      "line": 85,
+      "minimum_role": "AUTHENTICATED",
+      "elevated": false,
+      "methods": [
+        "POST"
+      ],
+      "templates": [],
+      "authorization_calls": []
+    },
+    {
+      "route": "/hardware/facturas/<int:pk>/copia/",
+      "name": "hardware:reprint",
+      "view": "apps.hardware.views.reprint",
+      "source": "apps/hardware/views.py",
+      "line": 12,
+      "minimum_role": "EMPLOYEE",
+      "elevated": false,
+      "methods": [
+        "POST"
+      ],
+      "templates": [],
+      "authorization_calls": []
+    },
+    {
+      "route": "/hardware/impresoras/<int:pk>/prueba/",
+      "name": "hardware:test",
+      "view": "apps.hardware.views.test_printer",
+      "source": "apps/hardware/views.py",
+      "line": 24,
+      "minimum_role": "SUPERADMIN",
+      "elevated": true,
+      "methods": [
+        "POST"
+      ],
+      "templates": [],
+      "authorization_calls": []
+    },
+    {
+      "route": "/hardware/trabajos/<int:pk>/reintentar/",
+      "name": "hardware:retry",
+      "view": "apps.hardware.views.retry",
+      "source": "apps/hardware/views.py",
+      "line": 34,
+      "minimum_role": "SUPERADMIN",
+      "elevated": true,
+      "methods": [
+        "POST"
+      ],
+      "templates": [],
+      "authorization_calls": []
+    },
+    {
+      "route": "/empresa/",
+      "name": "core:settings",
+      "view": "apps.core.views.settings",
+      "source": "apps/core/views.py",
+      "line": 10,
+      "minimum_role": "ADMIN",
+      "elevated": true,
+      "methods": [
+        "UNRESTRICTED"
+      ],
+      "templates": [
+        "core/settings.html"
+      ],
+      "authorization_calls": []
+    },
+    {
+      "route": "/informes/",
+      "name": "reports:index",
+      "view": "apps.reports.views.index",
+      "source": "apps/reports/views.py",
+      "line": 16,
+      "minimum_role": "MANAGER",
+      "elevated": false,
+      "methods": [
+        "UNRESTRICTED"
+      ],
+      "templates": [
+        "reports/index.html"
+      ],
+      "authorization_calls": []
+    },
+    {
+      "route": "/soporte/logs/",
+      "name": "support:logs",
+      "view": "apps.support.views.logs",
+      "source": "apps/support/views.py",
+      "line": 270,
+      "minimum_role": "SUPERADMIN",
+      "elevated": true,
+      "methods": [
+        "UNRESTRICTED"
+      ],
+      "templates": [],
+      "authorization_calls": [
+        "require_authorization"
+      ]
+    },
+    {
+      "route": "/soporte/",
+      "name": "support:index",
+      "view": "apps.support.views.index",
+      "source": "apps/support/views.py",
+      "line": 31,
+      "minimum_role": "SUPERADMIN",
+      "elevated": true,
+      "methods": [
+        "UNRESTRICTED"
+      ],
+      "templates": [
+        "support/index.html"
+      ],
+      "authorization_calls": []
+    },
+    {
+      "route": "/soporte/autorizacion/",
+      "name": "support:authorize",
+      "view": "apps.support.views.authorize",
+      "source": "apps/support/views.py",
+      "line": 55,
+      "minimum_role": "SUPERADMIN",
+      "elevated": true,
+      "methods": [
+        "POST"
+      ],
+      "templates": [],
+      "authorization_calls": []
+    },
+    {
+      "route": "/soporte/autorizacion/<int:pk>/revocar/",
+      "name": "support:revoke",
+      "view": "apps.support.views.revoke",
+      "source": "apps/support/views.py",
+      "line": 73,
+      "minimum_role": "SUPERADMIN",
+      "elevated": true,
+      "methods": [
+        "POST"
+      ],
+      "templates": [],
+      "authorization_calls": []
+    },
+    {
+      "route": "/soporte/diagnostico/",
+      "name": "support:diagnostic",
+      "view": "apps.support.views.diagnostic",
+      "source": "apps/support/views.py",
+      "line": 83,
+      "minimum_role": "SUPERADMIN",
+      "elevated": true,
+      "methods": [
+        "POST"
+      ],
+      "templates": [],
+      "authorization_calls": [
+        "require_authorization"
+      ]
+    },
+    {
+      "route": "/soporte/diagnostico/exportar/",
+      "name": "support:diagnostics_export",
+      "view": "apps.support.views.export_diagnostics",
+      "source": "apps/support/views.py",
+      "line": 94,
+      "minimum_role": "SUPERADMIN",
+      "elevated": true,
+      "methods": [
+        "UNRESTRICTED"
+      ],
+      "templates": [],
+      "authorization_calls": [
+        "require_authorization"
+      ]
+    },
+    {
+      "route": "/soporte/backup/",
+      "name": "support:backup",
+      "view": "apps.support.views.backup",
+      "source": "apps/support/views.py",
+      "line": 104,
+      "minimum_role": "SUPERADMIN",
+      "elevated": true,
+      "methods": [
+        "POST"
+      ],
+      "templates": [],
+      "authorization_calls": [
+        "require_authorization"
+      ]
+    },
+    {
+      "route": "/soporte/backup/<int:pk>/descargar/",
+      "name": "support:backup_download",
+      "view": "apps.support.views.backup_download",
+      "source": "apps/support/views.py",
+      "line": 128,
+      "minimum_role": "SUPERADMIN",
+      "elevated": true,
+      "methods": [
+        "UNRESTRICTED"
+      ],
+      "templates": [],
+      "authorization_calls": [
+        "require_authorization"
+      ]
+    },
+    {
+      "route": "/soporte/dispositivos/",
+      "name": "support:printer_save",
+      "view": "apps.support.views.printer_save",
+      "source": "apps/support/views.py",
+      "line": 139,
+      "minimum_role": "SUPERADMIN",
+      "elevated": true,
+      "methods": [
+        "UNRESTRICTED"
+      ],
+      "templates": [
+        "support/settings.html"
+      ],
+      "authorization_calls": [
+        "require_authorization"
+      ]
+    },
+    {
+      "route": "/soporte/dispositivos/<int:pk>/",
+      "name": "support:printer_edit",
+      "view": "apps.support.views.printer_save",
+      "source": "apps/support/views.py",
+      "line": 139,
+      "minimum_role": "SUPERADMIN",
+      "elevated": true,
+      "methods": [
+        "UNRESTRICTED"
+      ],
+      "templates": [
+        "support/settings.html"
+      ],
+      "authorization_calls": [
+        "require_authorization"
+      ]
+    },
+    {
+      "route": "/soporte/fiscal/<int:pk>/recuperar/",
+      "name": "support:recover_fiscal",
+      "view": "apps.support.views.recover_fiscal",
+      "source": "apps/support/views.py",
+      "line": 151,
+      "minimum_role": "SUPERADMIN",
+      "elevated": true,
+      "methods": [
+        "POST"
+      ],
+      "templates": [],
+      "authorization_calls": [
+        "require_authorization"
+      ]
+    },
+    {
+      "route": "/soporte/fiscal/<int:pk>/subsanar/",
+      "name": "support:correct_fiscal",
+      "view": "apps.support.views.correct_fiscal",
+      "source": "apps/support/views.py",
+      "line": 168,
+      "minimum_role": "SUPERADMIN",
+      "elevated": true,
+      "methods": [
+        "POST"
+      ],
+      "templates": [],
+      "authorization_calls": [
+        "require_authorization"
+      ]
+    },
+    {
+      "route": "/soporte/ajustes/",
+      "name": "support:settings",
+      "view": "apps.support.views.technical_settings",
+      "source": "apps/support/views.py",
+      "line": 183,
+      "minimum_role": "SUPERADMIN",
+      "elevated": true,
+      "methods": [
+        "UNRESTRICTED"
+      ],
+      "templates": [
+        "support/settings.html"
+      ],
+      "authorization_calls": [
+        "require_authorization"
+      ]
+    },
+    {
+      "route": "/soporte/actualizaciones/",
+      "name": "support:updates",
+      "view": "apps.support.views.updates",
+      "source": "apps/support/views.py",
+      "line": 194,
+      "minimum_role": "SUPERADMIN",
+      "elevated": true,
+      "methods": [
+        "UNRESTRICTED"
+      ],
+      "templates": [
+        "support/updates.html"
+      ],
+      "authorization_calls": []
+    },
+    {
+      "route": "/usuarios/",
+      "name": "team:index",
+      "view": "apps.support.views.users",
+      "source": "apps/support/views.py",
+      "line": 206,
+      "minimum_role": "ADMIN",
+      "elevated": true,
+      "methods": [
+        "UNRESTRICTED"
+      ],
+      "templates": [
+        "support/users.html"
+      ],
+      "authorization_calls": []
+    },
+    {
+      "route": "/usuarios/<int:pk>/",
+      "name": "team:edit",
+      "view": "apps.support.views.user_edit",
+      "source": "apps/support/views.py",
+      "line": 237,
+      "minimum_role": "ADMIN",
+      "elevated": true,
+      "methods": [
+        "UNRESTRICTED"
+      ],
+      "templates": [
+        "support/user_edit.html"
+      ],
+      "authorization_calls": []
+    },
+    {
+      "route": "/health/",
+      "name": "<unnamed>",
+      "view": "config.urls.<lambda>",
+      "source": "config/urls.py",
+      "line": 20,
+      "minimum_role": "PUBLIC",
+      "elevated": false,
+      "methods": [
+        "UNRESTRICTED"
+      ],
+      "templates": [],
+      "authorization_calls": []
+    }
+  ],
+  "models": [
+    {
+      "model": "accounts.User",
+      "table": "accounts_user",
+      "fields": [
+        {
+          "name": "id",
+          "type": "BigAutoField",
+          "null": false,
+          "unique": true,
+          "related_model": null
+        },
+        {
+          "name": "password",
+          "type": "CharField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        },
+        {
+          "name": "last_login",
+          "type": "DateTimeField",
+          "null": true,
+          "unique": false,
+          "related_model": null
+        },
+        {
+          "name": "is_superuser",
+          "type": "BooleanField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        },
+        {
+          "name": "username",
+          "type": "CharField",
+          "null": false,
+          "unique": true,
+          "related_model": null
+        },
+        {
+          "name": "first_name",
+          "type": "CharField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        },
+        {
+          "name": "last_name",
+          "type": "CharField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        },
+        {
+          "name": "email",
+          "type": "CharField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        },
+        {
+          "name": "is_staff",
+          "type": "BooleanField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        },
+        {
+          "name": "is_active",
+          "type": "BooleanField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        },
+        {
+          "name": "date_joined",
+          "type": "DateTimeField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        },
+        {
+          "name": "role",
+          "type": "CharField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        },
+        {
+          "name": "pin_hash",
+          "type": "CharField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        }
+      ],
+      "constraints": []
+    },
+    {
+      "model": "accounts.LoginThrottle",
+      "table": "accounts_loginthrottle",
+      "fields": [
+        {
+          "name": "id",
+          "type": "BigAutoField",
+          "null": false,
+          "unique": true,
+          "related_model": null
+        },
+        {
+          "name": "key",
+          "type": "CharField",
+          "null": false,
+          "unique": true,
+          "related_model": null
+        },
+        {
+          "name": "failures",
+          "type": "PositiveIntegerField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        },
+        {
+          "name": "locked_until",
+          "type": "DateTimeField",
+          "null": true,
+          "unique": false,
+          "related_model": null
+        },
+        {
+          "name": "updated_at",
+          "type": "DateTimeField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        }
+      ],
+      "constraints": []
+    },
+    {
+      "model": "audit.AuditEvent",
+      "table": "audit_auditevent",
+      "fields": [
+        {
+          "name": "id",
+          "type": "BigAutoField",
+          "null": false,
+          "unique": true,
+          "related_model": null
+        },
+        {
+          "name": "actor",
+          "type": "ForeignKey",
+          "null": true,
+          "unique": false,
+          "related_model": "accounts.User"
+        },
+        {
+          "name": "action",
+          "type": "CharField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        },
+        {
+          "name": "target",
+          "type": "CharField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        },
+        {
+          "name": "outcome",
+          "type": "CharField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        },
+        {
+          "name": "metadata",
+          "type": "JSONField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        },
+        {
+          "name": "created_at",
+          "type": "DateTimeField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        }
+      ],
+      "constraints": []
+    },
+    {
+      "model": "core.CompanySettings",
+      "table": "core_companysettings",
+      "fields": [
+        {
+          "name": "id",
+          "type": "BigAutoField",
+          "null": false,
+          "unique": true,
+          "related_model": null
+        },
+        {
+          "name": "name",
+          "type": "CharField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        },
+        {
+          "name": "tax_id",
+          "type": "CharField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        },
+        {
+          "name": "address",
+          "type": "TextField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        },
+        {
+          "name": "currency",
+          "type": "CharField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        },
+        {
+          "name": "timezone",
+          "type": "CharField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        },
+        {
+          "name": "fiscal_mode",
+          "type": "CharField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        },
+        {
+          "name": "software_name",
+          "type": "CharField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        },
+        {
+          "name": "software_version",
+          "type": "CharField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        },
+        {
+          "name": "producer_name",
+          "type": "CharField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        },
+        {
+          "name": "producer_tax_id",
+          "type": "CharField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        },
+        {
+          "name": "installation_number",
+          "type": "CharField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        }
+      ],
+      "constraints": []
+    },
+    {
+      "model": "layout.Section",
+      "table": "layout_section",
+      "fields": [
+        {
+          "name": "id",
+          "type": "BigAutoField",
+          "null": false,
+          "unique": true,
+          "related_model": null
+        },
+        {
+          "name": "name",
+          "type": "CharField",
+          "null": false,
+          "unique": true,
+          "related_model": null
+        },
+        {
+          "name": "sort_order",
+          "type": "PositiveIntegerField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        }
+      ],
+      "constraints": []
+    },
+    {
+      "model": "layout.Station",
+      "table": "layout_station",
+      "fields": [
+        {
+          "name": "id",
+          "type": "BigAutoField",
+          "null": false,
+          "unique": true,
+          "related_model": null
+        },
+        {
+          "name": "section",
+          "type": "ForeignKey",
+          "null": false,
+          "unique": false,
+          "related_model": "layout.Section"
+        },
+        {
+          "name": "code",
+          "type": "CharField",
+          "null": false,
+          "unique": true,
+          "related_model": null
+        },
+        {
+          "name": "name",
+          "type": "CharField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        },
+        {
+          "name": "active",
+          "type": "BooleanField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        }
+      ],
+      "constraints": []
+    },
+    {
+      "model": "catalog.Category",
+      "table": "catalog_category",
+      "fields": [
+        {
+          "name": "id",
+          "type": "BigAutoField",
+          "null": false,
+          "unique": true,
+          "related_model": null
+        },
+        {
+          "name": "name",
+          "type": "CharField",
+          "null": false,
+          "unique": true,
+          "related_model": null
+        }
+      ],
+      "constraints": []
+    },
+    {
+      "model": "catalog.CatalogItem",
+      "table": "catalog_catalogitem",
+      "fields": [
+        {
+          "name": "id",
+          "type": "BigAutoField",
+          "null": false,
+          "unique": true,
+          "related_model": null
+        },
+        {
+          "name": "kind",
+          "type": "CharField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        },
+        {
+          "name": "name",
+          "type": "CharField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        },
+        {
+          "name": "category",
+          "type": "ForeignKey",
+          "null": true,
+          "unique": false,
+          "related_model": "catalog.Category"
+        },
+        {
+          "name": "price",
+          "type": "DecimalField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        },
+        {
+          "name": "tax_rate",
+          "type": "DecimalField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        },
+        {
+          "name": "active",
+          "type": "BooleanField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        }
+      ],
+      "constraints": [
+        "<CheckConstraint: condition=(AND: ('price__gte', 0)) name='catalog_nonnegative_price'>",
+        "<CheckConstraint: condition=(AND: ('tax_rate__gte', 0), ('tax_rate__lte', 100)) name='catalog_valid_tax'>"
+      ]
+    },
+    {
+      "model": "customers.Customer",
+      "table": "customers_customer",
+      "fields": [
+        {
+          "name": "id",
+          "type": "BigAutoField",
+          "null": false,
+          "unique": true,
+          "related_model": null
+        },
+        {
+          "name": "name",
+          "type": "CharField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        },
+        {
+          "name": "phone",
+          "type": "CharField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        },
+        {
+          "name": "email",
+          "type": "CharField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        },
+        {
+          "name": "tax_id",
+          "type": "CharField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        },
+        {
+          "name": "address",
+          "type": "TextField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        },
+        {
+          "name": "legal_basis",
+          "type": "CharField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        },
+        {
+          "name": "created_at",
+          "type": "DateTimeField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        }
+      ],
+      "constraints": []
+    },
+    {
+      "model": "pos.OpenTicket",
+      "table": "pos_openticket",
+      "fields": [
+        {
+          "name": "id",
+          "type": "BigAutoField",
+          "null": false,
+          "unique": true,
+          "related_model": null
+        },
+        {
+          "name": "station",
+          "type": "ForeignKey",
+          "null": true,
+          "unique": false,
+          "related_model": "layout.Station"
+        },
+        {
+          "name": "customer",
+          "type": "ForeignKey",
+          "null": true,
+          "unique": false,
+          "related_model": "customers.Customer"
+        },
+        {
+          "name": "status",
+          "type": "CharField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        },
+        {
+          "name": "created_by",
+          "type": "ForeignKey",
+          "null": false,
+          "unique": false,
+          "related_model": "accounts.User"
+        },
+        {
+          "name": "created_at",
+          "type": "DateTimeField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        },
+        {
+          "name": "version",
+          "type": "PositiveIntegerField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        }
+      ],
+      "constraints": [
+        "<UniqueConstraint: fields=('station',) name='one_active_ticket_per_station' condition=(AND: ('status__in', ['OPEN', 'PAYMENT_PENDING']))>"
+      ]
+    },
+    {
+      "model": "pos.TicketLine",
+      "table": "pos_ticketline",
+      "fields": [
+        {
+          "name": "id",
+          "type": "BigAutoField",
+          "null": false,
+          "unique": true,
+          "related_model": null
+        },
+        {
+          "name": "ticket",
+          "type": "ForeignKey",
+          "null": false,
+          "unique": false,
+          "related_model": "pos.OpenTicket"
+        },
+        {
+          "name": "item",
+          "type": "ForeignKey",
+          "null": true,
+          "unique": false,
+          "related_model": "catalog.CatalogItem"
+        },
+        {
+          "name": "description",
+          "type": "CharField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        },
+        {
+          "name": "quantity",
+          "type": "DecimalField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        },
+        {
+          "name": "unit_price",
+          "type": "DecimalField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        },
+        {
+          "name": "tax_rate",
+          "type": "DecimalField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        },
+        {
+          "name": "discount_percent",
+          "type": "DecimalField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        },
+        {
+          "name": "note",
+          "type": "CharField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        }
+      ],
+      "constraints": [
+        "<CheckConstraint: condition=(AND: ('discount_percent__gte', 0), ('discount_percent__lte', 100), ('quantity__gt', 0), ('tax_rate__gte', 0), ('tax_rate__lte', 100), ('unit_price__gte', 0)) name='valid_ticket_line'>"
+      ]
+    },
+    {
+      "model": "pos.Sale",
+      "table": "pos_sale",
+      "fields": [
+        {
+          "name": "id",
+          "type": "BigAutoField",
+          "null": false,
+          "unique": true,
+          "related_model": null
+        },
+        {
+          "name": "ticket",
+          "type": "OneToOneField",
+          "null": false,
+          "unique": true,
+          "related_model": "pos.OpenTicket"
+        },
+        {
+          "name": "total",
+          "type": "DecimalField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        },
+        {
+          "name": "created_by",
+          "type": "ForeignKey",
+          "null": false,
+          "unique": false,
+          "related_model": "accounts.User"
+        },
+        {
+          "name": "created_at",
+          "type": "DateTimeField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        },
+        {
+          "name": "idempotency_key",
+          "type": "CharField",
+          "null": false,
+          "unique": true,
+          "related_model": null
+        },
+        {
+          "name": "request_fingerprint",
+          "type": "CharField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        }
+      ],
+      "constraints": []
+    },
+    {
+      "model": "pos.Payment",
+      "table": "pos_payment",
+      "fields": [
+        {
+          "name": "id",
+          "type": "BigAutoField",
+          "null": false,
+          "unique": true,
+          "related_model": null
+        },
+        {
+          "name": "sale",
+          "type": "ForeignKey",
+          "null": false,
+          "unique": false,
+          "related_model": "pos.Sale"
+        },
+        {
+          "name": "method",
+          "type": "CharField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        },
+        {
+          "name": "amount",
+          "type": "DecimalField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        },
+        {
+          "name": "received",
+          "type": "DecimalField",
+          "null": true,
+          "unique": false,
+          "related_model": null
+        },
+        {
+          "name": "reference",
+          "type": "CharField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        },
+        {
+          "name": "cash_session",
+          "type": "ForeignKey",
+          "null": true,
+          "unique": false,
+          "related_model": "cash.CashSession"
+        }
+      ],
+      "constraints": [
+        "<CheckConstraint: condition=(AND: ('amount__gt', 0)) name='positive_payment'>"
+      ]
+    },
+    {
+      "model": "cash.CashRegister",
+      "table": "cash_cashregister",
+      "fields": [
+        {
+          "name": "id",
+          "type": "BigAutoField",
+          "null": false,
+          "unique": true,
+          "related_model": null
+        },
+        {
+          "name": "name",
+          "type": "CharField",
+          "null": false,
+          "unique": true,
+          "related_model": null
+        }
+      ],
+      "constraints": []
+    },
+    {
+      "model": "cash.CashSession",
+      "table": "cash_cashsession",
+      "fields": [
+        {
+          "name": "id",
+          "type": "BigAutoField",
+          "null": false,
+          "unique": true,
+          "related_model": null
+        },
+        {
+          "name": "register",
+          "type": "ForeignKey",
+          "null": false,
+          "unique": false,
+          "related_model": "cash.CashRegister"
+        },
+        {
+          "name": "opened_by",
+          "type": "ForeignKey",
+          "null": false,
+          "unique": false,
+          "related_model": "accounts.User"
+        },
+        {
+          "name": "opening_balance",
+          "type": "DecimalField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        },
+        {
+          "name": "opened_at",
+          "type": "DateTimeField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        },
+        {
+          "name": "closed_at",
+          "type": "DateTimeField",
+          "null": true,
+          "unique": false,
+          "related_model": null
+        },
+        {
+          "name": "closed_by",
+          "type": "ForeignKey",
+          "null": true,
+          "unique": false,
+          "related_model": "accounts.User"
+        },
+        {
+          "name": "counted",
+          "type": "DecimalField",
+          "null": true,
+          "unique": false,
+          "related_model": null
+        },
+        {
+          "name": "expected",
+          "type": "DecimalField",
+          "null": true,
+          "unique": false,
+          "related_model": null
+        },
+        {
+          "name": "difference",
+          "type": "DecimalField",
+          "null": true,
+          "unique": false,
+          "related_model": null
+        }
+      ],
+      "constraints": [
+        "<UniqueConstraint: fields=('register',) name='one_open_cash_session' condition=(AND: ('closed_at__isnull', True))>",
+        "<CheckConstraint: condition=(AND: ('opening_balance__gte', 0)) name='positive_opening_balance'>"
+      ]
+    },
+    {
+      "model": "cash.CashMovement",
+      "table": "cash_cashmovement",
+      "fields": [
+        {
+          "name": "id",
+          "type": "BigAutoField",
+          "null": false,
+          "unique": true,
+          "related_model": null
+        },
+        {
+          "name": "session",
+          "type": "ForeignKey",
+          "null": false,
+          "unique": false,
+          "related_model": "cash.CashSession"
+        },
+        {
+          "name": "kind",
+          "type": "CharField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        },
+        {
+          "name": "amount",
+          "type": "DecimalField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        },
+        {
+          "name": "reason",
+          "type": "CharField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        },
+        {
+          "name": "actor",
+          "type": "ForeignKey",
+          "null": false,
+          "unique": false,
+          "related_model": "accounts.User"
+        },
+        {
+          "name": "created_at",
+          "type": "DateTimeField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        }
+      ],
+      "constraints": [
+        "<CheckConstraint: condition=(AND: ('amount__gt', 0)) name='positive_cash_movement'>"
+      ]
+    },
+    {
+      "model": "billing.InvoiceSequence",
+      "table": "billing_invoicesequence",
+      "fields": [
+        {
+          "name": "id",
+          "type": "BigAutoField",
+          "null": false,
+          "unique": true,
+          "related_model": null
+        },
+        {
+          "name": "series",
+          "type": "CharField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        },
+        {
+          "name": "year",
+          "type": "PositiveIntegerField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        },
+        {
+          "name": "next_number",
+          "type": "PositiveIntegerField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        }
+      ],
+      "constraints": [
+        "<UniqueConstraint: fields=('series', 'year') name='invoice_sequence_unique'>"
+      ]
+    },
+    {
+      "model": "billing.Invoice",
+      "table": "billing_invoice",
+      "fields": [
+        {
+          "name": "id",
+          "type": "BigAutoField",
+          "null": false,
+          "unique": true,
+          "related_model": null
+        },
+        {
+          "name": "sale",
+          "type": "OneToOneField",
+          "null": true,
+          "unique": true,
+          "related_model": "pos.Sale"
+        },
+        {
+          "name": "series",
+          "type": "CharField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        },
+        {
+          "name": "year",
+          "type": "PositiveIntegerField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        },
+        {
+          "name": "number",
+          "type": "PositiveIntegerField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        },
+        {
+          "name": "invoice_type",
+          "type": "CharField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        },
+        {
+          "name": "issued_at",
+          "type": "DateTimeField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        },
+        {
+          "name": "issuer",
+          "type": "JSONField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        },
+        {
+          "name": "customer",
+          "type": "JSONField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        },
+        {
+          "name": "total",
+          "type": "DecimalField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        },
+        {
+          "name": "net_total",
+          "type": "DecimalField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        },
+        {
+          "name": "tax_total",
+          "type": "DecimalField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        },
+        {
+          "name": "rectifies",
+          "type": "ForeignKey",
+          "null": true,
+          "unique": false,
+          "related_model": "billing.Invoice"
+        },
+        {
+          "name": "reason",
+          "type": "CharField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        },
+        {
+          "name": "fiscal_mode",
+          "type": "CharField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        },
+        {
+          "name": "created_by",
+          "type": "ForeignKey",
+          "null": false,
+          "unique": false,
+          "related_model": "accounts.User"
+        }
+      ],
+      "constraints": [
+        "<UniqueConstraint: fields=('series', 'year', 'number') name='invoice_number_unique'>"
+      ]
+    },
+    {
+      "model": "billing.InvoiceLine",
+      "table": "billing_invoiceline",
+      "fields": [
+        {
+          "name": "id",
+          "type": "BigAutoField",
+          "null": false,
+          "unique": true,
+          "related_model": null
+        },
+        {
+          "name": "invoice",
+          "type": "ForeignKey",
+          "null": false,
+          "unique": false,
+          "related_model": "billing.Invoice"
+        },
+        {
+          "name": "description",
+          "type": "CharField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        },
+        {
+          "name": "quantity",
+          "type": "DecimalField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        },
+        {
+          "name": "unit_price",
+          "type": "DecimalField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        },
+        {
+          "name": "discount_percent",
+          "type": "DecimalField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        },
+        {
+          "name": "tax_rate",
+          "type": "DecimalField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        },
+        {
+          "name": "net_total",
+          "type": "DecimalField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        },
+        {
+          "name": "tax_total",
+          "type": "DecimalField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        },
+        {
+          "name": "total",
+          "type": "DecimalField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        }
+      ],
+      "constraints": []
+    },
+    {
+      "model": "billing.Refund",
+      "table": "billing_refund",
+      "fields": [
+        {
+          "name": "id",
+          "type": "BigAutoField",
+          "null": false,
+          "unique": true,
+          "related_model": null
+        },
+        {
+          "name": "invoice",
+          "type": "OneToOneField",
+          "null": false,
+          "unique": true,
+          "related_model": "billing.Invoice"
+        },
+        {
+          "name": "method",
+          "type": "CharField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        },
+        {
+          "name": "amount",
+          "type": "DecimalField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        },
+        {
+          "name": "cash_session",
+          "type": "ForeignKey",
+          "null": true,
+          "unique": false,
+          "related_model": "cash.CashSession"
+        },
+        {
+          "name": "reference",
+          "type": "CharField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        },
+        {
+          "name": "actor",
+          "type": "ForeignKey",
+          "null": false,
+          "unique": false,
+          "related_model": "accounts.User"
+        }
+      ],
+      "constraints": []
+    },
+    {
+      "model": "verifactu.FiscalRecord",
+      "table": "verifactu_fiscalrecord",
+      "fields": [
+        {
+          "name": "id",
+          "type": "BigAutoField",
+          "null": false,
+          "unique": true,
+          "related_model": null
+        },
+        {
+          "name": "invoice",
+          "type": "ForeignKey",
+          "null": false,
+          "unique": false,
+          "related_model": "billing.Invoice"
+        },
+        {
+          "name": "record_type",
+          "type": "CharField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        },
+        {
+          "name": "previous",
+          "type": "OneToOneField",
+          "null": true,
+          "unique": true,
+          "related_model": "verifactu.FiscalRecord"
+        },
+        {
+          "name": "fingerprint",
+          "type": "CharField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        },
+        {
+          "name": "canonical_payload",
+          "type": "TextField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        },
+        {
+          "name": "generated_at",
+          "type": "CharField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        },
+        {
+          "name": "created_at",
+          "type": "DateTimeField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        },
+        {
+          "name": "xml",
+          "type": "TextField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        }
+      ],
+      "constraints": []
+    },
+    {
+      "model": "verifactu.FiscalOutbox",
+      "table": "verifactu_fiscaloutbox",
+      "fields": [
+        {
+          "name": "id",
+          "type": "BigAutoField",
+          "null": false,
+          "unique": true,
+          "related_model": null
+        },
+        {
+          "name": "record",
+          "type": "OneToOneField",
+          "null": false,
+          "unique": true,
+          "related_model": "verifactu.FiscalRecord"
+        },
+        {
+          "name": "status",
+          "type": "CharField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        },
+        {
+          "name": "attempts",
+          "type": "PositiveIntegerField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        },
+        {
+          "name": "next_attempt_at",
+          "type": "DateTimeField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        },
+        {
+          "name": "lease_until",
+          "type": "DateTimeField",
+          "null": true,
+          "unique": false,
+          "related_model": null
+        },
+        {
+          "name": "last_error",
+          "type": "CharField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        }
+      ],
+      "constraints": []
+    },
+    {
+      "model": "verifactu.FiscalTransmission",
+      "table": "verifactu_fiscaltransmission",
+      "fields": [
+        {
+          "name": "id",
+          "type": "BigAutoField",
+          "null": false,
+          "unique": true,
+          "related_model": null
+        },
+        {
+          "name": "outbox",
+          "type": "ForeignKey",
+          "null": false,
+          "unique": false,
+          "related_model": "verifactu.FiscalOutbox"
+        },
+        {
+          "name": "requested_at",
+          "type": "DateTimeField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        },
+        {
+          "name": "response",
+          "type": "TextField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        },
+        {
+          "name": "status",
+          "type": "CharField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        }
+      ],
+      "constraints": []
+    },
+    {
+      "model": "hardware.Printer",
+      "table": "hardware_printer",
+      "fields": [
+        {
+          "name": "id",
+          "type": "BigAutoField",
+          "null": false,
+          "unique": true,
+          "related_model": null
+        },
+        {
+          "name": "name",
+          "type": "CharField",
+          "null": false,
+          "unique": true,
+          "related_model": null
+        },
+        {
+          "name": "connection_type",
+          "type": "CharField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        },
+        {
+          "name": "address",
+          "type": "CharField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        },
+        {
+          "name": "port",
+          "type": "PositiveIntegerField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        },
+        {
+          "name": "usb_vendor",
+          "type": "PositiveIntegerField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        },
+        {
+          "name": "usb_product",
+          "type": "PositiveIntegerField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        },
+        {
+          "name": "usb_endpoint",
+          "type": "PositiveIntegerField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        },
+        {
+          "name": "encoding",
+          "type": "CharField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        },
+        {
+          "name": "codepage",
+          "type": "PositiveSmallIntegerField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        },
+        {
+          "name": "enabled",
+          "type": "BooleanField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        }
+      ],
+      "constraints": []
+    },
+    {
+      "model": "hardware.PrintJob",
+      "table": "hardware_printjob",
+      "fields": [
+        {
+          "name": "id",
+          "type": "BigAutoField",
+          "null": false,
+          "unique": true,
+          "related_model": null
+        },
+        {
+          "name": "invoice",
+          "type": "ForeignKey",
+          "null": true,
+          "unique": false,
+          "related_model": "billing.Invoice"
+        },
+        {
+          "name": "printer",
+          "type": "ForeignKey",
+          "null": true,
+          "unique": false,
+          "related_model": "hardware.Printer"
+        },
+        {
+          "name": "kind",
+          "type": "CharField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        },
+        {
+          "name": "status",
+          "type": "CharField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        },
+        {
+          "name": "attempts",
+          "type": "PositiveIntegerField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        },
+        {
+          "name": "payload",
+          "type": "BinaryField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        },
+        {
+          "name": "open_drawer",
+          "type": "BooleanField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        },
+        {
+          "name": "requested_by",
+          "type": "ForeignKey",
+          "null": false,
+          "unique": false,
+          "related_model": "accounts.User"
+        },
+        {
+          "name": "created_at",
+          "type": "DateTimeField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        },
+        {
+          "name": "sent_at",
+          "type": "DateTimeField",
+          "null": true,
+          "unique": false,
+          "related_model": null
+        },
+        {
+          "name": "lease_until",
+          "type": "DateTimeField",
+          "null": true,
+          "unique": false,
+          "related_model": null
+        },
+        {
+          "name": "last_error",
+          "type": "CharField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        }
+      ],
+      "constraints": [
+        "<UniqueConstraint: fields=('invoice',) name='one_original_print_per_invoice' condition=(AND: ('kind', 'RECEIPT'))>"
+      ]
+    },
+    {
+      "model": "hardware.HardwareEvent",
+      "table": "hardware_hardwareevent",
+      "fields": [
+        {
+          "name": "id",
+          "type": "BigAutoField",
+          "null": false,
+          "unique": true,
+          "related_model": null
+        },
+        {
+          "name": "job",
+          "type": "ForeignKey",
+          "null": true,
+          "unique": false,
+          "related_model": "hardware.PrintJob"
+        },
+        {
+          "name": "printer",
+          "type": "ForeignKey",
+          "null": true,
+          "unique": false,
+          "related_model": "hardware.Printer"
+        },
+        {
+          "name": "action",
+          "type": "CharField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        },
+        {
+          "name": "message",
+          "type": "CharField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        },
+        {
+          "name": "created_at",
+          "type": "DateTimeField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        }
+      ],
+      "constraints": []
+    },
+    {
+      "model": "support.SupportSession",
+      "table": "support_supportsession",
+      "fields": [
+        {
+          "name": "id",
+          "type": "BigAutoField",
+          "null": false,
+          "unique": true,
+          "related_model": null
+        },
+        {
+          "name": "actor",
+          "type": "ForeignKey",
+          "null": false,
+          "unique": false,
+          "related_model": "accounts.User"
+        },
+        {
+          "name": "approved_by",
+          "type": "ForeignKey",
+          "null": false,
+          "unique": false,
+          "related_model": "accounts.User"
+        },
+        {
+          "name": "justification",
+          "type": "CharField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        },
+        {
+          "name": "scope",
+          "type": "CharField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        },
+        {
+          "name": "created_at",
+          "type": "DateTimeField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        },
+        {
+          "name": "expires_at",
+          "type": "DateTimeField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        },
+        {
+          "name": "revoked_at",
+          "type": "DateTimeField",
+          "null": true,
+          "unique": false,
+          "related_model": null
+        }
+      ],
+      "constraints": []
+    },
+    {
+      "model": "support.BackupRun",
+      "table": "support_backuprun",
+      "fields": [
+        {
+          "name": "id",
+          "type": "BigAutoField",
+          "null": false,
+          "unique": true,
+          "related_model": null
+        },
+        {
+          "name": "filename",
+          "type": "CharField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        },
+        {
+          "name": "sha256",
+          "type": "CharField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        },
+        {
+          "name": "created_at",
+          "type": "DateTimeField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        },
+        {
+          "name": "created_by",
+          "type": "ForeignKey",
+          "null": true,
+          "unique": false,
+          "related_model": "accounts.User"
+        },
+        {
+          "name": "status",
+          "type": "CharField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        }
+      ],
+      "constraints": []
+    },
+    {
+      "model": "support.UpdateRun",
+      "table": "support_updaterun",
+      "fields": [
+        {
+          "name": "id",
+          "type": "BigAutoField",
+          "null": false,
+          "unique": true,
+          "related_model": null
+        },
+        {
+          "name": "version",
+          "type": "CharField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        },
+        {
+          "name": "package_sha256",
+          "type": "CharField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        },
+        {
+          "name": "status",
+          "type": "CharField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        },
+        {
+          "name": "created_at",
+          "type": "DateTimeField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        },
+        {
+          "name": "note",
+          "type": "CharField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        }
+      ],
+      "constraints": []
+    },
+    {
+      "model": "support.TechnicalSettings",
+      "table": "support_technicalsettings",
+      "fields": [
+        {
+          "name": "id",
+          "type": "BigAutoField",
+          "null": false,
+          "unique": true,
+          "related_model": null
+        },
+        {
+          "name": "backup_retention_days",
+          "type": "PositiveIntegerField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        },
+        {
+          "name": "backup_interval_hours",
+          "type": "PositiveIntegerField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        },
+        {
+          "name": "updates_channel",
+          "type": "CharField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        },
+        {
+          "name": "maintenance",
+          "type": "BooleanField",
+          "null": false,
+          "unique": false,
+          "related_model": null
+        }
+      ],
+      "constraints": []
+    }
+  ],
+  "functions": [
+    {
+      "file": "apps/accounts/middleware.py",
+      "name": "__init__",
+      "line": 13,
+      "decorators": []
+    },
+    {
+      "file": "apps/accounts/middleware.py",
+      "name": "sensitive",
+      "line": 17,
+      "decorators": [
+        "staticmethod"
+      ]
+    },
+    {
+      "file": "apps/accounts/middleware.py",
+      "name": "__call__",
+      "line": 25,
+      "decorators": []
+    },
+    {
+      "file": "apps/accounts/models.py",
+      "name": "create_superuser",
+      "line": 11,
+      "decorators": []
+    },
+    {
+      "file": "apps/accounts/models.py",
+      "name": "set_pin",
+      "line": 27,
+      "decorators": []
+    },
+    {
+      "file": "apps/accounts/models.py",
+      "name": "check_pin",
+      "line": 37,
+      "decorators": []
+    },
+    {
+      "file": "apps/accounts/models.py",
+      "name": "locked",
+      "line": 48,
+      "decorators": [
+        "property"
+      ]
+    },
+    {
+      "file": "apps/accounts/models.py",
+      "name": "fail",
+      "line": 51,
+      "decorators": []
+    },
+    {
+      "file": "apps/accounts/permissions.py",
+      "name": "require_role",
+      "line": 9,
+      "decorators": []
+    },
+    {
+      "file": "apps/accounts/permissions.py",
+      "name": "require_elevated",
+      "line": 17,
+      "decorators": []
+    },
+    {
+      "file": "apps/accounts/permissions.py",
+      "name": "role_required",
+      "line": 23,
+      "decorators": []
+    },
+    {
+      "file": "apps/accounts/permissions.py",
+      "name": "decorate",
+      "line": 24,
+      "decorators": []
+    },
+    {
+      "file": "apps/accounts/permissions.py",
+      "name": "wrapped",
+      "line": 26,
+      "decorators": [
+        "wraps(view)"
+      ]
+    },
+    {
+      "file": "apps/accounts/services.py",
+      "name": "_throttle_keys",
+      "line": 16,
+      "decorators": []
+    },
+    {
+      "file": "apps/accounts/services.py",
+      "name": "authenticate_local",
+      "line": 24,
+      "decorators": [
+        "transaction.atomic"
+      ]
+    },
+    {
+      "file": "apps/accounts/services.py",
+      "name": "authorize_user_change",
+      "line": 54,
+      "decorators": []
+    },
+    {
+      "file": "apps/accounts/services.py",
+      "name": "create_user",
+      "line": 67,
+      "decorators": [
+        "transaction.atomic"
+      ]
+    },
+    {
+      "file": "apps/accounts/services.py",
+      "name": "update_user",
+      "line": 86,
+      "decorators": [
+        "transaction.atomic"
+      ]
+    },
+    {
+      "file": "apps/accounts/services.py",
+      "name": "elevation_expiry",
+      "line": 112,
+      "decorators": []
+    },
+    {
+      "file": "apps/accounts/views.py",
+      "name": "login_view",
+      "line": 14,
+      "decorators": [
+        "require_http_methods(['GET', 'POST'])"
+      ]
+    },
+    {
+      "file": "apps/accounts/views.py",
+      "name": "logout_view",
+      "line": 42,
+      "decorators": [
+        "require_POST"
+      ]
+    },
+    {
+      "file": "apps/accounts/views.py",
+      "name": "elevate_view",
+      "line": 50,
+      "decorators": [
+        "login_required",
+        "require_http_methods(['GET', 'POST'])"
+      ]
+    },
+    {
+      "file": "apps/audit/models.py",
+      "name": "update",
+      "line": 7,
+      "decorators": []
+    },
+    {
+      "file": "apps/audit/models.py",
+      "name": "delete",
+      "line": 10,
+      "decorators": []
+    },
+    {
+      "file": "apps/audit/models.py",
+      "name": "bulk_update",
+      "line": 13,
+      "decorators": []
+    },
+    {
+      "file": "apps/audit/models.py",
+      "name": "save",
+      "line": 31,
+      "decorators": []
+    },
+    {
+      "file": "apps/audit/models.py",
+      "name": "delete",
+      "line": 36,
+      "decorators": []
+    },
+    {
+      "file": "apps/audit/services.py",
+      "name": "record",
+      "line": 24,
+      "decorators": []
+    },
+    {
+      "file": "apps/audit/views.py",
+      "name": "index",
+      "line": 10,
+      "decorators": [
+        "role_required('ADMIN', elevated=True)"
+      ]
+    },
+    {
+      "file": "apps/billing/models.py",
+      "name": "update",
+      "line": 7,
+      "decorators": []
+    },
+    {
+      "file": "apps/billing/models.py",
+      "name": "delete",
+      "line": 10,
+      "decorators": []
+    },
+    {
+      "file": "apps/billing/models.py",
+      "name": "save",
+      "line": 20,
+      "decorators": []
+    },
+    {
+      "file": "apps/billing/models.py",
+      "name": "delete",
+      "line": 25,
+      "decorators": []
+    },
+    {
+      "file": "apps/billing/models.py",
+      "name": "full_number",
+      "line": 70,
+      "decorators": [
+        "property"
+      ]
+    },
+    {
+      "file": "apps/billing/models.py",
+      "name": "public_number",
+      "line": 74,
+      "decorators": [
+        "property"
+      ]
+    },
+    {
+      "file": "apps/billing/models.py",
+      "name": "__str__",
+      "line": 77,
+      "decorators": []
+    },
+    {
+      "file": "apps/billing/services.py",
+      "name": "production_guard",
+      "line": 18,
+      "decorators": []
+    },
+    {
+      "file": "apps/billing/services.py",
+      "name": "_number",
+      "line": 38,
+      "decorators": []
+    },
+    {
+      "file": "apps/billing/services.py",
+      "name": "issue_invoice",
+      "line": 46,
+      "decorators": [
+        "transaction.atomic"
+      ]
+    },
+    {
+      "file": "apps/billing/services.py",
+      "name": "rectify_invoice",
+      "line": 120,
+      "decorators": [
+        "transaction.atomic"
+      ]
+    },
+    {
+      "file": "apps/billing/services.py",
+      "name": "render_pdf",
+      "line": 188,
+      "decorators": []
+    },
+    {
+      "file": "apps/billing/views.py",
+      "name": "invoice_list",
+      "line": 17,
+      "decorators": [
+        "login_required"
+      ]
+    },
+    {
+      "file": "apps/billing/views.py",
+      "name": "_invoice",
+      "line": 25,
+      "decorators": []
+    },
+    {
+      "file": "apps/billing/views.py",
+      "name": "invoice_detail",
+      "line": 36,
+      "decorators": [
+        "login_required"
+      ]
+    },
+    {
+      "file": "apps/billing/views.py",
+      "name": "invoice_pdf",
+      "line": 54,
+      "decorators": [
+        "login_required"
+      ]
+    },
+    {
+      "file": "apps/billing/views.py",
+      "name": "rectify",
+      "line": 63,
+      "decorators": [
+        "login_required",
+        "require_POST"
+      ]
+    },
+    {
+      "file": "apps/billing/views.py",
+      "name": "reprint",
+      "line": 87,
+      "decorators": [
+        "login_required",
+        "require_POST"
+      ]
+    },
+    {
+      "file": "apps/cash/models.py",
+      "name": "__str__",
+      "line": 13,
+      "decorators": []
+    },
+    {
+      "file": "apps/cash/models.py",
+      "name": "expected_balance",
+      "line": 49,
+      "decorators": [
+        "property"
+      ]
+    },
+    {
+      "file": "apps/cash/models.py",
+      "name": "__str__",
+      "line": 64,
+      "decorators": []
+    },
+    {
+      "file": "apps/cash/services.py",
+      "name": "_amount",
+      "line": 12,
+      "decorators": []
+    },
+    {
+      "file": "apps/cash/services.py",
+      "name": "open_session",
+      "line": 20,
+      "decorators": [
+        "transaction.atomic"
+      ]
+    },
+    {
+      "file": "apps/cash/services.py",
+      "name": "add_movement",
+      "line": 32,
+      "decorators": [
+        "transaction.atomic"
+      ]
+    },
+    {
+      "file": "apps/cash/services.py",
+      "name": "close_session",
+      "line": 48,
+      "decorators": [
+        "transaction.atomic"
+      ]
+    },
+    {
+      "file": "apps/cash/views.py",
+      "name": "index",
+      "line": 13,
+      "decorators": [
+        "role_required('EMPLOYEE')"
+      ]
+    },
+    {
+      "file": "apps/cash/views.py",
+      "name": "open",
+      "line": 27,
+      "decorators": [
+        "require_POST",
+        "role_required('EMPLOYEE')"
+      ]
+    },
+    {
+      "file": "apps/cash/views.py",
+      "name": "movement",
+      "line": 41,
+      "decorators": [
+        "require_POST",
+        "role_required('MANAGER')"
+      ]
+    },
+    {
+      "file": "apps/cash/views.py",
+      "name": "close",
+      "line": 57,
+      "decorators": [
+        "require_POST",
+        "role_required('MANAGER')"
+      ]
+    },
+    {
+      "file": "apps/catalog/models.py",
+      "name": "__str__",
+      "line": 12,
+      "decorators": []
+    },
+    {
+      "file": "apps/catalog/models.py",
+      "name": "__str__",
+      "line": 42,
+      "decorators": []
+    },
+    {
+      "file": "apps/catalog/views.py",
+      "name": "index",
+      "line": 15,
+      "decorators": [
+        "role_required('ADMIN')"
+      ]
+    },
+    {
+      "file": "apps/catalog/views.py",
+      "name": "edit",
+      "line": 27,
+      "decorators": [
+        "role_required('ADMIN')"
+      ]
+    },
+    {
+      "file": "apps/catalog/views.py",
+      "name": "category",
+      "line": 38,
+      "decorators": [
+        "role_required('ADMIN')"
+      ]
+    },
+    {
+      "file": "apps/catalog/views.py",
+      "name": "delete_category",
+      "line": 59,
+      "decorators": [
+        "require_POST",
+        "role_required('ADMIN')"
+      ]
+    },
+    {
+      "file": "apps/core/guards.py",
+      "name": "require_operational",
+      "line": 7,
+      "decorators": []
+    },
+    {
+      "file": "apps/core/management/commands/bootstrap.py",
+      "name": "handle",
+      "line": 13,
+      "decorators": [
+        "transaction.atomic"
+      ]
+    },
+    {
+      "file": "apps/core/models.py",
+      "name": "save",
+      "line": 19,
+      "decorators": []
+    },
+    {
+      "file": "apps/core/models.py",
+      "name": "load",
+      "line": 24,
+      "decorators": [
+        "classmethod"
+      ]
+    },
+    {
+      "file": "apps/core/models.py",
+      "name": "__str__",
+      "line": 27,
+      "decorators": []
+    },
+    {
+      "file": "apps/core/views.py",
+      "name": "settings",
+      "line": 11,
+      "decorators": [
+        "role_required('ADMIN', elevated=True)"
+      ]
+    },
+    {
+      "file": "apps/customers/models.py",
+      "name": "__str__",
+      "line": 18,
+      "decorators": []
+    },
+    {
+      "file": "apps/customers/views.py",
+      "name": "index",
+      "line": 19,
+      "decorators": [
+        "role_required('EMPLOYEE')"
+      ]
+    },
+    {
+      "file": "apps/customers/views.py",
+      "name": "edit",
+      "line": 56,
+      "decorators": [
+        "role_required('EMPLOYEE')"
+      ]
+    },
+    {
+      "file": "apps/customers/views.py",
+      "name": "detail",
+      "line": 68,
+      "decorators": [
+        "role_required('EMPLOYEE')"
+      ]
+    },
+    {
+      "file": "apps/customers/views.py",
+      "name": "delete",
+      "line": 85,
+      "decorators": [
+        "require_POST",
+        "role_required('ADMIN', elevated=True)"
+      ]
+    },
+    {
+      "file": "apps/hardware/drivers.py",
+      "name": "send",
+      "line": 15,
+      "decorators": []
+    },
+    {
+      "file": "apps/hardware/escpos.py",
+      "name": "safe_text",
+      "line": 10,
+      "decorators": []
+    },
+    {
+      "file": "apps/hardware/escpos.py",
+      "name": "qr_command",
+      "line": 15,
+      "decorators": []
+    },
+    {
+      "file": "apps/hardware/escpos.py",
+      "name": "render_receipt",
+      "line": 31,
+      "decorators": []
+    },
+    {
+      "file": "apps/hardware/escpos.py",
+      "name": "render_test",
+      "line": 72,
+      "decorators": []
+    },
+    {
+      "file": "apps/hardware/management/commands/hardware_bridge.py",
+      "name": "add_arguments",
+      "line": 15,
+      "decorators": []
+    },
+    {
+      "file": "apps/hardware/management/commands/hardware_bridge.py",
+      "name": "handle",
+      "line": 18,
+      "decorators": []
+    },
+    {
+      "file": "apps/hardware/management/commands/hardware_bridge.py",
+      "name": "run_locked",
+      "line": 26,
+      "decorators": []
+    },
+    {
+      "file": "apps/hardware/management/commands/hardware_bridge.py",
+      "name": "do_POST",
+      "line": 34,
+      "decorators": []
+    },
+    {
+      "file": "apps/hardware/management/commands/hardware_bridge.py",
+      "name": "log_message",
+      "line": 56,
+      "decorators": []
+    },
+    {
+      "file": "apps/hardware/management/commands/hardware_worker.py",
+      "name": "add_arguments",
+      "line": 12,
+      "decorators": []
+    },
+    {
+      "file": "apps/hardware/management/commands/hardware_worker.py",
+      "name": "handle",
+      "line": 16,
+      "decorators": []
+    },
+    {
+      "file": "apps/hardware/management/commands/hardware_worker.py",
+      "name": "run_locked",
+      "line": 24,
+      "decorators": []
+    },
+    {
+      "file": "apps/hardware/models.py",
+      "name": "__str__",
+      "line": 25,
+      "decorators": []
+    },
+    {
+      "file": "apps/hardware/models.py",
+      "name": "save",
+      "line": 68,
+      "decorators": []
+    },
+    {
+      "file": "apps/hardware/services.py",
+      "name": "enqueue_invoice",
+      "line": 17,
+      "decorators": [
+        "transaction.atomic"
+      ]
+    },
+    {
+      "file": "apps/hardware/services.py",
+      "name": "enqueue_test",
+      "line": 58,
+      "decorators": [
+        "transaction.atomic"
+      ]
+    },
+    {
+      "file": "apps/hardware/services.py",
+      "name": "retry_job",
+      "line": 77,
+      "decorators": [
+        "transaction.atomic"
+      ]
+    },
+    {
+      "file": "apps/hardware/services.py",
+      "name": "recover_expired",
+      "line": 95,
+      "decorators": []
+    },
+    {
+      "file": "apps/hardware/services.py",
+      "name": "process_job",
+      "line": 102,
+      "decorators": []
+    },
+    {
+      "file": "apps/hardware/views.py",
+      "name": "reprint",
+      "line": 14,
+      "decorators": [
+        "require_POST",
+        "role_required('EMPLOYEE')"
+      ]
+    },
+    {
+      "file": "apps/hardware/views.py",
+      "name": "test_printer",
+      "line": 26,
+      "decorators": [
+        "require_POST",
+        "role_required('SUPERADMIN', elevated=True)"
+      ]
+    },
+    {
+      "file": "apps/hardware/views.py",
+      "name": "retry",
+      "line": 36,
+      "decorators": [
+        "require_POST",
+        "role_required('SUPERADMIN', elevated=True)"
+      ]
+    },
+    {
+      "file": "apps/layout/models.py",
+      "name": "__str__",
+      "line": 12,
+      "decorators": []
+    },
+    {
+      "file": "apps/layout/models.py",
+      "name": "__str__",
+      "line": 25,
+      "decorators": []
+    },
+    {
+      "file": "apps/layout/models.py",
+      "name": "delete",
+      "line": 28,
+      "decorators": []
+    },
+    {
+      "file": "apps/layout/views.py",
+      "name": "index",
+      "line": 15,
+      "decorators": [
+        "role_required('ADMIN')"
+      ]
+    },
+    {
+      "file": "apps/layout/views.py",
+      "name": "section_create",
+      "line": 30,
+      "decorators": [
+        "require_POST",
+        "role_required('ADMIN')"
+      ]
+    },
+    {
+      "file": "apps/layout/views.py",
+      "name": "station_edit",
+      "line": 40,
+      "decorators": [
+        "role_required('ADMIN')"
+      ]
+    },
+    {
+      "file": "apps/layout/views.py",
+      "name": "station_delete",
+      "line": 58,
+      "decorators": [
+        "require_POST",
+        "role_required('ADMIN')"
+      ]
+    },
+    {
+      "file": "apps/pos/models.py",
+      "name": "money",
+      "line": 11,
+      "decorators": []
+    },
+    {
+      "file": "apps/pos/models.py",
+      "name": "update",
+      "line": 16,
+      "decorators": []
+    },
+    {
+      "file": "apps/pos/models.py",
+      "name": "delete",
+      "line": 19,
+      "decorators": []
+    },
+    {
+      "file": "apps/pos/models.py",
+      "name": "save",
+      "line": 29,
+      "decorators": []
+    },
+    {
+      "file": "apps/pos/models.py",
+      "name": "delete",
+      "line": 34,
+      "decorators": []
+    },
+    {
+      "file": "apps/pos/models.py",
+      "name": "total",
+      "line": 70,
+      "decorators": [
+        "property"
+      ]
+    },
+    {
+      "file": "apps/pos/models.py",
+      "name": "delete",
+      "line": 73,
+      "decorators": []
+    },
+    {
+      "file": "apps/pos/models.py",
+      "name": "total",
+      "line": 103,
+      "decorators": [
+        "property"
+      ]
+    },
+    {
+      "file": "apps/pos/models.py",
+      "name": "net_total",
+      "line": 107,
+      "decorators": [
+        "property"
+      ]
+    },
+    {
+      "file": "apps/pos/models.py",
+      "name": "tax_total",
+      "line": 111,
+      "decorators": [
+        "property"
+      ]
+    },
+    {
+      "file": "apps/pos/models.py",
+      "name": "save",
+      "line": 114,
+      "decorators": []
+    },
+    {
+      "file": "apps/pos/models.py",
+      "name": "delete",
+      "line": 119,
+      "decorators": []
+    },
+    {
+      "file": "apps/pos/models.py",
+      "name": "customer",
+      "line": 134,
+      "decorators": [
+        "property"
+      ]
+    },
+    {
+      "file": "apps/pos/models.py",
+      "name": "change",
+      "line": 156,
+      "decorators": [
+        "property"
+      ]
+    },
+    {
+      "file": "apps/pos/services.py",
+      "name": "decimal_value",
+      "line": 19,
+      "decorators": []
+    },
+    {
+      "file": "apps/pos/services.py",
+      "name": "_lock_ticket",
+      "line": 29,
+      "decorators": []
+    },
+    {
+      "file": "apps/pos/services.py",
+      "name": "open_ticket",
+      "line": 43,
+      "decorators": [
+        "transaction.atomic"
+      ]
+    },
+    {
+      "file": "apps/pos/services.py",
+      "name": "add_line",
+      "line": 58,
+      "decorators": [
+        "transaction.atomic"
+      ]
+    },
+    {
+      "file": "apps/pos/services.py",
+      "name": "update_line",
+      "line": 87,
+      "decorators": [
+        "transaction.atomic"
+      ]
+    },
+    {
+      "file": "apps/pos/services.py",
+      "name": "remove_line",
+      "line": 109,
+      "decorators": [
+        "transaction.atomic"
+      ]
+    },
+    {
+      "file": "apps/pos/services.py",
+      "name": "set_customer",
+      "line": 117,
+      "decorators": [
+        "transaction.atomic"
+      ]
+    },
+    {
+      "file": "apps/pos/services.py",
+      "name": "cancel_ticket",
+      "line": 126,
+      "decorators": [
+        "transaction.atomic"
+      ]
+    },
+    {
+      "file": "apps/pos/services.py",
+      "name": "checkout",
+      "line": 135,
+      "decorators": [
+        "transaction.atomic"
+      ]
+    },
+    {
+      "file": "apps/pos/views.py",
+      "name": "_error",
+      "line": 18,
+      "decorators": []
+    },
+    {
+      "file": "apps/pos/views.py",
+      "name": "_version",
+      "line": 27,
+      "decorators": []
+    },
+    {
+      "file": "apps/pos/views.py",
+      "name": "floor",
+      "line": 36,
+      "decorators": [
+        "role_required('EMPLOYEE')"
+      ]
+    },
+    {
+      "file": "apps/pos/views.py",
+      "name": "open_station",
+      "line": 49,
+      "decorators": [
+        "require_POST",
+        "role_required('EMPLOYEE')"
+      ]
+    },
+    {
+      "file": "apps/pos/views.py",
+      "name": "ticket",
+      "line": 58,
+      "decorators": [
+        "role_required('EMPLOYEE')"
+      ]
+    },
+    {
+      "file": "apps/pos/views.py",
+      "name": "add_line",
+      "line": 85,
+      "decorators": [
+        "require_POST",
+        "role_required('EMPLOYEE')"
+      ]
+    },
+    {
+      "file": "apps/pos/views.py",
+      "name": "update_line",
+      "line": 103,
+      "decorators": [
+        "require_POST",
+        "role_required('EMPLOYEE')"
+      ]
+    },
+    {
+      "file": "apps/pos/views.py",
+      "name": "remove_line",
+      "line": 120,
+      "decorators": [
+        "require_POST",
+        "role_required('MANAGER')"
+      ]
+    },
+    {
+      "file": "apps/pos/views.py",
+      "name": "cancel_ticket",
+      "line": 131,
+      "decorators": [
+        "require_POST",
+        "role_required('MANAGER')"
+      ]
+    },
+    {
+      "file": "apps/pos/views.py",
+      "name": "customer",
+      "line": 143,
+      "decorators": [
+        "require_POST",
+        "role_required('EMPLOYEE')"
+      ]
+    },
+    {
+      "file": "apps/pos/views.py",
+      "name": "checkout",
+      "line": 159,
+      "decorators": [
+        "require_POST",
+        "role_required('EMPLOYEE')"
+      ]
+    },
+    {
+      "file": "apps/reports/views.py",
+      "name": "index",
+      "line": 17,
+      "decorators": [
+        "role_required('MANAGER')"
+      ]
+    },
+    {
+      "file": "apps/support/management/commands/operations_worker.py",
+      "name": "add_arguments",
+      "line": 18,
+      "decorators": []
+    },
+    {
+      "file": "apps/support/management/commands/operations_worker.py",
+      "name": "handle",
+      "line": 22,
+      "decorators": []
+    },
+    {
+      "file": "apps/support/management/commands/operations_worker.py",
+      "name": "run_locked",
+      "line": 30,
+      "decorators": []
+    },
+    {
+      "file": "apps/support/management/commands/reconcile_restore.py",
+      "name": "add_arguments",
+      "line": 19,
+      "decorators": []
+    },
+    {
+      "file": "apps/support/management/commands/reconcile_restore.py",
+      "name": "handle",
+      "line": 24,
+      "decorators": []
+    },
+    {
+      "file": "apps/support/middleware.py",
+      "name": "__init__",
+      "line": 8,
+      "decorators": []
+    },
+    {
+      "file": "apps/support/middleware.py",
+      "name": "__call__",
+      "line": 11,
+      "decorators": []
+    },
+    {
+      "file": "apps/support/models.py",
+      "name": "active",
+      "line": 20,
+      "decorators": [
+        "property"
+      ]
+    },
+    {
+      "file": "apps/support/models.py",
+      "name": "load",
+      "line": 47,
+      "decorators": [
+        "classmethod"
+      ]
+    },
+    {
+      "file": "apps/support/operations.py",
+      "name": "backup_key",
+      "line": 16,
+      "decorators": []
+    },
+    {
+      "file": "apps/support/operations.py",
+      "name": "backup_directory",
+      "line": 25,
+      "decorators": []
+    },
+    {
+      "file": "apps/support/operations.py",
+      "name": "hold_path",
+      "line": 33,
+      "decorators": []
+    },
+    {
+      "file": "apps/support/operations.py",
+      "name": "service_lock",
+      "line": 38,
+      "decorators": [
+        "contextmanager"
+      ]
+    },
+    {
+      "file": "apps/support/operations.py",
+      "name": "exclusive_operation",
+      "line": 118,
+      "decorators": [
+        "contextmanager"
+      ]
+    },
+    {
+      "file": "apps/support/operations.py",
+      "name": "create_backup",
+      "line": 123,
+      "decorators": []
+    },
+    {
+      "file": "apps/support/operations.py",
+      "name": "inspect_backup",
+      "line": 178,
+      "decorators": []
+    },
+    {
+      "file": "apps/support/operations.py",
+      "name": "restore_backup",
+      "line": 190,
+      "decorators": []
+    },
+    {
+      "file": "apps/support/services.py",
+      "name": "authorize_support",
+      "line": 22,
+      "decorators": []
+    },
+    {
+      "file": "apps/support/services.py",
+      "name": "active_authorization",
+      "line": 45,
+      "decorators": []
+    },
+    {
+      "file": "apps/support/services.py",
+      "name": "require_authorization",
+      "line": 55,
+      "decorators": []
+    },
+    {
+      "file": "apps/support/services.py",
+      "name": "diagnostics",
+      "line": 63,
+      "decorators": []
+    },
+    {
+      "file": "apps/support/services.py",
+      "name": "aeat_connectivity",
+      "line": 103,
+      "decorators": []
+    },
+    {
+      "file": "apps/support/updates.py",
+      "name": "validate_package",
+      "line": 29,
+      "decorators": []
+    },
+    {
+      "file": "apps/support/updates.py",
+      "name": "apply_update",
+      "line": 71,
+      "decorators": []
+    },
+    {
+      "file": "apps/support/views.py",
+      "name": "index",
+      "line": 32,
+      "decorators": [
+        "role_required('SUPERADMIN', elevated=True)"
+      ]
+    },
+    {
+      "file": "apps/support/views.py",
+      "name": "authorize",
+      "line": 57,
+      "decorators": [
+        "require_POST",
+        "role_required('SUPERADMIN', elevated=True)"
+      ]
+    },
+    {
+      "file": "apps/support/views.py",
+      "name": "revoke",
+      "line": 75,
+      "decorators": [
+        "require_POST",
+        "role_required('SUPERADMIN', elevated=True)"
+      ]
+    },
+    {
+      "file": "apps/support/views.py",
+      "name": "diagnostic",
+      "line": 85,
+      "decorators": [
+        "require_POST",
+        "role_required('SUPERADMIN', elevated=True)"
+      ]
+    },
+    {
+      "file": "apps/support/views.py",
+      "name": "export_diagnostics",
+      "line": 95,
+      "decorators": [
+        "role_required('SUPERADMIN', elevated=True)"
+      ]
+    },
+    {
+      "file": "apps/support/views.py",
+      "name": "backup",
+      "line": 106,
+      "decorators": [
+        "require_POST",
+        "role_required('SUPERADMIN', elevated=True)"
+      ]
+    },
+    {
+      "file": "apps/support/views.py",
+      "name": "backup_download",
+      "line": 129,
+      "decorators": [
+        "role_required('SUPERADMIN', elevated=True)"
+      ]
+    },
+    {
+      "file": "apps/support/views.py",
+      "name": "printer_save",
+      "line": 140,
+      "decorators": [
+        "role_required('SUPERADMIN', elevated=True)"
+      ]
+    },
+    {
+      "file": "apps/support/views.py",
+      "name": "recover_fiscal",
+      "line": 153,
+      "decorators": [
+        "require_POST",
+        "role_required('SUPERADMIN', elevated=True)"
+      ]
+    },
+    {
+      "file": "apps/support/views.py",
+      "name": "correct_fiscal",
+      "line": 170,
+      "decorators": [
+        "require_POST",
+        "role_required('SUPERADMIN', elevated=True)"
+      ]
+    },
+    {
+      "file": "apps/support/views.py",
+      "name": "technical_settings",
+      "line": 184,
+      "decorators": [
+        "role_required('SUPERADMIN', elevated=True)"
+      ]
+    },
+    {
+      "file": "apps/support/views.py",
+      "name": "updates",
+      "line": 195,
+      "decorators": [
+        "role_required('SUPERADMIN', elevated=True)"
+      ]
+    },
+    {
+      "file": "apps/support/views.py",
+      "name": "users",
+      "line": 207,
+      "decorators": [
+        "role_required('ADMIN', elevated=True)"
+      ]
+    },
+    {
+      "file": "apps/support/views.py",
+      "name": "user_edit",
+      "line": 238,
+      "decorators": [
+        "role_required('ADMIN', elevated=True)"
+      ]
+    },
+    {
+      "file": "apps/support/views.py",
+      "name": "logs",
+      "line": 271,
+      "decorators": [
+        "role_required('SUPERADMIN', elevated=True)"
+      ]
+    },
+    {
+      "file": "apps/verifactu/management/commands/send_fiscal.py",
+      "name": "add_arguments",
+      "line": 9,
+      "decorators": []
+    },
+    {
+      "file": "apps/verifactu/management/commands/send_fiscal.py",
+      "name": "handle",
+      "line": 12,
+      "decorators": []
+    },
+    {
+      "file": "apps/verifactu/management/commands/send_fiscal.py",
+      "name": "run_locked",
+      "line": 20,
+      "decorators": []
+    },
+    {
+      "file": "apps/verifactu/protocol.py",
+      "name": "canonical_hash",
+      "line": 40,
+      "decorators": []
+    },
+    {
+      "file": "apps/verifactu/protocol.py",
+      "name": "fiscal_date",
+      "line": 47,
+      "decorators": []
+    },
+    {
+      "file": "apps/verifactu/protocol.py",
+      "name": "qr_url",
+      "line": 54,
+      "decorators": []
+    },
+    {
+      "file": "apps/verifactu/protocol.py",
+      "name": "child",
+      "line": 74,
+      "decorators": []
+    },
+    {
+      "file": "apps/verifactu/protocol.py",
+      "name": "build_xml",
+      "line": 81,
+      "decorators": []
+    },
+    {
+      "file": "apps/verifactu/protocol.py",
+      "name": "validate_xml",
+      "line": 170,
+      "decorators": []
+    },
+    {
+      "file": "apps/verifactu/protocol.py",
+      "name": "soap_envelope",
+      "line": 181,
+      "decorators": []
+    },
+    {
+      "file": "apps/verifactu/protocol.py",
+      "name": "validate_response",
+      "line": 190,
+      "decorators": []
+    },
+    {
+      "file": "apps/verifactu/protocol.py",
+      "name": "parse_response",
+      "line": 216,
+      "decorators": []
+    },
+    {
+      "file": "apps/verifactu/protocol.py",
+      "name": "resolve",
+      "line": 162,
+      "decorators": []
+    },
+    {
+      "file": "apps/verifactu/services.py",
+      "name": "create_record",
+      "line": 29,
+      "decorators": [
+        "transaction.atomic"
+      ]
+    },
+    {
+      "file": "apps/verifactu/services.py",
+      "name": "verify_chain",
+      "line": 64,
+      "decorators": []
+    },
+    {
+      "file": "apps/verifactu/services.py",
+      "name": "correct_rejected",
+      "line": 84,
+      "decorators": [
+        "transaction.atomic"
+      ]
+    },
+    {
+      "file": "apps/verifactu/services.py",
+      "name": "annul_record",
+      "line": 103,
+      "decorators": [
+        "transaction.atomic"
+      ]
+    },
+    {
+      "file": "apps/verifactu/services.py",
+      "name": "send_one",
+      "line": 119,
+      "decorators": []
+    },
+    {
+      "file": "scripts/backup.py",
+      "name": "main",
+      "line": 7,
+      "decorators": []
+    },
+    {
+      "file": "scripts/check.py",
+      "name": "main",
+      "line": 8,
+      "decorators": []
+    },
+    {
+      "file": "scripts/install.py",
+      "name": "main",
+      "line": 12,
+      "decorators": []
+    },
+    {
+      "file": "scripts/package_release.py",
+      "name": "build_package",
+      "line": 16,
+      "decorators": []
+    },
+    {
+      "file": "scripts/restore.py",
+      "name": "main",
+      "line": 6,
+      "decorators": []
+    },
+    {
+      "file": "scripts/runtime.py",
+      "name": "load_instance",
+      "line": 27,
+      "decorators": []
+    },
+    {
+      "file": "scripts/service.py",
+      "name": "main",
+      "line": 9,
+      "decorators": []
+    },
+    {
+      "file": "scripts/update.py",
+      "name": "main",
+      "line": 6,
+      "decorators": []
+    }
+  ],
+  "templates": [
+    {
+      "file": "templates/403.html",
+      "named_links": [],
+      "literal_links": [
+        "/elevar/",
+        "/tpv/"
+      ],
+      "forms": 0,
+      "htmx": []
+    },
+    {
+      "file": "templates/404.html",
+      "named_links": [],
+      "literal_links": [
+        "/tpv/"
+      ],
+      "forms": 0,
+      "htmx": []
+    },
+    {
+      "file": "templates/500.html",
+      "named_links": [],
+      "literal_links": [
+        "/tpv/"
+      ],
+      "forms": 0,
+      "htmx": []
+    },
+    {
+      "file": "templates/accounts/elevate.html",
+      "named_links": [],
+      "literal_links": [],
+      "forms": 1,
+      "htmx": []
+    },
+    {
+      "file": "templates/accounts/login.html",
+      "named_links": [],
+      "literal_links": [],
+      "forms": 1,
+      "htmx": []
+    },
+    {
+      "file": "templates/audit/index.html",
+      "named_links": [],
+      "literal_links": [],
+      "forms": 1,
+      "htmx": []
+    },
+    {
+      "file": "templates/base.html",
+      "named_links": [
+        "accounts:logout"
+      ],
+      "literal_links": [
+        "/auditoria/",
+        "/caja/",
+        "/catalogo/",
+        "/clientes/",
+        "/empresa/",
+        "/facturas/",
+        "/informes/",
+        "/plano/configuracion/",
+        "/soporte/",
+        "/tpv/",
+        "/usuarios/"
+      ],
+      "forms": 1,
+      "htmx": []
+    },
+    {
+      "file": "templates/billing/detail.html",
+      "named_links": [
+        "billing:pdf",
+        "billing:rectify",
+        "billing:reprint"
+      ],
+      "literal_links": [
+        "/facturas/"
+      ],
+      "forms": 2,
+      "htmx": []
+    },
+    {
+      "file": "templates/billing/index.html",
+      "named_links": [
+        "billing:detail"
+      ],
+      "literal_links": [],
+      "forms": 0,
+      "htmx": []
+    },
+    {
+      "file": "templates/billing/list.html",
+      "named_links": [],
+      "literal_links": [],
+      "forms": 0,
+      "htmx": []
+    },
+    {
+      "file": "templates/cash/index.html",
+      "named_links": [
+        "cash:close",
+        "cash:movement",
+        "cash:open"
+      ],
+      "literal_links": [],
+      "forms": 3,
+      "htmx": []
+    },
+    {
+      "file": "templates/catalog/categories.html",
+      "named_links": [
+        "catalog:category",
+        "catalog:category_delete",
+        "catalog:category_edit",
+        "catalog:index"
+      ],
+      "literal_links": [],
+      "forms": 2,
+      "htmx": []
+    },
+    {
+      "file": "templates/catalog/form.html",
+      "named_links": [
+        "catalog:index"
+      ],
+      "literal_links": [],
+      "forms": 1,
+      "htmx": []
+    },
+    {
+      "file": "templates/catalog/index.html",
+      "named_links": [
+        "catalog:category",
+        "catalog:create",
+        "catalog:edit"
+      ],
+      "literal_links": [],
+      "forms": 0,
+      "htmx": []
+    },
+    {
+      "file": "templates/core/form.html",
+      "named_links": [],
+      "literal_links": [],
+      "forms": 0,
+      "htmx": []
+    },
+    {
+      "file": "templates/core/settings.html",
+      "named_links": [],
+      "literal_links": [],
+      "forms": 1,
+      "htmx": []
+    },
+    {
+      "file": "templates/customers/detail.html",
+      "named_links": [
+        "billing:detail",
+        "customers:delete",
+        "customers:edit",
+        "customers:index"
+      ],
+      "literal_links": [],
+      "forms": 1,
+      "htmx": []
+    },
+    {
+      "file": "templates/customers/form.html",
+      "named_links": [
+        "customers:index"
+      ],
+      "literal_links": [],
+      "forms": 1,
+      "htmx": []
+    },
+    {
+      "file": "templates/customers/index.html",
+      "named_links": [
+        "customers:create",
+        "customers:detail",
+        "customers:edit"
+      ],
+      "literal_links": [],
+      "forms": 1,
+      "htmx": []
+    },
+    {
+      "file": "templates/error.html",
+      "named_links": [],
+      "literal_links": [
+        "/tpv/"
+      ],
+      "forms": 0,
+      "htmx": []
+    },
+    {
+      "file": "templates/errors/operation.html",
+      "named_links": [],
+      "literal_links": [
+        "/tpv/"
+      ],
+      "forms": 0,
+      "htmx": []
+    },
+    {
+      "file": "templates/includes/form.html",
+      "named_links": [],
+      "literal_links": [],
+      "forms": 0,
+      "htmx": []
+    },
+    {
+      "file": "templates/layout/form.html",
+      "named_links": [
+        "layout:index"
+      ],
+      "literal_links": [],
+      "forms": 1,
+      "htmx": []
+    },
+    {
+      "file": "templates/layout/index.html",
+      "named_links": [
+        "layout:section_create",
+        "layout:station_create",
+        "layout:station_delete",
+        "layout:station_edit"
+      ],
+      "literal_links": [
+        "/tpv/"
+      ],
+      "forms": 3,
+      "htmx": []
+    },
+    {
+      "file": "templates/pos/floor.html",
+      "named_links": [
+        "pos:floor",
+        "pos:open_station"
+      ],
+      "literal_links": [
+        "/caja/",
+        "/plano/configuracion/"
+      ],
+      "forms": 1,
+      "htmx": [
+        "{% url 'pos:floor' %}"
+      ]
+    },
+    {
+      "file": "templates/pos/ticket.html",
+      "named_links": [
+        "pos:add_line",
+        "pos:cancel_ticket",
+        "pos:checkout",
+        "pos:customer",
+        "pos:floor",
+        "pos:remove_line",
+        "pos:update_line"
+      ],
+      "literal_links": [],
+      "forms": 6,
+      "htmx": []
+    },
+    {
+      "file": "templates/reports/index.html",
+      "named_links": [
+        "billing:detail"
+      ],
+      "literal_links": [],
+      "forms": 1,
+      "htmx": []
+    },
+    {
+      "file": "templates/support/index.html",
+      "named_links": [
+        "accounts:elevate",
+        "hardware:retry",
+        "hardware:test",
+        "support:authorize",
+        "support:backup",
+        "support:backup_download",
+        "support:correct_fiscal",
+        "support:diagnostic",
+        "support:diagnostics_export",
+        "support:printer_edit",
+        "support:printer_save",
+        "support:recover_fiscal",
+        "support:revoke"
+      ],
+      "literal_links": [
+        "/soporte/actualizaciones/",
+        "/soporte/ajustes/",
+        "/soporte/logs/"
+      ],
+      "forms": 11,
+      "htmx": []
+    },
+    {
+      "file": "templates/support/settings.html",
+      "named_links": [],
+      "literal_links": [
+        "/soporte/"
+      ],
+      "forms": 1,
+      "htmx": []
+    },
+    {
+      "file": "templates/support/updates.html",
+      "named_links": [],
+      "literal_links": [
+        "/soporte/"
+      ],
+      "forms": 0,
+      "htmx": []
+    },
+    {
+      "file": "templates/support/user_edit.html",
+      "named_links": [],
+      "literal_links": [
+        "/usuarios/"
+      ],
+      "forms": 1,
+      "htmx": []
+    },
+    {
+      "file": "templates/support/users.html",
+      "named_links": [
+        "team:edit"
+      ],
+      "literal_links": [],
+      "forms": 1,
+      "htmx": []
+    }
+  ],
+  "commands": [
+    "apps/billing/management/commands/__init__.py",
+    "apps/core/management/commands/__init__.py",
+    "apps/core/management/commands/bootstrap.py",
+    "apps/hardware/management/commands/__init__.py",
+    "apps/hardware/management/commands/hardware_bridge.py",
+    "apps/hardware/management/commands/hardware_worker.py",
+    "apps/support/management/commands/__init__.py",
+    "apps/support/management/commands/operations_worker.py",
+    "apps/support/management/commands/reconcile_restore.py",
+    "apps/verifactu/management/commands/__init__.py",
+    "apps/verifactu/management/commands/send_fiscal.py",
+    "scripts/backup.py",
+    "scripts/check.py",
+    "scripts/install.py",
+    "scripts/package_release.py",
+    "scripts/restore.py",
+    "scripts/runtime.py",
+    "scripts/service.py",
+    "scripts/update.py"
+  ]
+}

@@ -36,3 +36,8 @@ Configure una clave Django única fuera del repositorio, hosts explícitos, `DEB
 ## Estado de revisión
 
 La suite `tests/test_security.py` cubre matriz de rangos, escalada, hash y bloqueo PIN, elevación, inmutabilidad de auditoría, evidencia de conciliación y autorización PII. La revisión transversal identificó correcciones adicionales de reimpresión, sesiones de caja obsoletas, protección de mantenimiento y procesos de restauración; el coordinador integra y verifica esos módulos. Los controles de la tabla son criterios de revisión: su mera inclusión no significa que la revisión externa haya pasado. El informe de release debe distinguir las evidencias ejecutadas y los controles pendientes.
+
+
+## Revisión integral posterior a 4ce821e
+
+Sesiones ligadas a versión de autenticación y credenciales/rol persistidos; acciones administrativas requieren elevación también en GET. Scopes PII se aplican a todos los métodos. Terminales de máquina usan token hash y lease; una cookie no autoriza el bridge. Triggers bloquean también INSERT OR REPLACE en historial protegido. Los tests negativos y sus límites están en `audit/SECURITY_FINDINGS.md` y en la matriz raíz `AUDITORIA_COMPLETA.md`.

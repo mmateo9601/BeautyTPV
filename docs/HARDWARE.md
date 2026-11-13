@@ -27,3 +27,16 @@ Comandos de verificación: `pytest -q tests/test_hardware.py`, `python manage.py
 ## Checklist físico pendiente E14
 
 Registrar fecha, operador, marca, modelo, firmware, conexión, VID/PID/endpoint o dirección, codepage, ancho y cajón compatible. Verificar: ticket 80 mm legible, acentos y euro, importes e impuestos, QR leído con lector independiente, corte, efectivo abre una vez, tarjeta no abre, copia no abre, desconexión antes/durante envío, recuperación UNKNOWN y reinicio worker sin doble apertura. Adjuntar fotos y evidencias sin datos personales. Gate físico BLOQUEADO hasta disponer de dispositivos.
+
+
+## Bridge remoto por terminal (auditoría)
+
+En `/soporte/terminales/`, crear una terminal activa y asignar un token aleatorio externo de 32 a 256 caracteres; solo se guarda su hash. Asociar la impresora a esa terminal y seleccionarla al acceder al TPV. El terminal del cobro determina la cola; el worker central no consume trabajos remotos.
+
+En el equipo conectado al dispositivo, instalar las dependencias del proyecto, configurar `BEAUTYTPV_TERMINAL_TOKEN` fuera del repositorio y ejecutar:
+
+```powershell
+python -m apps.hardware.agent --server https://servidor-del-negocio --terminal 1 --journal C:/BeautyTPV/agent-journal.json
+```
+
+Usar CA de confianza y cuenta OS con permisos mínimos. El journal debe estar en disco persistente con acceso restringido: se escribe antes de enviar bytes. Tras perder confirmación se recupera el ACK, nunca se repite automáticamente una entrega incierta. `DONE` significa transporte completado, no papel físicamente confirmado. Para desarrollo únicamente existe `--development-loopback`; no habilita HTTP remoto. No compartir SQLite. Registrar autoarranque y probarlo en el equipo real antes de aprobar el gate físico.
