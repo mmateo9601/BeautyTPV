@@ -6,6 +6,7 @@ from django.views.decorators.http import require_http_methods, require_POST
 from apps.audit.services import record
 
 from .forms import ElevateForm, LoginForm
+from .models import User
 from .services import authenticate_local, elevation_expiry
 
 
@@ -13,14 +14,28 @@ from .services import authenticate_local, elevation_expiry
 def login_view(request):
     form = LoginForm(request.POST or None)
     if request.method == "POST" and form.is_valid():
-        user = authenticate_local(form.cleaned_data["username"], form.cleaned_data["credential"], request.META.get("REMOTE_ADDR", "unknown"), password=form.cleaned_data["password_mode"], request=request)
+        user = authenticate_local(
+            form.cleaned_data["username"],
+            form.cleaned_data["credential"],
+            request.META.get("REMOTE_ADDR", "unknown"),
+            password=form.cleaned_data["password_mode"],
+            request=request,
+        )
         if user:
             login(request, user, backend="django.contrib.auth.backends.ModelBackend")
+            # Django preserves the session when the same user logs in again.
+            # A new PIN authentication must never inherit password elevation.
+            request.session.pop("elevated_until", None)
             if form.cleaned_data["password_mode"]:
                 request.session["elevated_until"] = elevation_expiry()
             return redirect("/tpv/")
         form.add_error(None, "Acceso no válido o temporalmente bloqueado.")
-    return render(request, "accounts/login.html", {"form": form})
+    users = (
+        User.objects.filter(is_active=True, role__in=["EMPLOYEE", "MANAGER"])
+        .exclude(pin_hash="")
+        .only("username")
+    )
+    return render(request, "accounts/login.html", {"form": form, "users": users})
 
 
 @require_POST
@@ -35,7 +50,13 @@ def logout_view(request):
 def elevate_view(request):
     form = ElevateForm(request.POST or None)
     if request.method == "POST" and form.is_valid():
-        user = authenticate_local(request.user.username, form.cleaned_data["password"], request.META.get("REMOTE_ADDR", "unknown"), password=True, request=request)
+        user = authenticate_local(
+            request.user.username,
+            form.cleaned_data["password"],
+            request.META.get("REMOTE_ADDR", "unknown"),
+            password=True,
+            request=request,
+        )
         if user:
             request.session.cycle_key()
             request.session["elevated_until"] = elevation_expiry()

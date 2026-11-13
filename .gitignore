@@ -10,3 +10,11 @@ backups/
 test-results/
 playwright-report/
 *.egg-info/
+
+*.service.lock
+*.fiscal-restore-hold
+*.btpv
+staticfiles/
+
+
+dist/

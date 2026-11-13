@@ -19,10 +19,13 @@ INSTALLED_APPS = [
 ]
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
+    "apps.support.middleware.MaintenanceMiddleware",
+    "apps.accounts.middleware.SupportPIIMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
@@ -35,6 +38,7 @@ TEMPLATES = [
         "OPTIONS": {
             "context_processors": [
                 "django.template.context_processors.request",
+                "config.context_processors.installation",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
             ]
@@ -81,3 +85,32 @@ HARDWARE_SIMULATOR = DEBUG
 
 AUTH_USER_MODEL = "accounts.User"
 INSTALLED_APPS += ["apps.accounts", "apps.audit"]
+
+INSTALLED_APPS += [
+    "apps.core",
+    "apps.layout",
+    "apps.catalog",
+    "apps.customers",
+    "apps.pos",
+    "apps.cash",
+    "apps.reports",
+    "apps.billing",
+    "apps.verifactu",
+]
+
+
+INSTALLED_APPS += ["apps.hardware"]
+
+INSTALLED_APPS += ["apps.support"]
+
+AEAT_CERTIFICATE = os.getenv("BEAUTYTPV_AEAT_CERTIFICATE", "")
+AEAT_PRIVATE_KEY = os.getenv("BEAUTYTPV_AEAT_PRIVATE_KEY", "")
+APP_VERSION = "0.1.0"
+
+# Enable only with a trusted loopback proxy that overwrites this header.
+if os.getenv("BEAUTYTPV_TRUST_PROXY", "0") == "1":
+    SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
+CSRF_TRUSTED_ORIGINS = [
+    value for value in os.getenv("BEAUTYTPV_CSRF_TRUSTED_ORIGINS", "").split(",") if value
+]
+SECURE_HSTS_SECONDS = int(os.getenv("BEAUTYTPV_HSTS_SECONDS", "0" if DEBUG else "31536000"))

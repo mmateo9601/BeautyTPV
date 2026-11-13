@@ -14,12 +14,17 @@ from .permissions import ROLE_RANK, require_role
 
 
 def _throttle_keys(username, origin):
-    return [hashlib.sha256(value.encode()).hexdigest() for value in (f"user:{username.casefold()}", f"origin:{origin}")]
+    return [
+        hashlib.sha256(value.encode()).hexdigest()
+        for value in (f"user:{username.casefold()}", f"origin:{origin}")
+    ]
 
 
 @transaction.atomic
 def authenticate_local(username, credential, origin, *, password=False, request=None):
-    gates = [LoginThrottle.objects.get_or_create(key=key)[0] for key in _throttle_keys(username, origin)]
+    gates = [
+        LoginThrottle.objects.get_or_create(key=key)[0] for key in _throttle_keys(username, origin)
+    ]
     if any(gate.locked for gate in gates):
         record(action="auth.locked", outcome="DENIED")
         return None
@@ -52,7 +57,9 @@ def authorize_user_change(actor, target=None, role=None):
     if desired not in User.Role.values:
         raise ValidationError("Rol inválido.")
     if actor.role != "SUPERADMIN":
-        if ROLE_RANK[desired] >= ROLE_RANK[actor.role] or (target and ROLE_RANK[target.role] >= ROLE_RANK[actor.role]):
+        if ROLE_RANK[desired] >= ROLE_RANK[actor.role] or (
+            target and ROLE_RANK[target.role] >= ROLE_RANK[actor.role]
+        ):
             raise PermissionDenied("Solo puede administrar usuarios de rango inferior.")
 
 
@@ -96,7 +103,9 @@ def update_user(actor, target, *, role=None, active=None, pin=None, password=Non
             LoginThrottle.objects.filter(key=key).update(failures=0, locked_until=None)
     target.full_clean()
     target.save()
-    record(actor, "user.updated", obj=target, metadata={"role": target.role, "previous_role": previous})
+    record(
+        actor, "user.updated", obj=target, metadata={"role": target.role, "previous_role": previous}
+    )
     return target
 
 

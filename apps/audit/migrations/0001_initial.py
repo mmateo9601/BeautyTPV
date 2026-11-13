@@ -6,7 +6,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
     dependencies = [
@@ -15,18 +14,31 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='AuditEvent',
+            name="AuditEvent",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('action', models.CharField(max_length=100)),
-                ('target', models.CharField(blank=True, max_length=160)),
-                ('outcome', models.CharField(default='SUCCESS', max_length=30)),
-                ('metadata', models.JSONField(default=dict)),
-                ('created_at', models.DateTimeField(auto_now_add=True, db_index=True)),
-                ('actor', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.PROTECT, to=settings.AUTH_USER_MODEL)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True, primary_key=True, serialize=False, verbose_name="ID"
+                    ),
+                ),
+                ("action", models.CharField(max_length=100)),
+                ("target", models.CharField(blank=True, max_length=160)),
+                ("outcome", models.CharField(default="SUCCESS", max_length=30)),
+                ("metadata", models.JSONField(default=dict)),
+                ("created_at", models.DateTimeField(auto_now_add=True, db_index=True)),
+                (
+                    "actor",
+                    models.ForeignKey(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.PROTECT,
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
             ],
             options={
-                'ordering': ['-created_at', '-pk'],
+                "ordering": ["-created_at", "-pk"],
             },
         ),
     ]

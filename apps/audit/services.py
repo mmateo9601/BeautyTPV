@@ -17,6 +17,7 @@ ALLOWED_METADATA = {
     "sale_id",
     "job_id",
     "file_id",
+    "sha256",
 }
 
 
@@ -27,6 +28,12 @@ def record(actor=None, action="", target="", metadata=None, obj=None, outcome="S
         actor = None
     clean = {}
     for key, value in (metadata or {}).items():
+        if key == "sha256" and (
+            not isinstance(value, str)
+            or len(value) != 64
+            or any(char not in "0123456789abcdefABCDEF" for char in value)
+        ):
+            continue
         if key in ALLOWED_METADATA and isinstance(value, (str, int, float, bool, type(None))):
             clean[key] = value[:500] if isinstance(value, str) else value
     return AuditEvent.objects.create(
