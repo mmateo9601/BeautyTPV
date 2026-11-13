@@ -1,0 +1,134 @@
+from datetime import timedelta
+
+from django.core.exceptions import PermissionDenied, ValidationError
+from django.db import transaction
+from django.db.models import F
+from django.utils import timezone
+
+from apps.accounts.permissions import require_role
+from apps.audit.services import record
+
+from .drivers import DeliveryUnknown, DriverUnavailable, send
+from .escpos import render_receipt, render_test
+from .models import HardwareEvent, Printer, PrintJob
+
+
+@transaction.atomic
+def enqueue_invoice(invoice, actor, open_drawer=False, copy=False):
+    from apps.core.guards import require_operational
+
+    require_operational()
+    require_role(actor, "EMPLOYEE")
+    if copy:
+        if actor.role == "EMPLOYEE" and invoice.created_by_id != actor.pk:
+            raise PermissionDenied("Solo puede reimprimir sus propias facturas.")
+        open_drawer = False
+    elif open_drawer:
+        if (
+            not invoice.sale_id
+            or not invoice.sale.payments.filter(method="CASH", amount__gt=0).exists()
+        ):
+            raise ValidationError("El cajón requiere un pago en efectivo.")
+    if not copy:
+        existing = PrintJob.objects.filter(invoice=invoice, kind="RECEIPT").first()
+        if existing:
+            return existing
+    printer = Printer.objects.filter(enabled=True).order_by("pk").first()
+    payload = render_receipt(
+        invoice,
+        copy=copy,
+        open_drawer=open_drawer,
+        encoding=printer.encoding if printer else "cp858",
+        codepage=printer.codepage if printer else 19,
+    )
+    job = PrintJob.objects.create(
+        invoice=invoice,
+        printer=printer,
+        kind="COPY" if copy else "RECEIPT",
+        payload=payload,
+        open_drawer=open_drawer,
+        requested_by=actor,
+    )
+    HardwareEvent.objects.create(job=job, printer=printer, action="ENQUEUED")
+    record(actor, "hardware.enqueued", obj=job)
+    return job
+
+
+@transaction.atomic
+def enqueue_test(printer, actor, drawer=False):
+    from apps.core.guards import require_operational
+
+    require_operational()
+    require_role(actor, "SUPERADMIN")
+    if not printer.enabled:
+        raise ValidationError("Dispositivo deshabilitado")
+    job = PrintJob.objects.create(
+        printer=printer,
+        kind="DRAWER" if drawer else "TEST",
+        requested_by=actor,
+        open_drawer=drawer,
+        payload=render_test(printer.encoding, printer.codepage, drawer),
+    )
+    record(actor, "hardware.test_drawer" if drawer else "hardware.test", obj=job)
+    return job
+
+
+@transaction.atomic
+def retry_job(job, actor, printer=None):
+    require_role(actor, "SUPERADMIN")
+    current = PrintJob.objects.get(pk=job.pk)
+    if current.status not in ["FAILED", "PENDING"]:
+        raise ValidationError(
+            "Solo reintentar fallos previos al envío. Entrega incierta requiere copia explícita sin cajón."
+        )
+    current.status = "PENDING"
+    current.last_error = ""
+    if printer is not None:
+        if not printer.enabled:
+            raise ValidationError("Dispositivo deshabilitado")
+        current.printer = printer
+    current.save(update_fields=["status", "last_error", "printer"])
+    record(actor, "hardware.retry", obj=current)
+    return current
+
+
+def recover_expired():
+    # Crash may have happened after the physical write. Never resend automatically.
+    return PrintJob.objects.filter(status="SENDING", lease_until__lt=timezone.now()).update(
+        status="UNKNOWN", last_error="Worker interrumpido: entrega incierta", lease_until=None
+    )
+
+
+def process_job(job_id):
+    from apps.core.guards import require_operational
+
+    require_operational()
+    now = timezone.now()
+    with transaction.atomic():
+        changed = PrintJob.objects.filter(
+            pk=job_id, status="PENDING", printer__enabled=True
+        ).update(
+            status="SENDING", attempts=F("attempts") + 1, lease_until=now + timedelta(seconds=60)
+        )
+        if not changed:
+            return False
+        job = PrintJob.objects.select_related("printer").get(pk=job_id)
+    try:
+        send(job.printer, job.payload)
+        status, error = "DONE", ""
+    except DriverUnavailable:
+        status, error = "FAILED", "Dispositivo no disponible antes del envío"
+    except DeliveryUnknown:
+        status, error = "UNKNOWN", "Entrega incierta; no reintentar automáticamente"
+    except Exception:
+        status, error = "UNKNOWN", "Error de driver; revisar entrega antes de reimprimir"
+    with transaction.atomic():
+        PrintJob.objects.filter(pk=job.pk, status="SENDING").update(
+            status=status,
+            last_error=error,
+            lease_until=None,
+            sent_at=timezone.now() if status == "DONE" else None,
+        )
+        HardwareEvent.objects.create(job=job, printer=job.printer, action=status, message=error)
+        record(None, "hardware.processed", obj=job, metadata={"status": status})
+    return status == "DONE"
