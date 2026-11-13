@@ -8,4 +8,5 @@ urlpatterns = [
     path("nuevo/", views.edit, name="create"),
     path("<int:pk>/", views.detail, name="detail"),
     path("<int:pk>/editar/", views.edit, name="edit"),
+    path("<int:pk>/eliminar/", views.delete, name="delete"),
 ]

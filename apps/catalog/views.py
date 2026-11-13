@@ -1,3 +1,6 @@
+from django.db import transaction
+from django.db.models.deletion import ProtectedError
+from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, redirect, render
 from django.views.decorators.http import require_POST
 
@@ -31,12 +34,36 @@ def edit(request, pk=None):
     return render(request, "catalog/form.html", {"form": form, "item": item})
 
 
-@require_POST
 @role_required("ADMIN")
-def category(request):
-    form = CategoryForm(request.POST)
-    if form.is_valid():
+def category(request, pk=None):
+    selected = get_object_or_404(Category, pk=pk) if pk else None
+    form = CategoryForm(request.POST or None, instance=selected)
+    if request.method == "POST" and form.is_valid():
         obj = form.save()
         record(request.user, "catalog.category", obj=obj)
-        return redirect("catalog:index")
-    return render(request, "catalog/form.html", {"form": form}, status=400)
+        return redirect("catalog:category")
+    return render(
+        request,
+        "catalog/categories.html",
+        {
+            "form": form,
+            "categories": Category.objects.all(),
+            "selected": selected,
+        },
+        status=400 if request.method == "POST" else 200,
+    )
+
+
+@require_POST
+@role_required("ADMIN")
+def delete_category(request, pk):
+    selected = get_object_or_404(Category, pk=pk)
+    try:
+        with transaction.atomic():
+            selected.delete()
+            record(request.user, "catalog.category.deleted", target=str(pk))
+    except ProtectedError:
+        return HttpResponse(
+            "La categoria tiene articulos. Reasignelos antes de eliminarla.", status=400
+        )
+    return redirect("catalog:category")

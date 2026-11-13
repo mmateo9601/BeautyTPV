@@ -287,3 +287,16 @@ def test_pdf_contains_snapshot_and_test_label(fiscal_sale):
     assert invoice.full_number in text
     assert "SIN VALIDEZ FISCAL PRODUCTIVA" in text
     assert "121.00" in text
+
+
+def test_official_sources_match_pinned_checksums():
+    import hashlib
+    import json
+    from pathlib import Path
+
+    from django.conf import settings
+
+    directory = Path(settings.BASE_DIR) / "schemas" / "aeat"
+    manifest = json.loads((directory / "manifest.json").read_text(encoding="utf-8"))
+    for name, source in manifest.items():
+        assert hashlib.sha256((directory / name).read_bytes()).hexdigest() == source["sha256"], name

@@ -1,0 +1,4 @@
+schemas/aeat/** -text
+static/vendor/** -text
+*.png binary
+*.pdf binary

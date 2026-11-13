@@ -44,3 +44,9 @@ Evidencia local del módulo: `.venv/Scripts/python -m pytest tests/test_fiscal.p
 Faltan certificado y autorización para pruebas oficiales, evidencias de aceptación/duplicado/rechazo/subsanación/anulación en AEAT, revisión experta de alcance/regímenes/impuestos y supuestos rectificativos, pruebas físicas de QR, revisión de presentación PDF/ticket de casos límite y firma/publicación de declaración responsable por el productor identificado. El módulo soporta IVA general sujeto S1, régimen 01; no declara soporte de exenciones, inversión de sujeto pasivo, regímenes especiales, IGIC/IPSI ni representación. No habilitar para empresas que requieran esos supuestos.
 
 La declaración responsable **no se emite ni se firma ficticiamente**. El productor deberá preparar documento con su identidad/NIF, producto y versión exacta, componentes, modalidad VERI*FACTU, instalación y fecha, descripción y afirmaciones exigibles tras revisión normativa vigente, firma del representante competente y acceso desde el sistema. El presente mapeo es evidencia técnica parcial, no una declaración de conformidad ni asesoramiento fiscal.
+
+
+Integridad de fuentes: `test_official_sources_match_pinned_checksums` verifica
+cada archivo oficial contra schemas/aeat/manifest.json. .gitattributes impide
+conversion de finales de linea de los esquemas en checkouts Windows. Suite final
+integrada: 112 pruebas correctas; la prueba de hashes no equivale a aceptacion AEAT.

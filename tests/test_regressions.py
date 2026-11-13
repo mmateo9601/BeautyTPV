@@ -134,3 +134,56 @@ def test_release_package_contains_versioned_schemas_without_runtime_data(tmp_pat
     assert manifest["version"] == "0.1.0"
     with zipfile.ZipFile(output) as archive:
         assert set(archive.namelist()) == {"README.md", "schemas/sample.xsd", "release.json"}
+
+
+def test_category_management_is_usable_and_protects_assigned_items(db, client):
+    from apps.catalog.models import Category
+
+    employee = User.objects.create_user(username="category-employee")
+    client.force_login(employee)
+    assert client.post("/catalogo/categorias/", {"name": "Cabina"}).status_code == 403
+    admin = User.objects.create_user(username="category-admin", role="ADMIN")
+    client.force_login(admin)
+    assert client.get("/catalogo/categorias/").status_code == 200
+    assert client.post("/catalogo/categorias/", {"name": "Cabina"}).status_code == 302
+    category = Category.objects.get(name="Cabina")
+    assert (
+        client.post(f"/catalogo/categorias/{category.pk}/", {"name": "Servicios"}).status_code
+        == 302
+    )
+    item = CatalogItem.objects.create(
+        name="Tratamiento", category=category, price="10", tax_rate="10"
+    )
+    assert client.post(f"/catalogo/categorias/{category.pk}/eliminar/").status_code == 400
+    item.category = None
+    item.save()
+    assert client.post(f"/catalogo/categorias/{category.pk}/eliminar/").status_code == 302
+
+
+def test_customer_export_and_unused_deletion_require_elevated_admin(db, client):
+    from django.utils import timezone
+
+    from apps.customers.models import Customer
+
+    employee = User.objects.create_user(username="customer-employee")
+    admin = User.objects.create_user(username="customer-admin", role="ADMIN")
+    customer = Customer.objects.create(name="=SUM(1,2)", phone="+34123456789")
+    client.force_login(employee)
+    assert client.get("/clientes/?format=csv").status_code == 403
+    assert client.post(f"/clientes/{customer.pk}/eliminar/").status_code == 403
+    client.force_login(admin)
+    assert client.get("/clientes/?format=csv").status_code == 403
+    session = client.session
+    session["elevated_until"] = timezone.now().timestamp() + 600
+    session.save()
+    response = client.get("/clientes/?format=csv")
+    assert response.status_code == 200
+    assert b"'=SUM" in response.content
+    assert b"'+34" in response.content
+    assert client.post(f"/clientes/{customer.pk}/eliminar/").status_code == 302
+    protected = Customer.objects.create(name="Con cuenta")
+    from apps.pos.models import OpenTicket
+
+    OpenTicket.objects.create(customer=protected, created_by=employee)
+    assert client.post(f"/clientes/{protected.pk}/eliminar/").status_code == 400
+    assert Customer.objects.filter(pk=protected.pk).exists()

@@ -24,3 +24,18 @@ Los informes muestran ventas por fechas, cobros e IVA y permiten exportar CSV ba
 Los controles tienen etiquetas, foco visible y objetivos táctiles. Usa Tab y Enter; el enlace inicial permite saltar al contenido. El plano se refresca con HTMX cada 20 segundos y funciona con formularios completos sin JavaScript. Bootstrap y HTMX se sirven localmente, sin conexión externa del navegador. Los errores se muestran en texto; si dos terminales cambian la misma cuenta, recarga para obtener su versión actual antes de continuar.
 
 La verificación con AEAT y las pruebas físicas de impresora/cajón se describen únicamente con sus evidencias en RELEASE_REPORT.md. Este manual no constituye prueba de esos dispositivos ni de conformidad fiscal.
+
+
+En Catálogo, Gestionar categorías permite crear, renombrar y eliminar categorías
+sin artículos; las categorías utilizadas están protegidas. Los artículos se
+retiran del catálogo desactivándolos, conservando sus snapshots históricos.
+
+En Clientes, un Administrador con identidad confirmada puede exportar CSV y
+eliminar una ficha sin historial. Empleados no pueden exportar ni borrar;
+las fichas vinculadas a cuentas se conservan protegidas. El CSV neutraliza
+fórmulas. Superadmin necesita además la autorización PII independiente.
+
+Soporte permite elegir la impresora de un trabajo pendiente, descargar copias
+cifradas, revocar autorizaciones, consultar logs saneados y solicitar subsanación
+de un rechazo sin cambiar el registro original. El diagnóstico de red TCP443 se
+activa mediante la casilla correspondiente; no envía una factura de prueba.

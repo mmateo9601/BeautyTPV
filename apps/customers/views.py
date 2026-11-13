@@ -1,7 +1,13 @@
-from django.db.models import Q
-from django.shortcuts import get_object_or_404, redirect, render
+import csv
 
-from apps.accounts.permissions import role_required
+from django.db import transaction
+from django.db.models import Q
+from django.db.models.deletion import ProtectedError
+from django.http import HttpResponse
+from django.shortcuts import get_object_or_404, redirect, render
+from django.views.decorators.http import require_POST
+
+from apps.accounts.permissions import require_elevated, require_role, role_required
 from apps.audit.services import record
 from apps.pos.models import Sale
 
@@ -15,6 +21,29 @@ def index(request):
     customers = Customer.objects.all()
     if query:
         customers = customers.filter(Q(name__icontains=query) | Q(phone__icontains=query))
+    if request.GET.get("format") == "csv":
+        require_role(request.user, "ADMIN")
+        require_elevated(request)
+        response = HttpResponse(content_type="text/csv; charset=utf-8")
+        response["Content-Disposition"] = 'attachment; filename="clientes.csv"'
+        writer = csv.writer(response)
+        writer.writerow(["Nombre", "Telefono", "Email", "NIF", "Domicilio"])
+        for customer in customers:
+            values = [
+                customer.name,
+                customer.phone,
+                customer.email,
+                customer.tax_id,
+                customer.address,
+            ]
+            writer.writerow(
+                [
+                    "'" + value if value.startswith(("=", "+", "-", "@", "\t", "\r")) else value
+                    for value in values
+                ]
+            )
+        record(request.user, "customer.export")
+        return response
     record(request.user, "customer.list")
     return render(
         request,
@@ -49,3 +78,16 @@ def detail(request, pk):
             .order_by("-created_at"),
         },
     )
+
+
+@require_POST
+@role_required("ADMIN", elevated=True)
+def delete(request, pk):
+    customer = get_object_or_404(Customer, pk=pk)
+    try:
+        with transaction.atomic():
+            customer.delete()
+            record(request.user, "customer.deleted", target=str(pk))
+    except ProtectedError:
+        return HttpResponse("Cliente con historial protegido: no puede eliminarse.", status=400)
+    return redirect("customers:index")
