@@ -1,6 +1,6 @@
 # Prompt para pegar en Codex
 
-Quiero que CONSTRUYAS el programa completo BeautyTPV en este repositorio, no solo que propongas una arquitectura. Lee obligatoriamente `AGENTS.md`, `PLAYBOOK.md` y `.codex/agents/*.toml`. Utiliza los 8 subagentes especializados, con un coordinador principal, y trabaja por fases y gates del playbook. Instala Django + Bootstrap 5 + HTMX, usa SQLite **desde el principio**, y crea una instalación local independiente por empresa: nada de SaaS.
+Quiero que CONSTRUYAS el programa completo BeautyTPV en este repositorio, no solo que propongas una arquitectura. Lee obligatoriamente `AGENTS.md`, `PLAYBOOK.md` y `.codex/agents/*.toml`. Utiliza los 8 subagentes especializados, con un coordinador principal, y trabaja por fases y gates del playbook, commit profesional al finalizar cada fase. Instala Django + Bootstrap 5 + HTMX, usa SQLite **desde el principio**, y crea una instalación local independiente por empresa: nada de SaaS.
 
 Entrega un TPV funcional de estética con plano tipo bar por secciones y puestos; cuentas persistentes; carrito de servicios y productos; pagos efectivo/tarjeta/mixto; caja, arqueo, informes, clientes, facturas, integración VERI*FACTU real, QR, impresora ESC/POS y cajón, auditoría, PIN, roles internos jerárquicos y un Superadmin completamente funcional (instalación, usuarios, ajustes técnicos, diagnóstico, dispositivos, backup/restore, actualizaciones, cola fiscal, logs, soporte auditado). El rol Cliente se reserva como acceso futuro, sin portal ni citas en V1.
 
