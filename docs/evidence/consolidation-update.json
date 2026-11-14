@@ -1,0 +1,29 @@
+{
+  "kind": "SYNTHETIC_DATA_REAL_FULL_PACKAGE_UPDATE",
+  "result": "PASS",
+  "package_version": "0.1.0-consolidation-test",
+  "package_sha256": "7ec85951d621d34c83373d8042f6cc8b5b08447c3190ca8759e46587e63b9cfe",
+  "migrate_check_collectstatic": "PASS",
+  "before": {
+    "sales": 1,
+    "invoices": 1,
+    "fingerprints": [
+      [
+        "AD4E0A1ED96721736EE0A12A6697F9D38097E9BE633879E8BBF972F930266654"
+      ]
+    ],
+    "integrity": "ok"
+  },
+  "after": {
+    "sales": 1,
+    "invoices": 1,
+    "fingerprints": [
+      [
+        "AD4E0A1ED96721736EE0A12A6697F9D38097E9BE633879E8BBF972F930266654"
+      ]
+    ],
+    "integrity": "ok"
+  },
+  "encrypted_pre_update_backup": true,
+  "scope": "Temporary deployment, preinstalled Python/venv; no production business or target-machine claim"
+}

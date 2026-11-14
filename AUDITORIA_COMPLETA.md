@@ -1,5 +1,7 @@
 # Auditoria integral de BeautyTPV
 
+Estado posterior vigente: [consolidación funcional V1 y aceptación final](docs/FINAL_ACCEPTANCE.md), código `e2a2b30`,836pruebas locales aprobadas y bloqueos externos explícitos. La auditoría siguiente conserva su referencia y resultados históricos.
+
 Referencia funcional: **4ce821e**. Correcciones y pruebas integradas en **7045b03**. El HEAD de partida0861517 solo cambiaba PROMPT_INICIAL_CODEX.md; se conserva ese cambio del usuario. Auditoria iniciada13-11-2026 y consolidada tras el cambio de fecha a14-11-2026. Los instantes exactos constan en JUnit y JSON.
 
 ## Dictamen

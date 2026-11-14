@@ -46,3 +46,14 @@ activa mediante la casilla correspondiente; no envía una factura de prueba.
 Al acceder, elegir terminal si está configurada. Las cuentas permiten notas por línea y filtro por categorías; guardar mantiene el carrito. Preparar el cobro conserva el estado «en cobro» y bloquea edición; volver a editar reabre explícitamente la cuenta. La venta rápida solo aparece si la empresa la habilita. El Administrador configura secciones, puestos y series con sesión elevada.
 
 Los informes permiten filtrar período, caja, método, empleado y artículo. Los filtros seleccionan operaciones completas: sus desgloses muestran todos los componentes de esas operaciones, sin repartir artificialmente impuestos. La devolución disponible es total mediante rectificativa; no hay devolución parcial ni cobro bancario integrado. El pago por tarjeta registra la confirmación del datáfono externo.
+
+
+## Consolidación V1: ajustes y gestión diaria
+
+Empresa tiene pestañas Salón/Fiscal/TPV que guardan solo sus campos. Salón incluye nombre/dirección comercial, teléfono, email, pie de comprobantes futuros y formulario independiente de logotipo. Fiscal mantiene razón social, NIF, domicilio, zona y series; tras emitir no puede reasignarse NIF ni instalación. Los datos comerciales impresos quedan congelados en cada factura.
+
+TPV permite Salvia/Océano, densidad, contraste y sección inicial. El inicio sigue siendo el plano y el selector permite acceder a todas las secciones. Categorías y artículos tienen orden; ocultar categoría impide nuevas adiciones incluso directas, conservando líneas/historial. Puestos tienen orden y no se desactivan/reasignan con cuentas abiertas.
+
+Desde Caja, el Admin elevado accede a Cajas del centro para alta, edición, terminal y actividad. No se desactiva/reasigna una caja con turno abierto. Apertura Employee previa preservada; cierre, arqueo y movimientos Manager. Las preferencias de terminal proponen caja/sección, sin conceder permisos.
+
+Manager/Admin gestionan Incidencias operativas: descripción sin datos personales, prioridad, actuaciones, resolución y reapertura justificada. Las actuaciones anteriores no se modifican ni borran. Superadmin usa además categorías técnicas con TECHNICAL y elevación.

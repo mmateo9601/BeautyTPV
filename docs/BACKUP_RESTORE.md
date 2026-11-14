@@ -28,3 +28,8 @@ powershell -File scripts/restore.ps1 -Instance C:/BeautyTPV/instance.json -Archi
 7. Reinicie y pruebe caja, facturas y colas antes de reabrir el centro.
 
 Pruebas automatizadas en `tests/test_backup.py`: copia cifrada/restauración en DB nueva, corrupción/clave errónea, confirmación offline, exclusión de servicio, copia previa y retención fiscal. Ensayo operacional periódico debe constar con fecha, responsable y evidencias.
+
+
+## Verificar sin restaurar
+
+La acción Verificar de una copia en Soporte exige elevación y BACKUP. Verifica SHA256, cifrado y contenido/integridad; audita éxito/fallo sin mantenimiento ni reemplazo SQLite. El logo PNG se guarda en SQLite y queda incluido en la copia. Preparar restauración conserva el procedimiento offline/lock/hold/conciliación descrito antes.

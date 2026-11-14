@@ -23,3 +23,12 @@ Terminales: `/soporte/terminales/` administra actividad/token y la asignación d
 Restauración: `/soporte/restauracion/` verifica una copia registrada, muestra diferencias fiscales y prepara mantenimiento con confirmación `PREPARAR RESTAURACION`. No reemplaza una BD viva por HTTP. Seguir el procedimiento CLI offline, conservar acuses y conciliar antes de retirar el hold. Desbloquear PIN se realiza desde Equipo con autorización jerárquica; el bloqueo por origen exige soporte técnico.
 
 Cambiar rol, actividad, PIN o contraseña revoca sesiones existentes. Reactivar un usuario no recupera sus concesiones anteriores. El panel distingue supervisión real de ejecución sin supervisor; workers caídos no se presentan como sanos.
+
+
+## Controles añadidos en la consolidación
+
+Equipo incluye filtros y edición de nombre. Revocar sesiones exige REVOCAR SESIONES: invalida sesiones y concesiones conservando credenciales; autorrevocar exige nuevo acceso. Admin solo inferiores; Superadmin también Superadmins.
+
+Terminales configuran caja activa propia/compartida y sección preferida. Impresoras permiten corte y cajón: se aplican a bytes nuevos sin reescribir intención previa. Durante SENDING no se cambia destino/terminal. Incidencias técnicas requieren elevación y TECHNICAL; no pegar XML/logs/claves/tarjetas/datos personales. Los patrones de rechazo no son detección universal: el operador debe evitar cualquier dato identificable.
+
+Verificar backup comprueba hash/autenticación/integridad y audita sin mantenimiento ni reemplazo de BD; es distinto de Preparar restauración. Diagnóstico muestra Python/Django/dependencias reales. Filtros de usuarios/terminales/colas actúan sobre DB.

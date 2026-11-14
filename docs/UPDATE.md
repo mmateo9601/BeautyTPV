@@ -41,3 +41,8 @@ CLI correctos. Esto no verifica una actualización de un negocio en producción.
 ## Límites comprobados en la auditoría
 
 El preflight valida rutas, SHA256 y dependencias fijadas antes de escribir. Un entorno incompatible aborta; no se promete rollback automático del venv. El rollback de código cubre también errores parciales de IO y `release.json`, preservando la BD y el hold. La versión se obtiene del paquete instalado o `release.json`. El historial y las evidencias están en `AUDITORIA_COMPLETA.md`; la comprobación remota de un catálogo de versiones no se ofrece en V1.
+
+
+## Ensayo de consolidación
+
+`evidence/consolidation-update.json` procede de un paquete completo aplicado realmente en copia temporal con factura: preflight, backup cifrado, migrate/check/collectstatic y huellas conservadas. No representa una actualización del salón/equipo ni cambia la versión comercial por el identificador sintético de prueba.

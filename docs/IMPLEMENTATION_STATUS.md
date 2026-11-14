@@ -100,3 +100,16 @@ Base `5dc936a`/`7045b03`, 697 casos históricos. Se leyó la nueva petición, AG
 Inventario constató faltas de ajustes comerciales/logo/preferencias, orden y visibilidad, cajas configurables, incidencias y revocación explícita. Priorización y contrato: `consolidation/PLAN.md`, `CONSOLIDATION_CONTRACTS.md`. No se reconstruye ni elimina historial; apertura de caja Employee previa preservada, cierre/movimientos Manager. Matrices de cierre se completan al integrar.
 
 Comprobación intermedia: Django check0, drift0, Ruff limpio276archivos. Especialistas verificaron revocación83PASS y hardware44PASS antes de integrar los nuevos campos. Las primeras pruebas durante escritura de modelos detectaron columnas aún sin migraciones; se repitieron tras generar las migraciones. QA independiente detectó ocultación de categoría insuficiente y terminal obsoleta en caja, asignadas para corrección; no se reducen aserciones. Aún no es gate final.
+
+
+## Consolidación funcional V1 — cierre 14-11-2026
+
+Estado vigente: [FINAL_ACCEPTANCE.md](FINAL_ACCEPTANCE.md). **836 PASS, 0 fallos/errores/omitidas, 288,21s; 14 Chromium**. JUnit: `evidence/consolidation-final-tests.xml`. Reemplaza las cifras históricas de112/697 como resultado actual, conservadas abajo para trazabilidad.
+
+Implementación `e2a2b30`; contratos fasesA/B `5303f99`. Ajustes categorizados Salón/Fiscal/TPV y logo PNG seguro; datos impresos congelados; identidad fiscal protegida tras emitir; orden/visibilidad; CRUD cajas/terminal; incidencias con actuaciones protegidas; revocación de sesiones; verificación independiente de backup; diagnósticos y filtros reales. Clientes tienen servicio protegido también sin HTTP. Siete migraciones aditivas aplicadas sin drift. No se reconstruye ni borra historia.
+
+Django check0, migrate sin pendientes, makemigrations sin cambios; Ruff limpio/283formateados; pip check limpio. Instalación nueva, upgrade desde4ce821e, backup/restoreCLI y actualización real de paquete en copias temporales PASS, con historia/huellas preservadas. Python/venv ya preparado; no se afirma máquina virgen. Dos avisos de pytest documentados, sin fallos. La primera integración detectó ambigüedad de filtro caja; corregida, E01 y suite repetidos sin quitar aserciones.
+
+Matriz funcional, permisos de84rutas/servicios, CRUD, ajustes, Superadmin y revisión visual en los siete entregables exigidos. Inventario actual84rutas,35modelos,324funciones,38plantillas,23comandos. QA independiente reprodujo y verificó corrección de categoría oculta agregable y terminal obsoleta de caja. Capturas escritorio/tablet/estrecho inspeccionadas por frontend y coordinador; PDF revisado visualmente.
+
+**BLOQUEADO EXTERNO:** certificado/autorización/acuses oficiales AEAT; revisión experta y declaración responsable firmada; dispositivos físicos/papel80mm/QR/cajón; TLS/LAN/autoarranque/custodia y conciliación real en destino; aceptación con personas del salón. CI remota no ejecutada. El guard productivo permanece activo. Fiscalidad: IVA S1/01,F1/F2,rectificación totalR1/R5; sin ampliación silenciosa. Logo de interfaz, sin promesa de raster ESC/POS. Versiones por paquete local verificado, sin feed remoto.

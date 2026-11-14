@@ -40,3 +40,10 @@ python -m apps.hardware.agent --server https://servidor-del-negocio --terminal 1
 ```
 
 Usar CA de confianza y cuenta OS con permisos mínimos. El journal debe estar en disco persistente con acceso restringido: se escribe antes de enviar bytes. Tras perder confirmación se recupera el ACK, nunca se repite automáticamente una entrega incierta. `DONE` significa transporte completado, no papel físicamente confirmado. Para desarrollo únicamente existe `--development-loopback`; no habilita HTTP remoto. No compartir SQLite. Registrar autoarranque y probarlo en el equipo real antes de aprobar el gate físico.
+
+
+## Preferencias consolidadas
+
+Corte y cajón se configuran por impresora y afectan solo trabajos nuevos. Cajón deshabilitado impide también su prueba. Cambiar preferencia no altera bytes ya persistidos. Durante SENDING no se cambia destino/terminal; UNKNOWN sigue requiriendo revisión sin reenvío automático. Corte/pulso/modelo reales: BLOQUEADO EXTERNO.
+
+Nombre comercial/contacto/dirección/pie se congelan en Invoice.issuer y se mantienen al reimprimir/rectificar. El logotipo es de la interfaz; no se promete renderizado ESC/POS de imágenes en V1.

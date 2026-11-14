@@ -1,5 +1,7 @@
 # BeautyTPV
 
+Estado de consolidación: [aceptación y matrices completas](docs/FINAL_ACCEPTANCE.md). **836 pruebas locales aprobadas**; producción fiscal y validación física siguen bloqueadas externamente.
+
 TPV local para un centro de estética: una instalación y una base SQLite por empresa. Django 5.2, Bootstrap 5 y HTMX vendorizados; servidor LAN y navegadores de puestos. No SaaS ni portal de clientes V1.
 
 ## Arranque de desarrollo
@@ -40,4 +42,4 @@ powershell -File scripts/start.ps1 -Instance "$env:LOCALAPPDATA/BeautyTPV/instan
 
 Las evidencias y límites definitivos están en [IMPLEMENTATION_STATUS](docs/IMPLEMENTATION_STATUS.md), [ACCEPTANCE_MATRIX](docs/ACCEPTANCE_MATRIX.md), [VERIFACTU_COMPLIANCE](docs/VERIFACTU_COMPLIANCE.md) y [RELEASE_REPORT](docs/RELEASE_REPORT.md). No se sustituye el informe por esta introducción.
 
-Auditoría actual contra `4ce821e`: [matriz integral y evidencias](AUDITORIA_COMPLETA.md). 697 pruebas locales aprobadas; producción fiscal y hardware físico siguen sujetos a los gates externos documentados.
+Auditoría anterior contra `4ce821e`: [matriz integral y evidencias](AUDITORIA_COMPLETA.md). 697 pruebas locales aprobadas; producción fiscal y hardware físico siguen sujetos a los gates externos documentados.
