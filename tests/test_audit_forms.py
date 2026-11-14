@@ -25,7 +25,9 @@ def test_admin_company_configuration_form_persists_validated_values(audit_centre
         "timezone": "Atlantic/Canary",
         "producer_name": "Productor sintetico",
         "producer_tax_id": "89890001K",
-        "installation_number": "audit-install",
+        # A fiscal fixture already exists: the installation identity is now
+        # deliberately fixed. Independent negative cases prove the new guard.
+        "installation_number": CompanySettings.load().installation_number,
         "quick_sale_enabled": "on",
         "simplified_series": "S2",
         "full_series": "F2",

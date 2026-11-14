@@ -3,5 +3,10 @@ from apps.support.versioning import application_version
 
 
 def installation(request):
-    mode = CompanySettings.objects.filter(pk=1).values_list("fiscal_mode", flat=True).first()
-    return {"fiscal_environment": mode or "TEST", "app_version": application_version()}
+    company = CompanySettings.objects.filter(pk=1).first()
+    return {
+        "fiscal_environment": company.fiscal_mode if company else "TEST",
+        "app_version": application_version(),
+        "company_settings": company,
+        "has_company_logo": bool(getattr(company, "logo_data", None)),
+    }

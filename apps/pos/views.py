@@ -2,6 +2,7 @@ import uuid
 
 from django.contrib import messages
 from django.core.exceptions import ValidationError
+from django.db.models import Q
 from django.shortcuts import get_object_or_404, redirect, render
 from django.views.decorators.http import require_POST
 
@@ -36,7 +37,25 @@ def _version(request):
 
 @role_required("EMPLOYEE")
 def floor(request):
-    sections = list(Section.objects.prefetch_related("stations"))
+    company = CompanySettings.load()
+    terminal = _terminal(request)
+    default_section = (
+        terminal.default_section_id
+        if terminal and terminal.default_section_id
+        else company.default_section_id
+    )
+    selected = request.GET.get("section", str(default_section or ""))
+    choices = Section.objects.all()
+    sections_query = choices.prefetch_related("stations")
+    if selected:
+        try:
+            identifier = form_pk(selected)
+        except ValidationError as error:
+            return _error(request, error)
+        if not choices.filter(pk=identifier).exists():
+            return _error(request, ValidationError("Sección no válida."))
+        sections_query = sections_query.filter(pk=identifier)
+    sections = list(sections_query)
     active = {
         t.station_id: t for t in OpenTicket.objects.filter(status__in=["OPEN", "PAYMENT_PENDING"])
     }
@@ -48,6 +67,9 @@ def floor(request):
         "pos/floor.html",
         {
             "sections": sections,
+            "company": company,
+            "selected_section": selected,
+            "section_choices": choices,
             "tickets_by_station": active,
             "quick_sale_enabled": CompanySettings.load().quick_sale_enabled,
             "quick_tickets": OpenTicket.objects.filter(
@@ -61,6 +83,22 @@ def floor(request):
 
 def _terminal(request):
     return Terminal.objects.filter(pk=request.session.get("terminal_id"), active=True).first()
+
+
+def _preferred_cash_session(request):
+    terminal = _terminal(request)
+    if terminal and terminal.default_register_id:
+        return (
+            CashSession.objects.filter(
+                register_id=terminal.default_register_id,
+                register__active=True,
+                closed_at__isnull=True,
+            )
+            .filter(Q(register__terminal__isnull=True) | Q(register__terminal=terminal))
+            .values_list("pk", flat=True)
+            .first()
+        )
+    return None
 
 
 @require_POST
@@ -114,7 +152,9 @@ def ticket(request, pk):
     account = get_object_or_404(OpenTicket.objects.select_related("station", "customer"), pk=pk)
     key = request.session.setdefault("ticket_keys", {}).setdefault(str(pk), str(uuid.uuid4()))
     request.session.modified = True
-    items = CatalogItem.objects.filter(active=True)
+    items = CatalogItem.objects.filter(active=True).filter(
+        Q(category__isnull=True) | Q(category__visible_in_pos=True)
+    )
     if request.GET.get("q"):
         items = items.filter(name__icontains=request.GET["q"])
     if request.GET.get("category"):
@@ -129,14 +169,18 @@ def ticket(request, pk):
             "ticket": account,
             "lines": account.lines.all(),
             "items": items,
-            "categories": Category.objects.all(),
+            "categories": Category.objects.filter(visible_in_pos=True),
+            "company": CompanySettings.load(),
+            "preferred_cash_session": _preferred_cash_session(request),
             "customers": Customer.objects.all(),
             "total": account.total,
             "idempotency_key": key,
             "version": account.version,
-            "cash_sessions": CashSession.objects.filter(closed_at__isnull=True).select_related(
-                "register"
-            ),
+            "cash_sessions": CashSession.objects.filter(
+                closed_at__isnull=True, register__active=True
+            )
+            .filter(Q(register__terminal__isnull=True) | Q(register__terminal=_terminal(request)))
+            .select_related("register"),
         },
     )
 

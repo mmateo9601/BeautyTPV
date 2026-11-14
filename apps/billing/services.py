@@ -85,6 +85,10 @@ def issue_invoice(sale, actor):
 
     issuer["software_name"] = company.software_name
     issuer["software_version"] = application_version(root=settings.BASE_DIR)
+    # Commercial receipt data is part of the issued snapshot, never read from
+    # mutable salon settings when a document is reprinted or rectified.
+    for key in ("trade_name", "commercial_address", "phone", "email", "ticket_footer"):
+        issuer[key] = getattr(company, key, "")
     invoice = Invoice.objects.create(
         sale=sale,
         series=series,
@@ -229,10 +233,15 @@ def render_pdf(invoice):
         ]
     )
     for text in [
+        invoice.issuer.get("trade_name", ""),
         f"Factura {invoice.full_number}",
         f"Fecha: {fiscal_date(invoice)}",
         f"{invoice.issuer.get('name', '')} - NIF {invoice.issuer.get('tax_id', '')}",
         invoice.issuer.get("address", ""),
+        invoice.issuer.get("commercial_address", ""),
+        " · ".join(
+            filter(None, [invoice.issuer.get("phone", ""), invoice.issuer.get("email", "")])
+        ),
         f"Cliente: {invoice.customer.get('name', '')} {invoice.customer.get('tax_id', '')}",
         invoice.customer.get("address", ""),
     ]:
@@ -280,5 +289,8 @@ def render_pdf(invoice):
         )
     )
     elements.append(table)
+    if invoice.issuer.get("ticket_footer"):
+        elements.append(Spacer(1, 5 * mm))
+        elements.append(Paragraph(escape(invoice.issuer["ticket_footer"]), styles["Normal"]))
     SimpleDocTemplate(target, pagesize=A4, leftMargin=20 * mm, rightMargin=20 * mm).build(elements)
     return target.getvalue()

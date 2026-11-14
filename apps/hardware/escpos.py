@@ -28,16 +28,22 @@ def qr_command(value):
     )
 
 
-def render_receipt(invoice, copy=False, open_drawer=False, encoding="cp858", codepage=19):
+def render_receipt(
+    invoice, copy=False, open_drawer=False, encoding="cp858", codepage=19, cut_paper=True
+):
     from apps.verifactu.protocol import fiscal_date, qr_url
 
     lines = ["BeautyTPV", "COPIA" if copy else "ORIGINAL"]
     if invoice.fiscal_mode != "PRODUCTION":
         lines.append("PRUEBAS - SIN VALIDEZ FISCAL")
     lines += [
+        invoice.issuer.get("trade_name", ""),
         invoice.issuer.get("name", ""),
         "NIF: " + invoice.issuer.get("tax_id", ""),
         invoice.issuer.get("address", ""),
+        invoice.issuer.get("commercial_address", ""),
+        invoice.issuer.get("phone", ""),
+        invoice.issuer.get("email", ""),
         invoice.full_number,
         fiscal_date(invoice),
         "-" * 42,
@@ -61,6 +67,7 @@ def render_receipt(invoice, copy=False, open_drawer=False, encoding="cp858", cod
         f"BASE {invoice.net_total:.2f} EUR",
         f"IVA {invoice.tax_total:.2f} EUR",
         f"TOTAL {invoice.total:.2f} EUR",
+        invoice.issuer.get("ticket_footer", ""),
         "VERI*FACTU",
         "",
     ]
@@ -72,18 +79,18 @@ def render_receipt(invoice, copy=False, open_drawer=False, encoding="cp858", cod
         + content
         + qr_command(qr_url(invoice))
         + b"\n\n\n"
-        + CUT
+        + (CUT if cut_paper else b"")
         + (DRAWER if open_drawer and not copy else b"")
     )
 
 
-def render_test(encoding="cp858", codepage=19, drawer=False):
+def render_test(encoding="cp858", codepage=19, drawer=False, cut_paper=True):
     return (
         INIT
         + b"\x1bt"
         + bytes([codepage])
         + "BeautyTPV - PRUEBA 80mm\nÁÉÍÓÚ ñ €\n".encode(encoding, errors="replace")
         + b"\n\n"
-        + CUT
+        + (CUT if cut_paper else b"")
         + (DRAWER if drawer else b"")
     )

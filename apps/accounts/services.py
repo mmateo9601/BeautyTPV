@@ -6,7 +6,7 @@ from django.contrib.auth.hashers import make_password
 from django.contrib.auth.password_validation import validate_password
 from django.core.exceptions import PermissionDenied, ValidationError
 from django.db import transaction
-from django.db.models import Q
+from django.db.models import F, Q
 from django.utils import timezone
 
 from apps.audit.services import record
@@ -94,13 +94,17 @@ def create_user(actor, *, username, role="EMPLOYEE", pin=None, password=None, fi
 
 
 @transaction.atomic
-def update_user(actor, target, *, role=None, active=None, pin=None, password=None):
+def update_user(actor, target, *, role=None, active=None, pin=None, password=None, first_name=None):
     target = User.objects.get(pk=target.pk)
     authorize_user_change(actor, target, role)
     if target.pk == actor.pk and (active is False or (role and role != actor.role)):
         raise PermissionDenied("No puede desactivar ni degradar su propia sesión.")
     previous = target.role
     previous_security = (target.role, target.is_active, target.pin_hash, target.password)
+    if first_name is not None:
+        if not isinstance(first_name, str):
+            raise ValidationError("Nombre de usuario no válido.")
+        target.first_name = first_name.strip()
     if role:
         target.role = role
     if target.role != "SUPERADMIN":
@@ -135,3 +139,29 @@ def update_user(actor, target, *, role=None, active=None, pin=None, password=Non
 
 def elevation_expiry():
     return (timezone.now() + timedelta(minutes=10)).timestamp()
+
+
+@transaction.atomic
+def revoke_user_sessions(actor, target):
+    """Invalidate every login and support grant without changing credentials.
+
+    HTTP callers must additionally require password elevation. The service uses
+    persisted roles and authentication versions, including for non-HTTP callers.
+    Revoking one's own sessions is intentional and requires a new login.
+    """
+    target = User.objects.get(pk=target.pk)
+    authorize_user_change(actor, target)
+    User.objects.filter(pk=target.pk).update(auth_version=F("auth_version") + 1)
+    from apps.support.models import SupportSession
+
+    revoked_grants = SupportSession.objects.filter(
+        Q(actor=target) | Q(approved_by=target), revoked_at__isnull=True
+    ).update(revoked_at=timezone.now())
+    target.refresh_from_db()
+    record(
+        actor,
+        "user.sessions_revoked",
+        obj=target,
+        metadata={"count": revoked_grants},
+    )
+    return target

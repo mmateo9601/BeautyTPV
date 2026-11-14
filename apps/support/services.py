@@ -1,9 +1,12 @@
+import platform
 import shutil
 import socket
 import time
 from datetime import timedelta
+from importlib.metadata import PackageNotFoundError, version
 from pathlib import Path
 
+import django
 from django.conf import settings
 from django.core.exceptions import PermissionDenied, ValidationError
 from django.db import connection
@@ -92,7 +95,28 @@ def diagnostics():
             expiry = cert.not_valid_after_utc.isoformat()
         except (OSError, ValueError):
             expiry = "Certificado no legible/PEM inválido"
+    dependencies = {}
+    for package in (
+        "Django",
+        "requests",
+        "lxml",
+        "Pillow",
+        "qrcode",
+        "reportlab",
+        "cryptography",
+        "pyserial",
+        "pyusb",
+        "waitress",
+        "whitenoise",
+    ):
+        try:
+            dependencies[package] = version(package)
+        except PackageNotFoundError:
+            dependencies[package] = "NO INSTALADA"
     return {
+        "python_version": platform.python_version(),
+        "django_version": django.get_version(),
+        "dependencies": dependencies,
         "version": application_version(root=settings.BASE_DIR),
         "workers": {
             item.name: {
@@ -136,3 +160,25 @@ def aeat_connectivity():
         }
     except OSError:
         return {"reachable": False, "scope": "TCP 443 no disponible"}
+
+
+def save_terminal(actor, terminal):
+    from django.db import transaction
+
+    require_authorization(actor)
+    terminal.full_clean()
+    with transaction.atomic():
+        terminal.save()
+        record(actor, "terminal.saved", obj=terminal)
+    return terminal
+
+
+def save_technical_settings(actor, policy):
+    from django.db import transaction
+
+    require_authorization(actor)
+    policy.full_clean()
+    with transaction.atomic():
+        policy.save()
+        record(actor, "support.settings")
+    return policy

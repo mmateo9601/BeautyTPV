@@ -53,12 +53,15 @@ def enqueue_invoice(invoice, actor, open_drawer=False, copy=False):
             configuration_error = (
                 "Configuracion de impresora invalida; asigne un dispositivo valido."
             )
+    if printer and not printer.drawer_enabled:
+        open_drawer = False
     payload = render_receipt(
         invoice,
         copy=copy,
         open_drawer=open_drawer,
         encoding=printer.encoding if printer else "cp858",
         codepage=printer.codepage if printer else 19,
+        cut_paper=printer.cut_paper if printer else True,
     )
     job = PrintJob.objects.create(
         invoice=invoice,
@@ -82,15 +85,20 @@ def enqueue_test(printer, actor, drawer=False):
 
     require_operational()
     require_role(actor, "SUPERADMIN")
+    printer = Printer.objects.get(pk=printer.pk)
     if not printer.enabled:
         raise ValidationError("Dispositivo deshabilitado")
     printer.full_clean()
+    if drawer and not printer.drawer_enabled:
+        raise ValidationError("El cajon esta deshabilitado en la configuracion del dispositivo.")
     job = PrintJob.objects.create(
         printer=printer,
         kind="DRAWER" if drawer else "TEST",
         requested_by=actor,
         open_drawer=drawer,
-        payload=render_test(printer.encoding, printer.codepage, drawer),
+        payload=render_test(
+            printer.encoding, printer.codepage, drawer, cut_paper=printer.cut_paper
+        ),
         encoding=printer.encoding,
         codepage=printer.codepage,
     )
@@ -112,6 +120,7 @@ def retry_job(job, actor, printer=None):
     current.status = "PENDING"
     current.last_error = ""
     if printer is not None:
+        printer = Printer.objects.get(pk=printer.pk)
         if not printer.enabled:
             raise ValidationError("Dispositivo deshabilitado")
         printer.full_clean()
@@ -123,6 +132,16 @@ def retry_job(job, actor, printer=None):
     current.save(update_fields=["status", "last_error", "printer"])
     record(actor, "hardware.retry", obj=current)
     return current
+
+
+@transaction.atomic
+def save_printer(printer, actor):
+    """Protected configuration entry point; existing print intentions remain unchanged."""
+    require_role(actor, "SUPERADMIN")
+    printer.full_clean()
+    printer.save()
+    record(actor, "device.saved", obj=printer)
+    return printer
 
 
 def recover_expired():

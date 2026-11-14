@@ -4,6 +4,9 @@ from . import views
 
 app_name = "support"
 urlpatterns = [
+    path("backup/<int:pk>/verificar/", views.backup_verify, name="backup_verify"),
+    path("incidencias/", views.incidents, name="incidents"),
+    path("incidencias/<int:pk>/", views.incident_detail, name="incident_detail"),
     path("restauracion/", views.restore_advisor, name="restore_advisor"),
     path("terminales/", views.terminals, name="terminals"),
     path("terminales/<int:pk>/", views.terminal_edit, name="terminal_edit"),

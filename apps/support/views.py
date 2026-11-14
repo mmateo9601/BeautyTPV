@@ -5,13 +5,14 @@ from pathlib import Path
 from django.contrib import messages
 from django.core.exceptions import ValidationError
 from django.db import connection, transaction
+from django.db.models import Q
 from django.http import FileResponse, HttpResponse, JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
 from django.utils import timezone
 from django.views.decorators.http import require_POST
 
 from apps.accounts.models import User
-from apps.accounts.permissions import ROLE_RANK, role_required
+from apps.accounts.permissions import ROLE_RANK, require_elevated, role_required
 from apps.accounts.services import create_user, update_user
 from apps.audit.services import record
 from apps.hardware.models import Printer, PrintJob
@@ -28,20 +29,43 @@ from .services import (
     require_authorization,
 )
 
+FISCAL_STATUSES = [
+    (value, value)
+    for value in (
+        "PENDING",
+        "SENDING",
+        "ACCEPTED",
+        "ACCEPTED_WITH_ERRORS",
+        "REJECTED",
+        "RETRY",
+        "DUPLICATE_REVIEW",
+    )
+]
+
 
 @role_required("SUPERADMIN", elevated=True)
 def index(request):
     record(request.user, "support.view")
+    printers = Printer.objects.all()
+    if request.GET.get("q"):
+        printers = printers.filter(name__icontains=request.GET["q"])
+    print_jobs = PrintJob.objects.select_related("printer").order_by("-pk")
+    fiscal_outbox = FiscalOutbox.objects.select_related("record__invoice").order_by("-pk")
+    if request.GET.get("print_status") in PrintJob.Status.values:
+        print_jobs = print_jobs.filter(status=request.GET["print_status"])
+    if request.GET.get("fiscal_status") in [value for value, _ in FISCAL_STATUSES]:
+        fiscal_outbox = fiscal_outbox.filter(status=request.GET["fiscal_status"])
     return render(
         request,
         "support/index.html",
         {
             "diagnostics": diagnostics(),
-            "printers": Printer.objects.all(),
-            "print_jobs": PrintJob.objects.select_related("printer").order_by("-pk")[:30],
-            "fiscal_outbox": FiscalOutbox.objects.select_related("record__invoice").order_by("-pk")[
-                :30
-            ],
+            "printers": printers,
+            "print_jobs": print_jobs[:30],
+            "fiscal_outbox": fiscal_outbox[:30],
+            "print_statuses": PrintJob.Status.choices,
+            "fiscal_statuses": FISCAL_STATUSES,
+            "filters": request.GET,
             "backups": BackupRun.objects.order_by("-pk")[:20],
             "support_session": active_authorization(request.user),
             "support_sessions": SupportSession.objects.filter(actor=request.user).order_by("-pk")[
@@ -144,9 +168,17 @@ def printer_save(request, pk=None):
     instance = get_object_or_404(Printer, pk=pk) if pk else None
     form = PrinterForm(request.POST or None, instance=instance)
     if request.method == "POST" and form.is_valid():
-        printer = form.save()
-        record(request.user, "device.saved", obj=printer)
-        return redirect("support:index")
+        from apps.hardware.services import save_printer
+
+        try:
+            save_printer(form.save(commit=False), request.user)
+        except ValidationError as error:
+            form.add_error(None, error)
+        else:
+            messages.success(
+                request, "Dispositivo guardado; los trabajos anteriores conservan su intencion."
+            )
+            return redirect("support:index")
     return render(request, "support/settings.html", {"form": form, "title": "Dispositivo ESC/POS"})
 
 
@@ -215,8 +247,10 @@ def technical_settings(request):
     require_authorization(request.user)
     form = TechnicalSettingsForm(request.POST or None, instance=TechnicalSettings.load())
     if request.method == "POST" and form.is_valid():
-        form.save()
-        record(request.user, "support.settings")
+        from .services import save_technical_settings
+
+        save_technical_settings(request.user, form.save(commit=False))
+        messages.success(request, "Politica de mantenimiento guardada.")
         return redirect("support:index")
     return render(request, "support/settings.html", {"form": form, "title": "Política de copias"})
 
@@ -287,8 +321,20 @@ def users(request):
         query = query.filter(
             role__in=[r for r in User.Role.values if ROLE_RANK[r] < ROLE_RANK[request.user.role]]
         )
+    if request.GET.get("q"):
+        query = query.filter(
+            Q(username__icontains=request.GET["q"]) | Q(first_name__icontains=request.GET["q"])
+        )
+    if request.GET.get("state") in ("active", "inactive"):
+        query = query.filter(is_active=request.GET["state"] == "active")
+    if request.GET.get("role") in User.Role.values:
+        query = query.filter(role=request.GET["role"])
     record(request.user, "user.list")
-    return render(request, "support/users.html", {"users": query, "form": form})
+    return render(
+        request,
+        "support/users.html",
+        {"users": query, "form": form, "filters": request.GET, "roles": User.Role.choices},
+    )
 
 
 @role_required("ADMIN", elevated=True)
@@ -298,7 +344,8 @@ def user_edit(request, pk):
     target = get_object_or_404(User, pk=pk)
     authorize_user_change(request.user, target)
     form = UserUpdateForm(
-        request.POST or None, initial={"role": target.role, "active": target.is_active}
+        request.POST or None,
+        initial={"role": target.role, "active": target.is_active, "first_name": target.first_name},
     )
     if request.user.role != "SUPERADMIN":
         form.fields["role"].choices = [
@@ -313,6 +360,7 @@ def user_edit(request, pk):
                 request.user,
                 target,
                 role=data["role"],
+                first_name=data["first_name"],
                 active=data["active"],
                 pin=data["pin"] or None,
                 password=data["password"] or None,
@@ -374,14 +422,26 @@ def terminals(request):
     form = TerminalForm(request.POST or None)
     if request.method == "POST" and form.is_valid():
         terminal = form.save(commit=False)
-        with transaction.atomic():
-            terminal.save()
-            record(request.user, "terminal.created", obj=terminal)
-        return redirect("support:terminals")
+        from .services import save_terminal
+
+        try:
+            save_terminal(request.user, terminal)
+        except ValidationError as error:
+            form.add_error(None, error)
+        else:
+            messages.success(request, "Terminal creada.")
+            return redirect("support:terminals")
+    query = Terminal.objects.order_by("code")
+    if request.GET.get("q"):
+        query = query.filter(
+            Q(name__icontains=request.GET["q"]) | Q(code__icontains=request.GET["q"])
+        )
+    if request.GET.get("active") in ("1", "0"):
+        query = query.filter(active=request.GET["active"] == "1")
     return render(
         request,
         "support/terminals.html",
-        {"terminals": Terminal.objects.order_by("code"), "form": form},
+        {"terminals": query, "form": form, "filters": request.GET},
     )
 
 
@@ -396,10 +456,15 @@ def terminal_edit(request, pk):
     form = TerminalForm(request.POST or None, instance=terminal)
     if request.method == "POST" and form.is_valid():
         terminal = form.save(commit=False)
-        with transaction.atomic():
-            terminal.save()
-            record(request.user, "terminal.updated", obj=terminal)
-        return redirect("support:terminals")
+        from .services import save_terminal
+
+        try:
+            save_terminal(request.user, terminal)
+        except ValidationError as error:
+            form.add_error(None, error)
+        else:
+            messages.success(request, "Terminal actualizada.")
+            return redirect("support:terminals")
     return render(
         request, "support/settings.html", {"form": form, "title": "Terminal y autorización bridge"}
     )
@@ -480,3 +545,121 @@ def restore_advisor(request):
                 None, "No se pudo verificar la copia. Revise clave externa, integridad y permisos."
             )
     return render(request, "support/restore.html", {"form": form, "plan": plan})
+
+
+@require_POST
+@role_required("ADMIN", elevated=True)
+def revoke_user_sessions(request, pk):
+    from apps.accounts.services import revoke_user_sessions as revoke_sessions
+
+    if request.POST.get("confirmation") != "REVOCAR SESIONES":
+        return HttpResponse(
+            "Confirme REVOCAR SESIONES para invalidar los accesos existentes.", status=400
+        )
+    target = get_object_or_404(User, pk=pk)
+    revoke_sessions(request.user, target)
+    messages.success(
+        request, "Sesiones y autorizaciones revocadas. Las credenciales no han cambiado."
+    )
+    return redirect("team:index")
+
+
+@role_required("MANAGER")
+def incidents(request):
+    if request.user.role == "SUPERADMIN":
+        require_elevated(request)
+    from .forms import IncidentForm
+    from .incidents import create_incident, visible_incidents
+    from .models import Incident
+
+    query = visible_incidents(request.user)
+    form = IncidentForm(request.POST or None, actor=request.user)
+    if request.method == "POST" and form.is_valid():
+        try:
+            item = create_incident(request.user, **form.cleaned_data)
+        except ValidationError as error:
+            form.add_error(None, error)
+        else:
+            messages.success(request, "Incidencia registrada.")
+            return redirect("support:incident_detail", pk=item.pk)
+    for field, choices in (
+        ("status", Incident.Status),
+        ("severity", Incident.Severity),
+        ("category", Incident.Category),
+    ):
+        if request.GET.get(field) in choices.values:
+            query = query.filter(**{field: request.GET[field]})
+    if request.GET.get("q"):
+        query = query.filter(title__icontains=request.GET["q"])
+    record(request.user, "incident.list")
+    return render(
+        request,
+        "support/incidents.html",
+        {
+            "incidents": query[:200],
+            "form": form,
+            "filters": request.GET,
+            "statuses": Incident.Status.choices,
+            "severities": Incident.Severity.choices,
+            "categories": form.fields["category"].choices,
+        },
+    )
+
+
+@role_required("MANAGER")
+def incident_detail(request, pk):
+    if request.user.role == "SUPERADMIN":
+        require_elevated(request)
+    from .forms import IncidentActionForm
+    from .incidents import add_action, authorize_incident
+    from .models import Incident
+
+    item = get_object_or_404(Incident, pk=pk)
+    authorize_incident(request.user, item.category)
+    form = IncidentActionForm(
+        request.POST or None,
+        actor=request.user,
+        initial={
+            "status": item.status,
+            "category": item.category,
+            "severity": item.severity,
+            "version": item.version,
+        },
+    )
+    if request.method == "POST" and form.is_valid():
+        try:
+            add_action(request.user, item, **form.cleaned_data)
+        except ValidationError as error:
+            form.add_error(None, error)
+        else:
+            messages.success(request, "Actuacion registrada y estado actualizado.")
+            return redirect("support:incident_detail", pk=pk)
+    record(request.user, "incident.view", obj=item)
+    return render(
+        request,
+        "support/incident_detail.html",
+        {"incident": item, "actions": item.actions.select_related("actor"), "form": form},
+    )
+
+
+@require_POST
+@role_required("SUPERADMIN", elevated=True)
+def backup_verify(request, pk):
+    from .operations import inspect_backup
+
+    require_authorization(request.user, "BACKUP")
+    run = get_object_or_404(BackupRun, pk=pk, status="COMPLETE")
+    path = backup_directory() / Path(run.filename).name
+    try:
+        if hashlib.sha256(path.read_bytes()).hexdigest() != run.sha256:
+            raise ValueError("Hash incorrecto")
+        inspect_backup(path, backup_key())
+    except Exception:
+        record(request.user, "backup.verification_failed", obj=run, outcome="FAILED")
+        messages.error(request, "No se pudo verificar la copia: revise integridad y clave externa.")
+        return redirect("support:index")
+    record(request.user, "backup.verified", obj=run, metadata={"sha256": run.sha256})
+    messages.success(
+        request, "Copia cifrada verificada sin activar mantenimiento ni restaurar datos."
+    )
+    return redirect("support:index")

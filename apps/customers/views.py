@@ -1,6 +1,6 @@
 import csv
 
-from django.db import transaction
+from django.contrib import messages
 from django.db.models import Q
 from django.db.models.deletion import ProtectedError
 from django.http import HttpResponse
@@ -13,6 +13,7 @@ from apps.pos.models import Sale
 
 from .forms import CustomerForm
 from .models import Customer
+from .services import delete_customer, save_customer
 
 
 @role_required("EMPLOYEE")
@@ -57,8 +58,8 @@ def edit(request, pk=None):
     customer = get_object_or_404(Customer, pk=pk) if pk else None
     form = CustomerForm(request.POST or None, instance=customer)
     if request.method == "POST" and form.is_valid():
-        customer = form.save()
-        record(request.user, "customer.save", obj=customer)
+        customer = save_customer(request.user, form.save(commit=False))
+        messages.success(request, "Ficha de cliente guardada.")
         return redirect("customers:detail", pk=customer.pk)
     record(request.user, "customer.access", obj=customer)
     return render(request, "customers/form.html", {"form": form, "customer": customer})
@@ -85,9 +86,8 @@ def detail(request, pk):
 def delete(request, pk):
     customer = get_object_or_404(Customer, pk=pk)
     try:
-        with transaction.atomic():
-            customer.delete()
-            record(request.user, "customer.deleted", target=str(pk))
+        delete_customer(request.user, customer)
+        messages.success(request, "Ficha sin historial eliminada.")
     except ProtectedError:
         return HttpResponse("Cliente con historial protegido: no puede eliminarse.", status=400)
     return redirect("customers:index")

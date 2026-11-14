@@ -22,11 +22,31 @@ class Printer(models.Model):
     usb_endpoint = models.PositiveIntegerField(default=1)
     encoding = models.CharField(max_length=20, default="cp858")
     codepage = models.PositiveSmallIntegerField(default=19)
+    cut_paper = models.BooleanField(default=True, verbose_name="Cortar papel al finalizar")
+    drawer_enabled = models.BooleanField(default=True, verbose_name="Cajon conectado y habilitado")
     enabled = models.BooleanField(default=True)
     terminal = models.ForeignKey("core.Terminal", null=True, blank=True, on_delete=models.PROTECT)
 
     def clean(self):
         errors = {}
+        if self.pk:
+            original = type(self).objects.filter(pk=self.pk).first()
+            destination_fields = (
+                "connection_type",
+                "address",
+                "port",
+                "usb_vendor",
+                "usb_product",
+                "usb_endpoint",
+                "terminal_id",
+            )
+            if original and any(
+                getattr(original, field) != getattr(self, field) for field in destination_fields
+            ):
+                if self.printjob_set.filter(status="SENDING").exists():
+                    raise ValidationError(
+                        "Hay una entrega en curso. Espere su acuse o concilie su estado antes de cambiar el destino."
+                    )
         try:
             codec = codecs.lookup(self.encoding)
             if codec.name not in {

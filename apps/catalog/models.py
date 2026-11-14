@@ -6,8 +6,11 @@ from django.db.models import Q
 class Category(models.Model):
     name = models.CharField(max_length=100, unique=True)
 
+    sort_order = models.PositiveIntegerField(default=0, verbose_name="Orden")
+    visible_in_pos = models.BooleanField(default=True, verbose_name="Visible en TPV")
+
     class Meta:
-        ordering = ["name"]
+        ordering = ["sort_order", "name", "pk"]
 
     def __str__(self):
         return self.name
@@ -29,9 +32,10 @@ class CatalogItem(models.Model):
         validators=[MinValueValidator(0), MaxValueValidator(100)],
     )
     active = models.BooleanField(default=True)
+    sort_order = models.PositiveIntegerField(default=0, verbose_name="Orden")
 
     class Meta:
-        ordering = ["name"]
+        ordering = ["sort_order", "name", "pk"]
         constraints = [
             models.CheckConstraint(condition=Q(price__gte=0), name="catalog_nonnegative_price"),
             models.CheckConstraint(

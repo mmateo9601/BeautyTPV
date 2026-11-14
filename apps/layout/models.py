@@ -18,9 +18,10 @@ class Station(models.Model):
     code = models.CharField(max_length=30, unique=True)
     name = models.CharField(max_length=100)
     active = models.BooleanField(default=True)
+    sort_order = models.PositiveIntegerField(default=0, verbose_name="Orden")
 
     class Meta:
-        ordering = ["code"]
+        ordering = ["section__sort_order", "sort_order", "code", "pk"]
 
     def __str__(self):
         return self.name

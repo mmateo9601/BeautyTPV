@@ -8,3 +8,10 @@
 .sidebar nav{flex:1;min-height:0;overflow-y:auto}
 .sidebar-user{padding-top:18px}
 @media(max-width:760px){.sidebar{overflow:visible}.sidebar nav{flex:0 1 auto;overflow-y:hidden}.sidebar-user{padding-top:0}}
+
+/* Controlled salon preferences; no user-provided CSS. */
+.theme-ocean{--ink:#193648;--accent:#d8e8f1;--bs-primary:#215b77;--bs-primary-rgb:33,91,119}
+.theme-ocean .sidebar{background:#193648}.theme-ocean .btn-primary{--bs-btn-bg:#215b77;--bs-btn-border-color:#215b77;--bs-btn-hover-bg:#17465e;--bs-btn-hover-border-color:#17465e}
+.brand-logo{width:42px;height:42px;object-fit:contain;background:#fff;border-radius:8px;flex-shrink:0}
+.settings-tabs{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:24px}.settings-layout{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(260px,1fr);gap:24px;align-items:start}.settings-links{padding-left:20px;margin:20px 0}.settings-links li{margin-bottom:12px}.settings-logo{max-width:180px;max-height:120px;object-fit:contain;display:block;margin:20px 0}.incident-description,.incident-history{overflow-wrap:anywhere}.incident-history{padding-left:22px}.incident-history li{border-bottom:1px solid var(--line);padding:16px 0}.incident-history p{margin:8px 0}.station-total{font-size:20px;font-weight:600;margin-top:12px}.station-total small{font-size:10px;color:var(--muted);font-weight:400}.density-compact .station-card{min-height:180px;padding:16px}.density-compact .station-symbol{font-size:26px;margin:4px 0}.palette-high_contrast .station-card{border-width:2px}.palette-high_contrast .station-card.is-occupied{background:#fff1d2;border-color:#8b4d0d}.palette-high_contrast .station-card.is-pending{background:#e1eafb;border-color:#254b86}.palette-high_contrast .station-card:not(.is-occupied):not(.is-pending){border-color:#2a6847}.palette-high_contrast .status-pill{font-weight:700}
+@media(max-width:1000px){.settings-layout{grid-template-columns:1fr}.settings-aside{max-width:none}}@media(max-width:760px){.settings-tabs .btn{flex:1}.settings-layout{gap:18px}.filter-bar>div{min-width:140px}.station-total{font-size:17px}.brand-logo{width:34px;height:34px}.sidebar .brand{max-width:calc(100% - 50px)}}

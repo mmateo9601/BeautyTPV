@@ -132,8 +132,8 @@ def add_line(
     from apps.catalog.models import CatalogItem
 
     item = CatalogItem.objects.get(pk=item.pk)
-    if not item.active:
-        raise ValidationError("Artículo inactivo.")
+    if not item.active or (item.category_id and not item.category.visible_in_pos):
+        raise ValidationError("Artículo no disponible en TPV.")
     quantity = decimal_value(quantity, "Cantidad")
     discount_percent = decimal_value(discount_percent, "Descuento")
     if quantity <= 0 or quantity.as_tuple().exponent < -3 or not 0 <= discount_percent <= 100:
@@ -295,10 +295,18 @@ def checkout(
 
         if (
             cash_session is None
-            or not CashSession.objects.filter(pk=cash_session.pk, closed_at__isnull=True).exists()
+            or not CashSession.objects.filter(
+                pk=cash_session.pk, closed_at__isnull=True, register__active=True
+            ).exists()
         ):
             raise ValidationError("Abra una caja para el efectivo.")
-        current_session = CashSession.objects.get(pk=cash_session.pk)
+        current_session = CashSession.objects.select_related("register__terminal").get(
+            pk=cash_session.pk
+        )
+        if current_session.register.terminal_id and not current_session.register.terminal.active:
+            raise ValidationError("Terminal de caja desactivada.")
+        if terminal and current_session.register.terminal_id not in (None, terminal.pk):
+            raise ValidationError("La caja está asignada a otra terminal.")
         if current_session.expected_balance + cash_amount >= Decimal("10000000000"):
             raise ValidationError("Saldo fuera del limite de caja.")
     sale = Sale.objects.create(

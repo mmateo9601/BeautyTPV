@@ -52,6 +52,8 @@ class PrinterForm(forms.ModelForm):
             "encoding",
             "codepage",
             "enabled",
+            "cut_paper",
+            "drawer_enabled",
         ]
 
 
@@ -74,6 +76,7 @@ class UserCreateForm(forms.Form):
 
 
 class UserUpdateForm(forms.Form):
+    first_name = forms.CharField(required=False, max_length=150, label="Nombre")
     role = forms.ChoiceField(choices=User.Role.choices, label="Rol")
     active = forms.BooleanField(required=False, label="Activo")
     pin = forms.CharField(
@@ -120,7 +123,7 @@ class TerminalForm(forms.ModelForm):
         from apps.core.models import Terminal
 
         model = Terminal
-        fields = ["code", "name", "active"]
+        fields = ["code", "name", "active", "default_section", "default_register"]
 
     def save(self, commit=True):
         terminal = super().save(commit=False)
@@ -150,3 +153,53 @@ class RestorePlanForm(forms.Form):
         if self.cleaned_data["confirmation"] != "PREPARAR RESTAURACION":
             raise forms.ValidationError("Confirmacion incorrecta.")
         return self.cleaned_data["confirmation"]
+
+
+class IncidentForm(forms.Form):
+    from .models import Incident
+
+    title = forms.CharField(max_length=160, label="Titulo")
+    description = forms.CharField(
+        max_length=1000, widget=forms.Textarea, label="Descripcion sin datos personales"
+    )
+    category = forms.ChoiceField(choices=Incident.Category.choices, label="Categoria")
+    severity = forms.ChoiceField(
+        choices=Incident.Severity.choices, label="Severidad", initial="MEDIUM"
+    )
+
+    def __init__(self, *args, actor, **kwargs):
+        super().__init__(*args, **kwargs)
+        if actor.role != "SUPERADMIN":
+            self.fields["category"].choices = [("OPERATIONAL", "Operativa")]
+
+    def clean_title(self):
+        from .incidents import incident_text
+
+        return incident_text(self.cleaned_data["title"], 160)
+
+    def clean_description(self):
+        from .incidents import incident_text
+
+        return incident_text(self.cleaned_data["description"], 1000)
+
+
+class IncidentActionForm(forms.Form):
+    from .models import Incident
+
+    note = forms.CharField(
+        max_length=1000, widget=forms.Textarea, label="Actuacion o motivo sin datos personales"
+    )
+    status = forms.ChoiceField(choices=Incident.Status.choices, label="Estado")
+    category = forms.ChoiceField(choices=Incident.Category.choices, label="Categoria")
+    severity = forms.ChoiceField(choices=Incident.Severity.choices, label="Severidad")
+    version = forms.IntegerField(min_value=0, widget=forms.HiddenInput)
+
+    def __init__(self, *args, actor, **kwargs):
+        super().__init__(*args, **kwargs)
+        if actor.role != "SUPERADMIN":
+            self.fields["category"].choices = [("OPERATIONAL", "Operativa")]
+
+    def clean_note(self):
+        from .incidents import incident_text
+
+        return incident_text(self.cleaned_data["note"], 1000)

@@ -6,6 +6,7 @@ Those flows are exercised separately by the acceptance suites and browser tests.
 """
 
 import hashlib
+import io
 import json
 from dataclasses import dataclass
 from datetime import timedelta
@@ -16,6 +17,7 @@ import pytest
 from django.test import Client
 from django.urls import URLResolver, get_resolver, reverse
 from django.utils import timezone
+from PIL import Image
 
 from apps.accounts.models import User
 from apps.accounts.permissions import ROLE_RANK
@@ -27,7 +29,7 @@ from apps.customers.models import Customer
 from apps.hardware.models import Printer
 from apps.layout.models import Section, Station
 from apps.pos.services import add_line, checkout, open_ticket
-from apps.support.models import BackupRun, SupportSession
+from apps.support.models import BackupRun, Incident, SupportSession
 
 
 @dataclass(frozen=True)
@@ -75,6 +77,9 @@ POLICIES = {
     "customers:edit": Policy("EMPLOYEE", object="customer"),
     "customers:delete": Policy("ADMIN", "POST", "customer"),
     "cash:index": Policy("EMPLOYEE"),
+    "cash:registers": Policy("ADMIN"),
+    "cash:register_create": Policy("ADMIN", "POST"),
+    "cash:register_edit": Policy("ADMIN", object="register"),
     "cash:open": Policy("EMPLOYEE", "POST"),
     "cash:movement": Policy("MANAGER", "POST", "cash_session"),
     "cash:close": Policy("MANAGER", "POST", "cash_session"),
@@ -90,14 +95,19 @@ POLICIES = {
     "hardware:bridge_claim": Policy("BRIDGE", "POST"),
     "hardware:bridge_ack": Policy("BRIDGE", "POST"),
     "core:settings": Policy("ADMIN"),
+    "core:logo": Policy("EMPLOYEE"),
+    "core:logo_save": Policy("ADMIN", "POST"),
     "reports:index": Policy("MANAGER"),
     "support:index": Policy("SUPERADMIN"),
+    "support:incidents": Policy("MANAGER"),
+    "support:incident_detail": Policy("MANAGER", object="incident"),
     "support:authorize": Policy("SUPERADMIN", "POST"),
     "support:revoke": Policy("SUPERADMIN", "POST", "authorization"),
     "support:diagnostic": Policy("SUPERADMIN", "POST"),
     "support:diagnostics_export": Policy("SUPERADMIN"),
     "support:backup": Policy("SUPERADMIN", "POST"),
     "support:backup_download": Policy("SUPERADMIN", object="backup"),
+    "support:backup_verify": Policy("SUPERADMIN", "POST", "backup"),
     "support:printer_save": Policy("SUPERADMIN"),
     "support:printer_edit": Policy("SUPERADMIN", object="printer"),
     "support:recover_fiscal": Policy("SUPERADMIN", "POST", "outbox"),
@@ -113,6 +123,7 @@ POLICIES = {
     "team:index": Policy("ADMIN"),
     "team:edit": Policy("ADMIN", object="employee"),
     "team:unlock": Policy("ADMIN", "POST", "employee"),
+    "team:revoke_sessions": Policy("ADMIN", "POST", "employee"),
 }
 
 
@@ -143,6 +154,9 @@ def audit_centre(db, settings, tmp_path, monkeypatch):
     company.name = "Centro auditoría"
     company.tax_id = "89890001K"
     company.address = "Auditoría 1"
+    image = io.BytesIO()
+    Image.new("RGB", (1, 1), "white").save(image, "PNG")
+    company.logo_data = image.getvalue()
     company.save()
     terminal = Terminal.objects.create(code="matrix", name="Terminal auditoría")
     section = Section.objects.create(name="M")
@@ -154,6 +168,12 @@ def audit_centre(db, settings, tmp_path, monkeypatch):
     )
     customer = Customer.objects.create(name="Cliente auditoría sin historial")
     cash_session = open_session(CashRegister.objects.create(name="Caja auditoría"), employee, "50")
+    register = cash_session.register
+    incident = Incident.objects.create(
+        title="Incidencia operativa de auditoría",
+        description="Comprobación sin datos personales",
+        created_by=users["MANAGER"],
+    )
     printer = Printer.objects.create(name="Simulador auditoría", connection_type="SIMULATOR")
     issued = open_ticket(sold_station, employee)
     add_line(issued, item, employee)

@@ -10,6 +10,18 @@ from apps.pos.models import ImmutableModel
 class CashRegister(models.Model):
     name = models.CharField(max_length=100, unique=True)
 
+    active = models.BooleanField(default=True)
+    terminal = models.ForeignKey(
+        "core.Terminal",
+        null=True,
+        blank=True,
+        on_delete=models.PROTECT,
+        related_name="cash_registers",
+    )
+
+    class Meta:
+        ordering = ["name", "pk"]
+
     def __str__(self):
         return self.name
 
