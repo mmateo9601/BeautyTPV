@@ -92,3 +92,11 @@ Upgrade real desde la referencia conserva factura/huella/cuenta abierta; backup 
 **Gates externos BLOQUEADOS:** certificado/autorización y acuses oficiales AEAT; revisión normativa y declaración responsable suscrita; impresora/cajón/QR físicos; equipo destino/TLS/LAN/autoarranque y conciliación con acuses reales; aceptación con personas del negocio. CI remota no ejecutada. No aprobar producción ni retirar el guard fiscal. Alcance fiscal local: IVA general S1/01, F1/F2 y rectificativa total R1/R5; sin devoluciones parciales ni regímenes especiales.
 
 Commit de integración de la auditoría: `7045b03` (código, migraciones y pruebas). La documentación y evidencias se registran en el commit de cierre posterior.
+
+## Consolidación funcional V1 — Fases A/B (14-11-2026)
+
+Base `5dc936a`/`7045b03`, 697 casos históricos. Se leyó la nueva petición, AGENTS, PLAYBOOK, auditoría y ocho configuraciones. Arquitecto fijó contratos antes del paralelo; agentes con propiedad exclusiva: backend core/catalog/layout/cash/pos, frontend templates/static, security accounts, fiscal revisión/regresiones, hardware hardware, devops support, QA aceptación/matriz independiente. Coordinador configura/integración/docs/scripts y asume módulos entregados.
+
+Inventario constató faltas de ajustes comerciales/logo/preferencias, orden y visibilidad, cajas configurables, incidencias y revocación explícita. Priorización y contrato: `consolidation/PLAN.md`, `CONSOLIDATION_CONTRACTS.md`. No se reconstruye ni elimina historial; apertura de caja Employee previa preservada, cierre/movimientos Manager. Matrices de cierre se completan al integrar.
+
+Comprobación intermedia: Django check0, drift0, Ruff limpio276archivos. Especialistas verificaron revocación83PASS y hardware44PASS antes de integrar los nuevos campos. Las primeras pruebas durante escritura de modelos detectaron columnas aún sin migraciones; se repitieron tras generar las migraciones. QA independiente detectó ocultación de categoría insuficiente y terminal obsoleta en caja, asignadas para corrección; no se reducen aserciones. Aún no es gate final.
