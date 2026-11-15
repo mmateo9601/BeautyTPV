@@ -12,10 +12,20 @@ class DriverUnavailable(Exception):
     """No receipt bytes were sent; retry is safe."""
 
 
+def simulator_allowed():
+    demo = (
+        getattr(settings, "LOCAL_DEMO_ONLY", False)
+        and settings.SETTINGS_MODULE == "config.demo_settings"
+    )
+    return getattr(settings, "HARDWARE_SIMULATOR", False) and (settings.DEBUG or demo)
+
+
 def send(printer, payload):
     payload = bytes(payload)
+    if getattr(settings, "LOCAL_DEMO_ONLY", False) and printer.connection_type != "SIMULATOR":
+        raise DriverUnavailable("La DEMO no envia datos a dispositivos fisicos.")
     if printer.connection_type == "SIMULATOR":
-        if not (settings.DEBUG and getattr(settings, "HARDWARE_SIMULATOR", False)):
+        if not simulator_allowed():
             raise DriverUnavailable("Simulador deshabilitado fuera de desarrollo")
         return len(payload)
     if printer.connection_type == "TCP":

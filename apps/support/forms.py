@@ -1,7 +1,6 @@
 import codecs
 
 from django import forms
-from django.conf import settings
 
 from apps.accounts.models import User
 from apps.hardware.models import Printer
@@ -32,9 +31,9 @@ class PrinterForm(forms.ModelForm):
             self.add_error("encoding", "Codificación desconocida.")
         if not 0 <= values.get("codepage", 0) <= 255:
             self.add_error("codepage", "Tabla ESC/POS entre 0 y 255.")
-        if kind == "SIMULATOR" and not (
-            settings.DEBUG and getattr(settings, "HARDWARE_SIMULATOR", False)
-        ):
+        from apps.hardware.drivers import simulator_allowed
+
+        if kind == "SIMULATOR" and not simulator_allowed():
             self.add_error("connection_type", "Simulador deshabilitado fuera de desarrollo.")
         return values
 
