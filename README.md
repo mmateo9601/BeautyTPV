@@ -43,3 +43,5 @@ powershell -File scripts/start.ps1 -Instance "$env:LOCALAPPDATA/BeautyTPV/instan
 Las evidencias y límites definitivos están en [IMPLEMENTATION_STATUS](docs/IMPLEMENTATION_STATUS.md), [ACCEPTANCE_MATRIX](docs/ACCEPTANCE_MATRIX.md), [VERIFACTU_COMPLIANCE](docs/VERIFACTU_COMPLIANCE.md) y [RELEASE_REPORT](docs/RELEASE_REPORT.md). No se sustituye el informe por esta introducción.
 
 Auditoría anterior contra `4ce821e`: [matriz integral y evidencias](AUDITORIA_COMPLETA.md). 697 pruebas locales aprobadas; producción fiscal y hardware físico siguen sujetos a los gates externos documentados.
+
+Para abrir la demostración Windows sin terminal habitual: [GUIA_WINDOWS_DEMO.md](docs/GUIA_WINDOWS_DEMO.md). Instancia separada, localhost, TEST y accesos de escritorio.

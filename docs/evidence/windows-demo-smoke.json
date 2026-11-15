@@ -1,0 +1,32 @@
+{
+  "date": "2026-11-15",
+  "environment": "Windows local actual; Waitress localhost only",
+  "duplicate_start": "PASS same process",
+  "stop": "PASS",
+  "unrelated_python_preserved": "PASS",
+  "foreign_port_refused": "PASS",
+  "restart": "PASS",
+  "main_database_unchanged": true,
+  "main_database_sha256": "caae59a09ef5f6b8047ede4638ec4564dcac0bd6889c01103306713df6c8e36d",
+  "demo_directory": "C:\\Users\\mmate\\AppData\\Local\\BeautyTPV-DEMO",
+  "credentials": "Private external file; contents deliberately excluded",
+  "aeat_submissions": 0,
+  "shortcut_start": "PASS real .lnk executed, browser opened",
+  "shortcut_stop": "PASS real .lnk executed",
+  "open_cart_persisted_after_restart": true,
+  "scheduler_fresh_between_backups": true,
+  "fiscal_transmissions_after_ui": 0,
+  "batch_start": "PASS returns after readiness",
+  "batch_stop": "PASS returns after stop",
+  "os_tested": "Windows 11 Pro 10.0.26300",
+  "windows_10": "Not executed on a separate Windows10 machine",
+  "batch_seconds": {
+    "start": 5.26,
+    "stop": 0.84,
+    "restart": 5.05
+  },
+  "final_state": "RUNNING",
+  "final_http_access": 200,
+  "final_main_database_unchanged": true,
+  "fiscal_transmissions_after_all_checks": 0
+}

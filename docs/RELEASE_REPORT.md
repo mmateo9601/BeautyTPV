@@ -1,5 +1,18 @@
 # Informe de release — BeautyTPV 0.1.0
 
+## DEMO Windows aislada — 15-11-2026
+
+Preparada instancia independiente en C:/Users/mmate/AppData/Local/BeautyTPV-DEMO, SQLite demo.sqlite3, configuración/credenciales aleatorias con ACL usuario+SYSTEM. Principal db.sqlite3 sin cambios por hashSHA256. Accesos reales en C:/Users/mmate/Desktop: BeautyTPV DEMO, Detener BeautyTPV DEMO, Usuarios, Cambiar usuarios y Reinicializar. Guía vigente: GUIA_WINDOWS_DEMO.md.
+
+Scripts raíz BAT/PS y scripts/windows_demo.py proporcionan preparación, dependencias, migraciones, identidad privada, doble inicio, procesoWindows/fecha de creación/intérprete hijo de venv, evento cooperativo de parada y archivo seguro de DEMO al reset. Waitress127.0.0.1:8000 con DEBUGFalse, sin firewall ni LAN. Nuevo config.demo_settings mantiene TEST fijo, envío fiscal retenido sin bloquear ventas, sin certificados/trabajadorfiscal y sin conexiones no-loopback. Simulador permitido exclusivamente con perfilDEMO explícito o desarrollo; producción no relajada. Solo se tocaron dos guards funcionales porque impedían usar simulador con DEBUGFalse: hardware.drivers y support.PrinterForm.
+
+Ocho especialistas utilizados: arquitecto/seguridad/fiscal/hardware aportaron contratos/revisiones; algunos turnos agotaron cuota y el coordinador integró. Backend semilla, devops servidor, frontend checklist y QA independiente entregaron código/pruebas por propiedad. QA reprodujo hardlink antes de migrate: guard previo corregido. Arranque real detectó PID del redirectorvenv distinto del intérprete; se valida descendencia+nonce. PruebaBAT detectó que Start-Process -Wait espera todo el árbol; se espera solo al lanzador para devolver el control. Revisión visual detectó heartbeat espaciado que parecía STALE: corregido y probado sin simular salud.
+
+Regresión completa893PASS374,87s,14Chromium,2avisos conocidos; después del ajuste final únicamente de heartbeat, suite DEMO58PASS75,03s. Ruff302limpio, check0, drift0. Evidencias: windows-demo-final-tests.xml, windows-demo-guard-tests.xml, windows-demo-smoke.json, windows-demo-browser.json y windows-demo-reset.json. Inicio/parada/dobleinicio/puertoajeno/Pythonajeno/reinicio, BAT/lnk reales, HTTP200/estáticos y cuentaA2 persistente pasan. Reset y rotación explícitos pasan solo en instancia temporal. Navegación realcuatroroles y scopes, cobro12,10/cambio7,90/facturaTEST/spoolDONEsimulado; transmisionesfiscales0. Capturas revisadas: acceso/plano/cobro/factura/soporte; herramienta nativa no inicializó kernel, no se atribuye inspección manual humana.
+
+Equipo real: Windows11Pro10.0.26300/Python3.14.7. Windows10 sin máquina adicional probada. Fiscal productivo, certificado/acuse oficial, impresora/cajón físicos y despliegue LAN siguen BLOQUEADOS EXTERNAMENTE. La DEMO queda en ejecución para el usuario, sin credenciales en repositorio/informe.
+
+
 ## Consolidación funcional V1 — cierre 14-11-2026
 
 Estado vigente: [FINAL_ACCEPTANCE.md](FINAL_ACCEPTANCE.md). **836 PASS, 0 fallos/errores/omitidas, 288,21s; 14 Chromium**. JUnit: `evidence/consolidation-final-tests.xml`. Reemplaza las cifras históricas de112/697 como resultado actual, conservadas abajo para trazabilidad.

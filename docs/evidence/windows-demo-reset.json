@@ -1,0 +1,8 @@
+{
+  "result": "PASS",
+  "scope": "Temporary DEMO only; no main database",
+  "explicit_rotation": "PASS",
+  "explicit_reset": "PASS",
+  "archive_preserved": true,
+  "fresh_credentials": true
+}

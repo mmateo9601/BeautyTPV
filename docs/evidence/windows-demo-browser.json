@@ -1,0 +1,215 @@
+{
+  "date": "2026-11-15",
+  "browser": "Chromium real, against Waitress localhost, DEBUG=False",
+  "checks": [
+    {
+      "user": "demo_empleado",
+      "login": "PASS"
+    },
+    {
+      "user": "demo_empleado",
+      "route": "/tpv/",
+      "status": 200
+    },
+    {
+      "user": "demo_empleado",
+      "route": "/caja/",
+      "status": 200
+    },
+    {
+      "user": "demo_empleado",
+      "route": "/clientes/",
+      "status": 200
+    },
+    {
+      "user": "demo_empleado",
+      "route": "/facturas/",
+      "status": 200
+    },
+    {
+      "flow": "cash sale / invoice TEST / change / A2 persistent cart",
+      "result": "PASS"
+    },
+    {
+      "user": "demo_encargado",
+      "login": "PASS"
+    },
+    {
+      "user": "demo_encargado",
+      "route": "/tpv/",
+      "status": 200
+    },
+    {
+      "user": "demo_encargado",
+      "route": "/caja/",
+      "status": 200
+    },
+    {
+      "user": "demo_encargado",
+      "route": "/clientes/",
+      "status": 200
+    },
+    {
+      "user": "demo_encargado",
+      "route": "/facturas/",
+      "status": 200
+    },
+    {
+      "user": "demo_encargado",
+      "route": "/informes/",
+      "status": 200
+    },
+    {
+      "user": "demo_encargado",
+      "route": "/soporte/incidencias/",
+      "status": 200
+    },
+    {
+      "user": "demo_admin",
+      "login": "PASS"
+    },
+    {
+      "user": "demo_admin",
+      "route": "/tpv/",
+      "status": 200
+    },
+    {
+      "user": "demo_admin",
+      "route": "/caja/",
+      "status": 200
+    },
+    {
+      "user": "demo_admin",
+      "route": "/clientes/",
+      "status": 200
+    },
+    {
+      "user": "demo_admin",
+      "route": "/facturas/",
+      "status": 200
+    },
+    {
+      "user": "demo_admin",
+      "route": "/informes/",
+      "status": 200
+    },
+    {
+      "user": "demo_admin",
+      "route": "/soporte/incidencias/",
+      "status": 200
+    },
+    {
+      "user": "demo_admin",
+      "route": "/catalogo/",
+      "status": 200
+    },
+    {
+      "user": "demo_admin",
+      "route": "/empresa/",
+      "status": 200
+    },
+    {
+      "user": "demo_admin",
+      "route": "/usuarios/",
+      "status": 200
+    },
+    {
+      "user": "demo_admin",
+      "route": "/plano/configuracion/",
+      "status": 200
+    },
+    {
+      "user": "demo_admin",
+      "route": "/auditoria/",
+      "status": 200
+    },
+    {
+      "user": "demo_superadmin",
+      "login": "PASS"
+    },
+    {
+      "user": "demo_superadmin",
+      "route": "/tpv/",
+      "status": 200
+    },
+    {
+      "user": "demo_superadmin",
+      "route": "/caja/",
+      "status": 200
+    },
+    {
+      "user": "demo_superadmin",
+      "route": "/clientes/",
+      "status": 200
+    },
+    {
+      "user": "demo_superadmin",
+      "route": "/facturas/",
+      "status": 200
+    },
+    {
+      "user": "demo_superadmin",
+      "route": "/informes/",
+      "status": 200
+    },
+    {
+      "user": "demo_superadmin",
+      "route": "/soporte/incidencias/",
+      "status": 200
+    },
+    {
+      "user": "demo_superadmin",
+      "route": "/catalogo/",
+      "status": 200
+    },
+    {
+      "user": "demo_superadmin",
+      "route": "/empresa/",
+      "status": 200
+    },
+    {
+      "user": "demo_superadmin",
+      "route": "/usuarios/",
+      "status": 200
+    },
+    {
+      "user": "demo_superadmin",
+      "route": "/plano/configuracion/",
+      "status": 200
+    },
+    {
+      "user": "demo_superadmin",
+      "route": "/auditoria/",
+      "status": 200
+    },
+    {
+      "user": "demo_superadmin",
+      "route": "/soporte/",
+      "status": 200
+    },
+    {
+      "user": "demo_superadmin",
+      "route": "/soporte/terminales/",
+      "status": 200
+    },
+    {
+      "user": "demo_superadmin",
+      "route": "/soporte/dispositivos/",
+      "status": 200
+    },
+    {
+      "user": "demo_superadmin",
+      "route": "/soporte/fiscal/",
+      "status": 200
+    },
+    {
+      "user": "demo_superadmin",
+      "route": "/soporte/actualizaciones/",
+      "status": 200
+    }
+  ],
+  "simulated_receipt": "DONE (no physical device)",
+  "fiscal_transmissions": 0,
+  "non_test_invoices": 0,
+  "credentials_logged": false
+}
