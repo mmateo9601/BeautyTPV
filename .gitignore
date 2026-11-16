@@ -20,3 +20,29 @@ staticfiles/
 dist/
 
 .audit-reference*/
+
+# Datos privados de instalaciones: nunca versionar secretos o exportaciones reales.
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+*.cer
+*.crt
+*.log
+*.sqlite
+*.sqlite-*
+*.db
+*.db-*
+/instances/
+/private/
+/local-data/
+/exports/
+instance.json
+config.json
+server.json
+credenciales-demo.txt
+/tmp/
+/output/
+/file

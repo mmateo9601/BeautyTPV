@@ -1,0 +1,33 @@
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+indent_style = space
+indent_size = 4
+trim_trailing_whitespace = true
+
+[*.{bat,ps1}]
+end_of_line = crlf
+
+[*.md]
+trim_trailing_whitespace = false
+
+[*.{json,yml,yaml}]
+indent_size = 2
+
+[schemas/aeat/**]
+charset = unset
+end_of_line = unset
+trim_trailing_whitespace = false
+
+[static/vendor/**]
+charset = unset
+end_of_line = unset
+trim_trailing_whitespace = false
+
+[docs/legal/{third-party,upstream}/**]
+charset = unset
+end_of_line = unset
+trim_trailing_whitespace = false

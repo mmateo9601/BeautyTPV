@@ -1,0 +1,8 @@
+{
+  "name": "mermaid",
+  "version": "11.12.2",
+  "source": "https://cdn.jsdelivr.net/npm/mermaid@11.12.2/dist/mermaid.min.js",
+  "sha256": "d0830a6c05546e9edb8fe20a8f545f3e0dc7c4c3134d584bad9c13a99d7a71e0",
+  "bytes": 2754895,
+  "scope": "Temporary documentation rendering tool, not installed as a product dependency or shipped"
+}

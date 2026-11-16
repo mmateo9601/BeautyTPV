@@ -1,5 +1,7 @@
 # Estado de implementación — 13-11-2026
 
+> Corte vigente: Fase 11, 16-11-2026, **900 pruebas aprobadas**. Véase el apartado final y [auditoría documental](DOCUMENTATION_AUDIT.md). Las cifras y estados de apartados anteriores son históricos.
+
 Coordinador principal integra ocho especialistas de `.codex/agents/`: architect, backend, frontend, fiscal, hardware, security, qa, devops. Propietarios y contratos en CONTRACTS.md. Trabajo local; no SaaS ni tenants.
 
 ## Fase 0 — VERIFICADA LOCALMENTE
@@ -128,3 +130,17 @@ Regresión completa893PASS374,87s,14Chromium,2avisos conocidos; después del aju
 Equipo real: Windows11Pro10.0.26300/Python3.14.7. Windows10 sin máquina adicional probada. Fiscal productivo, certificado/acuse oficial, impresora/cajón físicos y despliegue LAN siguen BLOQUEADOS EXTERNAMENTE. La DEMO queda en ejecución para el usuario, sin credenciales en repositorio/informe.
 
 Implementación DEMO registrada en commit `4e67b44`; documentación y evidencias en el commit de cierre posterior.
+
+## Fase 11: documentación profesional y licencias — 16-11-2026
+
+Coordinación de los ocho especialistas con contratos previos en [phase11/CONTRACTS.md](phase11/CONTRACTS.md). El índice vigente es [README.md](README.md), con tres manuales, cinco documentos de arquitectura, cinco de desarrollo, tres de integraciones y seis de instalación/operaciones. Los documentos históricos se conservan y remiten a las guías canónicas.
+
+Capturas: 38 PNG reales de Chromium/Waitress en DEMO temporal independiente (33 escritorio1440x900, dos tablet820x1180 y tres móvil390x844); procedencia y hashes en [manifest](screenshots/manifest.json). Sin uso de credenciales ni base de la DEMO habitual, sin remisiones AEAT. Renderización local de 102 documentos, 13 diagramas Mermaid y 35 referencias a imágenes: cero errores; no se atribuye render remoto de GitHub.
+
+Inventario de terceros: 34 paquetes coincidentes con el lock y dos componentes web; textos originales y hashes preservados. Diez paquetes requieren revisión especial, además de intérprete/build/navegadores/recursos oficiales cuando se distribuyan. Licencia principal, titular, condiciones comerciales y canal de soporte pendientes; no se crea LICENSE ni se publican etiquetas/releases. Documentos y tooling opcional no añaden dependencias del producto.
+
+Gates de integración ejecutados: Django check sin incidencias; makemigrations sin deriva; pip check sin requisitos rotos; Ruff limpio y 341 archivos formateados. Regresión completa: **900 PASS, cero fallos/errores/omitidas, 369,16s, 14 Chromium**; [JUnit actual](evidence/phase11-tests.xml). Dos avisos conocidos: override DATABASES en fixture de restore y fixture Playwright como método de instancia. Tras el ajuste final del parser documental: seis pruebas dirigidas PASS en0,28s. El resultado de enlaces/rutas/hashes/comandos está en [auditoría documental](DOCUMENTATION_AUDIT.md).
+
+Sin cambios en apps/, config/, templates/, static/, pyproject.toml ni requirements.lock.txt respecto de3ee0168. La base principal conserva SHA256 caae59a09ef5f6b8047ede4638ec4564dcac0bd6889c01103306713df6c8e36d, igual al corte anterior. Manuales/capturas/runbooks registrados en commit a3873c4; el cierre legal/tooling/evidencias se registra en el commit que incorpora este informe. Solo documentación, capturas, herramientas documentales, pruebas del auditor y configuración de higiene del repositorio. No se alteran datos fiscales ni bloqueos productivos.
+
+Bloqueos externos: certificado/autorización/acuse oficial AEAT, revisión fiscal y declaración responsable suscrita, impresora/cajón/papel/QR físicos, equipo destino/TLS/LAN/aceptación con personas, CI remota y comprobación del render remoto GitHub. La documentación los distingue de la validación software local. La decisión de licencia del propietario y revisión jurídica de redistribución siguen pendientes.

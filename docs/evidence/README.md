@@ -22,3 +22,15 @@ pdftoppm -f 1 -singlefile -scale-to 1500 -png docs/evidence/invoice-test.pdf doc
 El navegador requiere permiso de lanzamiento de procesos en este host Windows.
 Poppler avisó de fuentes de sustitución Symbol/ArialUnicode; la imagen final fue
 inspeccionada visualmente y no muestra glifos rotos en el documento de prueba.
+
+
+## Fase 11 — documentación, 16-11-2026
+
+- [Regresión completa](phase11-tests.xml): 900 PASS, 14 Chromium, dos avisos conocidos.
+- [Auditoría documental](documentation-audit.json): enlaces, anclas, imágenes, rutas, hashes y ayuda de comandos; no certifica permisos por resolver URL.
+- [Render local](documentation-render.json): 102 Markdown, 13 diagramas y 35 imágenes sin errores. [Procedencia del motor externo](documentation-render-runtime.json); no publicación GitHub.
+- [Portada renderizada](documentation-readme-render.png) y [manual renderizado](documentation-manual-render.png).
+- [38 capturas reales con procedencia](../screenshots/manifest.json), separadas de las capturas históricas anteriores.
+- [Auditoría preliminar](documentation-audit-initial.json): conserva los enlaces pendientes y distinciones de alcance corregidos; el JSON final la sustituye como resultado vigente.
+
+No se remitieron registros AEAT ni se probaron dispositivos físicos en esta fase.

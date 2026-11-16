@@ -1,0 +1,824 @@
+{
+  "scope": "Local GFM via external Marked and Mermaid UMD 11.12.2; not the remote GitHub renderer",
+  "product_dependencies_added": false,
+  "network": "Loopback only during render",
+  "documents": [
+    {
+      "done": true,
+      "mermaid": 0,
+      "error": null,
+      "document": "AGENTS.md",
+      "broken_images": [],
+      "images": 0
+    },
+    {
+      "done": true,
+      "mermaid": 0,
+      "error": null,
+      "document": "AUDITORIA_COMPLETA.md",
+      "broken_images": [],
+      "images": 0
+    },
+    {
+      "done": true,
+      "mermaid": 0,
+      "error": null,
+      "document": "CHANGELOG.md",
+      "broken_images": [],
+      "images": 0
+    },
+    {
+      "done": true,
+      "mermaid": 0,
+      "error": null,
+      "document": "CODE_OF_CONDUCT.md",
+      "broken_images": [],
+      "images": 0
+    },
+    {
+      "done": true,
+      "mermaid": 0,
+      "error": null,
+      "document": "CONTRIBUTING.md",
+      "broken_images": [],
+      "images": 0
+    },
+    {
+      "done": true,
+      "mermaid": 0,
+      "error": null,
+      "document": "docs/ACCEPTANCE_MATRIX.md",
+      "broken_images": [],
+      "images": 0
+    },
+    {
+      "done": true,
+      "mermaid": 0,
+      "error": null,
+      "document": "docs/ADRs/001-installation-and-modules.md",
+      "broken_images": [],
+      "images": 0
+    },
+    {
+      "done": true,
+      "mermaid": 0,
+      "error": null,
+      "document": "docs/ADRs/002-sqlite-and-idempotency.md",
+      "broken_images": [],
+      "images": 0
+    },
+    {
+      "done": true,
+      "mermaid": 0,
+      "error": null,
+      "document": "docs/ADRs/003-fiscal-and-hardware-gates.md",
+      "broken_images": [],
+      "images": 0
+    },
+    {
+      "done": true,
+      "mermaid": 2,
+      "error": null,
+      "document": "docs/arquitectura/ARQUITECTURA.md",
+      "broken_images": [],
+      "images": 0
+    },
+    {
+      "done": true,
+      "mermaid": 0,
+      "error": null,
+      "document": "docs/arquitectura/DECISIONES_TECNICAS.md",
+      "broken_images": [],
+      "images": 0
+    },
+    {
+      "done": true,
+      "mermaid": 2,
+      "error": null,
+      "document": "docs/arquitectura/FLUJOS_NEGOCIO.md",
+      "broken_images": [],
+      "images": 0
+    },
+    {
+      "done": true,
+      "mermaid": 2,
+      "error": null,
+      "document": "docs/arquitectura/MODELOS_DATOS.md",
+      "broken_images": [],
+      "images": 0
+    },
+    {
+      "done": true,
+      "mermaid": 1,
+      "error": null,
+      "document": "docs/arquitectura/SEGURIDAD.md",
+      "broken_images": [],
+      "images": 0
+    },
+    {
+      "done": true,
+      "mermaid": 0,
+      "error": null,
+      "document": "docs/audit/BACKEND_FINDINGS.md",
+      "broken_images": [],
+      "images": 0
+    },
+    {
+      "done": true,
+      "mermaid": 0,
+      "error": null,
+      "document": "docs/audit/baseline/INVENTARIO.md",
+      "broken_images": [],
+      "images": 0
+    },
+    {
+      "done": true,
+      "mermaid": 0,
+      "error": null,
+      "document": "docs/audit/CONTRACTS_AUDIT.md",
+      "broken_images": [],
+      "images": 0
+    },
+    {
+      "done": true,
+      "mermaid": 0,
+      "error": null,
+      "document": "docs/audit/final/INVENTARIO.md",
+      "broken_images": [],
+      "images": 0
+    },
+    {
+      "done": true,
+      "mermaid": 0,
+      "error": null,
+      "document": "docs/audit/FISCAL_FINDINGS.md",
+      "broken_images": [],
+      "images": 0
+    },
+    {
+      "done": true,
+      "mermaid": 0,
+      "error": null,
+      "document": "docs/audit/FRONTEND_FINDINGS.md",
+      "broken_images": [],
+      "images": 0
+    },
+    {
+      "done": true,
+      "mermaid": 0,
+      "error": null,
+      "document": "docs/audit/HARDWARE_FINDINGS.md",
+      "broken_images": [],
+      "images": 0
+    },
+    {
+      "done": true,
+      "mermaid": 0,
+      "error": null,
+      "document": "docs/audit/OPS_FINDINGS.md",
+      "broken_images": [],
+      "images": 0
+    },
+    {
+      "done": true,
+      "mermaid": 0,
+      "error": null,
+      "document": "docs/audit/QA_FINDINGS.md",
+      "broken_images": [],
+      "images": 0
+    },
+    {
+      "done": true,
+      "mermaid": 0,
+      "error": null,
+      "document": "docs/audit/SECURITY_FINDINGS.md",
+      "broken_images": [],
+      "images": 0
+    },
+    {
+      "done": true,
+      "mermaid": 0,
+      "error": null,
+      "document": "docs/audit/TEST_INDEX.md",
+      "broken_images": [],
+      "images": 0
+    },
+    {
+      "done": true,
+      "mermaid": 0,
+      "error": null,
+      "document": "docs/BACKUP_RESTORE.md",
+      "broken_images": [],
+      "images": 0
+    },
+    {
+      "done": true,
+      "mermaid": 0,
+      "error": null,
+      "document": "docs/consolidation/BACKEND.md",
+      "broken_images": [],
+      "images": 0
+    },
+    {
+      "done": true,
+      "mermaid": 0,
+      "error": null,
+      "document": "docs/consolidation/FISCAL.md",
+      "broken_images": [],
+      "images": 0
+    },
+    {
+      "done": true,
+      "mermaid": 0,
+      "error": null,
+      "document": "docs/consolidation/HARDWARE.md",
+      "broken_images": [],
+      "images": 0
+    },
+    {
+      "done": true,
+      "mermaid": 0,
+      "error": null,
+      "document": "docs/consolidation/inventory/INVENTARIO.md",
+      "broken_images": [],
+      "images": 0
+    },
+    {
+      "done": true,
+      "mermaid": 0,
+      "error": null,
+      "document": "docs/consolidation/OPS.md",
+      "broken_images": [],
+      "images": 0
+    },
+    {
+      "done": true,
+      "mermaid": 0,
+      "error": null,
+      "document": "docs/consolidation/PLAN.md",
+      "broken_images": [],
+      "images": 0
+    },
+    {
+      "done": true,
+      "mermaid": 0,
+      "error": null,
+      "document": "docs/consolidation/QA.md",
+      "broken_images": [],
+      "images": 0
+    },
+    {
+      "done": true,
+      "mermaid": 0,
+      "error": null,
+      "document": "docs/consolidation/REQUEST.md",
+      "broken_images": [],
+      "images": 0
+    },
+    {
+      "done": true,
+      "mermaid": 0,
+      "error": null,
+      "document": "docs/consolidation/SECURITY.md",
+      "broken_images": [],
+      "images": 0
+    },
+    {
+      "done": true,
+      "mermaid": 0,
+      "error": null,
+      "document": "docs/consolidation/TEST_INDEX.md",
+      "broken_images": [],
+      "images": 0
+    },
+    {
+      "done": true,
+      "mermaid": 0,
+      "error": null,
+      "document": "docs/CONSOLIDATION_CONTRACTS.md",
+      "broken_images": [],
+      "images": 0
+    },
+    {
+      "done": true,
+      "mermaid": 0,
+      "error": null,
+      "document": "docs/CONTRACTS.md",
+      "broken_images": [],
+      "images": 0
+    },
+    {
+      "done": true,
+      "mermaid": 0,
+      "error": null,
+      "document": "docs/CRUD_COVERAGE.md",
+      "broken_images": [],
+      "images": 0
+    },
+    {
+      "done": true,
+      "mermaid": 0,
+      "error": null,
+      "document": "docs/DECLARACION_RESPONSABLE_TEMPLATE.md",
+      "broken_images": [],
+      "images": 0
+    },
+    {
+      "done": true,
+      "mermaid": 0,
+      "error": null,
+      "document": "docs/demo/CONTRACTS.md",
+      "broken_images": [],
+      "images": 0
+    },
+    {
+      "done": true,
+      "mermaid": 0,
+      "error": null,
+      "document": "docs/demo/FISCAL.md",
+      "broken_images": [],
+      "images": 0
+    },
+    {
+      "done": true,
+      "mermaid": 0,
+      "error": null,
+      "document": "docs/demo/HARDWARE.md",
+      "broken_images": [],
+      "images": 0
+    },
+    {
+      "done": true,
+      "mermaid": 0,
+      "error": null,
+      "document": "docs/demo/QA.md",
+      "broken_images": [],
+      "images": 0
+    },
+    {
+      "done": true,
+      "mermaid": 0,
+      "error": null,
+      "document": "docs/demo/SECURITY.md",
+      "broken_images": [],
+      "images": 0
+    },
+    {
+      "done": true,
+      "mermaid": 0,
+      "error": null,
+      "document": "docs/demo/SERVER.md",
+      "broken_images": [],
+      "images": 0
+    },
+    {
+      "done": true,
+      "mermaid": 0,
+      "error": null,
+      "document": "docs/demo/UI_CHECKLIST.md",
+      "broken_images": [],
+      "images": 0
+    },
+    {
+      "done": true,
+      "mermaid": 0,
+      "error": null,
+      "document": "docs/desarrollo/CONVENCIONES.md",
+      "broken_images": [],
+      "images": 0
+    },
+    {
+      "done": true,
+      "mermaid": 0,
+      "error": null,
+      "document": "docs/desarrollo/ENTORNO_DESARROLLO.md",
+      "broken_images": [],
+      "images": 0
+    },
+    {
+      "done": true,
+      "mermaid": 0,
+      "error": null,
+      "document": "docs/desarrollo/EXTENSIONES.md",
+      "broken_images": [],
+      "images": 0
+    },
+    {
+      "done": true,
+      "mermaid": 0,
+      "error": null,
+      "document": "docs/desarrollo/GUIA_DESARROLLADOR.md",
+      "broken_images": [],
+      "images": 0
+    },
+    {
+      "done": true,
+      "mermaid": 0,
+      "error": null,
+      "document": "docs/desarrollo/PRUEBAS.md",
+      "broken_images": [],
+      "images": 0
+    },
+    {
+      "done": true,
+      "mermaid": 0,
+      "error": null,
+      "document": "docs/DOCUMENTATION_AUDIT.md",
+      "broken_images": [],
+      "images": 0
+    },
+    {
+      "done": true,
+      "mermaid": 0,
+      "error": null,
+      "document": "docs/evidence/README.md",
+      "broken_images": [],
+      "images": 0
+    },
+    {
+      "done": true,
+      "mermaid": 0,
+      "error": null,
+      "document": "docs/FINAL_ACCEPTANCE.md",
+      "broken_images": [],
+      "images": 0
+    },
+    {
+      "done": true,
+      "mermaid": 0,
+      "error": null,
+      "document": "docs/FUNCIONALIDADES.md",
+      "broken_images": [],
+      "images": 0
+    },
+    {
+      "done": true,
+      "mermaid": 0,
+      "error": null,
+      "document": "docs/FUNCTIONAL_COVERAGE.md",
+      "broken_images": [],
+      "images": 0
+    },
+    {
+      "done": true,
+      "mermaid": 0,
+      "error": null,
+      "document": "docs/gates/PHASE_1.md",
+      "broken_images": [],
+      "images": 0
+    },
+    {
+      "done": true,
+      "mermaid": 0,
+      "error": null,
+      "document": "docs/gates/PHASE_2.md",
+      "broken_images": [],
+      "images": 0
+    },
+    {
+      "done": true,
+      "mermaid": 0,
+      "error": null,
+      "document": "docs/gates/PHASE_3.md",
+      "broken_images": [],
+      "images": 0
+    },
+    {
+      "done": true,
+      "mermaid": 0,
+      "error": null,
+      "document": "docs/gates/PHASE_4.md",
+      "broken_images": [],
+      "images": 0
+    },
+    {
+      "done": true,
+      "mermaid": 0,
+      "error": null,
+      "document": "docs/gates/PHASE_5.md",
+      "broken_images": [],
+      "images": 0
+    },
+    {
+      "done": true,
+      "mermaid": 0,
+      "error": null,
+      "document": "docs/gates/PHASE_6.md",
+      "broken_images": [],
+      "images": 0
+    },
+    {
+      "done": true,
+      "mermaid": 0,
+      "error": null,
+      "document": "docs/gates/PHASE_7.md",
+      "broken_images": [],
+      "images": 0
+    },
+    {
+      "done": true,
+      "mermaid": 0,
+      "error": null,
+      "document": "docs/gates/PHASE_8.md",
+      "broken_images": [],
+      "images": 0
+    },
+    {
+      "done": true,
+      "mermaid": 0,
+      "error": null,
+      "document": "docs/GUIA_WINDOWS_DEMO.md",
+      "broken_images": [],
+      "images": 0
+    },
+    {
+      "done": true,
+      "mermaid": 0,
+      "error": null,
+      "document": "docs/HARDWARE.md",
+      "broken_images": [],
+      "images": 0
+    },
+    {
+      "done": true,
+      "mermaid": 0,
+      "error": null,
+      "document": "docs/IMPLEMENTATION_STATUS.md",
+      "broken_images": [],
+      "images": 0
+    },
+    {
+      "done": true,
+      "mermaid": 0,
+      "error": null,
+      "document": "docs/instalacion/ACTUALIZACIONES.md",
+      "broken_images": [],
+      "images": 0
+    },
+    {
+      "done": true,
+      "mermaid": 0,
+      "error": null,
+      "document": "docs/instalacion/ARRANQUE_DEMO.md",
+      "broken_images": [],
+      "images": 0
+    },
+    {
+      "done": true,
+      "mermaid": 0,
+      "error": null,
+      "document": "docs/instalacion/BACKUP_RESTORE.md",
+      "broken_images": [],
+      "images": 0
+    },
+    {
+      "done": true,
+      "mermaid": 1,
+      "error": null,
+      "document": "docs/instalacion/DESPLIEGUE_LOCAL.md",
+      "broken_images": [],
+      "images": 0
+    },
+    {
+      "done": true,
+      "mermaid": 0,
+      "error": null,
+      "document": "docs/instalacion/INSTALACION_WINDOWS.md",
+      "broken_images": [],
+      "images": 0
+    },
+    {
+      "done": true,
+      "mermaid": 0,
+      "error": null,
+      "document": "docs/instalacion/SOLUCION_PROBLEMAS.md",
+      "broken_images": [],
+      "images": 0
+    },
+    {
+      "done": true,
+      "mermaid": 0,
+      "error": null,
+      "document": "docs/INSTALL.md",
+      "broken_images": [],
+      "images": 0
+    },
+    {
+      "done": true,
+      "mermaid": 2,
+      "error": null,
+      "document": "docs/integraciones/HARDWARE.md",
+      "broken_images": [],
+      "images": 0
+    },
+    {
+      "done": true,
+      "mermaid": 1,
+      "error": null,
+      "document": "docs/integraciones/SQLITE.md",
+      "broken_images": [],
+      "images": 0
+    },
+    {
+      "done": true,
+      "mermaid": 1,
+      "error": null,
+      "document": "docs/integraciones/VERIFACTU.md",
+      "broken_images": [],
+      "images": 0
+    },
+    {
+      "done": true,
+      "mermaid": 0,
+      "error": null,
+      "document": "docs/legal/OPCIONES_LICENCIA.md",
+      "broken_images": [],
+      "images": 0
+    },
+    {
+      "done": true,
+      "mermaid": 0,
+      "error": null,
+      "document": "docs/manuales/GUIA_ADMINISTRADOR.md",
+      "broken_images": [],
+      "images": 11
+    },
+    {
+      "done": true,
+      "mermaid": 0,
+      "error": null,
+      "document": "docs/manuales/GUIA_SUPERADMIN.md",
+      "broken_images": [],
+      "images": 11
+    },
+    {
+      "done": true,
+      "mermaid": 0,
+      "error": null,
+      "document": "docs/manuales/GUIA_USUARIO.md",
+      "broken_images": [],
+      "images": 12
+    },
+    {
+      "done": true,
+      "mermaid": 0,
+      "error": null,
+      "document": "docs/phase11/CONTRACTS.md",
+      "broken_images": [],
+      "images": 0
+    },
+    {
+      "done": true,
+      "mermaid": 0,
+      "error": null,
+      "document": "docs/POSTGRESQL_FUTURE.md",
+      "broken_images": [],
+      "images": 0
+    },
+    {
+      "done": true,
+      "mermaid": 0,
+      "error": null,
+      "document": "docs/README.md",
+      "broken_images": [],
+      "images": 0
+    },
+    {
+      "done": true,
+      "mermaid": 0,
+      "error": null,
+      "document": "docs/RELEASE_REPORT.md",
+      "broken_images": [],
+      "images": 0
+    },
+    {
+      "done": true,
+      "mermaid": 0,
+      "error": null,
+      "document": "docs/ROLE_PERMISSION_MATRIX.md",
+      "broken_images": [],
+      "images": 0
+    },
+    {
+      "done": true,
+      "mermaid": 0,
+      "error": null,
+      "document": "docs/SECURITY.md",
+      "broken_images": [],
+      "images": 0
+    },
+    {
+      "done": true,
+      "mermaid": 0,
+      "error": null,
+      "document": "docs/SETTINGS_COVERAGE.md",
+      "broken_images": [],
+      "images": 0
+    },
+    {
+      "done": true,
+      "mermaid": 0,
+      "error": null,
+      "document": "docs/SUPERADMIN.md",
+      "broken_images": [],
+      "images": 0
+    },
+    {
+      "done": true,
+      "mermaid": 0,
+      "error": null,
+      "document": "docs/SUPERADMIN_COVERAGE.md",
+      "broken_images": [],
+      "images": 0
+    },
+    {
+      "done": true,
+      "mermaid": 0,
+      "error": null,
+      "document": "docs/UI_REVIEW.md",
+      "broken_images": [],
+      "images": 0
+    },
+    {
+      "done": true,
+      "mermaid": 0,
+      "error": null,
+      "document": "docs/UPDATE.md",
+      "broken_images": [],
+      "images": 0
+    },
+    {
+      "done": true,
+      "mermaid": 0,
+      "error": null,
+      "document": "docs/USER_MANUAL.md",
+      "broken_images": [],
+      "images": 0
+    },
+    {
+      "done": true,
+      "mermaid": 0,
+      "error": null,
+      "document": "docs/VERIFACTU_COMPLIANCE.md",
+      "broken_images": [],
+      "images": 0
+    },
+    {
+      "done": true,
+      "mermaid": 0,
+      "error": null,
+      "document": "PLAYBOOK.md",
+      "broken_images": [],
+      "images": 0
+    },
+    {
+      "done": true,
+      "mermaid": 0,
+      "error": null,
+      "document": "PROMPT_INICIAL_CODEX.md",
+      "broken_images": [],
+      "images": 0
+    },
+    {
+      "done": true,
+      "mermaid": 1,
+      "error": null,
+      "document": "README.md",
+      "broken_images": [],
+      "images": 1
+    },
+    {
+      "done": true,
+      "mermaid": 0,
+      "error": null,
+      "document": "RELEASE_PROCESS.md",
+      "broken_images": [],
+      "images": 0
+    },
+    {
+      "done": true,
+      "mermaid": 0,
+      "error": null,
+      "document": "SECURITY.md",
+      "broken_images": [],
+      "images": 0
+    },
+    {
+      "done": true,
+      "mermaid": 0,
+      "error": null,
+      "document": "SUPPORT.md",
+      "broken_images": [],
+      "images": 0
+    },
+    {
+      "done": true,
+      "mermaid": 0,
+      "error": null,
+      "document": "THIRD_PARTY_NOTICES.md",
+      "broken_images": [],
+      "images": 0
+    }
+  ],
+  "errors": 0
+}

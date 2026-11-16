@@ -1,4 +1,6 @@
 schemas/aeat/** -text
 static/vendor/** -text
+docs/legal/third-party/** -text
+docs/legal/upstream/** -text
 *.png binary
 *.pdf binary

@@ -1,0 +1,1995 @@
+{
+  "schema": 1,
+  "product": {
+    "name": "beautytpv",
+    "version": "0.1.0",
+    "license": "NOASSERTION",
+    "license_file_present": false
+  },
+  "scope": "Installed versions matching lock; preserved local notices; not a legal clearance or complete binary SBOM",
+  "lock_sha256": "99e931755fe4d7a5b150b3ff0ccbdbcd1aca6405b8e52572169cfc22b84cbcc5",
+  "lock_hash_normalization": "UTF-8 bytes with CRLF converted to LF",
+  "packages": [
+    {
+      "name": "asgiref",
+      "version": "3.13.0",
+      "scope": "locked-transitive-or-tool",
+      "license_expression": null,
+      "license_metadata": "BSD-3-Clause",
+      "license_label": "BSD-3-Clause",
+      "classifiers": [
+        "Development Status :: 5 - Production/Stable",
+        "Environment :: Web Environment",
+        "Intended Audience :: Developers",
+        "Operating System :: OS Independent",
+        "Programming Language :: Python",
+        "Programming Language :: Python :: 3",
+        "Programming Language :: Python :: 3 :: Only",
+        "Programming Language :: Python :: 3.11",
+        "Programming Language :: Python :: 3.12",
+        "Programming Language :: Python :: 3.13",
+        "Programming Language :: Python :: 3.14",
+        "Programming Language :: Python :: 3.15",
+        "Programming Language :: Python :: Free Threading :: 2 - Beta",
+        "Topic :: Internet :: WWW/HTTP"
+      ],
+      "project_urls": [
+        "Documentation, https://asgi.readthedocs.io/",
+        "Further Documentation, https://docs.djangoproject.com/en/stable/topics/async/#async-adapter-functions",
+        "Changelog, https://github.com/django/asgiref/blob/master/CHANGELOG.txt"
+      ],
+      "home_page": "https://github.com/django/asgiref/",
+      "metadata_sha256": "14f604d696b6817acd7304bf64a5c7aec7a3b8c9f19139632e0480cc472d64d1",
+      "notice_bundle": {
+        "file": "docs/legal/third-party/asgiref.txt",
+        "sha256": "dbf85fd5d458570f1fc096c8fff6c6368199160e5fefb0d64cb3db90dcd68447",
+        "sources": [
+          {
+            "origin": "asgiref-3.13.0.dist-info/licenses/LICENSE",
+            "sha256": "b846415d1b514e9c1dff14a22deb906d794bc546ca6129f950a18cd091e2a669",
+            "bytes": 1552
+          }
+        ]
+      },
+      "review_required": false,
+      "review_reason": "Inventario tecnico; revisar tambien el artefacto de distribucion final."
+    },
+    {
+      "name": "certifi",
+      "version": "2026.10.23",
+      "scope": "locked-transitive-or-tool",
+      "license_expression": null,
+      "license_metadata": "MPL-2.0",
+      "license_label": "MPL-2.0",
+      "classifiers": [
+        "Development Status :: 5 - Production/Stable",
+        "Intended Audience :: Developers",
+        "License :: OSI Approved :: Mozilla Public License 2.0 (MPL 2.0)",
+        "Natural Language :: English",
+        "Programming Language :: Python",
+        "Programming Language :: Python :: 3",
+        "Programming Language :: Python :: 3 :: Only",
+        "Programming Language :: Python :: 3.7",
+        "Programming Language :: Python :: 3.8",
+        "Programming Language :: Python :: 3.9",
+        "Programming Language :: Python :: 3.10",
+        "Programming Language :: Python :: 3.11",
+        "Programming Language :: Python :: 3.12",
+        "Programming Language :: Python :: 3.13",
+        "Programming Language :: Python :: 3.14",
+        "Programming Language :: Python :: 3.15"
+      ],
+      "project_urls": [
+        "Source, https://github.com/certifi/python-certifi"
+      ],
+      "home_page": "https://github.com/certifi/python-certifi",
+      "metadata_sha256": "e463e38f7fe7da36a11e6d3fecc5dfa5b97be8c8022620400750d79ae7d842bc",
+      "notice_bundle": {
+        "file": "docs/legal/third-party/certifi.txt",
+        "sha256": "14040749e67f337c6fec83ccb830490a1cb64257e1570e08f86794e09d1be57f",
+        "sources": [
+          {
+            "origin": "certifi-2026.10.23.dist-info/licenses/LICENSE",
+            "sha256": "e93716da6b9c0d5a4a1df60fe695b370f0695603d21f6f83f053e42cfc10caf7",
+            "bytes": 989
+          }
+        ]
+      },
+      "review_required": true,
+      "review_reason": "MPL-2.0: revisar obligaciones de los archivos cubiertos y acceso a su fuente."
+    },
+    {
+      "name": "cffi",
+      "version": "2.1.1",
+      "scope": "locked-transitive-or-tool",
+      "license_expression": "MIT-0",
+      "license_metadata": null,
+      "license_label": "MIT-0",
+      "classifiers": [
+        "Programming Language :: Python",
+        "Programming Language :: Python :: 3",
+        "Programming Language :: Python :: 3.10",
+        "Programming Language :: Python :: 3.11",
+        "Programming Language :: Python :: 3.12",
+        "Programming Language :: Python :: 3.13",
+        "Programming Language :: Python :: 3.14",
+        "Programming Language :: Python :: 3.15",
+        "Programming Language :: Python :: Free Threading :: 2 - Beta",
+        "Programming Language :: Python :: Implementation :: CPython"
+      ],
+      "project_urls": [
+        "Documentation, https://cffi.readthedocs.io/",
+        "Changelog, https://cffi.readthedocs.io/en/latest/whatsnew.html",
+        "Download, https://github.com/python-cffi/cffi/releases",
+        "Contact, https://groups.google.com/forum/#!forum/python-cffi",
+        "Source Code, https://github.com/python-cffi/cffi",
+        "Issue Tracker, https://github.com/python-cffi/cffi/issues"
+      ],
+      "home_page": null,
+      "metadata_sha256": "558bafb9093a8e790175d9ecff9688382981d744877dad86fd6770db0f4dc918",
+      "notice_bundle": {
+        "file": "docs/legal/third-party/cffi.txt",
+        "sha256": "6d7969de1985ace83418cd17b1188e0ac2ac80d2f2a64ad800d9f5eb05cbe0ba",
+        "sources": [
+          {
+            "origin": "cffi-2.1.1.dist-info/licenses/LICENSE",
+            "sha256": "5ba24ddc57067f9249add644c3afc41a5d6dc37e23433ef759d95df370b0af63",
+            "bytes": 1123
+          }
+        ]
+      },
+      "review_required": false,
+      "review_reason": "Inventario tecnico; revisar tambien el artefacto de distribucion final."
+    },
+    {
+      "name": "charset-normalizer",
+      "version": "3.5.2",
+      "scope": "locked-transitive-or-tool",
+      "license_expression": null,
+      "license_metadata": "MIT",
+      "license_label": "MIT",
+      "classifiers": [
+        "Development Status :: 5 - Production/Stable",
+        "Intended Audience :: Developers",
+        "Operating System :: OS Independent",
+        "Programming Language :: Python",
+        "Programming Language :: Python :: 3",
+        "Programming Language :: Python :: 3.7",
+        "Programming Language :: Python :: 3.8",
+        "Programming Language :: Python :: 3.9",
+        "Programming Language :: Python :: 3.10",
+        "Programming Language :: Python :: 3.11",
+        "Programming Language :: Python :: 3.12",
+        "Programming Language :: Python :: 3.13",
+        "Programming Language :: Python :: 3.14",
+        "Programming Language :: Python :: 3.15",
+        "Programming Language :: Python :: 3 :: Only",
+        "Programming Language :: Python :: Implementation :: CPython",
+        "Programming Language :: Python :: Implementation :: PyPy",
+        "Programming Language :: Python :: Free Threading :: 4 - Resilient",
+        "Environment :: WebAssembly",
+        "Environment :: WebAssembly :: Emscripten",
+        "Topic :: Text Processing :: Linguistic",
+        "Topic :: Utilities",
+        "Typing :: Typed"
+      ],
+      "project_urls": [
+        "Changelog, https://github.com/jawah/charset_normalizer/blob/master/CHANGELOG.md",
+        "Documentation, https://charset-normalizer.readthedocs.io/",
+        "Code, https://github.com/jawah/charset_normalizer",
+        "Issue tracker, https://github.com/jawah/charset_normalizer/issues"
+      ],
+      "home_page": null,
+      "metadata_sha256": "89ce6362bb7be88558f4be99a98f5d1b4da93d19cd0323e5ee0bac05cf883dfb",
+      "notice_bundle": {
+        "file": "docs/legal/third-party/charset-normalizer.txt",
+        "sha256": "d1399a32f2fc02ef78b5689ca59fcdc1f01d379b6f92520aef1161ea72d636b5",
+        "sources": [
+          {
+            "origin": "charset_normalizer-3.5.2.dist-info/licenses/LICENSE",
+            "sha256": "18577485d3704f1a479ded8e573c0976cfed315fd2fd17983fa988da4c2f70d1",
+            "bytes": 1092
+          }
+        ]
+      },
+      "review_required": false,
+      "review_reason": "Inventario tecnico; revisar tambien el artefacto de distribucion final."
+    },
+    {
+      "name": "colorama",
+      "version": "0.4.6",
+      "scope": "locked-transitive-or-tool",
+      "license_expression": null,
+      "license_metadata": null,
+      "license_label": "BSD-3-Clause (texto local)",
+      "classifiers": [
+        "Development Status :: 5 - Production/Stable",
+        "Environment :: Console",
+        "Intended Audience :: Developers",
+        "License :: OSI Approved :: BSD License",
+        "Operating System :: OS Independent",
+        "Programming Language :: Python",
+        "Programming Language :: Python :: 2",
+        "Programming Language :: Python :: 2.7",
+        "Programming Language :: Python :: 3",
+        "Programming Language :: Python :: 3.7",
+        "Programming Language :: Python :: 3.8",
+        "Programming Language :: Python :: 3.9",
+        "Programming Language :: Python :: 3.10",
+        "Programming Language :: Python :: Implementation :: CPython",
+        "Programming Language :: Python :: Implementation :: PyPy",
+        "Topic :: Terminals"
+      ],
+      "project_urls": [
+        "Homepage, https://github.com/tartley/colorama"
+      ],
+      "home_page": null,
+      "metadata_sha256": "7baed29eb50c3b29bdb33ff84e3177bf1bc05784f7685ecdcaa4471c7dd810cc",
+      "notice_bundle": {
+        "file": "docs/legal/third-party/colorama.txt",
+        "sha256": "f8df7a25ca373d9a9c73db93250a70f795728be731ded719397cf8a490563014",
+        "sources": [
+          {
+            "origin": "colorama-0.4.6.dist-info/licenses/LICENSE.txt",
+            "sha256": "cac35c02686e5d04a5a7140bfb3b36e73aed496656e891102e428886d7930318",
+            "bytes": 1491
+          }
+        ]
+      },
+      "review_required": false,
+      "review_reason": "Inventario tecnico; revisar tambien el artefacto de distribucion final."
+    },
+    {
+      "name": "cryptography",
+      "version": "50.0.2",
+      "scope": "runtime-direct",
+      "license_expression": "Apache-2.0 OR BSD-3-Clause",
+      "license_metadata": null,
+      "license_label": "Apache-2.0 OR BSD-3-Clause",
+      "classifiers": [
+        "Development Status :: 5 - Production/Stable",
+        "Intended Audience :: Developers",
+        "Natural Language :: English",
+        "Operating System :: MacOS :: MacOS X",
+        "Operating System :: POSIX",
+        "Operating System :: POSIX :: BSD",
+        "Operating System :: POSIX :: Linux",
+        "Operating System :: Microsoft :: Windows",
+        "Programming Language :: Python",
+        "Programming Language :: Python :: 3",
+        "Programming Language :: Python :: 3 :: Only",
+        "Programming Language :: Python :: 3.9",
+        "Programming Language :: Python :: 3.10",
+        "Programming Language :: Python :: 3.11",
+        "Programming Language :: Python :: 3.12",
+        "Programming Language :: Python :: 3.13",
+        "Programming Language :: Python :: 3.14",
+        "Programming Language :: Python :: 3.15",
+        "Programming Language :: Python :: Implementation :: CPython",
+        "Programming Language :: Python :: Implementation :: PyPy",
+        "Programming Language :: Python :: Free Threading :: 3 - Stable",
+        "Topic :: Security :: Cryptography"
+      ],
+      "project_urls": [
+        "changelog, https://cryptography.io/en/latest/changelog/",
+        "documentation, https://cryptography.io/",
+        "homepage, https://github.com/pyca/cryptography",
+        "issues, https://github.com/pyca/cryptography/issues",
+        "source, https://github.com/pyca/cryptography/"
+      ],
+      "home_page": null,
+      "metadata_sha256": "047cfc71226409de4318b360aef15c63a2adf609731e3dcf7fe932f14ea042ee",
+      "notice_bundle": {
+        "file": "docs/legal/third-party/cryptography.txt",
+        "sha256": "2d8956baf21a01e1f1c84beb392a1fb9102ea3a9217132c660fae9d44c081594",
+        "sources": [
+          {
+            "origin": "cryptography-50.0.2.dist-info/licenses/LICENSE",
+            "sha256": "3e0c7c091a948b82533ba98fd7cbb40432d6f1a9acbf85f5922d2f99a93ae6bb",
+            "bytes": 197
+          },
+          {
+            "origin": "cryptography-50.0.2.dist-info/licenses/LICENSE.APACHE",
+            "sha256": "aac73b3148f6d1d7111dbca32099f68d26c644c6813ae1e4f05f6579aa2663fe",
+            "bytes": 11360
+          },
+          {
+            "origin": "cryptography-50.0.2.dist-info/licenses/LICENSE.BSD",
+            "sha256": "602c4c7482de6479dd2e9793cda275e5e63d773dacd1eca689232ab7008fb4fb",
+            "bytes": 1532
+          }
+        ]
+      },
+      "review_required": true,
+      "review_reason": "Apache-2.0 OR BSD-3-Clause; revisar tambien OpenSSL/bibliotecas incluidas en el wheel."
+    },
+    {
+      "name": "Django",
+      "version": "5.2.19",
+      "scope": "runtime-direct",
+      "license_expression": "BSD-3-Clause",
+      "license_metadata": null,
+      "license_label": "BSD-3-Clause",
+      "classifiers": [
+        "Development Status :: 5 - Production/Stable",
+        "Environment :: Web Environment",
+        "Framework :: Django",
+        "Intended Audience :: Developers",
+        "Operating System :: OS Independent",
+        "Programming Language :: Python",
+        "Programming Language :: Python :: 3",
+        "Programming Language :: Python :: 3 :: Only",
+        "Programming Language :: Python :: 3.10",
+        "Programming Language :: Python :: 3.11",
+        "Programming Language :: Python :: 3.12",
+        "Programming Language :: Python :: 3.13",
+        "Programming Language :: Python :: 3.14",
+        "Topic :: Internet :: WWW/HTTP",
+        "Topic :: Internet :: WWW/HTTP :: Dynamic Content",
+        "Topic :: Internet :: WWW/HTTP :: WSGI",
+        "Topic :: Software Development :: Libraries :: Application Frameworks",
+        "Topic :: Software Development :: Libraries :: Python Modules"
+      ],
+      "project_urls": [
+        "Homepage, https://www.djangoproject.com/",
+        "Documentation, https://docs.djangoproject.com/",
+        "Release notes, https://docs.djangoproject.com/en/stable/releases/",
+        "Funding, https://www.djangoproject.com/fundraising/",
+        "Source, https://github.com/django/django",
+        "Tracker, https://code.djangoproject.com/"
+      ],
+      "home_page": null,
+      "metadata_sha256": "3f74f0e89c01adca0bb13dfff7eeefe348a91c16121bf2ae74f39e36a0f25c36",
+      "notice_bundle": {
+        "file": "docs/legal/third-party/django.txt",
+        "sha256": "08b41afe45104823a687dd33139553f43932f06f1941568021ba488b5751a016",
+        "sources": [
+          {
+            "origin": "django-5.2.19.dist-info/licenses/LICENSE",
+            "sha256": "b846415d1b514e9c1dff14a22deb906d794bc546ca6129f950a18cd091e2a669",
+            "bytes": 1552
+          },
+          {
+            "origin": "django-5.2.19.dist-info/licenses/LICENSE.python",
+            "sha256": "765e2b1e339fef8d3e9f12892e7e072a8be309996a0be43ffc5796398ec4e7d4",
+            "bytes": 14256
+          },
+          {
+            "origin": "django/contrib/admin/static/admin/css/vendor/select2/LICENSE-SELECT2.md",
+            "sha256": "4ee0cbc51370afde358652a0f977972053729ed578b6a42f5e2a037d114f0b39",
+            "bytes": 1124
+          },
+          {
+            "origin": "django/contrib/admin/static/admin/img/LICENSE",
+            "sha256": "d114faff3488c16c319b3235dc41f90239d3d63d9853733033d8f7535f5c0004",
+            "bytes": 1081
+          },
+          {
+            "origin": "django/contrib/admin/static/admin/js/vendor/jquery/LICENSE.txt",
+            "sha256": "d4db9ebe6f29f5168eac45ad713f055623ac5d0dcd5ba92da23d650ae012020d",
+            "bytes": 1097
+          },
+          {
+            "origin": "django/contrib/admin/static/admin/js/vendor/select2/LICENSE.md",
+            "sha256": "4ee0cbc51370afde358652a0f977972053729ed578b6a42f5e2a037d114f0b39",
+            "bytes": 1124
+          },
+          {
+            "origin": "django/contrib/admin/static/admin/js/vendor/xregexp/LICENSE.txt",
+            "sha256": "73af2949bff9296cb0f816c3be19a4da4e95adc94c1f924796e8bad3f03f2f29",
+            "bytes": 1106
+          },
+          {
+            "origin": "django/contrib/gis/gdal/LICENSE",
+            "sha256": "570a045a8372b6cd6a00e30ebafe8e3e8dfc0a7fe3d4ef2cc5f16d419eb63aeb",
+            "bytes": 1526
+          },
+          {
+            "origin": "django/contrib/gis/geos/LICENSE",
+            "sha256": "08bf24b7551238ae325295245425b1caeb9ad0f42f9e2d303c7b353502632045",
+            "bytes": 1530
+          },
+          {
+            "origin": "django/dispatch/license.txt",
+            "sha256": "54004c4b606964ebc163af16d04607c16e428f8a78a026fecb53f70c09f4a94f",
+            "bytes": 1743
+          }
+        ]
+      },
+      "review_required": false,
+      "review_reason": "Inventario tecnico; revisar tambien el artefacto de distribucion final."
+    },
+    {
+      "name": "greenlet",
+      "version": "3.5.6",
+      "scope": "locked-transitive-or-tool",
+      "license_expression": "MIT AND PSF-2.0",
+      "license_metadata": null,
+      "license_label": "MIT AND PSF-2.0",
+      "classifiers": [
+        "Development Status :: 5 - Production/Stable",
+        "Intended Audience :: Developers",
+        "Natural Language :: English",
+        "Programming Language :: C",
+        "Programming Language :: Python",
+        "Programming Language :: Python :: 3",
+        "Programming Language :: Python :: 3.10",
+        "Programming Language :: Python :: 3.11",
+        "Programming Language :: Python :: 3.12",
+        "Programming Language :: Python :: 3.13",
+        "Programming Language :: Python :: 3.14",
+        "Programming Language :: Python :: 3.15",
+        "Operating System :: OS Independent",
+        "Topic :: Software Development :: Libraries :: Python Modules"
+      ],
+      "project_urls": [
+        "Homepage, https://greenlet.readthedocs.io",
+        "Documentation, https://greenlet.readthedocs.io",
+        "Repository, https://github.com/python-greenlet/greenlet",
+        "Issues, https://github.com/python-greenlet/greenlet/issues",
+        "Changelog, https://greenlet.readthedocs.io/en/latest/changes.html"
+      ],
+      "home_page": null,
+      "metadata_sha256": "b9b4cbbc1f3165e50fbc4696c433fe82b8a151fde65eede28fb6ec5efb3e1fab",
+      "notice_bundle": {
+        "file": "docs/legal/third-party/greenlet.txt",
+        "sha256": "0dad392aed93ba46d9934194c2d3f0602d08fb8676161e21a600b1a4d799b29e",
+        "sources": [
+          {
+            "origin": "greenlet-3.5.6.dist-info/licenses/LICENSE",
+            "sha256": "ab977b654605670319509481ece49198f405a129372ac38c96f51cd96c2f452e",
+            "bytes": 1464
+          },
+          {
+            "origin": "greenlet-3.5.6.dist-info/licenses/LICENSE.PSF",
+            "sha256": "69efa689cc7aec7736236d3039c1d665e4b0c734a5bfea5abf633023abb2fff4",
+            "bytes": 2471
+          }
+        ]
+      },
+      "review_required": false,
+      "review_reason": "Inventario tecnico; revisar tambien el artefacto de distribucion final."
+    },
+    {
+      "name": "idna",
+      "version": "3.20",
+      "scope": "locked-transitive-or-tool",
+      "license_expression": "BSD-3-Clause",
+      "license_metadata": null,
+      "license_label": "BSD-3-Clause",
+      "classifiers": [
+        "Development Status :: 5 - Production/Stable",
+        "Intended Audience :: Developers",
+        "Intended Audience :: System Administrators",
+        "Operating System :: OS Independent",
+        "Programming Language :: Python",
+        "Programming Language :: Python :: 3",
+        "Programming Language :: Python :: 3 :: Only",
+        "Programming Language :: Python :: 3.9",
+        "Programming Language :: Python :: 3.10",
+        "Programming Language :: Python :: 3.11",
+        "Programming Language :: Python :: 3.12",
+        "Programming Language :: Python :: 3.13",
+        "Programming Language :: Python :: 3.14",
+        "Programming Language :: Python :: 3.15",
+        "Programming Language :: Python :: Implementation :: CPython",
+        "Programming Language :: Python :: Implementation :: PyPy",
+        "Topic :: Internet :: Name Service (DNS)",
+        "Topic :: Software Development :: Libraries :: Python Modules",
+        "Topic :: Utilities"
+      ],
+      "project_urls": [
+        "Changelog, https://github.com/kjd/idna/blob/master/HISTORY.md",
+        "Issue tracker, https://github.com/kjd/idna/issues",
+        "Source, https://github.com/kjd/idna"
+      ],
+      "home_page": null,
+      "metadata_sha256": "dbd8c14c1e4ca1e0c9824a6dbc7cbbf78884f38eb52d91148cd3025f671e4b85",
+      "notice_bundle": {
+        "file": "docs/legal/third-party/idna.txt",
+        "sha256": "62e1cdddc003bef7b4ed50989f3716ff27059b16370b1e8a3f7052c18ab7281b",
+        "sources": [
+          {
+            "origin": "idna-3.20.dist-info/licenses/LICENSE.md",
+            "sha256": "1a9a4f0e3d479a27240ddd59a9137a66ab4a0f9dfdc8ca6188cc0bfd85187f04",
+            "bytes": 1541
+          }
+        ]
+      },
+      "review_required": false,
+      "review_reason": "Inventario tecnico; revisar tambien el artefacto de distribucion final."
+    },
+    {
+      "name": "iniconfig",
+      "version": "2.3.1",
+      "scope": "locked-transitive-or-tool",
+      "license_expression": "MIT",
+      "license_metadata": null,
+      "license_label": "MIT",
+      "classifiers": [
+        "Development Status :: 4 - Beta",
+        "Intended Audience :: Developers",
+        "Operating System :: MacOS :: MacOS X",
+        "Operating System :: Microsoft :: Windows",
+        "Operating System :: POSIX",
+        "Programming Language :: Python :: 3 :: Only",
+        "Programming Language :: Python :: 3.10",
+        "Programming Language :: Python :: 3.11",
+        "Programming Language :: Python :: 3.12",
+        "Programming Language :: Python :: 3.13",
+        "Programming Language :: Python :: 3.14",
+        "Programming Language :: Python :: 3.15",
+        "Topic :: Software Development :: Libraries",
+        "Topic :: Utilities"
+      ],
+      "project_urls": [
+        "Homepage, https://github.com/pytest-dev/iniconfig"
+      ],
+      "home_page": null,
+      "metadata_sha256": "47c2c35d936f5c649d8074c6464719a42966a67b5cebad01e3e5784cf090cfb6",
+      "notice_bundle": {
+        "file": "docs/legal/third-party/iniconfig.txt",
+        "sha256": "fe75e76621b6b615de506e42ba49a507834edd655e9a45717cb458982053cc73",
+        "sources": [
+          {
+            "origin": "iniconfig-2.3.1.dist-info/licenses/LICENSE",
+            "sha256": "3409fa91f7ace557894632676656e32264fe5ef7581535725dc9a23774551bd4",
+            "bytes": 1098
+          }
+        ]
+      },
+      "review_required": false,
+      "review_reason": "Inventario tecnico; revisar tambien el artefacto de distribucion final."
+    },
+    {
+      "name": "lxml",
+      "version": "6.1.3",
+      "scope": "runtime-direct",
+      "license_expression": null,
+      "license_metadata": "BSD-3-Clause",
+      "license_label": "BSD-3-Clause",
+      "classifiers": [
+        "Development Status :: 5 - Production/Stable",
+        "Intended Audience :: Developers",
+        "Intended Audience :: Information Technology",
+        "Programming Language :: Cython",
+        "Programming Language :: Python :: 3",
+        "Programming Language :: Python :: 3.8",
+        "Programming Language :: Python :: 3.9",
+        "Programming Language :: Python :: 3.10",
+        "Programming Language :: Python :: 3.11",
+        "Programming Language :: Python :: 3.12",
+        "Programming Language :: Python :: 3.13",
+        "Programming Language :: Python :: 3.14",
+        "Programming Language :: Python :: 3.15",
+        "Programming Language :: C",
+        "Operating System :: OS Independent",
+        "Topic :: Text Processing :: Markup :: HTML",
+        "Topic :: Text Processing :: Markup :: XML",
+        "Topic :: Software Development :: Libraries :: Python Modules"
+      ],
+      "project_urls": [
+        "Source, https://github.com/lxml/lxml",
+        "Bug Tracker, https://bugs.launchpad.net/lxml"
+      ],
+      "home_page": "https://lxml.de/",
+      "metadata_sha256": "aad89f8107bc74045b86c9b7f7c0984196102520dd7faed5e4e45693b7c315ef",
+      "notice_bundle": {
+        "file": "docs/legal/third-party/lxml.txt",
+        "sha256": "46c0be8d2d39c9d307aa2ccff4610da5b970489d5ecd820a274251199e94f522",
+        "sources": [
+          {
+            "origin": "lxml-6.1.3.dist-info/licenses/LICENSE.txt",
+            "sha256": "e7c3ce8d76331b0101cc46790ab43958ea90a364bcf962ed8763d5a818340e69",
+            "bytes": 1538
+          },
+          {
+            "origin": "lxml-6.1.3.dist-info/licenses/LICENSES.txt",
+            "sha256": "df682c668de65321677b5e4861dca4128a8bad8067f230956e9da3f985b3d398",
+            "bytes": 6348
+          }
+        ]
+      },
+      "review_required": true,
+      "review_reason": "LICENSES.txt enumera licencias/componentes adicionales, recursos y binarios; revisar el wheel exacto."
+    },
+    {
+      "name": "packaging",
+      "version": "26.3",
+      "scope": "locked-transitive-or-tool",
+      "license_expression": "Apache-2.0 OR BSD-2-Clause",
+      "license_metadata": null,
+      "license_label": "Apache-2.0 OR BSD-2-Clause",
+      "classifiers": [
+        "Development Status :: 5 - Production/Stable",
+        "Intended Audience :: Developers",
+        "Programming Language :: Python",
+        "Programming Language :: Python :: 3",
+        "Programming Language :: Python :: 3 :: Only",
+        "Programming Language :: Python :: 3.9",
+        "Programming Language :: Python :: 3.10",
+        "Programming Language :: Python :: 3.11",
+        "Programming Language :: Python :: 3.12",
+        "Programming Language :: Python :: 3.13",
+        "Programming Language :: Python :: 3.14",
+        "Programming Language :: Python :: 3.15",
+        "Programming Language :: Python :: Implementation :: CPython",
+        "Programming Language :: Python :: Implementation :: PyPy",
+        "Programming Language :: Python :: Free Threading :: 4 - Resilient",
+        "Typing :: Typed"
+      ],
+      "project_urls": [
+        "Documentation, https://packaging.pypa.io/",
+        "Source, https://github.com/pypa/packaging"
+      ],
+      "home_page": null,
+      "metadata_sha256": "70fdb89fc4d4a9a043bf7372b8972bcc883fddff34ab55e9cf80d73875384763",
+      "notice_bundle": {
+        "file": "docs/legal/third-party/packaging.txt",
+        "sha256": "2b34b5491fb5fc6ae19eb9d983842579b56c366b823e7fea63703ce62e759c13",
+        "sources": [
+          {
+            "origin": "packaging-26.3.dist-info/licenses/LICENSE",
+            "sha256": "cad1ef5bd340d73e074ba614d26f7deaca5c7940c3d8c34852e65c4909686c48",
+            "bytes": 197
+          },
+          {
+            "origin": "packaging-26.3.dist-info/licenses/LICENSE.APACHE",
+            "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594",
+            "bytes": 10174
+          },
+          {
+            "origin": "packaging-26.3.dist-info/licenses/LICENSE.BSD",
+            "sha256": "b70e7e9b742f1cc6f948b34c16aa39ffece94196364bc88ff0d2180f0028fac5",
+            "bytes": 1344
+          }
+        ]
+      },
+      "review_required": false,
+      "review_reason": "Inventario tecnico; revisar tambien el artefacto de distribucion final."
+    },
+    {
+      "name": "pillow",
+      "version": "13.0.0",
+      "scope": "locked-transitive-or-tool",
+      "license_expression": "MIT-CMU",
+      "license_metadata": null,
+      "license_label": "MIT-CMU",
+      "classifiers": [
+        "Development Status :: 6 - Mature",
+        "Programming Language :: Python :: 3 :: Only",
+        "Programming Language :: Python :: 3.11",
+        "Programming Language :: Python :: 3.12",
+        "Programming Language :: Python :: 3.13",
+        "Programming Language :: Python :: 3.14",
+        "Programming Language :: Python :: 3.15",
+        "Programming Language :: Python :: Implementation :: CPython",
+        "Programming Language :: Python :: Implementation :: PyPy",
+        "Topic :: Multimedia :: Graphics",
+        "Topic :: Multimedia :: Graphics :: Capture :: Digital Camera",
+        "Topic :: Multimedia :: Graphics :: Capture :: Screen Capture",
+        "Topic :: Multimedia :: Graphics :: Graphics Conversion",
+        "Topic :: Multimedia :: Graphics :: Viewers",
+        "Typing :: Typed"
+      ],
+      "project_urls": [
+        "Release notes, https://pillow.readthedocs.io/en/stable/releasenotes/index.html",
+        "Changelog, https://github.com/python-pillow/Pillow/releases",
+        "Documentation, https://pillow.readthedocs.io",
+        "Funding, https://tidelift.com/lifter/search/pypi/pillow",
+        "Homepage, https://python-pillow.org",
+        "Mastodon, https://fosstodon.org/@pillow",
+        "Security, https://pillow.readthedocs.io/en/stable/handbook/security.html",
+        "Source, https://github.com/python-pillow/Pillow"
+      ],
+      "home_page": null,
+      "metadata_sha256": "dba7fdfe24e302f46bae562f55d66cc367c0618abae9894a1ebec93dc8f0e511",
+      "notice_bundle": {
+        "file": "docs/legal/third-party/pillow.txt",
+        "sha256": "2873bd63150c42f7d77cfc31b6ce8852aa7b515ade97ef8a9619c00c761bc701",
+        "sources": [
+          {
+            "origin": "pillow-13.0.0.dist-info/licenses/LICENSE",
+            "sha256": "988ffe8ab3480b0f4e9a0ab2702bffd73d9fb6b47198043fb3ba101a62fac236",
+            "bytes": 78481
+          }
+        ]
+      },
+      "review_required": true,
+      "review_reason": "MIT-CMU declarada; los codecs/binarios del wheel pueden tener avisos adicionales."
+    },
+    {
+      "name": "playwright",
+      "version": "1.65.1",
+      "scope": "development-direct",
+      "license_expression": "Apache-2.0",
+      "license_metadata": null,
+      "license_label": "Apache-2.0",
+      "classifiers": [
+        "Topic :: Software Development :: Testing",
+        "Topic :: Internet :: WWW/HTTP :: Browsers",
+        "Intended Audience :: Developers",
+        "Programming Language :: Python :: 3",
+        "Programming Language :: Python :: 3.10",
+        "Programming Language :: Python :: 3.11",
+        "Programming Language :: Python :: 3.12",
+        "Programming Language :: Python :: 3.13",
+        "Programming Language :: Python :: 3.14",
+        "Operating System :: OS Independent"
+      ],
+      "project_urls": [
+        "homepage, https://github.com/Microsoft/playwright-python",
+        "Release notes, https://github.com/microsoft/playwright-python/releases"
+      ],
+      "home_page": null,
+      "metadata_sha256": "91aa1f728b1c35050482098849ca50cac686befd065b5b6f3b9f80eaa891b808",
+      "notice_bundle": {
+        "file": "docs/legal/third-party/playwright.txt",
+        "sha256": "e71bb91df48458ceebb3a4967bccff213b19162ee921236e3fbb8d5791b36a9d",
+        "sources": [
+          {
+            "origin": "playwright-1.65.1.dist-info/licenses/LICENSE",
+            "sha256": "7fab1461b41970ff376f1c9303a637076bfaaeb71cd12dd3a1c44aaf59a1a2b9",
+            "bytes": 11399
+          },
+          {
+            "origin": "playwright/driver/LICENSE",
+            "sha256": "cbc91dba25c546898544155e1c0fce897f00e3f1df0afc795b8da891d38f92d9",
+            "bytes": 159309
+          },
+          {
+            "origin": "playwright/driver/package/LICENSE",
+            "sha256": "45873d00a0dd243596deb4aa23b2493b3d1f0671921bf2538ea431d7380220eb",
+            "bytes": 11601
+          },
+          {
+            "origin": "playwright/driver/package/NOTICE",
+            "sha256": "6d602191187b35b9b01d2cffa01c8469c2c8d9de8a96f1bf868e0f264f51c81d",
+            "bytes": 254
+          },
+          {
+            "origin": "playwright/driver/package/ThirdPartyNotices.txt",
+            "sha256": "a549d329bad8806fe279f0ecae0fc0270dec7e7c2dc8ec10f90e394f7c32b144",
+            "bytes": 676
+          },
+          {
+            "origin": "playwright/driver/package/lib/serverRegistry.js.LICENSE",
+            "sha256": "3098a6efcbc11752cbdf6075fa65480f5470f78c8d981fab9c0796dc9a41cefe",
+            "bytes": 2982
+          },
+          {
+            "origin": "playwright/driver/package/lib/utilsBundle.js.LICENSE",
+            "sha256": "0b85cf59012e8a11c869ed21b61724e934f10222dfb29e95412bf0b8a8d341b1",
+            "bytes": 107917
+          },
+          {
+            "origin": "playwright/driver/package/lib/webp_codec.LICENSE",
+            "sha256": "995c7ee35aceb7666829b7a501ca89c0864e12b493c1174b155774ab1e03d831",
+            "bytes": 8841
+          }
+        ]
+      },
+      "review_required": true,
+      "review_reason": "Incluye driver Node y ThirdPartyNotices. Los navegadores descargados tienen sus propios avisos; no se redistribuyen aqui."
+    },
+    {
+      "name": "pluggy",
+      "version": "1.7.0",
+      "scope": "locked-transitive-or-tool",
+      "license_expression": null,
+      "license_metadata": "MIT",
+      "license_label": "MIT",
+      "classifiers": [
+        "Development Status :: 6 - Mature",
+        "Intended Audience :: Developers",
+        "License :: OSI Approved :: MIT License",
+        "Operating System :: POSIX",
+        "Operating System :: Microsoft :: Windows",
+        "Operating System :: MacOS :: MacOS X",
+        "Topic :: Software Development :: Testing",
+        "Topic :: Software Development :: Libraries",
+        "Topic :: Utilities",
+        "Programming Language :: Python :: Implementation :: CPython",
+        "Programming Language :: Python :: Implementation :: PyPy",
+        "Programming Language :: Python :: 3",
+        "Programming Language :: Python :: 3 :: Only",
+        "Programming Language :: Python :: 3.10",
+        "Programming Language :: Python :: 3.11",
+        "Programming Language :: Python :: 3.12",
+        "Programming Language :: Python :: 3.13",
+        "Programming Language :: Python :: 3.14"
+      ],
+      "project_urls": [
+        "Homepage, https://github.com/pytest-dev/pluggy",
+        "Documentation, https://pluggy.readthedocs.io/",
+        "Changelog, https://pluggy.readthedocs.io/en/latest/changelog.html",
+        "Repository, https://github.com/pytest-dev/pluggy",
+        "Issues, https://github.com/pytest-dev/pluggy/issues",
+        "Funding, https://tidelift.com/subscription/pkg/pypi-pluggy"
+      ],
+      "home_page": null,
+      "metadata_sha256": "20ac8237e37f1d6e7e75500cd663015177ba80c1a1a595ff6bae18a539ff8a2c",
+      "notice_bundle": {
+        "file": "docs/legal/third-party/pluggy.txt",
+        "sha256": "bebcd9d3615b1a95d4c4173aed6c5df00a016e828526d2f5844c3a76f9e7eac9",
+        "sources": [
+          {
+            "origin": "pluggy-1.7.0.dist-info/licenses/LICENSE",
+            "sha256": "d6b65e6c213a5d0b577911d34d6e5949b9f59d76c238c5071a2f3fc16cfb2606",
+            "bytes": 1110
+          }
+        ]
+      },
+      "review_required": false,
+      "review_reason": "Inventario tecnico; revisar tambien el artefacto de distribucion final."
+    },
+    {
+      "name": "pycparser",
+      "version": "3.12",
+      "scope": "locked-transitive-or-tool",
+      "license_expression": "BSD-3-Clause",
+      "license_metadata": null,
+      "license_label": "BSD-3-Clause",
+      "classifiers": [
+        "Development Status :: 5 - Production/Stable",
+        "Programming Language :: Python :: 3",
+        "Programming Language :: Python :: 3.11",
+        "Programming Language :: Python :: 3.12",
+        "Programming Language :: Python :: 3.13",
+        "Programming Language :: Python :: 3.14",
+        "Programming Language :: Python :: 3.15"
+      ],
+      "project_urls": [
+        "Homepage, https://github.com/eliben/pycparser"
+      ],
+      "home_page": null,
+      "metadata_sha256": "ad8db5fe2b0e0a3b0e8419fe5041b80be92470a40b06bd9c1462a0a8bb637c92",
+      "notice_bundle": {
+        "file": "docs/legal/third-party/pycparser.txt",
+        "sha256": "749d3b4464c67894d443c0b905a640fc03c9ff0274d26ba42ed237e60ab5c8fe",
+        "sources": [
+          {
+            "origin": "pycparser-3.12.dist-info/licenses/LICENSE",
+            "sha256": "0a9e78156ae8b96caf1b4f11ac2df424b83de29736f9e757630548a6272fdf90",
+            "bytes": 1543
+          }
+        ]
+      },
+      "review_required": false,
+      "review_reason": "Inventario tecnico; revisar tambien el artefacto de distribucion final."
+    },
+    {
+      "name": "Pygments",
+      "version": "2.21.0",
+      "scope": "locked-transitive-or-tool",
+      "license_expression": "BSD-2-Clause",
+      "license_metadata": null,
+      "license_label": "BSD-2-Clause",
+      "classifiers": [
+        "Development Status :: 6 - Mature",
+        "Intended Audience :: Developers",
+        "Intended Audience :: End Users/Desktop",
+        "Intended Audience :: System Administrators",
+        "Operating System :: OS Independent",
+        "Programming Language :: Python",
+        "Programming Language :: Python :: 3",
+        "Programming Language :: Python :: 3.9",
+        "Programming Language :: Python :: 3.10",
+        "Programming Language :: Python :: 3.11",
+        "Programming Language :: Python :: 3.12",
+        "Programming Language :: Python :: 3.13",
+        "Programming Language :: Python :: 3.14",
+        "Programming Language :: Python :: 3.15",
+        "Programming Language :: Python :: Implementation :: CPython",
+        "Programming Language :: Python :: Implementation :: PyPy",
+        "Topic :: Text Processing :: Filters",
+        "Topic :: Utilities"
+      ],
+      "project_urls": [
+        "Homepage, https://pygments.org",
+        "Documentation, https://pygments.org/docs",
+        "Source, https://github.com/pygments/pygments",
+        "Bug Tracker, https://github.com/pygments/pygments/issues",
+        "Changelog, https://github.com/pygments/pygments/blob/master/CHANGES"
+      ],
+      "home_page": null,
+      "metadata_sha256": "1dde075570136774c706bf0009183a793fe0ee262e4a5590cc6eff8453eedd43",
+      "notice_bundle": {
+        "file": "docs/legal/third-party/pygments.txt",
+        "sha256": "2c4d2ae4749e7cd0142e4ea209363affad106abfb21f9f119cd3a4c9bb58149c",
+        "sources": [
+          {
+            "origin": "pygments-2.21.0.dist-info/licenses/LICENSE",
+            "sha256": "a9d66f1d526df02e29dce73436d34e56e8632f46c275bbdffc70569e882f9f17",
+            "bytes": 1331
+          }
+        ]
+      },
+      "review_required": false,
+      "review_reason": "Inventario tecnico; revisar tambien el artefacto de distribucion final."
+    },
+    {
+      "name": "pypdf",
+      "version": "7.1.0",
+      "scope": "development-direct",
+      "license_expression": "BSD-3-Clause",
+      "license_metadata": null,
+      "license_label": "BSD-3-Clause",
+      "classifiers": [
+        "Development Status :: 5 - Production/Stable",
+        "Intended Audience :: Developers",
+        "Programming Language :: Python :: 3",
+        "Programming Language :: Python :: 3 :: Only",
+        "Programming Language :: Python :: 3.10",
+        "Programming Language :: Python :: 3.11",
+        "Programming Language :: Python :: 3.12",
+        "Programming Language :: Python :: 3.13",
+        "Programming Language :: Python :: 3.14",
+        "Programming Language :: Python :: 3.15",
+        "Operating System :: OS Independent",
+        "Topic :: Software Development :: Libraries :: Python Modules",
+        "Typing :: Typed"
+      ],
+      "project_urls": [
+        "Bug Reports, https://github.com/py-pdf/pypdf/issues",
+        "Changelog, https://pypdf.readthedocs.io/en/latest/meta/CHANGELOG.html",
+        "Documentation, https://pypdf.readthedocs.io/en/latest/",
+        "Source, https://github.com/py-pdf/pypdf"
+      ],
+      "home_page": null,
+      "metadata_sha256": "6eed13be8af3a3693917815b1a858ac22861af177510ad52bc5a3bf70673389f",
+      "notice_bundle": {
+        "file": "docs/legal/third-party/pypdf.txt",
+        "sha256": "1bd8ea775cd42e7893393f431953efa4b93344536f64317bce67660051e3e21b",
+        "sources": [
+          {
+            "origin": "pypdf-7.1.0.dist-info/licenses/LICENSE",
+            "sha256": "a97ac230e5f33ef10a5367a850eb01f91f1a0b064e34742c7794d2294557f524",
+            "bytes": 1605
+          }
+        ]
+      },
+      "review_required": false,
+      "review_reason": "Inventario tecnico; revisar tambien el artefacto de distribucion final."
+    },
+    {
+      "name": "pyserial",
+      "version": "3.5",
+      "scope": "runtime-direct",
+      "license_expression": null,
+      "license_metadata": "BSD",
+      "license_label": "BSD-3-Clause (licencia upstream v3.5)",
+      "classifiers": [
+        "Development Status :: 5 - Production/Stable",
+        "Intended Audience :: Developers",
+        "Intended Audience :: End Users/Desktop",
+        "License :: OSI Approved :: BSD License",
+        "Natural Language :: English",
+        "Operating System :: POSIX",
+        "Operating System :: Microsoft :: Windows",
+        "Operating System :: MacOS :: MacOS X",
+        "Programming Language :: Python",
+        "Programming Language :: Python :: 2",
+        "Programming Language :: Python :: 2.7",
+        "Programming Language :: Python :: 3",
+        "Programming Language :: Python :: 3.4",
+        "Programming Language :: Python :: 3.5",
+        "Programming Language :: Python :: 3.6",
+        "Programming Language :: Python :: 3.7",
+        "Programming Language :: Python :: 3.8",
+        "Topic :: Communications",
+        "Topic :: Software Development :: Libraries",
+        "Topic :: Software Development :: Libraries :: Python Modules",
+        "Topic :: Terminals :: Serial"
+      ],
+      "project_urls": [],
+      "home_page": "https://github.com/pyserial/pyserial",
+      "metadata_sha256": "42a8ab7e94ef0b7baa7e94cdac65d6b9254c608476f630120c990007bf472943",
+      "notice_bundle": {
+        "file": "docs/legal/third-party/pyserial.txt",
+        "sha256": "d04b9174f3e887bb61b94589e64b71c15e6e317d58a0bbc89a584d3050451aa0",
+        "sources": [
+          {
+            "origin": "https://raw.githubusercontent.com/pyserial/pyserial/v3.5/LICENSE.txt",
+            "sha256": "f91cb9813de6a5b142b8f7f2dede630b5134160aedaeaf55f4d6a7e2593ca3f3",
+            "bytes": 1885
+          }
+        ]
+      },
+      "review_required": false,
+      "review_reason": "Inventario tecnico; revisar tambien el artefacto de distribucion final."
+    },
+    {
+      "name": "pytest",
+      "version": "9.2.0",
+      "scope": "development-direct",
+      "license_expression": "MIT",
+      "license_metadata": null,
+      "license_label": "MIT",
+      "classifiers": [
+        "Development Status :: 6 - Mature",
+        "Intended Audience :: Developers",
+        "Operating System :: MacOS",
+        "Operating System :: Microsoft :: Windows",
+        "Operating System :: POSIX",
+        "Operating System :: Unix",
+        "Programming Language :: Python :: 3 :: Only",
+        "Programming Language :: Python :: 3.10",
+        "Programming Language :: Python :: 3.11",
+        "Programming Language :: Python :: 3.12",
+        "Programming Language :: Python :: 3.13",
+        "Programming Language :: Python :: 3.14",
+        "Programming Language :: Python :: 3.15",
+        "Topic :: Software Development :: Libraries",
+        "Topic :: Software Development :: Testing",
+        "Topic :: Utilities"
+      ],
+      "project_urls": [
+        "Changelog, https://docs.pytest.org/en/stable/changelog.html",
+        "Contact, https://docs.pytest.org/en/stable/contact.html",
+        "Funding, https://docs.pytest.org/en/stable/sponsor.html",
+        "Homepage, https://docs.pytest.org/en/latest/",
+        "Source, https://github.com/pytest-dev/pytest",
+        "Tracker, https://github.com/pytest-dev/pytest/issues"
+      ],
+      "home_page": null,
+      "metadata_sha256": "006823d1759e40b4546ff4296945eda3f0692e799f724bb235edd0512d42eead",
+      "notice_bundle": {
+        "file": "docs/legal/third-party/pytest.txt",
+        "sha256": "38981b38727332c2ea34eddd8ce610fc8b5f25b2c0ff0dab36dc3cc827b6b211",
+        "sources": [
+          {
+            "origin": "pytest-9.2.0.dist-info/licenses/LICENSE",
+            "sha256": "ca836a5f9ecca3b2f350230faa20a48fb8b145653b5568d784862df864706b9b",
+            "bytes": 1091
+          }
+        ]
+      },
+      "review_required": false,
+      "review_reason": "Inventario tecnico; revisar tambien el artefacto de distribucion final."
+    },
+    {
+      "name": "pytest-django",
+      "version": "4.14.0",
+      "scope": "development-direct",
+      "license_expression": null,
+      "license_metadata": "pytest-django is released under the BSD (3-clause) license\n----------------------------------------------------------\nCopyright (c) 2015-2018, pytest-django authors (see AUTHORS file)\nAll rights reserved.\n\nRedistribution and use in source and binary forms, with or without\nmodification, are permitted provided that the following conditions are met:\n\n * Redistributions of source code must retain the above copyright notice, this\n   list of conditions and the following disclaimer.\n * Redistributions in binary form must reproduce the above copyright notice,\n   this list of conditions and the following disclaimer in the documentation\n   and/or other materials provided with the distribution.\n * The names of its contributors may not be used to endorse or promote products\n   derived from this software without specific prior written permission.\n\nTHIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS \"AS IS\" AND\nANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED\nWARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE\nDISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR\nANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES\n(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;\nLOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON\nANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT\n(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS\nSOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n\n\nThis version of pytest-django is a fork of pytest_django created by Ben Firshman.\n---------------------------------------------------------------------------------\nCopyright (c) 2009, Ben Firshman\nAll rights reserved.\n\nRedistribution and use in source and binary forms, with or without\nmodification, are permitted provided that the following conditions are met:\n\n * Redistributions of source code must retain the above copyright notice, this\n   list of conditions and the following disclaimer.\n * Redistributions in binary form must reproduce the above copyright notice,\n   this list of conditions and the following disclaimer in the documentation\n   and/or other materials provided with the distribution.\n * The names of its contributors may not be used to endorse or promote products\n   derived from this software without specific prior written permission.\n\nTHIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS \"AS IS\" AND\nANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED\nWARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE\nDISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR\nANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES\n(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;\nLOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON\nANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT\n(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS\nSOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n",
+      "license_label": "BSD-3-Clause (metadatos/texto local)",
+      "classifiers": [
+        "Development Status :: 5 - Production/Stable",
+        "Framework :: Django",
+        "Framework :: Django :: 5.2",
+        "Framework :: Django :: 6.0",
+        "Intended Audience :: Developers",
+        "License :: OSI Approved :: BSD License",
+        "Operating System :: OS Independent",
+        "Programming Language :: Python",
+        "Programming Language :: Python :: 3.10",
+        "Programming Language :: Python :: 3.11",
+        "Programming Language :: Python :: 3.12",
+        "Programming Language :: Python :: 3.13",
+        "Programming Language :: Python :: 3.14",
+        "Programming Language :: Python :: Implementation :: CPython",
+        "Programming Language :: Python :: Implementation :: PyPy",
+        "Topic :: Software Development :: Testing"
+      ],
+      "project_urls": [
+        "Documentation, https://pytest-django.readthedocs.io/",
+        "Repository, https://github.com/pytest-dev/pytest-django",
+        "Changelog, https://pytest-django.readthedocs.io/en/latest/changelog.html"
+      ],
+      "home_page": null,
+      "metadata_sha256": "5f3d8c6e92c3c41a93114e34cdc64f9238363c5ae66989b073191f03cd3a1127",
+      "notice_bundle": {
+        "file": "docs/legal/third-party/pytest-django.txt",
+        "sha256": "1f01e0f8c6bb102a66cd2b0c4a845abb832132b703d88f0502bc6b0211229b7e",
+        "sources": [
+          {
+            "origin": "pytest_django-4.14.0.dist-info/licenses/LICENSE",
+            "sha256": "ded3c069e77cad4777cb8d6accd06a95560cfb167537316058011eb521fb30a1",
+            "bytes": 3219
+          }
+        ]
+      },
+      "review_required": false,
+      "review_reason": "Inventario tecnico; revisar tambien el artefacto de distribucion final."
+    },
+    {
+      "name": "pytest-playwright",
+      "version": "0.10.0",
+      "scope": "development-direct",
+      "license_expression": null,
+      "license_metadata": "Apache License\n                           Version 2.0, January 2004\n                        http://www.apache.org/licenses/\n\n   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION\n\n   1. Definitions.\n\n      \"License\" shall mean the terms and conditions for use, reproduction,\n      and distribution as defined by Sections 1 through 9 of this document.\n\n      \"Licensor\" shall mean the copyright owner or entity authorized by\n      the copyright owner that is granting the License.\n\n      \"Legal Entity\" shall mean the union of the acting entity and all\n      other entities that control, are controlled by, or are under common\n      control with that entity. For the purposes of this definition,\n      \"control\" means (i) the power, direct or indirect, to cause the\n      direction or management of such entity, whether by contract or\n      otherwise, or (ii) ownership of fifty percent (50%) or more of the\n      outstanding shares, or (iii) beneficial ownership of such entity.\n\n      \"You\" (or \"Your\") shall mean an individual or Legal Entity\n      exercising permissions granted by this License.\n\n      \"Source\" form shall mean the preferred form for making modifications,\n      including but not limited to software source code, documentation\n      source, and configuration files.\n\n      \"Object\" form shall mean any form resulting from mechanical\n      transformation or translation of a Source form, including but\n      not limited to compiled object code, generated documentation,\n      and conversions to other media types.\n\n      \"Work\" shall mean the work of authorship, whether in Source or\n      Object form, made available under the License, as indicated by a\n      copyright notice that is included in or attached to the work\n      (an example is provided in the Appendix below).\n\n      \"Derivative Works\" shall mean any work, whether in Source or Object\n      form, that is based on (or derived from) the Work and for which the\n      editorial revisions, annotations, elaborations, or other modifications\n      represent, as a whole, an original work of authorship. For the purposes\n      of this License, Derivative Works shall not include works that remain\n      separable from, or merely link (or bind by name) to the interfaces of,\n      the Work and Derivative Works thereof.\n\n      \"Contribution\" shall mean any work of authorship, including\n      the original version of the Work and any modifications or additions\n      to that Work or Derivative Works thereof, that is intentionally\n      submitted to Licensor for inclusion in the Work by the copyright owner\n      or by an individual or Legal Entity authorized to submit on behalf of\n      the copyright owner. For the purposes of this definition, \"submitted\"\n      means any form of electronic, verbal, or written communication sent\n      to the Licensor or its representatives, including but not limited to\n      communication on electronic mailing lists, source code control systems,\n      and issue tracking systems that are managed by, or on behalf of, the\n      Licensor for the purpose of discussing and improving the Work, but\n      excluding communication that is conspicuously marked or otherwise\n      designated in writing by the copyright owner as \"Not a Contribution.\"\n\n      \"Contributor\" shall mean Licensor and any individual or Legal Entity\n      on behalf of whom a Contribution has been received by Licensor and\n      subsequently incorporated within the Work.\n\n   2. Grant of Copyright License. Subject to the terms and conditions of\n      this License, each Contributor hereby grants to You a perpetual,\n      worldwide, non-exclusive, no-charge, royalty-free, irrevocable\n      copyright license to reproduce, prepare Derivative Works of,\n      publicly display, publicly perform, sublicense, and distribute the\n      Work and such Derivative Works in Source or Object form.\n\n   3. Grant of Patent License. Subject to the terms and conditions of\n      this License, each Contributor hereby grants to You a perpetual,\n      worldwide, non-exclusive, no-charge, royalty-free, irrevocable\n      (except as stated in this section) patent license to make, have made,\n      use, offer to sell, sell, import, and otherwise transfer the Work,\n      where such license applies only to those patent claims licensable\n      by such Contributor that are necessarily infringed by their\n      Contribution(s) alone or by combination of their Contribution(s)\n      with the Work to which such Contribution(s) was submitted. If You\n      institute patent litigation against any entity (including a\n      cross-claim or counterclaim in a lawsuit) alleging that the Work\n      or a Contribution incorporated within the Work constitutes direct\n      or contributory patent infringement, then any patent licenses\n      granted to You under this License for that Work shall terminate\n      as of the date such litigation is filed.\n\n   4. Redistribution. You may reproduce and distribute copies of the\n      Work or Derivative Works thereof in any medium, with or without\n      modifications, and in Source or Object form, provided that You\n      meet the following conditions:\n\n      (a) You must give any other recipients of the Work or\n          Derivative Works a copy of this License; and\n\n      (b) You must cause any modified files to carry prominent notices\n          stating that You changed the files; and\n\n      (c) You must retain, in the Source form of any Derivative Works\n          that You distribute, all copyright, patent, trademark, and\n          attribution notices from the Source form of the Work,\n          excluding those notices that do not pertain to any part of\n          the Derivative Works; and\n\n      (d) If the Work includes a \"NOTICE\" text file as part of its\n          distribution, then any Derivative Works that You distribute must\n          include a readable copy of the attribution notices contained\n          within such NOTICE file, excluding those notices that do not\n          pertain to any part of the Derivative Works, in at least one\n          of the following places: within a NOTICE text file distributed\n          as part of the Derivative Works; within the Source form or\n          documentation, if provided along with the Derivative Works; or,\n          within a display generated by the Derivative Works, if and\n          wherever such third-party notices normally appear. The contents\n          of the NOTICE file are for informational purposes only and\n          do not modify the License. You may add Your own attribution\n          notices within Derivative Works that You distribute, alongside\n          or as an addendum to the NOTICE text from the Work, provided\n          that such additional attribution notices cannot be construed\n          as modifying the License.\n\n      You may add Your own copyright statement to Your modifications and\n      may provide additional or different license terms and conditions\n      for use, reproduction, or distribution of Your modifications, or\n      for any such Derivative Works as a whole, provided Your use,\n      reproduction, and distribution of the Work otherwise complies with\n      the conditions stated in this License.\n\n   5. Submission of Contributions. Unless You explicitly state otherwise,\n      any Contribution intentionally submitted for inclusion in the Work\n      by You to the Licensor shall be under the terms and conditions of\n      this License, without any additional terms or conditions.\n      Notwithstanding the above, nothing herein shall supersede or modify\n      the terms of any separate license agreement you may have executed\n      with Licensor regarding such Contributions.\n\n   6. Trademarks. This License does not grant permission to use the trade\n      names, trademarks, service marks, or product names of the Licensor,\n      except as required for reasonable and customary use in describing the\n      origin of the Work and reproducing the content of the NOTICE file.\n\n   7. Disclaimer of Warranty. Unless required by applicable law or\n      agreed to in writing, Licensor provides the Work (and each\n      Contributor provides its Contributions) on an \"AS IS\" BASIS,\n      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or\n      implied, including, without limitation, any warranties or conditions\n      of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A\n      PARTICULAR PURPOSE. You are solely responsible for determining the\n      appropriateness of using or redistributing the Work and assume any\n      risks associated with Your exercise of permissions under this License.\n\n   8. Limitation of Liability. In no event and under no legal theory,\n      whether in tort (including negligence), contract, or otherwise,\n      unless required by applicable law (such as deliberate and grossly\n      negligent acts) or agreed to in writing, shall any Contributor be\n      liable to You for damages, including any direct, indirect, special,\n      incidental, or consequential damages of any character arising as a\n      result of this License or out of the use or inability to use the\n      Work (including but not limited to damages for loss of goodwill,\n      work stoppage, computer failure or malfunction, or any and all\n      other commercial damages or losses), even if such Contributor\n      has been advised of the possibility of such damages.\n\n   9. Accepting Warranty or Additional Liability. While redistributing\n      the Work or Derivative Works thereof, You may choose to offer,\n      and charge a fee for, acceptance of support, warranty, indemnity,\n      or other liability obligations and/or rights consistent with this\n      License. However, in accepting such obligations, You may act only\n      on Your own behalf and on Your sole responsibility, not on behalf\n      of any other Contributor, and only if You agree to indemnify,\n      defend, and hold each Contributor harmless for any liability\n      incurred by, or claims asserted against, such Contributor by reason\n      of your accepting any such warranty or additional liability.\n\n   END OF TERMS AND CONDITIONS\n\n   APPENDIX: How to apply the Apache License to your work.\n\n      To apply the Apache License to your work, attach the following\n      boilerplate notice, with the fields enclosed by brackets \"[]\"\n      replaced with your own identifying information. (Don't include\n      the brackets!)  The text should be enclosed in the appropriate\n      comment syntax for the file format. We also recommend that a\n      file or class name and description of purpose be included on the\n      same \"printed page\" as the copyright notice for easier\n      identification within third-party archives.\n\n   Portions Copyright (c) Microsoft Corporation.\n   Portions Copyright 2017 Google Inc.\n\n   Licensed under the Apache License, Version 2.0 (the \"License\");\n   you may not use this file except in compliance with the License.\n   You may obtain a copy of the License at\n\n       http://www.apache.org/licenses/LICENSE-2.0\n\n   Unless required by applicable law or agreed to in writing, software\n   distributed under the License is distributed on an \"AS IS\" BASIS,\n   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n   See the License for the specific language governing permissions and\n   limitations under the License.\n",
+      "license_label": "Apache-2.0 (texto local)",
+      "classifiers": [
+        "Programming Language :: Python :: 3",
+        "Programming Language :: Python :: 3.10",
+        "Programming Language :: Python :: 3.11",
+        "Programming Language :: Python :: 3.12",
+        "Programming Language :: Python :: 3.13",
+        "License :: OSI Approved :: Apache Software License",
+        "Operating System :: OS Independent",
+        "Framework :: Pytest"
+      ],
+      "project_urls": [
+        "homepage, https://github.com/microsoft/playwright-pytest"
+      ],
+      "home_page": null,
+      "metadata_sha256": "53b42b5675b0df1b5211212743d1b87cce4118a611182f4068c902d6f174d7e6",
+      "notice_bundle": {
+        "file": "docs/legal/third-party/pytest-playwright.txt",
+        "sha256": "438628f75bbe2e86da5c6714c321420e1e30b8921d562e4d5a8a4f29fd415fc6",
+        "sources": [
+          {
+            "origin": "pytest_playwright-0.10.0.dist-info/LICENSE",
+            "sha256": "7fab1461b41970ff376f1c9303a637076bfaaeb71cd12dd3a1c44aaf59a1a2b9",
+            "bytes": 11399
+          }
+        ]
+      },
+      "review_required": false,
+      "review_reason": "Inventario tecnico; revisar tambien el artefacto de distribucion final."
+    },
+    {
+      "name": "python-slugify",
+      "version": "9.1.3",
+      "scope": "locked-transitive-or-tool",
+      "license_expression": "MIT",
+      "license_metadata": null,
+      "license_label": "MIT",
+      "classifiers": [
+        "Development Status :: 5 - Production/Stable",
+        "Intended Audience :: Developers",
+        "Natural Language :: English",
+        "Programming Language :: Python :: 3",
+        "Programming Language :: Python :: 3 :: Only",
+        "Programming Language :: Python :: 3.10",
+        "Programming Language :: Python :: 3.11",
+        "Programming Language :: Python :: 3.12",
+        "Programming Language :: Python :: 3.13",
+        "Programming Language :: Python :: 3.14"
+      ],
+      "project_urls": [
+        "Homepage, https://github.com/un33k/python-slugify",
+        "Issues, https://github.com/un33k/python-slugify/issues",
+        "Changelog, https://github.com/un33k/python-slugify/blob/master/CHANGELOG.md"
+      ],
+      "home_page": null,
+      "metadata_sha256": "29f8b673b715c82ad8fc1c841df2bbc4582a1cd5941a745b3cf529b3934105b5",
+      "notice_bundle": {
+        "file": "docs/legal/third-party/python-slugify.txt",
+        "sha256": "2c2f92ab9ef037d8162e7f954d1b2152f71647c8f6feaf06933671c6e1fa781b",
+        "sources": [
+          {
+            "origin": "python_slugify-9.1.3.dist-info/licenses/LICENSE",
+            "sha256": "30ba4dc69a9f4dce132dd703937c7a93b573e2524604d2d5f92c5066514c0d4f",
+            "bytes": 1103
+          }
+        ]
+      },
+      "review_required": true,
+      "review_reason": "Pin existente sin dependencia directa en pyproject; revisar necesidad y text-unidecode transitivo."
+    },
+    {
+      "name": "pyusb",
+      "version": "1.3.1",
+      "scope": "runtime-direct",
+      "license_expression": null,
+      "license_metadata": null,
+      "license_label": "BSD-3-Clause (texto local)",
+      "classifiers": [
+        "Development Status :: 5 - Production/Stable",
+        "Intended Audience :: Developers",
+        "Intended Audience :: Information Technology",
+        "Intended Audience :: Manufacturing",
+        "Intended Audience :: Science/Research",
+        "Intended Audience :: System Administrators",
+        "Intended Audience :: Telecommunications Industry",
+        "License :: OSI Approved :: BSD License",
+        "Natural Language :: English",
+        "Operating System :: MacOS :: MacOS X",
+        "Operating System :: Microsoft :: Windows :: Windows Vista",
+        "Operating System :: Microsoft :: Windows :: Windows 7",
+        "Operating System :: Microsoft :: Windows :: Windows 10",
+        "Operating System :: POSIX :: BSD :: FreeBSD",
+        "Operating System :: POSIX :: BSD :: NetBSD",
+        "Operating System :: POSIX :: BSD :: OpenBSD",
+        "Operating System :: POSIX :: Linux",
+        "Operating System :: POSIX :: SunOS/Solaris",
+        "Programming Language :: Python :: 3.9",
+        "Programming Language :: Python :: 3.10",
+        "Programming Language :: Python :: 3.11",
+        "Programming Language :: Python :: 3.12",
+        "Programming Language :: Python :: 3.13",
+        "Programming Language :: Python :: Implementation :: CPython",
+        "Programming Language :: Python :: Implementation :: IronPython",
+        "Programming Language :: Python :: Implementation :: Jython",
+        "Programming Language :: Python :: Implementation :: PyPy",
+        "Topic :: Scientific/Engineering :: Interface Engine/Protocol Translator",
+        "Topic :: Software Development :: Libraries",
+        "Topic :: Software Development :: Libraries :: Python Modules",
+        "Topic :: System :: Hardware :: Hardware Drivers"
+      ],
+      "project_urls": [
+        "docs/Tutorial, https://github.com/pyusb/pyusb/blob/master/docs/tutorial.rst",
+        "docs/FAQ, https://github.com/pyusb/pyusb/blob/master/docs/faq.rst",
+        "Source, https://github.com/pyusb/pyusb"
+      ],
+      "home_page": "https://pyusb.github.io/pyusb",
+      "metadata_sha256": "a0d52a94c2f609d31e08426f171645431292fe50fba849039964d642f74157cd",
+      "notice_bundle": {
+        "file": "docs/legal/third-party/pyusb.txt",
+        "sha256": "0070fa30f041a6ff9418c91641942489c51bbd0bf80e76bc9c1ec8801507b699",
+        "sources": [
+          {
+            "origin": "pyusb-1.3.1.dist-info/LICENSE",
+            "sha256": "03e39fdcee9c18f2f9d0c3500a993ddeac050695eb81070ea41347587c76a7fe",
+            "bytes": 1513
+          }
+        ]
+      },
+      "review_required": false,
+      "review_reason": "Inventario tecnico; revisar tambien el artefacto de distribucion final."
+    },
+    {
+      "name": "qrcode",
+      "version": "8.2",
+      "scope": "runtime-direct",
+      "license_expression": null,
+      "license_metadata": "BSD",
+      "license_label": "BSD-3-Clause (texto local; revisar classifiers)",
+      "classifiers": [
+        "Development Status :: 5 - Production/Stable",
+        "Intended Audience :: Developers",
+        "License :: OSI Approved :: BSD License",
+        "License :: Other/Proprietary License",
+        "Operating System :: OS Independent",
+        "Programming Language :: Python",
+        "Programming Language :: Python :: 3",
+        "Programming Language :: Python :: 3.9",
+        "Programming Language :: Python :: 3.10",
+        "Programming Language :: Python :: 3.11",
+        "Programming Language :: Python :: 3.12",
+        "Programming Language :: Python :: 3 :: Only",
+        "Programming Language :: Python :: 3.13",
+        "Topic :: Multimedia :: Graphics",
+        "Topic :: Software Development :: Libraries :: Python Modules"
+      ],
+      "project_urls": [],
+      "home_page": "https://github.com/lincolnloop/python-qrcode",
+      "metadata_sha256": "3a8f1be6da9428b97806292d05e3148264b9053c22e79894918b670e930afc36",
+      "notice_bundle": {
+        "file": "docs/legal/third-party/qrcode.txt",
+        "sha256": "e59a88b4248bc2eec4995affe208ddfad11df95cac7d8fef18abf55e2c3a032c",
+        "sources": [
+          {
+            "origin": "qrcode-8.2.dist-info/LICENSE",
+            "sha256": "40dfb903c94ee3f789500131311186548ecba5cefd3557623d7700e2522ab994",
+            "bytes": 2143
+          }
+        ]
+      },
+      "review_required": true,
+      "review_reason": "Los classifiers incluyen Other/Proprietary; el texto LICENSE concreto es la evidencia de sus condiciones BSD."
+    },
+    {
+      "name": "reportlab",
+      "version": "5.1.0",
+      "scope": "runtime-direct",
+      "license_expression": null,
+      "license_metadata": "BSD license (see license.txt for details), Copyright (c) 2000-2025, ReportLab Inc.",
+      "license_label": "BSD-3-Clause + licencias de fuentes (revisar)",
+      "classifiers": [
+        "Development Status :: 5 - Production/Stable",
+        "Intended Audience :: Developers",
+        "License :: OSI Approved :: BSD License",
+        "Topic :: Printing",
+        "Topic :: Text Processing :: Markup",
+        "Programming Language :: Python :: 3",
+        "Programming Language :: Python :: 3.10",
+        "Programming Language :: Python :: 3.11",
+        "Programming Language :: Python :: 3.12",
+        "Programming Language :: Python :: 3.13",
+        "Programming Language :: Python :: 3.14"
+      ],
+      "project_urls": [],
+      "home_page": "https://www.reportlab.com/",
+      "metadata_sha256": "86667f600392d769e71fa5922887c9b1366f2393aced8bea31e72542088a9cca",
+      "notice_bundle": {
+        "file": "docs/legal/third-party/reportlab.txt",
+        "sha256": "9b62a097f2f7d0c888bc4b7ed88f2fd55e5f11803a5f0705508984dba16f87f4",
+        "sources": [
+          {
+            "origin": "reportlab-5.1.0.dist-info/licenses/LICENSE",
+            "sha256": "ef831761646313921375fc2cb888e8eeaf7da213d0b92852c10c42f3a0b4d138",
+            "bytes": 1707
+          },
+          {
+            "origin": "reportlab/fonts/DarkGarden-copying-gpl.txt",
+            "sha256": "1b2a567f289f66a143c56353e7b3d4fa5862514a5e3c5cfdf8b02ee5e5aaa953",
+            "bytes": 17976
+          },
+          {
+            "origin": "reportlab/fonts/DarkGarden-copying.txt",
+            "sha256": "3cd1020510efa7f6b3166a5a2740f92bd664a695ea179e0bda442e74cd0ef3a4",
+            "bytes": 1318
+          },
+          {
+            "origin": "reportlab/fonts/bitstream-vera-license.txt",
+            "sha256": "3361d054759a2fc686a2c058be82deaf9c2e6fe549be9004d7935a6c1736315d",
+            "bytes": 5954
+          },
+          {
+            "origin": "reportlab/license.txt",
+            "sha256": "a02a6aeb5dde4c4194494bc0b10d5ed62a32628ccd2882c363fdb9a7874ab2b8",
+            "bytes": 1707
+          }
+        ]
+      },
+      "review_required": true,
+      "review_reason": "Incluye fuentes Bitstream Vera y DarkGarden GPL-2.0-or-later; no tratar todo el wheel como BSD."
+    },
+    {
+      "name": "requests",
+      "version": "2.34.2",
+      "scope": "runtime-direct",
+      "license_expression": null,
+      "license_metadata": "Apache-2.0",
+      "license_label": "Apache-2.0",
+      "classifiers": [
+        "Development Status :: 5 - Production/Stable",
+        "Environment :: Web Environment",
+        "Intended Audience :: Developers",
+        "License :: OSI Approved :: Apache Software License",
+        "Natural Language :: English",
+        "Operating System :: OS Independent",
+        "Programming Language :: Python",
+        "Programming Language :: Python :: 3",
+        "Programming Language :: Python :: 3.10",
+        "Programming Language :: Python :: 3.11",
+        "Programming Language :: Python :: 3.12",
+        "Programming Language :: Python :: 3.13",
+        "Programming Language :: Python :: 3.14",
+        "Programming Language :: Python :: 3.15",
+        "Programming Language :: Python :: 3 :: Only",
+        "Programming Language :: Python :: Implementation :: CPython",
+        "Programming Language :: Python :: Implementation :: PyPy",
+        "Programming Language :: Python :: Free Threading :: 2 - Beta",
+        "Topic :: Internet :: WWW/HTTP",
+        "Topic :: Software Development :: Libraries"
+      ],
+      "project_urls": [
+        "Documentation, https://requests.readthedocs.io",
+        "Source, https://github.com/psf/requests"
+      ],
+      "home_page": null,
+      "metadata_sha256": "8c384ba3e979480faae2859d3c5e6c1276dd2c3616e322e124d52c8cfc556f27",
+      "notice_bundle": {
+        "file": "docs/legal/third-party/requests.txt",
+        "sha256": "d3268316025c6ed01bc33a3da2c2d1b0ba82cc2dec5a07679fee0c2dc4595402",
+        "sources": [
+          {
+            "origin": "requests-2.34.2.dist-info/licenses/LICENSE",
+            "sha256": "09e8a9bcec8067104652c168685ab0931e7868f9c8284b66f5ae6edae5f1130b",
+            "bytes": 10142
+          },
+          {
+            "origin": "requests-2.34.2.dist-info/licenses/NOTICE",
+            "sha256": "f5110972dedad2b4e9d314518daf3b7d72d6e02e499acd802181de6f74571dcc",
+            "bytes": 38
+          }
+        ]
+      },
+      "review_required": false,
+      "review_reason": "Inventario tecnico; revisar tambien el artefacto de distribucion final."
+    },
+    {
+      "name": "ruff",
+      "version": "0.17.5",
+      "scope": "development-direct",
+      "license_expression": "MIT",
+      "license_metadata": null,
+      "license_label": "MIT",
+      "classifiers": [
+        "Development Status :: 5 - Production/Stable",
+        "Environment :: Console",
+        "Intended Audience :: Developers",
+        "Operating System :: OS Independent",
+        "Programming Language :: Python",
+        "Programming Language :: Python :: 3.7",
+        "Programming Language :: Python :: 3.8",
+        "Programming Language :: Python :: 3.9",
+        "Programming Language :: Python :: 3.10",
+        "Programming Language :: Python :: 3.11",
+        "Programming Language :: Python :: 3.12",
+        "Programming Language :: Python :: 3.13",
+        "Programming Language :: Python :: 3.14",
+        "Programming Language :: Python :: 3.15",
+        "Programming Language :: Python :: 3 :: Only",
+        "Programming Language :: Rust",
+        "Topic :: Software Development :: Libraries :: Python Modules",
+        "Topic :: Software Development :: Quality Assurance"
+      ],
+      "project_urls": [
+        "Changelog, https://github.com/astral-sh/ruff/blob/main/CHANGELOG.md",
+        "Documentation, https://docs.astral.sh/ruff/",
+        "Repository, https://github.com/astral-sh/ruff"
+      ],
+      "home_page": "https://docs.astral.sh/ruff",
+      "metadata_sha256": "76d5ce452550dd2a8ad1ec0f077f6d48cabad2ff889c796ccf3a52c4883db7c9",
+      "notice_bundle": {
+        "file": "docs/legal/third-party/ruff.txt",
+        "sha256": "9cb289c80153691cd260284fbfcf6e2fb3edb55b6f320050f5c0c57c93f40e4c",
+        "sources": [
+          {
+            "origin": "ruff-0.17.5.dist-info/licenses/LICENSE",
+            "sha256": "2597d854122b77ddc71971564ca2350a37608575ce324adc5650a2b2051c8f18",
+            "bytes": 20731
+          }
+        ]
+      },
+      "review_required": false,
+      "review_reason": "Inventario tecnico; revisar tambien el artefacto de distribucion final."
+    },
+    {
+      "name": "sqlparse",
+      "version": "0.6.1",
+      "scope": "locked-transitive-or-tool",
+      "license_expression": null,
+      "license_metadata": null,
+      "license_label": "BSD-3-Clause (texto local)",
+      "classifiers": [
+        "Development Status :: 5 - Production/Stable",
+        "Intended Audience :: Developers",
+        "License :: OSI Approved :: BSD License",
+        "Operating System :: OS Independent",
+        "Programming Language :: Python",
+        "Programming Language :: Python :: 3",
+        "Programming Language :: Python :: 3 :: Only",
+        "Programming Language :: Python :: 3.10",
+        "Programming Language :: Python :: 3.11",
+        "Programming Language :: Python :: 3.12",
+        "Programming Language :: Python :: 3.13",
+        "Programming Language :: Python :: 3.14",
+        "Programming Language :: Python :: Implementation :: CPython",
+        "Programming Language :: Python :: Implementation :: PyPy",
+        "Topic :: Database",
+        "Topic :: Software Development"
+      ],
+      "project_urls": [
+        "Home, https://github.com/andialbrecht/sqlparse",
+        "Documentation, https://sqlparse.readthedocs.io/",
+        "Release Notes, https://sqlparse.readthedocs.io/en/latest/changes.html",
+        "Source, https://github.com/andialbrecht/sqlparse",
+        "Tracker, https://github.com/andialbrecht/sqlparse/issues"
+      ],
+      "home_page": null,
+      "metadata_sha256": "22845d73f593f383d393234ee19ab57b06d505d38dd51f7d4fbcc31e104de270",
+      "notice_bundle": {
+        "file": "docs/legal/third-party/sqlparse.txt",
+        "sha256": "d9fc65b24a9b56d299f1b05a6d2df068b07e59803258eaadc1c18cca839aed80",
+        "sources": [
+          {
+            "origin": "sqlparse-0.6.1.dist-info/licenses/LICENSE",
+            "sha256": "c1938235b80d39e93138eae89edc3af67e18ecbc40d266529fa57b2dce426310",
+            "bytes": 1537
+          }
+        ]
+      },
+      "review_required": false,
+      "review_reason": "Inventario tecnico; revisar tambien el artefacto de distribucion final."
+    },
+    {
+      "name": "text-unidecode",
+      "version": "1.3",
+      "scope": "locked-transitive-or-tool",
+      "license_expression": null,
+      "license_metadata": "Artistic License",
+      "license_label": "Artistic OR GPL (revisar texto exacto)",
+      "classifiers": [
+        "Development Status :: 5 - Production/Stable",
+        "Intended Audience :: Developers",
+        "License :: OSI Approved :: Artistic License",
+        "License :: OSI Approved :: GNU General Public License (GPL)",
+        "License :: OSI Approved :: GNU General Public License v2 or later (GPLv2+)",
+        "Programming Language :: Python",
+        "Programming Language :: Python :: 2",
+        "Programming Language :: Python :: 2.7",
+        "Programming Language :: Python :: 3",
+        "Programming Language :: Python :: 3.4",
+        "Programming Language :: Python :: 3.5",
+        "Programming Language :: Python :: 3.6",
+        "Programming Language :: Python :: 3.7",
+        "Programming Language :: Python :: Implementation :: CPython",
+        "Programming Language :: Python :: Implementation :: PyPy",
+        "Topic :: Software Development :: Libraries :: Python Modules",
+        "Topic :: Text Processing :: Linguistic"
+      ],
+      "project_urls": [],
+      "home_page": "https://github.com/kmike/text-unidecode/",
+      "metadata_sha256": "07d8fed65e3ec8df4fe5ef26a41ad70aa010b11527038233cb2d211bb272ae7e",
+      "notice_bundle": {
+        "file": "docs/legal/third-party/text-unidecode.txt",
+        "sha256": "77ab84e218a4855dad0ace05c95c8f0aeacc6b2d1b0c40f22c206361f8abb468",
+        "sources": [
+          {
+            "origin": "text_unidecode-1.3.dist-info/LICENSE.txt",
+            "sha256": "3938e7535c3e4ef7e6363de9b693fe3bafe3c4a5e5f4925cd48375096fe7afd5",
+            "bytes": 6535
+          }
+        ]
+      },
+      "review_required": true,
+      "review_reason": "Licencia dual Artistic/GPL: elegir y cumplir la alternativa pertinente antes de redistribuir."
+    },
+    {
+      "name": "tzdata",
+      "version": "2026.6",
+      "scope": "locked-transitive-or-tool",
+      "license_expression": null,
+      "license_metadata": "Apache-2.0",
+      "license_label": "Apache-2.0",
+      "classifiers": [
+        "Development Status :: 5 - Production/Stable",
+        "Intended Audience :: Developers",
+        "Programming Language :: Python :: 2",
+        "Programming Language :: Python :: 3"
+      ],
+      "project_urls": [
+        "Bug Reports, https://github.com/python/tzdata/issues",
+        "Source, https://github.com/python/tzdata",
+        "Documentation, https://tzdata.python.org"
+      ],
+      "home_page": "https://github.com/python/tzdata",
+      "metadata_sha256": "8173da8700dd125e60c9caf7663d02ee3318851ee60d387b2b080f23a74a86a8",
+      "notice_bundle": {
+        "file": "docs/legal/third-party/tzdata.txt",
+        "sha256": "8d54f703b4cf8e01910da864a0df0436fd0632d85b501158ff0886f2437bfdcb",
+        "sources": [
+          {
+            "origin": "tzdata-2026.6.dist-info/licenses/LICENSE",
+            "sha256": "df58f69ea88683035d720b5375bcef0cf5aeaa98a1d098d572e0992c378deb46",
+            "bytes": 625
+          },
+          {
+            "origin": "tzdata-2026.6.dist-info/licenses/licenses/LICENSE_APACHE",
+            "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+            "bytes": 11357
+          }
+        ]
+      },
+      "review_required": true,
+      "review_reason": "Metadatos Apache-2.0 y avisos de datos IANA; conservar ambos textos."
+    },
+    {
+      "name": "urllib3",
+      "version": "2.8.0",
+      "scope": "locked-transitive-or-tool",
+      "license_expression": "MIT",
+      "license_metadata": null,
+      "license_label": "MIT",
+      "classifiers": [
+        "Environment :: Web Environment",
+        "Intended Audience :: Developers",
+        "Operating System :: OS Independent",
+        "Programming Language :: Python",
+        "Programming Language :: Python :: 3",
+        "Programming Language :: Python :: 3 :: Only",
+        "Programming Language :: Python :: 3.10",
+        "Programming Language :: Python :: 3.11",
+        "Programming Language :: Python :: 3.12",
+        "Programming Language :: Python :: 3.13",
+        "Programming Language :: Python :: 3.14",
+        "Programming Language :: Python :: 3.15",
+        "Programming Language :: Python :: Free Threading :: 2 - Beta",
+        "Programming Language :: Python :: Implementation :: CPython",
+        "Programming Language :: Python :: Implementation :: PyPy",
+        "Topic :: Internet :: WWW/HTTP",
+        "Topic :: Software Development :: Libraries"
+      ],
+      "project_urls": [
+        "Changelog, https://github.com/urllib3/urllib3/blob/main/CHANGES.rst",
+        "Documentation, https://urllib3.readthedocs.io",
+        "Code, https://github.com/urllib3/urllib3",
+        "Issue tracker, https://github.com/urllib3/urllib3/issues",
+        "Security policy, https://urllib3.readthedocs.io/en/latest/security.html"
+      ],
+      "home_page": null,
+      "metadata_sha256": "10898c620e8007c030e07fa5622b68358a43010025dfbd78a1cb797699de2bb4",
+      "notice_bundle": {
+        "file": "docs/legal/third-party/urllib3.txt",
+        "sha256": "c80b15b73912a36e633ee3d633cb1d9266b93cc5be707197d6adbaf0fccf971c",
+        "sources": [
+          {
+            "origin": "urllib3-2.8.0.dist-info/licenses/LICENSE.txt",
+            "sha256": "130e3a64d5fdd5d096a752694634a7d9df284469de86e5732100268041e3d686",
+            "bytes": 1093
+          }
+        ]
+      },
+      "review_required": false,
+      "review_reason": "Inventario tecnico; revisar tambien el artefacto de distribucion final."
+    },
+    {
+      "name": "waitress",
+      "version": "3.0.2",
+      "scope": "runtime-direct",
+      "license_expression": null,
+      "license_metadata": "ZPL 2.1",
+      "license_label": "ZPL-2.1",
+      "classifiers": [
+        "Development Status :: 6 - Mature",
+        "Environment :: Web Environment",
+        "Intended Audience :: Developers",
+        "License :: OSI Approved :: Zope Public License",
+        "Programming Language :: Python",
+        "Programming Language :: Python :: 3",
+        "Programming Language :: Python :: 3.9",
+        "Programming Language :: Python :: 3.10",
+        "Programming Language :: Python :: 3.11",
+        "Programming Language :: Python :: 3.12",
+        "Programming Language :: Python :: 3.13",
+        "Programming Language :: Python :: Implementation :: CPython",
+        "Programming Language :: Python :: Implementation :: PyPy",
+        "Operating System :: OS Independent",
+        "Topic :: Internet :: WWW/HTTP",
+        "Topic :: Internet :: WWW/HTTP :: WSGI"
+      ],
+      "project_urls": [
+        "Documentation, https://docs.pylonsproject.org/projects/waitress/en/latest/index.html",
+        "Changelog, https://docs.pylonsproject.org/projects/waitress/en/latest/index.html#change-history",
+        "Issue Tracker, https://github.com/Pylons/waitress/issues"
+      ],
+      "home_page": "https://github.com/Pylons/waitress",
+      "metadata_sha256": "103a993b671c333c467cdafe1d1af460093d30846adb889a9f9fd980476df77a",
+      "notice_bundle": {
+        "file": "docs/legal/third-party/waitress.txt",
+        "sha256": "fa12a06164cf28ddeccfce701ea790ed1cf96e5aa54e75feded50068b311faa8",
+        "sources": [
+          {
+            "origin": "waitress-3.0.2.dist-info/LICENSE.txt",
+            "sha256": "3e671db11df687516cc1db5b3d65e4aa383eaca3c20cea3faf53a0f7335d0a3c",
+            "bytes": 2070
+          }
+        ]
+      },
+      "review_required": false,
+      "review_reason": "Inventario tecnico; revisar tambien el artefacto de distribucion final."
+    },
+    {
+      "name": "whitenoise",
+      "version": "6.12.0",
+      "scope": "runtime-direct",
+      "license_expression": "MIT",
+      "license_metadata": null,
+      "license_label": "MIT",
+      "classifiers": [
+        "Development Status :: 5 - Production/Stable",
+        "Framework :: Django",
+        "Framework :: Django :: 4.2",
+        "Framework :: Django :: 5.0",
+        "Framework :: Django :: 5.1",
+        "Framework :: Django :: 5.2",
+        "Framework :: Django :: 6.0",
+        "Intended Audience :: Developers",
+        "Operating System :: OS Independent",
+        "Programming Language :: Python :: 3 :: Only",
+        "Programming Language :: Python :: 3.10",
+        "Programming Language :: Python :: 3.11",
+        "Programming Language :: Python :: 3.12",
+        "Programming Language :: Python :: 3.13",
+        "Programming Language :: Python :: 3.14",
+        "Programming Language :: Python :: Implementation :: CPython",
+        "Topic :: Internet :: WWW/HTTP :: WSGI :: Middleware",
+        "Typing :: Typed"
+      ],
+      "project_urls": [
+        "Changelog, https://whitenoise.readthedocs.io/en/stable/changelog.html",
+        "Documentation, https://whitenoise.readthedocs.io/",
+        "Repository, https://github.com/evansd/whitenoise"
+      ],
+      "home_page": null,
+      "metadata_sha256": "9f7b6533495f753a0aa82c4a6ea363882f2482d835e5d7e961c38af1667d7b6f",
+      "notice_bundle": {
+        "file": "docs/legal/third-party/whitenoise.txt",
+        "sha256": "6251b79d8361180989c64f1d64c4aa637bf2cd8eb6b2cb3ce6e6cb393d368cc0",
+        "sources": [
+          {
+            "origin": "whitenoise-6.12.0.dist-info/licenses/LICENSE",
+            "sha256": "ebfd469b4fb6b5adada547747e1e8da725ecf20595d54aced043275d4f4a3600",
+            "bytes": 1078
+          }
+        ]
+      },
+      "review_required": false,
+      "review_reason": "Inventario tecnico; revisar tambien el artefacto de distribucion final."
+    }
+  ],
+  "vendors": [
+    {
+      "name": "bootstrap",
+      "version": "5.3.8",
+      "license": "MIT",
+      "files": [
+        {
+          "file": "static/vendor/bootstrap/bootstrap.bundle.min.js",
+          "sha256": "e4fd49181388c48ec5040bd3fe66f57c29c8e67fcd8502b3354b96ec7ab47cc7"
+        },
+        {
+          "file": "static/vendor/bootstrap/bootstrap.min.css",
+          "sha256": "d85327d99c7a3ee1f9b5d0500d1370acea3ad2db39c163c2f51f232baedbdede"
+        },
+        {
+          "file": "static/vendor/bootstrap/LICENSE",
+          "sha256": "4620c84ad5ce8602ff65640ed6b7c8b78ebb9e036584f0ebc1ccc88206a4bb51"
+        }
+      ]
+    },
+    {
+      "name": "htmx",
+      "version": "2.0.8",
+      "license": "0BSD",
+      "files": [
+        {
+          "file": "static/vendor/htmx/htmx.min.js",
+          "sha256": "22283ef68cb7545914f0a88a1bdedc7256a703d1d580c1d255217d0a50d31313"
+        },
+        {
+          "file": "static/vendor/htmx/LICENSE",
+          "sha256": "d3d2456f76414f2456104660ebd65aff1c04cd7966b942bdabd63f3cdb316a38"
+        }
+      ]
+    }
+  ],
+  "tools": [
+    {
+      "name": "pip",
+      "version": "26.2.1",
+      "scope": "build/tooling",
+      "notice_bundle": {
+        "file": "docs/legal/third-party/pip.txt",
+        "sha256": "0fd2ef6aeae254255d2578f4b31c65cf36fe306a3a7fc8e3352ad69331284dd4",
+        "sources": [
+          {
+            "origin": "pip-26.2.1.dist-info/licenses/LICENSE.txt",
+            "sha256": "634300a669d49aeae65b12c6c48c924c51a4cdf3d1ff086dc3456dc8bcaa2104",
+            "bytes": 1093
+          },
+          {
+            "origin": "pip-26.2.1.dist-info/licenses/src/pip/_vendor/cachecontrol/LICENSE.txt",
+            "sha256": "86eeee87be2a43f3ff1f56496f451f69243926f025fedbb033666c304c4c161b",
+            "bytes": 558
+          },
+          {
+            "origin": "pip-26.2.1.dist-info/licenses/src/pip/_vendor/certifi/LICENSE",
+            "sha256": "e93716da6b9c0d5a4a1df60fe695b370f0695603d21f6f83f053e42cfc10caf7",
+            "bytes": 989
+          },
+          {
+            "origin": "pip-26.2.1.dist-info/licenses/src/pip/_vendor/distlib/LICENSE.txt",
+            "sha256": "808e10c8a6ab8deb149ff9b3fb19f447a808094606d712a9ca57fead3552599d",
+            "bytes": 14531
+          },
+          {
+            "origin": "pip-26.2.1.dist-info/licenses/src/pip/_vendor/distro/LICENSE",
+            "sha256": "cb5e8e7e5f4a3988e1063c142c60dc2df75605f4c46515e776e3aca6df976e14",
+            "bytes": 11325
+          },
+          {
+            "origin": "pip-26.2.1.dist-info/licenses/src/pip/_vendor/idna/LICENSE.md",
+            "sha256": "1a9a4f0e3d479a27240ddd59a9137a66ab4a0f9dfdc8ca6188cc0bfd85187f04",
+            "bytes": 1541
+          },
+          {
+            "origin": "pip-26.2.1.dist-info/licenses/src/pip/_vendor/msgpack/COPYING",
+            "sha256": "492dedba85da5872f78e6091bcd1fea474d660d35acb4dee964b8aab3f007427",
+            "bytes": 614
+          },
+          {
+            "origin": "pip-26.2.1.dist-info/licenses/src/pip/_vendor/packaging/LICENSE",
+            "sha256": "cad1ef5bd340d73e074ba614d26f7deaca5c7940c3d8c34852e65c4909686c48",
+            "bytes": 197
+          },
+          {
+            "origin": "pip-26.2.1.dist-info/licenses/src/pip/_vendor/packaging/LICENSE.APACHE",
+            "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594",
+            "bytes": 10174
+          },
+          {
+            "origin": "pip-26.2.1.dist-info/licenses/src/pip/_vendor/packaging/LICENSE.BSD",
+            "sha256": "b70e7e9b742f1cc6f948b34c16aa39ffece94196364bc88ff0d2180f0028fac5",
+            "bytes": 1344
+          },
+          {
+            "origin": "pip-26.2.1.dist-info/licenses/src/pip/_vendor/pkg_resources/LICENSE",
+            "sha256": "86da0f01aeae46348a3c3d465195dc1ceccde79f79e87769a64b8da04b2a4741",
+            "bytes": 1023
+          },
+          {
+            "origin": "pip-26.2.1.dist-info/licenses/src/pip/_vendor/platformdirs/LICENSE",
+            "sha256": "29e0fd62e929850e86eb28c3fdccf0cefdf4fa94879011cffb3d0d4bed6d4db6",
+            "bytes": 1089
+          },
+          {
+            "origin": "pip-26.2.1.dist-info/licenses/src/pip/_vendor/pygments/LICENSE",
+            "sha256": "a9d66f1d526df02e29dce73436d34e56e8632f46c275bbdffc70569e882f9f17",
+            "bytes": 1331
+          },
+          {
+            "origin": "pip-26.2.1.dist-info/licenses/src/pip/_vendor/pyproject_hooks/LICENSE",
+            "sha256": "1b22b049b5267d6dfc23a67bf4a84d8ec04b9fdfb1a51d360e42b4342c8b4154",
+            "bytes": 1081
+          },
+          {
+            "origin": "pip-26.2.1.dist-info/licenses/src/pip/_vendor/requests/LICENSE",
+            "sha256": "09e8a9bcec8067104652c168685ab0931e7868f9c8284b66f5ae6edae5f1130b",
+            "bytes": 10142
+          },
+          {
+            "origin": "pip-26.2.1.dist-info/licenses/src/pip/_vendor/resolvelib/LICENSE",
+            "sha256": "f388fd38cad13112c1dc0f669bbe80e7f84541edbafb72f3030d2ca7642c3c9d",
+            "bytes": 751
+          },
+          {
+            "origin": "pip-26.2.1.dist-info/licenses/src/pip/_vendor/rich/LICENSE",
+            "sha256": "deed7c17a4318158190a3ea239cc879a5a50271cebb98ae7025f48fbe58dca15",
+            "bytes": 1056
+          },
+          {
+            "origin": "pip-26.2.1.dist-info/licenses/src/pip/_vendor/tomli/LICENSE",
+            "sha256": "b80816b0d530b8accb4c2211783790984a6e3b61922c2b5ee92f3372ab2742fe",
+            "bytes": 1072
+          },
+          {
+            "origin": "pip-26.2.1.dist-info/licenses/src/pip/_vendor/tomli_w/LICENSE",
+            "sha256": "b80816b0d530b8accb4c2211783790984a6e3b61922c2b5ee92f3372ab2742fe",
+            "bytes": 1072
+          },
+          {
+            "origin": "pip-26.2.1.dist-info/licenses/src/pip/_vendor/truststore/LICENSE",
+            "sha256": "33be7b7e8fa4fd19b1760e1a8ed8a668bdab852c91b692dd41424bcb725a9fca",
+            "bytes": 1086
+          },
+          {
+            "origin": "pip-26.2.1.dist-info/licenses/src/pip/_vendor/urllib3/LICENSE.txt",
+            "sha256": "130e3a64d5fdd5d096a752694634a7d9df284469de86e5732100268041e3d686",
+            "bytes": 1093
+          },
+          {
+            "origin": "pip/_vendor/cachecontrol/LICENSE.txt",
+            "sha256": "86eeee87be2a43f3ff1f56496f451f69243926f025fedbb033666c304c4c161b",
+            "bytes": 558
+          },
+          {
+            "origin": "pip/_vendor/certifi/LICENSE",
+            "sha256": "e93716da6b9c0d5a4a1df60fe695b370f0695603d21f6f83f053e42cfc10caf7",
+            "bytes": 989
+          },
+          {
+            "origin": "pip/_vendor/distlib/LICENSE.txt",
+            "sha256": "808e10c8a6ab8deb149ff9b3fb19f447a808094606d712a9ca57fead3552599d",
+            "bytes": 14531
+          },
+          {
+            "origin": "pip/_vendor/distro/LICENSE",
+            "sha256": "cb5e8e7e5f4a3988e1063c142c60dc2df75605f4c46515e776e3aca6df976e14",
+            "bytes": 11325
+          },
+          {
+            "origin": "pip/_vendor/idna/LICENSE.md",
+            "sha256": "1a9a4f0e3d479a27240ddd59a9137a66ab4a0f9dfdc8ca6188cc0bfd85187f04",
+            "bytes": 1541
+          },
+          {
+            "origin": "pip/_vendor/msgpack/COPYING",
+            "sha256": "492dedba85da5872f78e6091bcd1fea474d660d35acb4dee964b8aab3f007427",
+            "bytes": 614
+          },
+          {
+            "origin": "pip/_vendor/packaging/LICENSE",
+            "sha256": "cad1ef5bd340d73e074ba614d26f7deaca5c7940c3d8c34852e65c4909686c48",
+            "bytes": 197
+          },
+          {
+            "origin": "pip/_vendor/packaging/LICENSE.APACHE",
+            "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594",
+            "bytes": 10174
+          },
+          {
+            "origin": "pip/_vendor/packaging/LICENSE.BSD",
+            "sha256": "b70e7e9b742f1cc6f948b34c16aa39ffece94196364bc88ff0d2180f0028fac5",
+            "bytes": 1344
+          },
+          {
+            "origin": "pip/_vendor/pkg_resources/LICENSE",
+            "sha256": "86da0f01aeae46348a3c3d465195dc1ceccde79f79e87769a64b8da04b2a4741",
+            "bytes": 1023
+          },
+          {
+            "origin": "pip/_vendor/platformdirs/LICENSE",
+            "sha256": "29e0fd62e929850e86eb28c3fdccf0cefdf4fa94879011cffb3d0d4bed6d4db6",
+            "bytes": 1089
+          },
+          {
+            "origin": "pip/_vendor/pygments/LICENSE",
+            "sha256": "a9d66f1d526df02e29dce73436d34e56e8632f46c275bbdffc70569e882f9f17",
+            "bytes": 1331
+          },
+          {
+            "origin": "pip/_vendor/pyproject_hooks/LICENSE",
+            "sha256": "1b22b049b5267d6dfc23a67bf4a84d8ec04b9fdfb1a51d360e42b4342c8b4154",
+            "bytes": 1081
+          },
+          {
+            "origin": "pip/_vendor/requests/LICENSE",
+            "sha256": "09e8a9bcec8067104652c168685ab0931e7868f9c8284b66f5ae6edae5f1130b",
+            "bytes": 10142
+          },
+          {
+            "origin": "pip/_vendor/resolvelib/LICENSE",
+            "sha256": "f388fd38cad13112c1dc0f669bbe80e7f84541edbafb72f3030d2ca7642c3c9d",
+            "bytes": 751
+          },
+          {
+            "origin": "pip/_vendor/rich/LICENSE",
+            "sha256": "deed7c17a4318158190a3ea239cc879a5a50271cebb98ae7025f48fbe58dca15",
+            "bytes": 1056
+          },
+          {
+            "origin": "pip/_vendor/tomli/LICENSE",
+            "sha256": "b80816b0d530b8accb4c2211783790984a6e3b61922c2b5ee92f3372ab2742fe",
+            "bytes": 1072
+          },
+          {
+            "origin": "pip/_vendor/tomli_w/LICENSE",
+            "sha256": "b80816b0d530b8accb4c2211783790984a6e3b61922c2b5ee92f3372ab2742fe",
+            "bytes": 1072
+          },
+          {
+            "origin": "pip/_vendor/truststore/LICENSE",
+            "sha256": "33be7b7e8fa4fd19b1760e1a8ed8a668bdab852c91b692dd41424bcb725a9fca",
+            "bytes": 1086
+          },
+          {
+            "origin": "pip/_vendor/urllib3/LICENSE.txt",
+            "sha256": "130e3a64d5fdd5d096a752694634a7d9df284469de86e5732100268041e3d686",
+            "bytes": 1093
+          }
+        ]
+      },
+      "review_required": true,
+      "note": "Herramienta local, no dependencia runtime del producto."
+    },
+    {
+      "name": "setuptools",
+      "version": null,
+      "scope": "build/tooling",
+      "review_required": true,
+      "note": "Requisito build no instalado persistentemente; version del entorno build aislado no inventada."
+    }
+  ],
+  "interpreter": {
+    "name": "Python",
+    "version": "3.14.7",
+    "scope": "external-interpreter",
+    "review_required": true,
+    "note": "Si se redistribuye Python o un instalador completo, revisar tambien sus bibliotecas incorporadas y terminos originales.",
+    "notice_bundle": {
+      "file": "docs/legal/third-party/python.txt",
+      "sha256": "89300b3655fd25ac35dbc5e80f3726cbb6935cc7b2ab997b63c425a97a1a3e1c",
+      "sources": [
+        {
+          "origin": "Python/LICENSE.txt",
+          "sha256": "935cf13e19f8c31b497d20b05d73623431a226b230c3599bc30fa3348979bc68",
+          "bytes": 35407
+        }
+      ]
+    }
+  },
+  "additional_review": [
+    "Navegadores Chromium/Playwright descargados fuera del repo y licencias de su build concreto.",
+    "Recursos XSD/WSDL AEAT: fuente publica no implica licencia MIT del producto.",
+    "Fuentes de ReportLab, codecs de Pillow y bibliotecas nativas de wheels.",
+    "Iconos Unicode y tipografias del sistema referenciados: no se distribuyen archivos de fuentes propios en static."
+  ]
+}
