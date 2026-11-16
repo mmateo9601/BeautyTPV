@@ -1,6 +1,6 @@
 # Convenciones de código, datos y revisión
 
-Recogen contratos vigentes, no una arquitectura nueva. Aplican a contribuciones autorizadas por [CONTRIBUTING](../../CONTRIBUTING.md), sujetas a [licencia pendiente](../legal/OPCIONES_LICENCIA.md).
+Recogen contratos vigentes, no una arquitectura nueva. Aplican a contribuciones autorizadas por [CONTRIBUTING](../../CONTRIBUTING.md), sujetas a [licencia AGPLv3](../legal/OPCIONES_LICENCIA.md).
 
 ## Estructura y responsabilidades
 

@@ -34,4 +34,4 @@ El panel ofrece diagnóstico/exportación saneada y logs restringidos. Un export
 
 Las pruebas locales, capturas y simulador están documentados en [RELEASE_REPORT](docs/RELEASE_REPORT.md). Certificado/acuse oficial AEAT, declaración responsable suscrita, impresora/cajón físicos, TLS/LAN y aceptación con operadores reales requieren recursos y procedimientos externos. El soporte técnico no habilita indiscriminadamente PII: conserva motivo, aprobación, scope, expiración y auditoría.
 
-La reutilización técnica del repositorio no equivale a licencia de redistribución. Consulte [OPCIONES_LICENCIA](docs/legal/OPCIONES_LICENCIA.md) y [THIRD_PARTY_NOTICES](THIRD_PARTY_NOTICES.md) antes de distribuir paquetes.
+El código original se ofrece bajo [AGPLv3](LICENSE). Consulte [SOURCE_CODE](SOURCE_CODE.md) y [THIRD_PARTY_NOTICES](THIRD_PARTY_NOTICES.md) antes de distribuir paquetes. La licencia no incluye un contrato de soporte.

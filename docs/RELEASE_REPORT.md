@@ -1,5 +1,15 @@
 # Informe de release — BeautyTPV 0.1.0
 
+## Licenciamiento AGPLv3 — 16-11-2026
+
+Por elección explícita del usuario se adopta AGPL-3.0-only estándar. LICENSE es el texto oficial GNU sin cambios; PR recomendadas, sin obligación upstream añadida. README, contribuciones, avisos y guías actuales son coherentes con esa decisión. Se conservan atribuciones y licencias de terceros, sin inventar titular.
+
+Metadatos SPDX/licencias en pyproject, hash verificable de LICENSE y 42 textos legales incluidos en wheel real. El ZIP de actualización incorpora LICENSE, THIRD_PARTY_NOTICES.md y SOURCE_CODE.md como nombres raíz exactos; los guards de actualización se conservan. Código fuente y obligaciones en [SOURCE_CODE](../SOURCE_CODE.md); [informe completo y evidencias](legal/LICENSING_REPORT.md).
+
+Pruebas actuales dirigidas: **62 PASS, 7,51s, un aviso conocido**, cubriendo licencia, empaquetado, actualizaciones, backup y auditor. Check Django, drift, pip check y Ruff correctos. La ejecución completa900/14Chromium anterior es histórica; no se repite ni se atribuye como nueva a este cambio. Sin cambios funcionales del TPV ni en datos fiscales. Revisiones de terceros y bloqueos externos fiscales/hardware conservados. No push, tags ni release pública.
+
+> Los apartados siguientes conservan resultados históricos previos al licenciamiento AGPL.
+
 ## Fase 11: documentación profesional y licencias — 16-11-2026
 
 Coordinación de los ocho especialistas con contratos previos en [phase11/CONTRACTS.md](phase11/CONTRACTS.md). El índice vigente es [README.md](README.md), con tres manuales, cinco documentos de arquitectura, cinco de desarrollo, tres de integraciones y seis de instalación/operaciones. Los documentos históricos se conservan y remiten a las guías canónicas.

@@ -102,6 +102,6 @@ Backups, restauración y actualización están documentados como operaciones con
 
 ## Licencia, contribuciones y soporte
 
-**Licencia principal y titular pendientes de elección explícita.** No se ha añadido `LICENSE` ni un copyright inventado. La posibilidad técnica de reutilización no autoriza por sí sola redistribuir. Compare [opciones de licencia](docs/legal/OPCIONES_LICENCIA.md) y revise [THIRD_PARTY_NOTICES](THIRD_PARTY_NOTICES.md).
+**GNU AGPLv3 (`AGPL-3.0-only`)**: uso, modificación y distribución permitidos, también comercialmente, conforme a [LICENSE](LICENSE). Al distribuir versiones cubiertas debe proporcionarse el código fuente correspondiente; las versiones modificadas con interacción remota por red deben ofrecerlo a sus usuarios según la sección 13. Las contribuciones mediante PR al [repositorio original](https://github.com/mmateo9601/BeautyTPV) son recomendadas, no obligatorias. Consulte [código fuente y alcance](SOURCE_CODE.md) y [avisos de terceros](THIRD_PARTY_NOTICES.md).
 
 [CONTRIBUTING](CONTRIBUTING.md), [código de conducta](CODE_OF_CONDUCT.md), [seguridad y comunicación privada](SECURITY.md), [soporte](SUPPORT.md). No hay correo, empresa titular o SLA inventados: esos datos deben acordarse con el propietario/instalador antes de distribuir.

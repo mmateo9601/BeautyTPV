@@ -1,5 +1,15 @@
 # Estado de implementación — 13-11-2026
 
+## Licenciamiento AGPLv3 — 16-11-2026
+
+Por elección explícita del usuario se adopta AGPL-3.0-only estándar. LICENSE es el texto oficial GNU sin cambios; PR recomendadas, sin obligación upstream añadida. README, contribuciones, avisos y guías actuales son coherentes con esa decisión. Se conservan atribuciones y licencias de terceros, sin inventar titular.
+
+Metadatos SPDX/licencias en pyproject, hash verificable de LICENSE y 42 textos legales incluidos en wheel real. El ZIP de actualización incorpora LICENSE, THIRD_PARTY_NOTICES.md y SOURCE_CODE.md como nombres raíz exactos; los guards de actualización se conservan. Código fuente y obligaciones en [SOURCE_CODE](../SOURCE_CODE.md); [informe completo y evidencias](legal/LICENSING_REPORT.md).
+
+Pruebas actuales dirigidas: **62 PASS, 7,51s, un aviso conocido**, cubriendo licencia, empaquetado, actualizaciones, backup y auditor. Check Django, drift, pip check y Ruff correctos. La ejecución completa900/14Chromium anterior es histórica; no se repite ni se atribuye como nueva a este cambio. Sin cambios funcionales del TPV ni en datos fiscales. Revisiones de terceros y bloqueos externos fiscales/hardware conservados. No push, tags ni release pública.
+
+> Los apartados siguientes conservan resultados históricos previos al licenciamiento AGPL.
+
 > Corte vigente: Fase 11, 16-11-2026, **900 pruebas aprobadas**. Véase el apartado final y [auditoría documental](DOCUMENTATION_AUDIT.md). Las cifras y estados de apartados anteriores son históricos.
 
 Coordinador principal integra ocho especialistas de `.codex/agents/`: architect, backend, frontend, fiscal, hardware, security, qa, devops. Propietarios y contratos en CONTRACTS.md. Trabajo local; no SaaS ni tenants.

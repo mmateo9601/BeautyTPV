@@ -7,6 +7,7 @@ import os
 import re
 import subprocess
 import sys
+import tomllib
 import unicodedata
 from pathlib import Path
 from urllib.parse import unquote, urlsplit
@@ -281,6 +282,29 @@ def audit_licenses(root):
         result["errors"].append("Missing dependency license manifest")
         return result
     manifest = json.loads(path.read_text(encoding="utf-8"))
+    project_file = root / "pyproject.toml"
+    if project_file.is_file():
+        project = tomllib.loads(project_file.read_text(encoding="utf-8"))["project"]
+        product = manifest.get("product", {})
+        for field in ("name", "version", "license"):
+            if product.get(field) != project.get(field):
+                result["errors"].append("Product metadata mismatch: " + field)
+        license_file = root / "LICENSE"
+        if (
+            not license_file.is_file()
+            or product.get("license_file") != "LICENSE"
+            or hashlib.sha256(license_file.read_bytes()).hexdigest()
+            != product.get("license_sha256")
+        ):
+            result["errors"].append("Product LICENSE missing or hash mismatch")
+        for evidence in product.get("license_files", []):
+            target = root / evidence["file"]
+            if (
+                not target.is_file()
+                or hashlib.sha256(target.read_bytes()).hexdigest() != evidence["sha256"]
+            ):
+                result["errors"].append("Product legal-file hash mismatch: " + evidence["file"])
+        result["product_license"] = product.get("license")
     entries = manifest.get("packages", manifest.get("dependencies", []))
     for row in entries:
         name = row.get("name", "unnamed")

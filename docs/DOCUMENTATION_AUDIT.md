@@ -1,5 +1,7 @@
 # Auditoría independiente de documentación — Fase 11
 
+> Informe histórico de Fase 11. La elección posterior de AGPLv3 y las verificaciones vigentes de licencia se registran en [LICENSING_REPORT](legal/LICENSING_REPORT.md). Las referencias a licencia pendiente describen el estado previo a esa decisión.
+
 Fecha: 16-11-2026. Producto `0.1.0` según `pyproject.toml`. Se revisó documentación frente al código existente; este informe no declara un lanzamiento estable ni aprobación fiscal/legal. El coordinador integra el resultado global de pruebas en [IMPLEMENTATION_STATUS](IMPLEMENTATION_STATUS.md) y [RELEASE_REPORT](RELEASE_REPORT.md).
 
 ## Resultado por requisito

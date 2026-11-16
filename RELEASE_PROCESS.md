@@ -5,7 +5,7 @@ La versión declarada es `0.1.0` en [pyproject.toml](pyproject.toml). La interfa
 ## Antes de preparar un candidato
 
 1. Revisar el [estado de aceptación](docs/FINAL_ACCEPTANCE.md), [reporte de release](docs/RELEASE_REPORT.md), [auditoría documental](docs/DOCUMENTATION_AUDIT.md) y los cambios desde la revisión anterior.
-2. Definir titular/licencia y autorización de distribución. Revisar [avisos de terceros](THIRD_PARTY_NOTICES.md), componentes nativos/fuentes y artefactos concretos. Mientras no se resuelva, no presentar el paquete como legalmente listo para distribución pública.
+2. Cumplir [AGPL-3.0-only](LICENSE) y preparar el [código correspondiente](SOURCE_CODE.md) de la versión entregada. Conservar atribuciones y revisar [avisos de terceros](THIRD_PARTY_NOTICES.md), componentes nativos/fuentes y artefactos concretos. La elección de licencia no resuelve por sí sola esas revisiones ni autoriza publicar datos privados.
 3. Ejecutar en el entorno preparado:
 
    ```powershell
@@ -38,9 +38,9 @@ El inventario de licencias utiliza paquetes ya instalados del lock. `--fetch-mis
 .venv\Scripts\python.exe scripts\package_release.py --version 0.1.0 --output dist/BeautyTPV-0.1.0.zip
 ```
 
-Ese comando genera un candidato local; no publica nada. La allowlist actual está en `apps/support/updates.py::ALLOWED_TOP_LEVEL`. Incluye aplicaciones, configuración, scripts, plantillas, estáticos, esquemas, tests y `docs/`; **no es una exportación completa del repositorio ni un instalador de doble clic**. Los BAT/PS de raíz y los nuevos documentos profesionales de raíz no forman parte de esa allowlist actual. No distribuirlo como si incluyera todos los accesos/documentos del repositorio.
+Ese comando genera un candidato local; no publica nada. Las colecciones actuales están en `apps/support/updates.py::ALLOWED_TOP_LEVEL` y `ALLOWED_ROOT_FILES`. Incluyen aplicaciones, configuración, scripts, plantillas, estáticos, esquemas, tests y `docs/`, más los nombres raíz exactos `LICENSE`, `THIRD_PARTY_NOTICES.md` y `SOURCE_CODE.md`; **no es una exportación completa del repositorio ni un instalador de doble clic**. Los BAT/PS y los restantes documentos profesionales de raíz no forman parte de esas colecciones actuales. No distribuirlo como si incluyera todos los accesos/documentos del repositorio.
 
-Antes de una distribución completa, revisar y aprobar expresamente la lista de archivos, la presencia de avisos/licencia/documentos y el procedimiento de instalación. Esta fase documental conserva el comportamiento de la herramienta; no amplía silenciosamente su permiso de escritura. La licencia del producto pendiente sigue siendo un gate separado.
+Antes de una distribución completa, revisar y aprobar expresamente la lista de archivos, la presencia de avisos/licencia/documentos y el procedimiento de instalación. La preparación de licencia añade únicamente los tres archivos legales raíz exactos; no permite subrutas bajo sus nombres. El wheel incluye la expresión SPDX y los textos de licencia declarados en pyproject. Ninguno de estos artefactos constituye por sí solo una oferta completa de fuentes de una versión modificada en red: comprobar [SOURCE_CODE](SOURCE_CODE.md).
 
 ## Ensayo y aprobación del candidato
 

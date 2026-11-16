@@ -1,7 +1,7 @@
 """Inventory locked distributions and preserve their real licence notices.
 
-No dependency is installed and no product licence is selected. Network access
-is opt-in, restricted to the missing pySerial notice at its fixed release tag.
+No dependency is installed. The product licence comes from project metadata;
+network access is opt-in and limited to pySerial's missing notice at its release tag.
 """
 
 import argparse
@@ -56,6 +56,46 @@ def normalized(name):
     return re.sub(r"[-_.]+", "-", name).lower()
 
 
+def product_license_metadata(root=None):
+    """Record the declared product licence and the exact texts being distributed."""
+    root = Path(root) if root is not None else ROOT
+    project = tomllib.loads((root / "pyproject.toml").read_text(encoding="utf-8"))["project"]
+    expression = project.get("license")
+    patterns = project.get("license-files")
+    if not isinstance(expression, str) or not expression.strip():
+        raise ValueError("Falta una expresion de licencia en project.license.")
+    if not isinstance(patterns, list) or not patterns:
+        raise ValueError("Falta la lista project.license-files.")
+    files = {}
+    for pattern in patterns:
+        if (
+            not isinstance(pattern, str)
+            or not pattern
+            or Path(pattern).is_absolute()
+            or ".." in Path(pattern).parts
+        ):
+            raise ValueError("Patron de licencia no valido.")
+        matches = [path for path in root.glob(pattern) if path.is_file()]
+        if not matches:
+            raise ValueError("Patron de licencia sin archivos: " + pattern)
+        for path in matches:
+            if not path.resolve().is_relative_to(root.resolve()):
+                raise ValueError("Un archivo de licencia sale del repositorio.")
+            files[path.relative_to(root).as_posix()] = digest(path.read_bytes())
+    if "LICENSE" not in files:
+        raise ValueError("LICENSE debe existir y estar incluido en project.license-files.")
+    return {
+        "name": project["name"],
+        "version": project["version"],
+        "license": expression,
+        "license_file_present": True,
+        "license_file": "LICENSE",
+        "license_sha256": files["LICENSE"],
+        "license_file_patterns": patterns,
+        "license_files": [{"file": name, "sha256": files[name]} for name in sorted(files)],
+    }
+
+
 def licence_paths(dist):
     return sorted(
         (
@@ -93,6 +133,7 @@ def write_bundle(target, items):
 
 
 def build(fetch_missing=False):
+    product = product_license_metadata()
     legal = ROOT / "docs/legal"
     bundles = legal / "third-party"
     bundles.mkdir(parents=True, exist_ok=True)
@@ -218,12 +259,7 @@ def build(fetch_missing=False):
         )
     manifest = {
         "schema": 1,
-        "product": {
-            "name": project["name"],
-            "version": project["version"],
-            "license": "NOASSERTION",
-            "license_file_present": (ROOT / "LICENSE").exists(),
-        },
+        "product": product,
         "scope": "Installed versions matching lock; preserved local notices; not a legal clearance or complete binary SBOM",
         "lock_sha256": lock_digest(),
         "lock_hash_normalization": "UTF-8 bytes with CRLF converted to LF",
@@ -248,6 +284,8 @@ def verify():
     manifest = json.loads(
         (ROOT / "docs/legal/DEPENDENCY_LICENSES.json").read_text(encoding="utf-8")
     )
+    if manifest["product"] != product_license_metadata():
+        raise ValueError("La licencia del producto no coincide con pyproject.toml o sus textos.")
     if manifest["lock_sha256"] != lock_digest():
         raise ValueError("El manifiesto no coincide con requirements.lock.txt.")
     for item in [*manifest["packages"], *manifest["tools"], manifest["interpreter"]]:

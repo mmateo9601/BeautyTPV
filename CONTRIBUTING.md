@@ -1,6 +1,15 @@
 # Contribuir a BeautyTPV
 
-Antes de contribuir, coordine el trabajo con el responsable del repositorio. La licencia principal y los datos del titular están pendientes de elección: acceso técnico al código no significa autorización de redistribución, ni este documento establece un acuerdo de cesión de derechos o CLA. Véanse [opciones de licencia](docs/legal/OPCIONES_LICENCIA.md) y [avisos de terceros](THIRD_PARTY_NOTICES.md).
+BeautyTPV se ofrece bajo [GNU AGPLv3, únicamente versión 3](LICENSE), identificada como `AGPL-3.0-only`. Al enviar una contribución para incorporarla al proyecto, ofrézcala bajo esa misma licencia y confirme que dispone de los derechos necesarios. Conserve avisos de terceros y declare dependencias nuevas. Los autores conservan sus derechos: no se establece una cesión de titularidad ni un CLA implícito. Consulte [código fuente y alcance](SOURCE_CODE.md) y [avisos de terceros](THIRD_PARTY_NOTICES.md).
+
+## Proponer mejoras
+
+1. Cree un fork o una rama del [repositorio original](https://github.com/mmateo9601/BeautyTPV).
+2. Prepare un cambio concreto, con pruebas apropiadas y documentación actualizada.
+3. Abra una pull request explicando el problema, la solución y las verificaciones realizadas. Para vulnerabilidades siga el canal privado de [SECURITY](SECURITY.md).
+4. Atienda la revisión; el mantenedor decide si incorpora el cambio.
+
+Enviar mejoras al repositorio original es recomendado, no obligatorio por AGPLv3. Compartir el código correspondiente cuando la licencia lo exige no depende de presentar ni de que se acepte una PR. No incluya datos de clientes, claves, certificados ni bases de instalaciones.
 
 ## Preparar el trabajo
 

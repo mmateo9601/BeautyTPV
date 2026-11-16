@@ -2,7 +2,7 @@
 
 Índice canónico de la documentación0.1.0. El programa sigue instalado por empresa con SQLite local. Las guías describen código existente; no constituyen una declaración de conformidad fiscal ni de hardware físico probado.
 
-Empiece por el manual de su rol. Para usar la DEMO sin terminal habitual, consulte Arranque DEMO. Para contribuir o distribuir, revise desarrollo, seguridad, avisos y la decisión de licencia pendiente.
+Empiece por el manual de su rol. Para usar la DEMO sin terminal habitual, consulte Arranque DEMO. Para contribuir o distribuir, revise desarrollo, seguridad, avisos y la licencia AGPLv3.
 
 ## Manuales
 
@@ -57,15 +57,16 @@ Empiece por el manual de su rol. Para usar la DEMO sin terminal habitual, consul
 |---|---|
 | [FUNCIONALIDADES](FUNCIONALIDADES.md) | Características por rol/menú/estado |
 | [DOCUMENTATION_AUDIT](DOCUMENTATION_AUDIT.md) | Auditoría de esta fase y evidencias |
-| [OPCIONES_LICENCIA](legal/OPCIONES_LICENCIA.md) | Decisión pendiente del titular |
+| [OPCIONES_LICENCIA](legal/OPCIONES_LICENCIA.md) | AGPLv3 elegida y comparación histórica |
+| [LICENSING_REPORT](legal/LICENSING_REPORT.md) | Verificación de licencia, metadatos y paquetes |
 | [DEPENDENCY_LICENSES](legal/DEPENDENCY_LICENSES.json) | Inventario verificable de terceros |
 | [manifest](screenshots/manifest.json) | Procedencia, tamaños y hashes de capturas |
 
 ## Documentos profesionales de la raíz
 
-[Portada](../README.md) · [Contribuciones](../CONTRIBUTING.md) · [Conducta](../CODE_OF_CONDUCT.md) · [Seguridad](../SECURITY.md) · [Soporte](../SUPPORT.md) · [Changelog](../CHANGELOG.md) · [Proceso de release](../RELEASE_PROCESS.md) · [Avisos de terceros](../THIRD_PARTY_NOTICES.md).
+[Portada](../README.md) · [Contribuciones](../CONTRIBUTING.md) · [Conducta](../CODE_OF_CONDUCT.md) · [Seguridad](../SECURITY.md) · [Soporte](../SUPPORT.md) · [Changelog](../CHANGELOG.md) · [Proceso de release](../RELEASE_PROCESS.md) · [Avisos de terceros](../THIRD_PARTY_NOTICES.md) · [Licencia](../LICENSE) · [Código correspondiente](../SOURCE_CODE.md).
 
-La licencia principal y titular no están definidos; no hay LICENSE ficticio ni autorización automática de redistribución. La versión declarada no implica publicación estable. Las fuentes legales de terceros se preservan en legal/third-party y se enlazan desde sus avisos.
+La licencia principal es [AGPL-3.0-only](../LICENSE). Consulte [código fuente y obligaciones](../SOURCE_CODE.md): las PR son recomendadas, no obligatorias. Se conservan las atribuciones existentes sin inventar un titular consolidado. La versión declarada no implica publicación estable ni aprobación de todos los componentes de un instalador. Los textos de terceros mantienen sus condiciones propias.
 
 ## Árbol canónico
 

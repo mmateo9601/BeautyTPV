@@ -3,8 +3,189 @@
   "product": {
     "name": "beautytpv",
     "version": "0.1.0",
-    "license": "NOASSERTION",
-    "license_file_present": false
+    "license": "AGPL-3.0-only",
+    "license_file_present": true,
+    "license_file": "LICENSE",
+    "license_sha256": "0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0",
+    "license_file_patterns": [
+      "LICENSE",
+      "THIRD_PARTY_NOTICES.md",
+      "SOURCE_CODE.md",
+      "docs/legal/third-party/*.txt",
+      "docs/legal/upstream/*.txt",
+      "static/vendor/bootstrap/LICENSE",
+      "static/vendor/htmx/LICENSE"
+    ],
+    "license_files": [
+      {
+        "file": "LICENSE",
+        "sha256": "0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0"
+      },
+      {
+        "file": "SOURCE_CODE.md",
+        "sha256": "3c1ff4b3501fee0cf8c6759b4df630238dedc94a2c7970c939dcc9f7519575a2"
+      },
+      {
+        "file": "THIRD_PARTY_NOTICES.md",
+        "sha256": "0e25c715b3fa58d7d6f5374550911d38d20c59e64a9ad45d51c364c8ac102985"
+      },
+      {
+        "file": "docs/legal/third-party/asgiref.txt",
+        "sha256": "dbf85fd5d458570f1fc096c8fff6c6368199160e5fefb0d64cb3db90dcd68447"
+      },
+      {
+        "file": "docs/legal/third-party/certifi.txt",
+        "sha256": "14040749e67f337c6fec83ccb830490a1cb64257e1570e08f86794e09d1be57f"
+      },
+      {
+        "file": "docs/legal/third-party/cffi.txt",
+        "sha256": "6d7969de1985ace83418cd17b1188e0ac2ac80d2f2a64ad800d9f5eb05cbe0ba"
+      },
+      {
+        "file": "docs/legal/third-party/charset-normalizer.txt",
+        "sha256": "d1399a32f2fc02ef78b5689ca59fcdc1f01d379b6f92520aef1161ea72d636b5"
+      },
+      {
+        "file": "docs/legal/third-party/colorama.txt",
+        "sha256": "f8df7a25ca373d9a9c73db93250a70f795728be731ded719397cf8a490563014"
+      },
+      {
+        "file": "docs/legal/third-party/cryptography.txt",
+        "sha256": "2d8956baf21a01e1f1c84beb392a1fb9102ea3a9217132c660fae9d44c081594"
+      },
+      {
+        "file": "docs/legal/third-party/django.txt",
+        "sha256": "08b41afe45104823a687dd33139553f43932f06f1941568021ba488b5751a016"
+      },
+      {
+        "file": "docs/legal/third-party/greenlet.txt",
+        "sha256": "0dad392aed93ba46d9934194c2d3f0602d08fb8676161e21a600b1a4d799b29e"
+      },
+      {
+        "file": "docs/legal/third-party/idna.txt",
+        "sha256": "62e1cdddc003bef7b4ed50989f3716ff27059b16370b1e8a3f7052c18ab7281b"
+      },
+      {
+        "file": "docs/legal/third-party/iniconfig.txt",
+        "sha256": "fe75e76621b6b615de506e42ba49a507834edd655e9a45717cb458982053cc73"
+      },
+      {
+        "file": "docs/legal/third-party/lxml.txt",
+        "sha256": "46c0be8d2d39c9d307aa2ccff4610da5b970489d5ecd820a274251199e94f522"
+      },
+      {
+        "file": "docs/legal/third-party/packaging.txt",
+        "sha256": "2b34b5491fb5fc6ae19eb9d983842579b56c366b823e7fea63703ce62e759c13"
+      },
+      {
+        "file": "docs/legal/third-party/pillow.txt",
+        "sha256": "2873bd63150c42f7d77cfc31b6ce8852aa7b515ade97ef8a9619c00c761bc701"
+      },
+      {
+        "file": "docs/legal/third-party/pip.txt",
+        "sha256": "0fd2ef6aeae254255d2578f4b31c65cf36fe306a3a7fc8e3352ad69331284dd4"
+      },
+      {
+        "file": "docs/legal/third-party/playwright.txt",
+        "sha256": "e71bb91df48458ceebb3a4967bccff213b19162ee921236e3fbb8d5791b36a9d"
+      },
+      {
+        "file": "docs/legal/third-party/pluggy.txt",
+        "sha256": "bebcd9d3615b1a95d4c4173aed6c5df00a016e828526d2f5844c3a76f9e7eac9"
+      },
+      {
+        "file": "docs/legal/third-party/pycparser.txt",
+        "sha256": "749d3b4464c67894d443c0b905a640fc03c9ff0274d26ba42ed237e60ab5c8fe"
+      },
+      {
+        "file": "docs/legal/third-party/pygments.txt",
+        "sha256": "2c4d2ae4749e7cd0142e4ea209363affad106abfb21f9f119cd3a4c9bb58149c"
+      },
+      {
+        "file": "docs/legal/third-party/pypdf.txt",
+        "sha256": "1bd8ea775cd42e7893393f431953efa4b93344536f64317bce67660051e3e21b"
+      },
+      {
+        "file": "docs/legal/third-party/pyserial.txt",
+        "sha256": "d04b9174f3e887bb61b94589e64b71c15e6e317d58a0bbc89a584d3050451aa0"
+      },
+      {
+        "file": "docs/legal/third-party/pytest-django.txt",
+        "sha256": "1f01e0f8c6bb102a66cd2b0c4a845abb832132b703d88f0502bc6b0211229b7e"
+      },
+      {
+        "file": "docs/legal/third-party/pytest-playwright.txt",
+        "sha256": "438628f75bbe2e86da5c6714c321420e1e30b8921d562e4d5a8a4f29fd415fc6"
+      },
+      {
+        "file": "docs/legal/third-party/pytest.txt",
+        "sha256": "38981b38727332c2ea34eddd8ce610fc8b5f25b2c0ff0dab36dc3cc827b6b211"
+      },
+      {
+        "file": "docs/legal/third-party/python-slugify.txt",
+        "sha256": "2c2f92ab9ef037d8162e7f954d1b2152f71647c8f6feaf06933671c6e1fa781b"
+      },
+      {
+        "file": "docs/legal/third-party/python.txt",
+        "sha256": "89300b3655fd25ac35dbc5e80f3726cbb6935cc7b2ab997b63c425a97a1a3e1c"
+      },
+      {
+        "file": "docs/legal/third-party/pyusb.txt",
+        "sha256": "0070fa30f041a6ff9418c91641942489c51bbd0bf80e76bc9c1ec8801507b699"
+      },
+      {
+        "file": "docs/legal/third-party/qrcode.txt",
+        "sha256": "e59a88b4248bc2eec4995affe208ddfad11df95cac7d8fef18abf55e2c3a032c"
+      },
+      {
+        "file": "docs/legal/third-party/reportlab.txt",
+        "sha256": "9b62a097f2f7d0c888bc4b7ed88f2fd55e5f11803a5f0705508984dba16f87f4"
+      },
+      {
+        "file": "docs/legal/third-party/requests.txt",
+        "sha256": "d3268316025c6ed01bc33a3da2c2d1b0ba82cc2dec5a07679fee0c2dc4595402"
+      },
+      {
+        "file": "docs/legal/third-party/ruff.txt",
+        "sha256": "9cb289c80153691cd260284fbfcf6e2fb3edb55b6f320050f5c0c57c93f40e4c"
+      },
+      {
+        "file": "docs/legal/third-party/sqlparse.txt",
+        "sha256": "d9fc65b24a9b56d299f1b05a6d2df068b07e59803258eaadc1c18cca839aed80"
+      },
+      {
+        "file": "docs/legal/third-party/text-unidecode.txt",
+        "sha256": "77ab84e218a4855dad0ace05c95c8f0aeacc6b2d1b0c40f22c206361f8abb468"
+      },
+      {
+        "file": "docs/legal/third-party/tzdata.txt",
+        "sha256": "8d54f703b4cf8e01910da864a0df0436fd0632d85b501158ff0886f2437bfdcb"
+      },
+      {
+        "file": "docs/legal/third-party/urllib3.txt",
+        "sha256": "c80b15b73912a36e633ee3d633cb1d9266b93cc5be707197d6adbaf0fccf971c"
+      },
+      {
+        "file": "docs/legal/third-party/waitress.txt",
+        "sha256": "fa12a06164cf28ddeccfce701ea790ed1cf96e5aa54e75feded50068b311faa8"
+      },
+      {
+        "file": "docs/legal/third-party/whitenoise.txt",
+        "sha256": "6251b79d8361180989c64f1d64c4aa637bf2cd8eb6b2cb3ce6e6cb393d368cc0"
+      },
+      {
+        "file": "docs/legal/upstream/pyserial-3.5-LICENSE.txt",
+        "sha256": "f91cb9813de6a5b142b8f7f2dede630b5134160aedaeaf55f4d6a7e2593ca3f3"
+      },
+      {
+        "file": "static/vendor/bootstrap/LICENSE",
+        "sha256": "4620c84ad5ce8602ff65640ed6b7c8b78ebb9e036584f0ebc1ccc88206a4bb51"
+      },
+      {
+        "file": "static/vendor/htmx/LICENSE",
+        "sha256": "d3d2456f76414f2456104660ebd65aff1c04cd7966b942bdabd63f3cdb316a38"
+      }
+    ]
   },
   "scope": "Installed versions matching lock; preserved local notices; not a legal clearance or complete binary SBOM",
   "lock_sha256": "99e931755fe4d7a5b150b3ff0ccbdbcd1aca6405b8e52572169cfc22b84cbcc5",

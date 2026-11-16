@@ -1,13 +1,13 @@
 # Guía del desarrollador
 
-BeautyTPV0.1.0 es Django local por empresa. El número de versión no declara release fiscal productiva. Antes de colaborar, lea [CONTRIBUTING](../../CONTRIBUTING.md), [arquitectura](../arquitectura/ARQUITECTURA.md), [modelos](../arquitectura/MODELOS_DATOS.md), [flujos](../arquitectura/FLUJOS_NEGOCIO.md) y [licencia pendiente](../legal/OPCIONES_LICENCIA.md).
+BeautyTPV0.1.0 es Django local por empresa. El número de versión no declara release fiscal productiva. Antes de colaborar, lea [CONTRIBUTING](../../CONTRIBUTING.md), [arquitectura](../arquitectura/ARQUITECTURA.md), [modelos](../arquitectura/MODELOS_DATOS.md), [flujos](../arquitectura/FLUJOS_NEGOCIO.md) y [licencia AGPLv3](../legal/OPCIONES_LICENCIA.md).
 
 ## Incorporarse
 
-1. Obtenga del titular la URL y autorización. Este ejemplo es un placeholder, no una URL del proyecto:
+1. Obtenga el código del repositorio de referencia y cumpla AGPLv3. El comando no garantiza que todos los commits locales hayan sido publicados:
 
    ```powershell
-   git clone <URL_AUTORIZADA> BeautyTPV
+   git clone https://github.com/mmateo9601/BeautyTPV.git BeautyTPV
    Set-Location BeautyTPV
    ```
 

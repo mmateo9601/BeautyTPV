@@ -86,7 +86,7 @@ Los estados «pendiente» de los ADR iniciales pertenecen a su momento de redacc
 
 ## Decisiones que siguen fuera de esta documentación
 
-- Titular del producto, licencia principal y condiciones comerciales requieren decisión explícita del propietario; un repositorio técnicamente reutilizable no concede permiso de redistribución. Consulte [opciones de licencia](../legal/OPCIONES_LICENCIA.md).
+- La licencia principal elegida el 16-11-2026 es AGPL-3.0-only, con PR recomendadas. El texto estándar no exige enviar mejoras al upstream; condiciones comerciales y titularidad consolidada no se inventan. Consulte [decisión de licencia](../legal/OPCIONES_LICENCIA.md).
 - Certificados/autorización del obligado, declaración responsable suscrita, pruebas oficiales AEAT y comprobaciones físicas se resuelven con recursos y responsables externos.
 - No se implementan agenda, reservas, bonos, portal Cliente ni SaaS. Las futuras extensiones no deben representarse en diagramas como servicios activos.
 

@@ -10,7 +10,11 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
-from apps.support.updates import ALLOWED_TOP_LEVEL, validate_package  # noqa: E402
+from apps.support.updates import (  # noqa: E402
+    ALLOWED_ROOT_FILES,
+    ALLOWED_TOP_LEVEL,
+    validate_package,
+)
 
 
 def build_package(root, destination, version):
@@ -23,8 +27,10 @@ def build_package(root, destination, version):
     destination.parent.mkdir(parents=True, exist_ok=True)
     files = {}
     with zipfile.ZipFile(destination, "w", zipfile.ZIP_DEFLATED) as archive:
-        for name in sorted(ALLOWED_TOP_LEVEL):
+        for name in sorted(ALLOWED_TOP_LEVEL | ALLOWED_ROOT_FILES):
             source = root / name
+            if name in ALLOWED_ROOT_FILES and not source.is_file():
+                continue
             paths = source.rglob("*") if source.is_dir() else [source]
             for path in sorted(paths):
                 if not path.is_file() or path.is_symlink():

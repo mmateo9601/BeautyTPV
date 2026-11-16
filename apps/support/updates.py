@@ -28,6 +28,8 @@ ALLOWED_TOP_LEVEL = {
     "requirements.lock.txt",
     "README.md",
 }
+# Legal notices are exact root filenames, never additional writable subtrees.
+ALLOWED_ROOT_FILES = {"LICENSE", "THIRD_PARTY_NOTICES.md", "SOURCE_CODE.md"}
 
 
 def validate_package(archive, expected_sha256):
@@ -59,7 +61,7 @@ def validate_package(archive, expected_sha256):
                 path.is_absolute()
                 or ".." in path.parts
                 or not path.parts
-                or path.parts[0] not in ALLOWED_TOP_LEVEL
+                or (path.parts[0] not in ALLOWED_TOP_LEVEL and name not in ALLOWED_ROOT_FILES)
                 or "\\" in name
                 or ":" in name
                 or str(path) != name

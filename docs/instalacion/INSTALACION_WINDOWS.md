@@ -18,7 +18,7 @@ No copie la base DEMO ni su archivo de credenciales a una instalación real.
 
 **Previos:** Windows 10/11, Python de 64 bits compatible con `requires-python >=3.12`, permisos de escritura en código e instancia y navegador actualizado. El equipo efectivamente probado se identifica en [la guía DEMO](../GUIA_WINDOWS_DEMO.md); no se acredita aquí una prueba física en todos los Windows. Confirme espacio para código, SQLite, estáticos, temporales de restauración y copias. No hay umbral universal de hardware certificado.
 
-1. Obtenga el código por el canal autorizado del propietario; la disponibilidad técnica no concede por sí sola licencia de redistribución.
+1. Obtenga el código y los avisos de su versión por el canal del proyecto; cumpla AGPL-3.0-only y las licencias de terceros al redistribuir. Véase [SOURCE_CODE](../../SOURCE_CODE.md).
 2. Sitúelo, por ejemplo, en `C:\BeautyTPV\app`. Reserve `C:\BeautyTPV\instancia` para SQLite, configuración y copias; fuera del repositorio y sin compartir SQLite por red.
 3. Abra PowerShell en la carpeta del código. Compruebe el intérprete:
 

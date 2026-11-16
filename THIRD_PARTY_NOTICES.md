@@ -1,6 +1,6 @@
 # Avisos de terceros — BeautyTPV
 
-Este documento identifica componentes reales del repositorio y del entorno fijado. **No concede una licencia al producto BeautyTPV**, cuyo titular/licencia principal siguen pendientes. Los avisos originales mantienen sus propios titulares, no inventados para este proyecto.
+Este documento identifica componentes reales del repositorio y del entorno fijado. El código y las obras originales de BeautyTPV se ofrecen bajo **AGPL-3.0-only**, según [LICENSE](LICENSE); este inventario no sustituye sus condiciones ni relicencia los componentes de terceros. Los avisos originales mantienen sus propios titulares, no inventados para este proyecto.
 
 ## Procedencia y verificación
 
@@ -64,11 +64,11 @@ No se instalan paquetes. `--fetch-missing` descarga optativamente solo el aviso 
 |---|---|---|
 | Bootstrap5.3.8 | MIT, vendorizado | [LICENSE](static/vendor/bootstrap/LICENSE), hashes de CSS/JS en manifiesto |
 | HTMX2.0.8 | 0BSD, vendorizado | [LICENSE](static/vendor/htmx/LICENSE), hashes del JS en manifiesto |
-| CSS/JS/plantillas de BeautyTPV y marca textual B | Código del producto, licencia principal pendiente | No se les asigna automáticamente la licencia del framework |
+| CSS/JS/plantillas de BeautyTPV y marca textual B | Obras originales bajo AGPL-3.0-only; marcas y derechos ajenos conservan su alcance | No se les asigna automáticamente la licencia del framework |
 | Iconos del menú | Caracteres Unicode de las plantillas, sin paquete de iconos o fuente descargada en static | Revisar el motor/fuente del equipo si se empaqueta un entorno completo |
 | Inter, Segoe UI y Georgia referenciadas en CSS | Referencias a familias del sistema/fallback; no se redistribuyen archivos .ttf/.woff propios en static | No afirmar una licencia de una fuente no incluida |
 | Fuentes de ReportLab | Incluidas en el wheel, con licencias propias | [Avisos completos](docs/legal/third-party/reportlab.txt); Bitstream Vera/DarkGarden requieren revisión separada |
-| XSD/WSDL AEAT | Recursos oficiales con procedencia y manifest de hashes | [Manifest](schemas/aeat/manifest.json); no se atribuye licencia MIT ni conformidad por descarga pública |
+| XSD/WSDL AEAT y esquema XMLDSig W3C | Recursos oficiales con procedencia y manifest de hashes; XMLDSig preserva su aviso W3C Software License | [Manifest](schemas/aeat/manifest.json); no se atribuye licencia MIT ni conformidad por descarga pública |
 | Capturas de documentación | Chromium real, datos sintéticos de DEMO independiente | [Procedencia](docs/screenshots/manifest.json); no imágenes generadas artificialmente ni datos del salón |
 | Navegadores Playwright/Chromium | Descargados fuera del repositorio; no incluidos como binarios aquí | Revisar licencia/avisos del build exacto si se redistribuyen; driver/Node sí tienen avisos preservados |
 
@@ -82,6 +82,6 @@ No se instalan paquetes. `--fetch-missing` descarga optativamente solo el aviso 
 
 La comprobación visual documental utilizó Marked del runtime externo de Codex y un bundle temporal Mermaid11.12.2. No se incluyen estos motores en el producto ni en su lock; la herramienta opcional recibe sus rutas explícitamente. Su procedencia está registrada en [documentation-render-runtime.json](docs/evidence/documentation-render-runtime.json). Revisar sus avisos propios si se decide redistribuirlos.
 
-Diez paquetes tienen observaciones especiales en el manifiesto; también requieren revisión intérprete, build aislado, browsers y recursos oficiales. Prestar atención a MPL2.0(certifi), duales/Artistic/GPL, fuentes de ReportLab, binarios/codecs y avisos del driver Playwright. No se marca compatibilidad universal con una licencia principal aún no elegida.
+Diez paquetes tienen observaciones especiales en el manifiesto; también requieren revisión intérprete, build aislado, browsers y recursos oficiales. Prestar atención a MPL2.0(certifi), duales/Artistic/GPL, fuentes de ReportLab, binarios/codecs y avisos del driver Playwright. La elección de AGPL-3.0-only no sustituye la revisión de compatibilidad del artefacto final.
 
-La licencia principal, titular, condiciones comerciales y canal de soporte se deciden por el propietario. Véanse [OPCIONES_LICENCIA](docs/legal/OPCIONES_LICENCIA.md) y [RELEASE_PROCESS](RELEASE_PROCESS.md). No se ha creado LICENSE ni publicado una release.
+La licencia principal elegida es [AGPL-3.0-only](LICENSE). Las contribuciones conservan su autoría y los avisos existentes; no se inventa un nombre de titular. Condiciones comerciales y contacto de soporte no se deducen de la licencia. Véanse [SOURCE_CODE](SOURCE_CODE.md), [decisión de licencia](docs/legal/OPCIONES_LICENCIA.md) y [RELEASE_PROCESS](RELEASE_PROCESS.md). No se ha publicado una release.

@@ -1,4 +1,7 @@
 schemas/aeat/** -text
+LICENSE -text
+THIRD_PARTY_NOTICES.md -text
+SOURCE_CODE.md -text
 static/vendor/** -text
 docs/legal/third-party/** -text
 docs/legal/upstream/** -text

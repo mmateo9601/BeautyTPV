@@ -8,7 +8,7 @@ Estas pautas se aplican a la colaboración relacionada con BeautyTPV: revisiones
 - Centrar las revisiones en hechos, código y resultados reproducibles; explicar desacuerdos sin ataques personales.
 - Aceptar correcciones y reconocer límites de las evidencias. No atribuir a AEAT, hardware o terceros pruebas no realizadas.
 - Facilitar contexto y documentación accesibles para personal de salón, instaladores y desarrolladores.
-- Respetar propiedad intelectual, licencias pendientes, privacidad y autorizaciones de acceso.
+- Respetar propiedad intelectual, licencia AGPLv3 y condiciones de terceros, privacidad y autorizaciones de acceso.
 
 ## Comportamiento no aceptable
 

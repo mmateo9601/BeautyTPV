@@ -1,0 +1,24 @@
+{
+  "license": "AGPL-3.0-only",
+  "wheel": {
+    "file": "tmp/license-build/wheels/beautytpv-0.1.0-py3-none-any.whl",
+    "sha256": "86c50a9a8fc6cf3e67d44fe01b9921da571fc8591b8f96e93bc0d06c35fa6a4a",
+    "license_expression": "AGPL-3.0-only",
+    "legal_files_verified": 42,
+    "generator": "Wheel-Version: 1.0\nGenerator: setuptools (84.2.1)\nRoot-Is-Purelib: true\nTag: py3-none-any\n\n"
+  },
+  "scope": "Local build only; not published, not a standalone Windows installer or complete binary SBOM",
+  "update_zip": {
+    "file": "tmp/license-build/BeautyTPV-0.1.0.zip",
+    "sha256": "83105e6834449c2202fa2a94f3d03971c5b8bdeefe20f082bcbe090cc5d60152",
+    "version": "0.1.0",
+    "file_count": 525,
+    "legal_file_sha256": {
+      "LICENSE": "0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0",
+      "THIRD_PARTY_NOTICES.md": "0e25c715b3fa58d7d6f5374550911d38d20c59e64a9ad45d51c364c8ac102985",
+      "SOURCE_CODE.md": "3c1ff4b3501fee0cf8c6759b4df630238dedc94a2c7970c939dcc9f7519575a2"
+    },
+    "forbidden_runtime_files": [],
+    "validation": "PASS: builder validate_package + independent exact bytes/hash and runtime-file exclusion"
+  }
+}

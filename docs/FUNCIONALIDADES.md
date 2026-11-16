@@ -50,4 +50,4 @@ E=Empleado, M=Encargado, A=Administrador, S=Superadmin. Los superiores heredan o
 | No incluido en V1 | Portal/login Cliente, agenda, reservas, bonos, banco/datáfono integrado, devoluciones parciales y regímenes fiscales no soportados |
 | Posibilidades futuras, sin compromiso de implementación | Portal Cliente/agenda/reservas si se aprueban en otra versión; migración PostgreSQL cuando haya necesidad medida |
 
-Una ficha Cliente no es una cuenta web ni forma parte de la jerarquía interna. El proyecto conserva SQLite, una instalación por empresa y la fiscalidad soportada explícitamente. La [licencia principal pendiente](legal/OPCIONES_LICENCIA.md) y los [avisos de terceros](../THIRD_PARTY_NOTICES.md) son gates independientes de la completitud técnica.
+Una ficha Cliente no es una cuenta web ni forma parte de la jerarquía interna. El proyecto conserva SQLite, una instalación por empresa y la fiscalidad soportada explícitamente. La [licencia AGPLv3](../LICENSE), la entrega del [código correspondiente](../SOURCE_CODE.md) y los [avisos de terceros](../THIRD_PARTY_NOTICES.md) tienen obligaciones independientes de la completitud técnica.

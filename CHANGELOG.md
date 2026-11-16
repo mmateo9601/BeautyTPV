@@ -2,11 +2,18 @@
 
 Se registran cambios verificables del repositorio. `0.1.0` es la versión actual de los metadatos; no se atribuye un lanzamiento estable ni una fecha de publicación pública.
 
+## Sin publicar — AGPLv3, 16-11-2026
+
+- Licencia oficial GNU AGPLv3 (`AGPL-3.0-only`) por elección explícita; PR al repositorio recomendadas, no obligatorias.
+- Metadatos SPDX, instrucciones de código correspondiente y contribuciones; avisos originales preservados y manifiesto verificable con hashes del producto.
+- Corrección del ZIP de actualización para incluir tres archivos legales raíz exactos, sin permitir rutas anidadas bajo sus nombres; wheel con 42 textos legales comprobados.
+- 62 pruebas dirigidas aprobadas; [informe de preparación](docs/legal/LICENSING_REPORT.md). No se publica release ni se modifica la versión 0.1.0.
+
 ## Sin publicar — Fase 11, documentación profesional
 
 - Manuales de usuario, Administrador y Superadmin, capturas reales y un índice documental por perfiles.
 - Arquitectura, modelos, flujos, seguridad, desarrollo, integraciones y operaciones Windows documentados desde código.
-- Inventario verificable de licencias/avisos; licencia principal y titular pendientes, sin crear `LICENSE`.
+- Inventario verificable de licencias/avisos; en aquel cierre la licencia y el titular estaban pendientes y no se creó `LICENSE`. La elección posterior de AGPLv3 se registra arriba.
 - Guías de colaboración, soporte, seguridad y proceso de release; no se publican tags/releases ni se cambia el comportamiento funcional.
 - Auditoría documental y resultados actuales registrados en `docs/DOCUMENTATION_AUDIT.md`.
 

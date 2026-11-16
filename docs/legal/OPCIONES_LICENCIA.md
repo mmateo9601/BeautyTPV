@@ -1,10 +1,12 @@
-# Licencia principal: decisión pendiente
+# Licencia elegida: GNU AGPLv3
 
-Revisión documental: 16-11-2026. El repositorio no tiene una licencia principal elegida ni un titular confirmado para redactar su aviso. **No se crea `LICENSE`, no se asigna MIT/GPL/Apache y no se declara BeautyTPV open source.** `NOASSERTION` en el manifiesto significa que esta fase no atribuye una licencia al producto.
+Decisión expresa del responsable del repositorio: 16-11-2026. BeautyTPV adopta **GNU Affero General Public License, versión 3 únicamente (`AGPL-3.0-only`)**. El [texto íntegro](../../LICENSE) se obtuvo de [GNU](https://www.gnu.org/licenses/agpl-3.0.txt) y no contiene cláusulas añadidas.
 
-La reutilización técnica del código y su documentación no concede por sí misma permisos de redistribución. La ausencia de licencia no equivale a dominio público; deben comprobarse los derechos del titular y de las contribuciones. Véase la explicación de [GitHub/Choose a License](https://choosealicense.com/no-permission/). Esta comparación sirve para preparar la decisión, no sustituye la revisión jurídica del caso.
+Se permite usar, modificar y distribuir el software, incluso comercialmente, sujeto a la licencia. La entrega de código fuente correspondiente al distribuir y la oferta a usuarios remotos de versiones modificadas se rigen por AGPLv3, especialmente secciones 4–6 y 13. **Enviar mejoras mediante PR al repositorio original es recomendado, no obligatorio**, conforme a la opción elegida por el usuario. No se ha añadido una condición upstream a una licencia estándar.
 
-## Alternativas
+El alcance, las fuentes de la versión exacta, las atribuciones y el procedimiento de distribución se explican en [SOURCE_CODE](../../SOURCE_CODE.md). Cada contribuyente conserva sus derechos; no se deduce una identidad jurídica del nombre Git ni se inventa un copyright consolidado. Los componentes de terceros mantienen sus condiciones y avisos. La elección de AGPL no constituye revisión jurídica del instalador final ni validación fiscal.
+
+## Comparación conservada para referencia
 
 | Opción | Uso y redistribución en términos generales | Obligaciones y consecuencias | Qué debe decidir el propietario |
 |---|---|---|---|
@@ -28,18 +30,17 @@ El inventario técnico está en [THIRD_PARTY_NOTICES](../../THIRD_PARTY_NOTICES.
 | Fuentes de `reportlab` | El wheel contiene Bitstream Vera y DarkGarden (GPL-2.0-or-later); no describir todo su contenido como BSD ni suponer una excepción de incrustación no revisada |
 | `lxml`, `pillow` y sus wheels | Los avisos enumeran componentes, codecs, recursos y condiciones adicionales. Revisar el artefacto concreto, no solo el nombre del paquete |
 | Playwright, Node y Chromium | Conservar avisos del driver y revisar el navegador/build que se vaya a empaquetar. Los navegadores descargados fuera del repo no están incluidos en este inventario binario completo |
-| Python, herramientas build y sistema operativo | Si se redistribuyen, inventariar sus versiones y bibliotecas incluidas. `setuptools>=75` es requisito de build; no se inventa una versión persistente cuando el build fue aislado |
+| Python, herramientas build y sistema operativo | Si se redistribuyen, inventariar sus versiones y bibliotecas incluidas. `setuptools>=77` es requisito de build; no se inventa una versión persistente cuando el build fue aislado |
 | XSD/WSDL/documentos AEAT | Acceso público no significa licencia MIT ni autorización para cualquier uso de logos/textos. Conservar procedencia y comprobar condiciones del recurso |
 
 La coexistencia de varios componentes no permite emitir un dictamen general de compatibilidad sin conocer el paquete final, las modificaciones, el modo de vinculación y la jurisdicción aplicable. El manifiesto marca las revisiones manuales; no constituye una aprobación legal ni un SBOM exhaustivo de todos los binarios del equipo.
 
-## Datos necesarios para cerrar la decisión
+## Preparación y obligaciones al distribuir
 
-1. Identificar al titular real y confirmar su autorización sobre código, documentación, capturas y contribuciones.
-2. Elegir expresamente propietario/comercial, MIT, Apache 2.0, GPLv3 u otra opción tras revisar sus consecuencias.
-3. Definir cómo se distribuye: repositorio autorizado, paquete de actualización, instalador con Python/navegador o instalación gestionada. Cada artefacto cambia el inventario necesario.
-4. Resolver las revisiones señaladas, conservar avisos y, cuando corresponda, preparar acceso al código fuente de terceros.
-5. Aprobar nombre del titular, años/datos del aviso y condiciones comerciales/soporte reales. No utilizar nombres o correos inventados.
-6. Solo entonces redactar `LICENSE`, metadatos de licencia y avisos del producto coherentes; revisar contribuciones y contrato de distribución.
+1. Conservar LICENSE, avisos de autoría y condiciones de terceros; comprobar derechos sobre cada aportación.
+2. Entregar el código correspondiente de la versión exacta mediante las modalidades de AGPLv3 aplicables. Una PR es un mecanismo de colaboración, no un sustituto de esta obligación.
+3. Para versiones modificadas con interacción remota por red, incluida LAN, ofrecer ese código sin cargo a esos usuarios, de forma visible en la interfaz, según la sección 13.
+4. Revisar el artefacto concreto: dependencias, fuentes, componentes nativos y herramientas que realmente se redistribuyen. Las diez revisiones especiales del inventario no se declaran aprobadas por elegir AGPL.
+5. Definir por separado contactos reales, atribuciones consolidadas y condiciones de soporte si se ofrecen; no son garantías concedidas por la licencia.
 
-Hasta recibir esa elección, la documentación técnica queda preparada y la **autorización de distribución del producto sigue PENDIENTE del propietario**. No se publica una licencia por defecto ni se crea una release pública.
+No se modifica el texto de GNU ni se crean obligaciones de aportar al upstream, comprar soporte o ceder derechos. Tampoco se publica una etiqueta o release automáticamente.

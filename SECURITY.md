@@ -35,4 +35,4 @@ Una corrección se verifica con reproducción aislada, prueba negativa, regresi�
 
 No existe backdoor de soporte ni contraseña predeterminada. PIN no eleva; contraseña reforzada no equivale a MFA independiente. Los roles no aíslan a un administrador del sistema operativo capaz de reemplazar archivos/código. Las copias se cifran, pero la SQLite operativa no incorpora cifrado integral.
 
-Antes de distribuir deben definirse titular, canal privado, responsables y política de mantenimiento. Esta documentación no concede licencia de uso o redistribución ni declara una certificación de seguridad.
+Antes de distribuir deben definirse titular, canal privado, responsables y política de mantenimiento. Las condiciones de uso y redistribución del software están en [LICENSE](LICENSE); este documento no declara una certificación de seguridad.
