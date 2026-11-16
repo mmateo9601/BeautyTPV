@@ -1,3 +1,5 @@
+> Guía canónica actual: [instalacion/BACKUP_RESTORE.md](instalacion/BACKUP_RESTORE.md). Este documento conserva procedimientos y evidencias históricos; consulte la guía actual antes de operar.
+
 # Copias cifradas y recuperación
 
 La copia usa `sqlite3.Connection.backup`, comprueba `PRAGMA integrity_check` y cifra un sobre JSON completo mediante Fernet (cifrado autenticado). Incluye SHA-256 de la base, versión, migraciones y máximos de ID fiscal para conciliación. No es una copia del fichero vivo sin coordinación SQLite. La clave de 32 bytes codificada Fernet se encuentra en `BEAUTYTPV_BACKUP_KEY`, cargada de la configuración externa; nunca se imprime ni se incluye en el backup.

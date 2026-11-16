@@ -1,3 +1,5 @@
+> Guía canónica actual: [manuales/GUIA_USUARIO.md](manuales/GUIA_USUARIO.md). Este documento conserva procedimientos y evidencias históricos; consulte la guía actual antes de operar.
+
 # Manual de uso BeautyTPV
 
 ## Acceso y plano

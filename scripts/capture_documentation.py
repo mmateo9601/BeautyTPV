@@ -15,8 +15,12 @@ import sys
 import tempfile
 import threading
 import time
+import tomllib
 import urllib.request
+from contextlib import closing
+from datetime import datetime
 from pathlib import Path
+from zoneinfo import ZoneInfo
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
@@ -77,6 +81,7 @@ def serve(directory, port, token):
 
 def capture(output):
     from PIL import Image
+    from playwright.sync_api import Error as PlaywrightError
     from playwright.sync_api import expect, sync_playwright
 
     from scripts.verify_demo_browser import credentials
@@ -135,11 +140,20 @@ def capture(output):
                         time.sleep(0.2)
                 with sync_playwright() as playwright:
                     browser = playwright.chromium.launch()
+                    browser_version = browser.version
 
                     def shot(page, filename, role, description, anchor=None):
                         if anchor:
                             anchor.scroll_into_view_if_needed()
-                        page.screenshot(path=str(output / filename), full_page=False)
+                        page.wait_for_load_state("domcontentloaded")
+                        page.wait_for_timeout(200)
+                        try:
+                            page.screenshot(path=str(output / filename), full_page=False)
+                        except PlaywrightError:
+                            # Chromium may still be resizing its compositor surface.
+                            # Retry an actual capture; never manufacture a substitute.
+                            page.wait_for_timeout(400)
+                            page.screenshot(path=str(output / filename), full_page=False)
                         with Image.open(output / filename) as picture:
                             picture.save(output / filename, optimize=True)
                         records.append(
@@ -455,7 +469,7 @@ def capture(output):
                     browser.close()
                 import sqlite3
 
-                with sqlite3.connect(directory / "demo.sqlite3") as database:
+                with closing(sqlite3.connect(directory / "demo.sqlite3")) as database:
                     assert (
                         database.execute(
                             "SELECT COUNT(*) FROM verifactu_fiscaltransmission"
@@ -463,8 +477,11 @@ def capture(output):
                         == 0
                     )
                 manifest = {
-                    "product_version": "0.1.0",
-                    "date": "2026-11-15",
+                    "product_version": tomllib.loads(
+                        (ROOT / "pyproject.toml").read_text(encoding="utf-8")
+                    )["project"]["version"],
+                    "date": datetime.now(ZoneInfo("Europe/Madrid")).date().isoformat(),
+                    "browser_version": browser_version,
                     "source": "Chromium real + Waitress; independent temporary DEMO, not port8000",
                     "fiscal_transmissions": 0,
                     "credentials_included": False,
@@ -489,6 +506,8 @@ if __name__ == "__main__":
     parser.add_argument("--port", type=int)
     parser.add_argument("--token")
     args = parser.parse_args()
+    if os.name != "nt":
+        parser.error("La captura aislada usa eventos Windows; ejecute esta herramienta en Windows.")
     if args.serve:
         serve(Path(args.instance_dir), args.port, args.token)
     else:

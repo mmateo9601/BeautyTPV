@@ -1,0 +1,466 @@
+{
+  "product_version": "0.1.0",
+  "date": "2026-11-16",
+  "browser_version": "158.0.8127.18",
+  "source": "Chromium real + Waitress; independent temporary DEMO, not port8000",
+  "fiscal_transmissions": 0,
+  "credentials_included": false,
+  "images": [
+    {
+      "file": "login-desktop.png",
+      "role": "PUBLIC",
+      "route": "/acceso/",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "description": "Identificación, campos vacíos y aviso TEST",
+      "sha256": "050449916048f251be378307538dbdabacfc50746664db1530b83f92ef553848",
+      "bytes": 54168
+    },
+    {
+      "file": "selector-pin-desktop.png",
+      "role": "PUBLIC",
+      "route": "/acceso/",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "description": "Selector táctil de usuario; PIN vacío",
+      "sha256": "e66901f17089cf155f9a882c2ec08564b6d62dd755a44aa36919f9508f247ab0",
+      "bytes": 57492
+    },
+    {
+      "file": "plano-salon-desktop.png",
+      "role": "EMPLOYEE",
+      "route": "/tpv/",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "description": "Plano inicial, cuatro puestos libres",
+      "sha256": "67fcb866160784e1db870abdba4ad00385975a6515f4924baf9926ad45c80c87",
+      "bytes": 54302
+    },
+    {
+      "file": "puesto-libre-desktop.png",
+      "role": "EMPLOYEE",
+      "route": "/tpv/",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "description": "El puesto libre se representa en el plano; no hay modal separado",
+      "sha256": "67fcb866160784e1db870abdba4ad00385975a6515f4924baf9926ad45c80c87",
+      "bytes": 54302
+    },
+    {
+      "file": "plano-salon-tablet.png",
+      "role": "EMPLOYEE",
+      "route": "/tpv/",
+      "viewport": {
+        "width": 820,
+        "height": 1180
+      },
+      "description": "Plano responsive real",
+      "sha256": "f80eae21ca8d9e75f0be3676ee734f70d5a3b997576d88903fd03f68f10b4007",
+      "bytes": 53305
+    },
+    {
+      "file": "plano-salon-mobile.png",
+      "role": "EMPLOYEE",
+      "route": "/tpv/",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "description": "Plano responsive real",
+      "sha256": "c86ddc354e2b4c135fa4f22cd0630af7c1d9415a6357a5f8e0ff6e77b4e4b6d3",
+      "bytes": 33922
+    },
+    {
+      "file": "caja-desktop.png",
+      "role": "EMPLOYEE",
+      "route": "/caja/",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "description": "Turno real abierto con fondo sintético",
+      "sha256": "2434b0a0c05877460f998350bf39335f9f61e92d00951fabafc79f2445ea72c4",
+      "bytes": 57705
+    },
+    {
+      "file": "cuenta-puesto-desktop.png",
+      "role": "EMPLOYEE",
+      "route": "/tpv/cuentas/1/",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "description": "Cuenta abierta con línea y nota persistida",
+      "sha256": "d2c57db0a2b25c9344a2288cddafcbe028402809db3aa49248781c1e463c8f2c",
+      "bytes": 75062
+    },
+    {
+      "file": "carrito-desktop.png",
+      "role": "EMPLOYEE",
+      "route": "/tpv/cuentas/1/",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "description": "Carrito de una cuenta persistente",
+      "sha256": "d2c57db0a2b25c9344a2288cddafcbe028402809db3aa49248781c1e463c8f2c",
+      "bytes": 75062
+    },
+    {
+      "file": "cuenta-puesto-tablet.png",
+      "role": "EMPLOYEE",
+      "route": "/tpv/cuentas/1/",
+      "viewport": {
+        "width": 820,
+        "height": 1180
+      },
+      "description": "Cuenta en tablet",
+      "sha256": "3cb83e0182fb8de29d8b1faa5a54f76912fbffd0153c522fa8b5c5001f7a83c1",
+      "bytes": 62860
+    },
+    {
+      "file": "cuenta-puesto-mobile.png",
+      "role": "EMPLOYEE",
+      "route": "/tpv/cuentas/1/",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "description": "Cuenta estrecha; continuación mediante scroll",
+      "sha256": "e18e0227aafb5656a85d133d264620c674daa2f5e393c28b4436accc1c3295c9",
+      "bytes": 32939
+    },
+    {
+      "file": "cobro-efectivo.png",
+      "role": "EMPLOYEE",
+      "route": "/tpv/cuentas/1/",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "description": "Cobro sintético antes de confirmar; cambio7,90",
+      "sha256": "9ba2f4826b3e5746c083dc931889b7271b825e31f8c0494b1dbf62b561d89859",
+      "bytes": 74795
+    },
+    {
+      "file": "cobro-mobile.png",
+      "role": "EMPLOYEE",
+      "route": "/tpv/cuentas/1/",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "description": "Controles de cobro estrechos",
+      "sha256": "d6de75bab2192df15971abaf26017bc64e5ff9eb09cc90af5e7feeb7c843cfce",
+      "bytes": 36463
+    },
+    {
+      "file": "factura-detalle-desktop.png",
+      "role": "EMPLOYEE",
+      "route": "/facturas/1/",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "description": "Factura TEST emitida por un cobro real sintético",
+      "sha256": "e3a619db30b6a2bdfe08da9acefe172bce62e08e18f03356f0c00e5a8ceb67bf",
+      "bytes": 58607
+    },
+    {
+      "file": "verifactu-desktop.png",
+      "role": "EMPLOYEE",
+      "route": "/facturas/1/",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "description": "Alta TEST pendiente; ninguna aceptación inventada",
+      "sha256": "e3a619db30b6a2bdfe08da9acefe172bce62e08e18f03356f0c00e5a8ceb67bf",
+      "bytes": 58607
+    },
+    {
+      "file": "facturas-desktop.png",
+      "role": "EMPLOYEE",
+      "route": "/facturas/",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "description": "Lista de documentos propios",
+      "sha256": "63058710bafc4bd7f8166f35020efcfc49ce4caf3231628f91f069a3df0214f7",
+      "bytes": 35278
+    },
+    {
+      "file": "clientes-desktop.png",
+      "role": "EMPLOYEE",
+      "route": "/clientes/",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "description": "Ficha comercial sintética sin portal",
+      "sha256": "df9c9b998322a045cb60b25f7edab210cc04866173efcbc5f2bb49900ffe15fa",
+      "bytes": 35815
+    },
+    {
+      "file": "arqueo-desktop.png",
+      "role": "MANAGER",
+      "route": "/caja/",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "description": "Controles de movimientos, arqueo y cierre",
+      "sha256": "7daa4bace03bdf8d0c343244001bfc9e62b6491fc55dcd0d0d72e0024e95ebcd",
+      "bytes": 56009
+    },
+    {
+      "file": "arqueo-cerrado-desktop.png",
+      "role": "MANAGER",
+      "route": "/caja/",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "description": "Turno cerrado realmente, sin diferencia",
+      "sha256": "e287a11a3ac869aa18c53b49f12f92dfd92e53b9d742cf2f57f8610de0ae3ad1",
+      "bytes": 50003
+    },
+    {
+      "file": "informes-desktop.png",
+      "role": "MANAGER",
+      "route": "/informes/",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "description": "Informe de la venta sintética",
+      "sha256": "017d84471fc6108ac5b48be055da51911b576c1135e54bc17c3f0c9ab2c435ce",
+      "bytes": 58240
+    },
+    {
+      "file": "catalogo-desktop.png",
+      "role": "ADMIN",
+      "route": "/catalogo/",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "description": "Servicios y productos de demostración",
+      "sha256": "ccd0823e0b18fd0efa8746b1027b4b99777677a77ee6b0c3a9d210cf3b57cf4f",
+      "bytes": 63366
+    },
+    {
+      "file": "categorias-desktop.png",
+      "role": "ADMIN",
+      "route": "/catalogo/categorias/",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "description": "Categorías, orden y visibilidad",
+      "sha256": "485488c60473d20b4c7789ac29e89da0f506185544c6f2d6d834002e65b7b8fa",
+      "bytes": 55500
+    },
+    {
+      "file": "configuracion-desktop.png",
+      "role": "ADMIN",
+      "route": "/empresa/?section=commercial",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "description": "Ajustes comerciales y logotipo",
+      "sha256": "18cc76d44c3471df424b618c6e216bd735f018b42675637eafc84fc555b13f07",
+      "bytes": 77014
+    },
+    {
+      "file": "configuracion-fiscal-desktop.png",
+      "role": "ADMIN",
+      "route": "/empresa/?section=fiscal",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "description": "Identidad, zona horaria y series",
+      "sha256": "74cd93dca18c48d5f3d6ca16ddd0abf843273467a4ae5c55816c7b236d428379",
+      "bytes": 64178
+    },
+    {
+      "file": "configuracion-tpv-desktop.png",
+      "role": "ADMIN",
+      "route": "/empresa/?section=pos",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "description": "Preferencias visuales y operativas",
+      "sha256": "bfa46c9b4ea7ffabbc0f6626f4c626ee742213ccf9fdf58172f690aef0999fde",
+      "bytes": 67339
+    },
+    {
+      "file": "usuarios-desktop.png",
+      "role": "ADMIN",
+      "route": "/usuarios/",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "description": "Equipo y jerarquía",
+      "sha256": "190eaf294d8693a3829983b945c3496249b498488867b8051b35434ced6b873a",
+      "bytes": 56735
+    },
+    {
+      "file": "configuracion-plano-desktop.png",
+      "role": "ADMIN",
+      "route": "/plano/configuracion/",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "description": "Secciones y puestos configurables",
+      "sha256": "aa9e19189d213e2347f5a05d9a7978bd91f7a51ed03728f192ac1cb744d99e21",
+      "bytes": 51541
+    },
+    {
+      "file": "configuracion-cajas-desktop.png",
+      "role": "ADMIN",
+      "route": "/caja/configuracion/",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "description": "Cajas configurables",
+      "sha256": "44adddccc2c3b1835e197bd6ca70804b3bc8518d7689a19ff1cccd9867a85d91",
+      "bytes": 58312
+    },
+    {
+      "file": "superadmin-dashboard.png",
+      "role": "SUPERADMIN",
+      "route": "/soporte/",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "description": "Panel técnico real y métricas medidas",
+      "sha256": "8e2868f8fe6d832fc375faf9911eeaa3708d5ac9e3ef3afcea77aaa5dcaccd56",
+      "bytes": 83343
+    },
+    {
+      "file": "backups-desktop.png",
+      "role": "SUPERADMIN",
+      "route": "/soporte/",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "description": "Copias cifradas generadas realmente",
+      "sha256": "1dad0a4c2664193fc2ac34dbbfd8a58a5dccb59e65128f6f6d99d5c080aa6a05",
+      "bytes": 68318
+    },
+    {
+      "file": "diagnostico-desktop.png",
+      "role": "SUPERADMIN",
+      "route": "/soporte/diagnostico/",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "description": "Respuesta JSON real del diagnóstico sin prueba AEAT",
+      "sha256": "124c5e04d42be857646ec156bd0806787bce38da77af6e002cf4583b37906857",
+      "bytes": 27101
+    },
+    {
+      "file": "terminales-desktop.png",
+      "role": "SUPERADMIN",
+      "route": "/soporte/terminales/",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "description": "Terminal y preferencias",
+      "sha256": "ae40125447f19707898bd979495809fe4f21f4ae85318ceabcc61d75ea8da5aa",
+      "bytes": 62026
+    },
+    {
+      "file": "impresoras-desktop.png",
+      "role": "SUPERADMIN",
+      "route": "/soporte/dispositivos/",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "description": "Formulario real de impresora; solo simulador en DEMO",
+      "sha256": "9afd822a3ba94e02b87d6aeb0043a7d29c763a8de9a481b66992ad55c08e2958",
+      "bytes": 45273
+    },
+    {
+      "file": "actualizaciones-desktop.png",
+      "role": "SUPERADMIN",
+      "route": "/soporte/actualizaciones/",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "description": "Comprobación de paquete; historial vacío real",
+      "sha256": "611fa24f761c76e80ad60dd82de33625d447996b7fd9ddc94afcba6f2745bf7a",
+      "bytes": 66033
+    },
+    {
+      "file": "certificado-desktop.png",
+      "role": "SUPERADMIN",
+      "route": "/soporte/fiscal/",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "description": "TEST fijo, sin certificados en DEMO",
+      "sha256": "3a38bc418a6d5c06a703f948b884e65d68917bc2b10b40099ccf88a026b2badb",
+      "bytes": 48442
+    },
+    {
+      "file": "restauracion-desktop.png",
+      "role": "SUPERADMIN",
+      "route": "/soporte/restauracion/",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "description": "Preparación offline; no se ejecuta restauración",
+      "sha256": "0304dd67702fb829c822e4c84080f8d3ced546655a59b36818ea24c193513add",
+      "bytes": 49681
+    },
+    {
+      "file": "incidencias-desktop.png",
+      "role": "SUPERADMIN",
+      "route": "/soporte/incidencias/",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "description": "Registro y clasificación sin datos personales",
+      "sha256": "fd842fb5b78da5020a5501e04d6c3027e7b45c07ccc235617b613d8da13b0b7e",
+      "bytes": 58530
+    },
+    {
+      "file": "cola-fiscal-desktop.png",
+      "role": "SUPERADMIN",
+      "route": "/facturas/1/",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "description": "Consulta con PII autorizada, registroTEST pendiente",
+      "sha256": "2777d8380c8108f8574bccffcd76c7d23b7e5e1cb0db5a51f2ace71b1e839359",
+      "bytes": 66972
+    }
+  ]
+}

@@ -1,3 +1,5 @@
+> Guía canónica actual: [instalacion/ACTUALIZACIONES.md](instalacion/ACTUALIZACIONES.md). Este documento conserva procedimientos y evidencias históricos; consulte la guía actual antes de operar.
+
 # Actualización verificada y rollback
 
 No se ejecutan comandos arbitrarios desde Soporte web. El panel expone versión e historial y guía al operador hacia un procedimiento offline. La actualización automática desde Internet no está activada: el responsable obtiene por un canal confiable el ZIP de código y su SHA-256 independiente.

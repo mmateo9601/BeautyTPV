@@ -1,3 +1,5 @@
+> Guía canónica actual: [arquitectura/SEGURIDAD.md](arquitectura/SEGURIDAD.md). Este documento conserva procedimientos y evidencias históricos; consulte la guía actual antes de operar.
+
 # Seguridad y operación local
 
 BeautyTPV es una instalación independiente por empresa. El fichero SQLite vive en el disco local del servidor, nunca en SMB/NFS. El navegador accede al servidor; no recibe secretos de dispositivos ni certificados.

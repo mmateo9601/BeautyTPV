@@ -1,3 +1,5 @@
+> Guía canónica actual: [integraciones/HARDWARE.md](integraciones/HARDWARE.md). Este documento conserva procedimientos y evidencias históricos; consulte la guía actual antes de operar.
+
 # Hardware ESC/POS y cajón
 
 Estado: implementación y pruebas automatizadas; NO VERIFICADO físicamente. No se ha conectado ninguna impresora ni cajón. DONE significa bytes entregados al driver, no confirmación física de papel o apertura.

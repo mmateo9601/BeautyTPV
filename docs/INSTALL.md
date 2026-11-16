@@ -1,3 +1,5 @@
+> Guía canónica actual: [instalacion/INSTALACION_WINDOWS.md](instalacion/INSTALACION_WINDOWS.md). Este documento conserva procedimientos y evidencias históricos; consulte la guía actual antes de operar.
+
 # Instalación local
 
 Requisitos: Python 3.12 o superior compatible con Django 5.2; este desarrollo se prueba en Windows con Python 3.14. SQLite en disco local fiable; no recurso compartido. Un PC servidor por empresa, navegadores de terminales acceden al servidor. Copie el repositorio de una versión revisada a un directorio local y abra PowerShell.

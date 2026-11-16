@@ -1,3 +1,5 @@
+> Guía canónica actual: [manuales/GUIA_SUPERADMIN.md](manuales/GUIA_SUPERADMIN.md). Este documento conserva procedimientos y evidencias históricos; consulte la guía actual antes de operar.
+
 # Operación Superadmin
 
 Acceda con contraseña administrativa o confirme identidad en `/elevar/`. La elevación dura diez minutos; el PIN nunca autoriza operaciones técnicas críticas. `/soporte/` es un panel propio, independiente de Django Admin.

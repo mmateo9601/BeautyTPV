@@ -1,3 +1,5 @@
+> Guía canónica actual: [integraciones/VERIFACTU.md](integraciones/VERIFACTU.md). Este documento conserva procedimientos y evidencias históricos; consulte la guía actual antes de operar.
+
 # Trazabilidad fiscal — BeautyTPV
 
 Estado: implementación local verificable; **NO AUTORIZADA PARA PRODUCCIÓN**. No se ha remitido ningún registro a AEAT ni se ha probado un certificado cliente. Requiere revisión fiscal experta y declaración responsable real del productor antes de su puesta en servicio.
